@@ -5,10 +5,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 
 import loginRoutes from "./routes/login.js";
-
+import userRouter from "./routes/createUser.js";
 const app = express();
-
-app.use("/login", loginRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -27,8 +25,8 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
-import bcrypt from "bcrypt";
-
+app.use("/login", loginRoutes);
+app.use("/User", userRouter);
 
 //return a json error when visiting a page that does't exit
 app.use("*", (req, res) => res.status(404).json({ error: "Not found" }));

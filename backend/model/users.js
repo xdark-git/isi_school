@@ -1,7 +1,8 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const defaultPassword = bcrypt.hashSync("passer1234", 12);
+const { Schema } = mongoose;
 
 const adminSchema = new Schema({
   nom: {
@@ -38,8 +39,6 @@ const adminSchema = new Schema({
   },
 });
 
-
-export const Administration = mongoose
-  .model("Administration", adminSchema)
-  .createCollection();
-
+const Administration = mongoose.model("Administration", adminSchema);
+Administration.createCollection();
+export { Administration };
