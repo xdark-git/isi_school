@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 const defaultPassword = bcrypt.hashSync("passer1234", 12);
 const { Schema } = mongoose;
 
-
 const adminSchema = new Schema({
   nom: {
     type: String,
@@ -18,12 +17,12 @@ const adminSchema = new Schema({
     type: String,
     default: "defaultProfilePicture",
   },
-  lienProfile: {
+  numeroDeTel: {
     type: String,
     required: true,
     unique: true,
   },
-  numeroDeTel: {
+  username: {
     type: String,
     required: true,
     unique: true,
