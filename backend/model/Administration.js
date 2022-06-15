@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 const defaultPassword = bcrypt.hashSync("passer1234", 12);
 const { Schema } = mongoose;
 
+
 const adminSchema = new Schema({
   nom: {
     type: String,

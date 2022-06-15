@@ -2,7 +2,7 @@ import express from "express";
 import {
   createAdmin,
   getCreateAdminPage,
-} from "../controller/adminController.js";
+} from "../controller/UsersController.js";
 
 const router = express.Router();
 
