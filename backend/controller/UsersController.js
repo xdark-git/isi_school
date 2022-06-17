@@ -1,5 +1,5 @@
 import { Administration } from "../model/Administration.js";
-import path from "path";
+import path, { resolve } from "path";
 
 const __dirname = path.resolve();
 
@@ -14,52 +14,42 @@ let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
 export const createAdmin = (req, res) => {
-  let arr;
-  Administration.find()
-    .where(
-      req.body.email + "," + req.body.username + "," + req.body.numeroDeTel
-    )
-    .select("email username numeroDeTel -_id")
-    .exec((err, data) => {
-      //cchecking if data existent before storing
-      if (data.length === 3) {
-        return res.json({
-          alert: "Numéro, Email, Username existent déjà",
-        });
-      }
-      if (data.length > 0 && data.length <= 2) {
-        let numero = "",
-          email = "",
-          username = "";
+  Administration.find(
+    {
+      $or: [
+        { email: req.body.email },
+        { username: req.body.username },
+        { numeroDeTel: req.body.numeroDeTel },
+      ],
+    },
+    (error, data) => {
+      let email = false;
+      let username = false;
+      let numeroDeTel = false;
+      if (data.length > 0) {
         for (let i in data) {
-          if (data[i].numeroDeTel == req.body.numeroDeTel) {
-            for (let i in arr) {
-              if (arr[i].numeroDeTel == req.body.numeroDeTel) numero = "Numero";
-              if (arr[i].email == req.body.email) numero = "Email";
-              if (arr[i].username == req.body.username) numero = "username";
-            }
-            return res.json({
-              alert:
-                +numero + ", " + email + ", " + Username + " existent déjà",
-            });
-          }
+          if (data[i].email == req.body.email) email = true;
+          if (data[i].username == req.body.username) username = true;
+          if (data[i].numeroDeTel == req.body.numeroDeTel) numeroDeTel = true;
+        }
+        return res.status(409).json({
+          email: email,
+          username: username,
+          numeroDeTel,
+          numeroDeTel,
+        });
+      } else {
+        try {
+          Administration.create(req.body);
+          res.status(201).json({message: "success"});
+        } catch (error) {
+          res.status(409).json({ message: error.message });
         }
       }
-      // if there isn't any data found then we create the new account
-      if (data.length === 0) {
-        Administration.create({
-          nom: req.body.nom,
-          prenom: req.body.prenom,
-          numeroDeTel: req.body.numeroDeTel,
-          email: req.body.email,
-          username: req.body.username,
-        });
-        return res.json({
-          succes: "Compte créer avec succès",
-        });
-      }
-    });
+    }
+  );
 };
+
 /**
  * shuffle array to create a userlink
  */
