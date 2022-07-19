@@ -12,36 +12,38 @@ let arrayOfValues;
 let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
-
+/**
+ * we will first make sure that the email, username and telephone aren't
+ * already been used and create the new user
+ */
 export const createAdmin = (req, res) => {
   Administration.find(
     {
       $or: [
         { email: req.body.email },
         { username: req.body.username },
-        { numeroDeTel: req.body.numeroDeTel },
+        { telephone: req.body.telephone },
       ],
     },
     (error, data) => {
       let email = false;
       let username = false;
-      let numeroDeTel = false;
+      let telephone = false;
       if (data.length > 0) {
         for (let i in data) {
           if (data[i].email == req.body.email) email = true;
           if (data[i].username == req.body.username) username = true;
-          if (data[i].numeroDeTel == req.body.numeroDeTel) numeroDeTel = true;
+          if (data[i].telephone == req.body.telephone) telephone = true;
         }
         return res.status(409).json({
           email: email,
           username: username,
-          numeroDeTel,
-          numeroDeTel,
+          telephone: telephone,
         });
       } else {
         try {
           Administration.create(req.body);
-          res.status(201).json({message: "success"});
+          res.status(201).json({ message: "success" });
         } catch (error) {
           res.status(409).json({ message: error.message });
         }

@@ -17,7 +17,7 @@ const adminSchema = new Schema({
     type: String,
     default: "defaultProfilePicture",
   },
-  numeroDeTel: {
+  telephone: {
     type: String,
     required: true,
     unique: true,
