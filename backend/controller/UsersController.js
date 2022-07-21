@@ -3,15 +3,16 @@ import path, { resolve } from "path";
 
 const __dirname = path.resolve();
 
-export const getCreateAdminPage = (req, res) => {
-  res.sendFile(__dirname + "/views/createUser.html");
-};
+// export const getCreateAdminPage = (req, res) => {
+//   res.sendFile(__dirname + "/views/createUser.html");
+// };
 
 let values;
 let arrayOfValues;
 let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
+
 /**
  * we will first make sure that the email, username and telephone aren't
  * already been used and create the new user
