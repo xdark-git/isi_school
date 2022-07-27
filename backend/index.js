@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 /******Routes********/
 import userRouter from "./routes/createUser.js";
+import statusRouter from "./routes/createStatus.js";
 /******Routes********/
 const app = express();
 
@@ -20,12 +21,11 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
-  )
+  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
   .catch((error) => console.log(error.message));
 
 app.use("/api/user", userRouter);
+app.use("/api/status", statusRouter);
 
 //return a json error when visiting a page that does't exit
 app.use("*", (req, res) => res.status(404).json({ error: "Not found" }));
