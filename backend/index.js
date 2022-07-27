@@ -3,9 +3,9 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-
-import loginRoutes from "./routes/login.js";
+/******Routes********/
 import userRouter from "./routes/createUser.js";
+/******Routes********/
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -25,8 +25,7 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
-app.use("/login", loginRoutes);
-app.use("/User", userRouter);
+app.use("/api/user", userRouter);
 
 //return a json error when visiting a page that does't exit
 app.use("*", (req, res) => res.status(404).json({ error: "Not found" }));

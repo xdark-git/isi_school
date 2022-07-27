@@ -1,11 +1,10 @@
 import express from "express";
-import {
-  createAdmin,
-  getCreateAdminPage,
-} from "../controller/UsersController.js";
+import { createAdmin, createProfesseur, createEtudiant } from "../controller/UsersController.js";
 
 const router = express.Router();
 
-router.get("/admin", getCreateAdminPage);
-router.post("/admin", createAdmin);
+router.post("/administration", createAdmin);
+router.post("/professeur", createProfesseur);
+router.post("/etudiant", createEtudiant);
+
 export default router;

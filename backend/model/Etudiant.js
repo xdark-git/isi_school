@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 const defaultPassword = bcrypt.hashSync("passer1234", 12);
 const { Schema } = mongoose;
 
-const adminSchema = new Schema({
+const etudiantSchema = new Schema({
   nom: {
     type: String,
     required: true,
@@ -18,6 +18,11 @@ const adminSchema = new Schema({
     default: "defaultProfilePicture",
   },
   telephone: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  numeroDeCarte: {
     type: String,
     required: true,
     unique: true,
@@ -51,6 +56,6 @@ const adminSchema = new Schema({
   },
 });
 
-const Administration = mongoose.model("Administration", adminSchema);
-Administration.createCollection();
-export { Administration };
+const Etudiant = mongoose.model("Etudiant", etudiantSchema);
+Etudiant.createCollection();
+export { Etudiant };

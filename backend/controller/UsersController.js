@@ -1,4 +1,7 @@
 import { Administration } from "../model/Administration.js";
+import { Professeur } from "../model/Professeur.js";
+import { Etudiant } from "../model/Etudiant.js";
+
 import path, { resolve } from "path";
 
 const __dirname = path.resolve();
@@ -54,6 +57,21 @@ export const createAdmin = (req, res) => {
 };
 
 /**
+ *First check if the username, email, numeroDeTel, identifiantProf
+ *aren't already used
+ *then check if the statusId exist in statusCollection
+ *if all verification passed successfully then create the newProf
+ */
+export const createProfesseur = (req, res) => {};
+
+/**
+ *First check if the username, email, numeroDeTel, numeroDeCarte
+ *aren't already used
+ *then check if the statusId exist in statusCollection
+ *if all verification passed successfully then create the newProf
+ */
+export const createEtudiant = (req, res) => {};
+/**
  * shuffle array to create a userlink
  */
 function shuffle(array) {
@@ -73,10 +91,7 @@ function shuffle(array) {
         array[currentIndex],
       ];
     } else {
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     count++;
   }
