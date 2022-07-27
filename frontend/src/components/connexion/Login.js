@@ -3,12 +3,27 @@ import { Button } from "react-bootstrap";
 import "./style.css";
 
 const Login = () => {
-  // Generate JSX code for error message
+  const [etudiant_Profil_Style, set_Etudiant_Profil_Style] = useState("btn-profil checked");
+  const [professeur_Profil_Style, set_Professeur_Profil_Style] = useState("btn-profil");
+  /*
+      changing the profile style depending on the profil clicked
+  */
+  const handleClick = (event) => {
+    if (event.currentTarget.textContent == "Professeur") {
+      set_Etudiant_Profil_Style("btn-profil");
+      set_Professeur_Profil_Style("btn-profil checked");
+    }
+    if (event.currentTarget.textContent == "Etudiant") {
+      set_Etudiant_Profil_Style("btn-profil checked");
+      set_Professeur_Profil_Style("btn-profil");
+    }
+  };
 
   const handleSubmit = (event) => {
     // Prevent page reload
     event.preventDefault();
   };
+
 
   return (
     <div className="container">
@@ -22,12 +37,12 @@ const Login = () => {
           <h1>Connexion</h1>
         </div>
 
-        <form className="form" action="">
+        <form className="form" onSubmit={handleSubmit}>
           <div className="profil">
-            <div className="btn-profil checked">
+            <div className={etudiant_Profil_Style} onClick={handleClick}>
               <span className="label">Etudiant</span>
             </div>
-            <div className="btn-profil">
+            <div className={professeur_Profil_Style} onClick={handleClick}>
               <span className="label">Professeur</span>
             </div>
           </div>
@@ -38,7 +53,12 @@ const Login = () => {
             </div>
             <div id="pwd" className="input">
               <label for="password">Password</label>
-              <input type="password" placeholder="Votre password" id="password" className="password" />
+              <input
+                type="password"
+                placeholder="Votre password"
+                id="password"
+                className="password"
+              />
               <span id="forget">
                 <a href="">| Oublié ?</a>
               </span>
