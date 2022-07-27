@@ -11,43 +11,43 @@ const Login = () => {
   };
 
   return (
-    <div class="container">
+    <div className="container">
       {/* shape  */}
-      <div class="shape"></div>
-      <div class="shape1"></div>
-      <div class="shape2"></div>
+      <div className="shape"></div>
+      <div className="shape1"></div>
+      <div className="shape2"></div>
       {/* shape  */}
-      <div class="form">
-        <div class="title">
+      <div className="form">
+        <div className="title">
           <h1>Connexion</h1>
         </div>
 
-        <form class="form" action="">
-          <div class="profil">
-            <div class="btn-profil checked">
-              <span class="label">Etudiant</span>
+        <form className="form" action="">
+          <div className="profil">
+            <div className="btn-profil checked">
+              <span className="label">Etudiant</span>
             </div>
-            <div class="btn-profil">
-              <span class="label">Professeur</span>
+            <div className="btn-profil">
+              <span className="label">Professeur</span>
             </div>
           </div>
-          <div class="section-input">
-            <div class="input">
+          <div className="section-input">
+            <div className="input">
               <label for="email">Email</label>
-              <input type="text" placeholder="Votre email" id="email" class="email" />
+              <input type="text" placeholder="Votre email" id="email" className="email" />
             </div>
-            <div id="pwd" class="input">
+            <div id="pwd" className="input">
               <label for="password">Password</label>
-              <input type="password" placeholder="Votre password" id="password" class="password" />
+              <input type="password" placeholder="Votre password" id="password" className="password" />
               <span id="forget">
                 <a href="">| Oublié ?</a>
               </span>
             </div>
-            <div class="remember">
+            <div className="remember">
               <input type="checkbox" name="" id="remember" />
               <label for="remember">Se souvenir ?</label>
             </div>
-            <div class="subscribe">
+            <div className="subscribe">
               <button type="submit">Se connecter</button>
             </div>
           </div>
