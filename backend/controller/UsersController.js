@@ -29,7 +29,7 @@ export const createAdmin = (req, res) => {
         { telephone: req.body.telephone },
       ],
     },
-    (error, data) => {
+    (reqError, data) => {
       let email = false;
       let username = false;
       let telephone = false;
@@ -46,8 +46,9 @@ export const createAdmin = (req, res) => {
         });
       } else {
         try {
-          Administration.create(req.body);
-          res.status(201).json({ message: "success" });
+          Administration.create(req.body).then(
+            res.status(201).json({ message: "Created" })
+          );
         } catch (error) {
           res.status(409).json({ message: error.message });
         }
@@ -91,7 +92,10 @@ function shuffle(array) {
         array[currentIndex],
       ];
     } else {
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
     }
     count++;
   }
