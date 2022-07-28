@@ -65,21 +65,26 @@ export const createEtudiant = async (req, res) => {
       { email: req.body.email },
       { username: req.body.username },
       { telephone: req.body.telephone },
+      { numeroDeCarte: req.body.numeroDeCarte },
     ],
   }).exec((reqError, data) => {
     let email = "Ok";
     let username = "Ok";
     let telephone = "Ok";
+    let numeroDeCarte = "ok";
     if (data.length > 0) {
       for (let i in data) {
         if (data[i].email == req.body.email) email = "Conflict";
         if (data[i].username == req.body.username) username = "Conflict";
         if (data[i].telephone == req.body.telephone) telephone = "Conflict";
+        if (data[i].numeroDeCarte == req.body.numeroDeCarte)
+          numeroDeCarte = "Conflict";
       }
       return res.status(409).json({
         email: email,
         username: username,
         telephone: telephone,
+        numeroDeCate: numeroDeCarte,
       });
     } else {
       // Trying to find if the status select exist and get the id
