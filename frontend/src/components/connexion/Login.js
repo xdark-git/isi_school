@@ -3,19 +3,19 @@ import { Button } from "react-bootstrap";
 import "./style.css";
 
 const Login = () => {
-  const [etudiant_Profil_Style, set_Etudiant_Profil_Style] = useState("btn-profil checked");
-  const [professeur_Profil_Style, set_Professeur_Profil_Style] = useState("btn-profil");
+  const [PROFIL_STYLE_ON_CLICK, SET_PROFIL_STYLE_ON_CLICK] = useState({
+    etudiant: "btn-profil checked",
+    professeur: "btn-profil",
+  });
   /*
       changing the profile style depending on the profil clicked
   */
   const handleClick = (event) => {
     if (event.currentTarget.textContent == "Professeur") {
-      set_Etudiant_Profil_Style("btn-profil");
-      set_Professeur_Profil_Style("btn-profil checked");
+      SET_PROFIL_STYLE_ON_CLICK({ etudiant: "btn-profil", professeur: "btn-profil checked" });
     }
     if (event.currentTarget.textContent == "Etudiant") {
-      set_Etudiant_Profil_Style("btn-profil checked");
-      set_Professeur_Profil_Style("btn-profil");
+      SET_PROFIL_STYLE_ON_CLICK({ etudiant: "btn-profil checked", professeur: "btn-profil" });
     }
   };
 
@@ -23,7 +23,6 @@ const Login = () => {
     // Prevent page reload
     event.preventDefault();
   };
-
 
   return (
     <div className="container">
@@ -39,10 +38,10 @@ const Login = () => {
 
         <form className="form" onSubmit={handleSubmit}>
           <div className="profil">
-            <div className={etudiant_Profil_Style} onClick={handleClick}>
+            <div className={PROFIL_STYLE_ON_CLICK.etudiant} onClick={handleClick}>
               <span className="label">Etudiant</span>
             </div>
-            <div className={professeur_Profil_Style} onClick={handleClick}>
+            <div className={PROFIL_STYLE_ON_CLICK.professeur} onClick={handleClick}>
               <span className="label">Professeur</span>
             </div>
           </div>
@@ -60,7 +59,7 @@ const Login = () => {
                 className="password"
               />
               <span id="forget">
-                <a href="">| Oublié ?</a>
+                <a href="#">| Oublié ?</a>
               </span>
             </div>
             <div className="remember">
