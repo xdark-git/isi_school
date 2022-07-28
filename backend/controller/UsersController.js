@@ -104,9 +104,15 @@ export const createAdmin = async (req, res) => {
           return res.status(406).json({ message: "Not Acceptable Status" });
         else {
           try {
-            Administration.create(req.body).then(
-              res.status(201).json({ message: "Created" })
-            );
+            Administration.create(req.body, (creationError, creationData) => {
+              if (creationError != null) {
+                return res
+                  .status(406)
+                  .json({ message: creationError.toString() });
+              }
+
+              res.status(201).json({ message: "Created" });
+            });
           } catch (error) {
             res.status(500).json({ message: "Internal Server Error" });
           }
