@@ -3,6 +3,6 @@ import { createStatus} from "../controller/StatusController.js";
 
 const router = express.Router();
 
-router.post("/status", createStatus);
+router.post("/add", createStatus);
 
 export default router;
