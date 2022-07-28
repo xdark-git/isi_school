@@ -1,9 +1,10 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const defaultPassword = bcrypt.hashSync("passer1234", 12);
+const { Schema } = mongoose;
 
-const adminSchema = new Schema({
+const etudiantSchema = new Schema({
   nom: {
     type: String,
     required: true,
@@ -16,12 +17,25 @@ const adminSchema = new Schema({
     type: String,
     default: "defaultProfilePicture",
   },
-  lienProfile: {
+  telephone: {
     type: String,
     required: true,
     unique: true,
   },
-  numeroDeTel: {
+  numeroDeCarte: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  dateDeNaissance: {
+    type: Date,
+    required: true,
+  },
+  lieuDeNaissance: {
+    type: String,
+    required: true,
+  },
+  username: {
     type: String,
     required: true,
     unique: true,
@@ -36,10 +50,12 @@ const adminSchema = new Schema({
     required: true,
     default: defaultPassword,
   },
+  statusId: {
+    type: String,
+    required: true,
+  },
 });
 
-
-export const Administration = mongoose
-  .model("Administration", adminSchema)
-  .createCollection();
-
+const Etudiant = mongoose.model("Etudiant", etudiantSchema);
+Etudiant.createCollection();
+export { Etudiant };

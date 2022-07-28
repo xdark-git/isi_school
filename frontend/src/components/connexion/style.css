@@ -1,0 +1,344 @@
+* body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw; /*view width*/
+  height: 100vh; /*view height*/
+}
+.container > .shape {
+  background-size: cover;
+  background-image: url(./asset/shapebg.png);
+  background-position-x: right;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container > .shape > img.shape {
+  width: 60%;
+}
+.container > .shape1 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 0px;
+  margin-right: 50vw;
+  background: #67b4e0;
+}
+.container > .shape2 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 0px;
+  top: 0px;
+
+  background: #379fda;
+}
+
+.form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.form > .title > h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 4em;
+  line-height: 96px;
+
+  color: #1e1e1e;
+}
+
+form > .profil {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+form > .profil > .btn-profil {
+  display: flex;
+  align-items: center;
+  width: 138px;
+  height: 38px;
+  background: #fff;
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  line-height: 31px;
+  text-align: center;
+  color: #379fda;
+  border: #379fda solid 3px;
+  border-radius: 20px;
+  justify-content: space-evenly;
+  cursor: pointer;
+  margin: 10px;
+}
+form > .profil > .checked {
+  background: #379fda;
+  color: #ffffff;
+}
+form > .profil > .btn-profil:hover {
+  background-color: #c7e6fc;
+  transition: ease-in-out 0.2s;
+}
+form > .profil > .btn-profil:active {
+  background-color: #64beff;
+}
+
+form > .section-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
+form > .section-input > .input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
+form > .section-input > .input > label {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: 0.04em;
+  line-height: 31px;
+  text-align: left;
+  color: #1c2126;
+}
+form > .section-input > .input > input {
+  width: 100%;
+  height: 38px;
+  background: #ffffff;
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  line-height: 31px;
+  text-align: left;
+  color: #1c2126;
+  border-radius: 015px;
+  border: none;
+  padding: 0 10px;
+  border: #379fda solid 3px;
+}
+form > .section-input > .input > input:focus {
+  outline-color: #64beff;
+}
+form > .section-input > div#pwd {
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+span#forget > a {
+  text-decoration: none;
+  color: #09376b;
+}
+span#forget {
+  padding-left: 75px;
+  position: absolute;
+  top: 50%;
+  left: 62%;
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  line-height: 31px;
+  text-align: left;
+  color: #1c2126;
+  float: right;
+}
+span#forget > a:hover {
+  color: red;
+}
+div.remember {
+  display: block;
+  width: 100%;
+}
+div.remember > label {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  line-height: 31px;
+  text-align: left;
+  color: #1c2126;
+}
+
+.subscribe {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 0;
+}
+.subscribe > button {
+  width: 340px;
+  height: 52px;
+  background: #379fda;
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1em;
+}
+.subscribe > button:hover {
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+/* Language: css 
+    Responsive 
+*/
+
+@media only screen and (max-width: 1280px) {
+  form > .profil > .btn-profil {
+    width: 110px;
+    height: 35px;
+    font-size: 0.8em;
+  }
+}
+@media only screen and (max-width: 1188px) {
+  form > .profil > .btn-profil {
+    width: 110px;
+    height: 35px;
+    font-size: 0.8em;
+  }
+  span#forget {
+    left: 40%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .form {
+    width: 60%;
+  }
+  .container .shape1 {
+    margin-right: 45vw;
+  }
+  form > .profil {
+    width: 85%;
+  }
+  form > .profil > .btn-profil {
+    width: 100px;
+    height: 30px;
+    font-size: 0.8em;
+  }
+  span#forget {
+    left: 30%;
+  }
+}
+@media only screen and (max-width: 880px) {
+  .container .shape1 {
+    margin-right: 45vw;
+  }
+  .form {
+    width: 60%;
+  }
+  .form > .title > h1 {
+    font-size: 3.6em;
+  }
+  form > .profil > .btn-profil {
+    width: 90px;
+    height: 30px;
+    font-size: 0.8em;
+  }
+}
+@media only screen and (max-width: 648px) {
+  form > .section-input > .input > input {
+    font-size: 0.9em;
+  }
+  span#forget {
+    font-size: 0.9em;
+    left: 25%;
+  }
+}
+@media only screen and (max-width: 617px) {
+  .container .shape1 {
+    visibility: hidden;
+  }
+  .container .shape2 {
+    visibility: hidden;
+  }
+}
+@media only screen and (max-width: 527px) {
+  form > .section-input > .input > input {
+    font-size: 0.7em;
+  }
+  span#forget {
+    font-size: 0.7em;
+    left: 24%;
+  }
+}
+@media only screen and (max-width: 465px) {
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .container > .shape {
+    background-image: url(./asset/shapebgmobile.png);
+    width: 100%;
+    height: 245px;
+  }
+  .form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  form > .profil {
+    width: 80%;
+  }
+  form > .profil > .btn-profil {
+    width: 118px;
+    height: 35px;
+    font-size: 1em;
+  }
+  .form > .title > h1 {
+    font-size: 3em;
+    line-height: 46px;
+  }
+  form > .section-input > .input > input {
+    width: 90%;
+    font-size: 1em;
+  }
+  form > .section-input {
+    margin: 20px 0;
+  }
+  span#forget {
+    font-size: 1em;
+    left: 50%;
+  }
+}
+@media only screen and (max-width: 393px) {
+  span#forget {
+    font-size: 1em;
+    left: 40%;
+  }
+}
