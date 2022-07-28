@@ -8,7 +8,7 @@ import { Status } from "../model/Status.js";
  */
 export const createEtudiant = async (req, res) => {
   /*
-  1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)
+  1. Verify if email, username, telephone, numeroDeCarte doesn't in all 3 collections (Professeur, Etudiant, Administration)
   2. Verify if status id exist
   3. Add the new user
  */

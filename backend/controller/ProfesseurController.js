@@ -8,7 +8,7 @@ import { Status } from "../model/Status.js";
  */
 export const createProfesseur = async (req, res) => {
   /*
-  1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)
+  1. Verify if email, username, telephone, identifiantProf doesn't exist in all 3 collections (Professeur, Etudiant, Administration)
   2. Verify if status id exist
   3. Add the new user
  */
@@ -65,21 +65,25 @@ export const createProfesseur = async (req, res) => {
       { email: req.body.email },
       { username: req.body.username },
       { telephone: req.body.telephone },
+      { identifiantProf: req.body.identifiantProf },
     ],
   }).exec((reqError, data) => {
     let email = "Ok";
     let username = "Ok";
     let telephone = "Ok";
+    let identifiantProf = "okay"
     if (data.length > 0) {
       for (let i in data) {
         if (data[i].email == req.body.email) email = "Conflict";
         if (data[i].username == req.body.username) username = "Conflict";
         if (data[i].telephone == req.body.telephone) telephone = "Conflict";
+        if (data[i].identifiantProf == req.body.identifiantProf) identifiantProf = "Conflict";
       }
       return res.status(409).json({
         email: email,
         username: username,
         telephone: telephone,
+        identifiantProf: identifiantProf,
       });
     } else {
       // Trying to find if the status select exist and get the id
