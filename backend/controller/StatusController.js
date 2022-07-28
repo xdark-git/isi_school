@@ -23,7 +23,7 @@ export const createStatus = (req, res) => {
             res.status(201).json({ message: "Created" })
           );
         } catch (error) {
-          res.status(409).json({ message: error.message });
+          res.status(500).json({ message: "Internal Server Error" });
         }
       }
     }
