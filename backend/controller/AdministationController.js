@@ -17,16 +17,15 @@ let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
-/*
-  1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)
-  2. Verify if status id exist
-  3. Add the new user
- */
-
 /**
  * create a new Administration
  */
 export const createAdmin = async (req, res) => {
+  /*
+  1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)
+  2. Verify if status id exist
+  3. Add the new user
+ */
   await Professeur.find({
     $or: [
       { email: req.body.email },
@@ -49,7 +48,6 @@ export const createAdmin = async (req, res) => {
         telephone: telephone,
       });
     }
-    console.log(data);
   });
 
   await Etudiant.find({
@@ -122,15 +120,6 @@ export const createAdmin = async (req, res) => {
   });
 };
 
-/**
- * create a new Professuer
- */
-export const createProfesseur = (req, res) => {};
-
-/**
- * create a new Professuer
- */
-export const createEtudiant = (req, res) => {};
 /**
  * shuffle array to create a userlink
  */

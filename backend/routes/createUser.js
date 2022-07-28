@@ -1,9 +1,7 @@
 import express from "express";
-import {
-  createAdmin,
-  createProfesseur,
-  createEtudiant,
-} from "../controller/UsersController.js";
+import { createAdmin } from "../controller/AdministationController.js";
+import { createProfesseur } from "../controller/ProfesseurController.js";
+import { createEtudiant } from "../controller/EtudiantController.js";
 
 const router = express.Router();
 
