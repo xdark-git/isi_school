@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 /******Routes********/
 import userRouter from "./routes/createUser.js";
 import statusRouter from "./routes/createStatus.js";
-/******Routes********/
+//////////Routes//////////
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -16,7 +16,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-mongoose
+await mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
