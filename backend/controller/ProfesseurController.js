@@ -3,6 +3,7 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
+export const loginProfesseur = (req, res) => {};
 /**
  * create a new Professuer
  */
@@ -71,13 +72,14 @@ export const createProfesseur = async (req, res) => {
     let email = "Ok";
     let username = "Ok";
     let telephone = "Ok";
-    let identifiantProf = "okay"
+    let identifiantProf = "okay";
     if (data.length > 0) {
       for (let i in data) {
         if (data[i].email == req.body.email) email = "Conflict";
         if (data[i].username == req.body.username) username = "Conflict";
         if (data[i].telephone == req.body.telephone) telephone = "Conflict";
-        if (data[i].identifiantProf == req.body.identifiantProf) identifiantProf = "Conflict";
+        if (data[i].identifiantProf == req.body.identifiantProf)
+          identifiantProf = "Conflict";
       }
       return res.status(409).json({
         email: email,

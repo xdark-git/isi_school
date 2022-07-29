@@ -17,10 +17,11 @@ let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
+export const loginAdministration = (req, res) => {};
 /**
  * create a new Administration
  */
-export const createAdmin = async (req, res) => {
+export const createAdministration = async (req, res) => {
   /*
   1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)
   2. Verify if status id exist

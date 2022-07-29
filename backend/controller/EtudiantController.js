@@ -3,6 +3,7 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
+export const loginEtudiant = (req, res) => {};
 /**
  * create a new Etudiant
  */
