@@ -15,7 +15,7 @@ import {
 const router = express.Router();
 
 router.post("/add/administration", createAdministration);
-router.post("/login/professeur", loginAdministration);
+router.post("/login/administration", loginAdministration);
 
 router.post("/add/professeur", createProfesseur);
 router.post("/login/professeur", loginProfesseur);
