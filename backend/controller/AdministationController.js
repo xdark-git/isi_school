@@ -17,19 +17,38 @@ let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
-export const loginAdministration = (req, res) => {
+export const loginAdministration = async (req, res) => {
   /*
     1. check request format is valid
-    2. find user by Email
+    2. find user by Email and password
     3. if user exist find statusnom byid,
         send all information
       else
         send failed message
   */
+  await Administration.findOne({
+    email: req.body.email,
+    motDePasse: req.body.motDePasse,
+  })
+    .select("-__v -motDePasse")
+    .exec((error, data) => {
+      if (error)
+        return res.status(500).json({ message: "Internal Server Error" });
+
+      if (data == null)
+        return res.status(406).json({ message: "Not Acceptable" });
+
+      if (data != null) {
+        Status.findById(data.statusId)
+          .select("-_id nom")
+          .exec((statusError, statusData) => {
+            return res.status(200).json({ data, status: statusData.nom });
+          });
+        //
+      }
+    });
 };
-/**
- * create a new Administration
- */
+
 export const createAdministration = async (req, res) => {
   /*
   1. Verify if email, username, telephone doesn't in all 3 collections (Professeur, Etudiant, Administration)

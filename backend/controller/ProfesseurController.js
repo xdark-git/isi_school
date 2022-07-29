@@ -3,7 +3,37 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
-export const loginProfesseur = (req, res) => {};
+export const loginProfesseur = async (req, res) => { 
+  /*
+    1. check request format is valid
+    2. find user by Email and password
+    3. if user exist find statusnom byid,
+        send all information
+      else
+        send failed message
+  */
+  await Professeur.findOne({
+    email: req.body.email,
+    motDePasse: req.body.motDePasse,
+  })
+  .select("-__v -motDePasse")
+  .exec((error, data) => {
+    if (error)
+      return res.status(500).json({ message: "Internal Server Error" });
+
+    if (data == null)
+      return res.status(406).json({ message: "Not Acceptable" });
+
+    if (data != null) {
+      Status.findById(data.statusId)
+        .select("-_id nom")
+        .exec((statusError, statusData) => {
+          return res.status(200).json({ data, status: statusData.nom });
+        });
+      //
+    }
+  });
+};
 /**
  * create a new Professuer
  */
