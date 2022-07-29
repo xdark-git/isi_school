@@ -4,8 +4,8 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 /******Routes********/
-import userRouter from "./routes/createUser.js";
-import statusRouter from "./routes/createStatus.js";
+import userRouter from "./routes/usersRoutes.js";
+import statusRouter from "./routes/statusRoutes.js";
 //////////Routes//////////
 const app = express();
 
