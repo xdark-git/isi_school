@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-/******Routes********/
+//////////Routes//////////
 import userRouter from "./routes/usersRoutes.js";
 import statusRouter from "./routes/statusRoutes.js";
 //////////Routes//////////
@@ -28,4 +28,4 @@ app.use("/api/user", userRouter);
 app.use("/api/status", statusRouter);
 
 //return a json error when visiting a page that does't exit
-app.use("*", (req, res) => res.status(404).json({ error: "Not found" }));
+app.use("*", (req, res) => res.status(404).json({ error: "Not found Route" }));
