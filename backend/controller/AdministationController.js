@@ -17,7 +17,16 @@ let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
-export const loginAdministration = (req, res) => {};
+export const loginAdministration = (req, res) => {
+  /*
+    1. check request format is valid
+    2. find user by Email
+    3. if user exist find statusnom byid,
+        send all information
+      else
+        send failed message
+  */
+};
 /**
  * create a new Administration
  */
