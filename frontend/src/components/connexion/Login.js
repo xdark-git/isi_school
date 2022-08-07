@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 
 import "./style.css";
-import { actions } from "../../store/profilOnClick";
+import { actions } from "../../store/index.js";
 
 const Login = () => {
   /*
@@ -41,16 +41,10 @@ const Login = () => {
 
         <form className="form" onSubmit={handleSubmit}>
           <div className="profil">
-            <div
-              className={etudiantDefaultStyle}
-              onClick={handleClick}
-            >
+            <div className={etudiantDefaultStyle} onClick={handleClick}>
               <span className="label">Etudiant</span>
             </div>
-            <div
-              className={professeurDefaultStyle}
-              onClick={handleClick}
-            >
+            <div className={professeurDefaultStyle} onClick={handleClick}>
               <span className="label">Professeur</span>
             </div>
           </div>
