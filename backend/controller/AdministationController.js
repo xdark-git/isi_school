@@ -20,26 +20,30 @@ let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
 export const loginAdministration = async (req, res) => {
-  const result = await Administration.findOne({
-    email: req.body.email,
-  });
-
-  // console.log(hashedMotDePasse);
-  if (!result) {
-    return res.status(406).json({ message: "Not Acceptable" });
-  }
-  if (result) {
-    // console.log(result);
-    const checkMotDePasse = await bcrypt.compare(
-      req.body.motDePasse,
-      result["motDePasse"]
-    );
-    if (checkMotDePasse) {
-      const status = await Status.findById(result.statusId).select("-_id nom");
-      return res.status(200).json({ data: result, status });
-    } else {
+  try {
+    const result = await Administration.findOne({
+      email: req.body.email,
+    });
+  
+    // console.log(hashedMotDePasse);
+    if (!result) {
       return res.status(406).json({ message: "Not Acceptable" });
     }
+    if (result) {
+      // console.log(result);
+      const checkMotDePasse = await bcrypt.compare(
+        req.body.motDePasse,
+        result["motDePasse"]
+      );
+      if (checkMotDePasse) {
+        const status = await Status.findById(result.statusId).select("-_id nom");
+        return res.status(200).json({ data: result, status });
+      } else {
+        return res.status(400).json({ message: "Invalid credential" });
+      }
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Something went wrong." });
   }
 };
 
@@ -165,7 +169,7 @@ export const createAdministration = async (req, res) => {
         });
       }
     } catch (err) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res.status(500).json({ message: "Something went wrong." });
     }
   }
 };
