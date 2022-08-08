@@ -6,33 +6,41 @@ import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
 export const signinEtudiant = async (req, res) => {
-  /*
-    1. check request format is valid
-    2. find user by Email and password
-    3. if user exist find statusnom byid,
-        send all information
-      else
-        send failed message
-  */
-  await Etudiant.findOne({
-    email: req.body.email,
-    motDePasse: req.body.motDePasse,
-  })
-    .select("-__v -motDePasse")
-    .exec((error, data) => {
-      if (error) return res.status(500).json({ message: "Internal Server Error" });
-
-      if (data == null) return res.status(406).json({ message: "Not Acceptable" });
-
-      if (data != null) {
-        Status.findById(data.statusId)
-          .select("-_id nom")
-          .exec((statusError, statusData) => {
-            return res.status(200).json({ data, status: statusData.nom });
-          });
-        //
-      }
+  try {
+    const existingUser = await Etudiant.findOne({
+      email: req.body.email,
     });
+
+    // console.log(hashedMotDePasse);
+    if (!existingUser) {
+      return res.status(400).json({ message: "Invalid credential" });
+    }
+    if (existingUser) {
+      // console.log(existingUser);
+      const isMotDePasseCorrect = await bcrypt.compare(
+        req.body.motDePasse,
+        existingUser["motDePasse"]
+      );
+      if (isMotDePasseCorrect) {
+        const status = await Status.findById(existingUser.statusId).select("-_id nom");
+
+        const token = await jwt.sign(
+          {
+            email: existingUser["email"],
+            id: existingUser["_id"],
+          },
+          process.env.SECRET_JWT,
+          { expiresIn: "1h" }
+        );
+
+        return res.status(200).json({ data: existingUser, status, token });
+      } else {
+        return res.status(400).json({ message: "Invalid credential" });
+      }
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Something went wrong." });
+  }
 };
 /**
  * create a new Etudiant
@@ -143,6 +151,15 @@ export const signupEtudiant = async (req, res) => {
       if (result) {
         const status = existingStatusIdInStatus;
 
+        const token = await jwt.sign(
+          {
+            email: result["email"],
+            id: result["_id"],
+          },
+          process.env.SECRET_JWT,
+          { expiresIn: "1h" }
+        );
+
         res.status(201).json({
           message: "Created",
           data: {
@@ -157,6 +174,7 @@ export const signupEtudiant = async (req, res) => {
             email: req.body.email,
           },
           status,
+          token,
         });
       }
     } catch (err) {
