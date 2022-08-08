@@ -3,14 +3,8 @@ import {
   signinAdministration,
   signupAdministration,
 } from "../controller/AdministationController.js";
-import {
-  signinProfesseur,
-  signupProfesseur,
-} from "../controller/ProfesseurController.js";
-import {
-  signinEtudiant,
-  signupEtudiant,
-} from "../controller/EtudiantController.js";
+import { signinProfesseur, signupProfesseur } from "../controller/ProfesseurController.js";
+import { signinEtudiant, signupEtudiant } from "../controller/EtudiantController.js";
 
 const router = express.Router();
 

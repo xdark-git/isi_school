@@ -22,25 +22,29 @@ let unix = Date.parse(date);
 
 export const signinAdministration = async (req, res) => {
   try {
-    const result = await Administration.findOne({
+    const existingUser = await Administration.findOne({
       email: req.body.email,
     });
 
     // console.log(hashedMotDePasse);
-    if (!result) {
+    if (!existingUser) {
       return res.status(400).json({ message: "Invalid credential" });
     }
-    if (result) {
-      // console.log(result);
+    if (existingUser) {
+      // console.log(existingUser);
       const isMotDePasseCorrect = await bcrypt.compare(
         req.body.motDePasse,
-        result["motDePasse"]
+        existingUser["motDePasse"]
       );
       if (isMotDePasseCorrect) {
-        const status = await Status.findById(result.statusId).select(
-          "-_id nom"
-        );
-        return res.status(200).json({ data: result, status });
+        const status = await Status.findById(existingUser.statusId).select("-_id nom");
+
+        const token = jwt.sign({
+          email: existingUser["email"],
+          id: existingUser["_id"],
+        });
+
+        return res.status(200).json({ data: existingUser, status });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
@@ -63,20 +67,14 @@ export const signupAdministration = async (req, res) => {
   const existingTelephoneInProfesseur = await Professeur.findOne({
     telephone: req.body.telephone,
   });
-  if (
-    existingEmailInProfesseur ||
-    existingUsernameInProfesseur ||
-    existingTelephoneInProfesseur
-  ) {
+  if (existingEmailInProfesseur || existingUsernameInProfesseur || existingTelephoneInProfesseur) {
     let email = "ok";
     let username = "ok";
     let telephone = "ok";
     if (existingEmailInProfesseur) email = "Conflict";
     if (existingUsernameInProfesseur) username = "Conflict";
     if (existingTelephoneInProfesseur) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
 
   // verifying if email, username and telephone exist in Etudiant collection
@@ -91,20 +89,14 @@ export const signupAdministration = async (req, res) => {
   const existingTelephoneInEtudiant = await Etudiant.findOne({
     telephone: req.body.telephone,
   });
-  if (
-    existingEmailInEtudiant ||
-    existingUsernameInEtudiant ||
-    existingTelephoneInEtudiant
-  ) {
+  if (existingEmailInEtudiant || existingUsernameInEtudiant || existingTelephoneInEtudiant) {
     let email = "ok";
     let username = "ok";
     let telephone = "ok";
     if (existingEmailInEtudiant) email = "Conflict";
     if (existingUsernameInEtudiant) username = "Conflict";
     if (existingTelephoneInEtudiant) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
 
   // verifying if email, username and telephone exist in Administration collection
@@ -128,14 +120,10 @@ export const signupAdministration = async (req, res) => {
     if (existingEmailInAdministration) email = "Conflict";
     if (existingUsernameInAdministration) username = "Conflict";
     if (existingTelephoneInAdministration) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
   // verify if the statusid exist and creating the new user
-  const existingStatusIdInStatus = await Status.findById(
-    req.body.statusId
-  ).select("-_id -__v");
+  const existingStatusIdInStatus = await Status.findById(req.body.statusId).select("-_id -__v");
   if (!existingStatusIdInStatus) {
     return res.status(406).json({ message: "Not Acceptable Status" });
   }
@@ -197,10 +185,7 @@ function shuffle(array) {
         array[currentIndex],
       ];
     } else {
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     count++;
   }

@@ -19,9 +19,7 @@ export const createStatus = (req, res) => {
         });
       } else {
         try {
-          Status.create({ nom: req.body.nom }).then(
-            res.status(201).json({ message: "Created" })
-          );
+          Status.create({ nom: req.body.nom }).then(res.status(201).json({ message: "Created" }));
         } catch (error) {
           res.status(500).json({ message: "Internal Server Error" });
         }

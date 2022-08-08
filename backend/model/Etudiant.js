@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-
-
 const { Schema } = mongoose;
 
 const etudiantSchema = new Schema({

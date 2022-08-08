@@ -20,11 +20,9 @@ export const signinProfesseur = async (req, res) => {
   })
     .select("-__v -motDePasse")
     .exec((error, data) => {
-      if (error)
-        return res.status(500).json({ message: "Internal Server Error" });
+      if (error) return res.status(500).json({ message: "Internal Server Error" });
 
-      if (data == null)
-        return res.status(406).json({ message: "Not Acceptable" });
+      if (data == null) return res.status(406).json({ message: "Not Acceptable" });
 
       if (data != null) {
         Status.findById(data.statusId)
@@ -135,14 +133,10 @@ export const signupProfesseur = async (req, res) => {
     if (existingEmailInAdministration) email = "Conflict";
     if (existingUsernameInAdministration) username = "Conflict";
     if (existingTelephoneInAdministration) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
   // verify if the statusid exist and creating the new user
-  const existingStatusIdInStatus = await Status.findById(
-    req.body.statusId
-  ).select("-_id -__v");
+  const existingStatusIdInStatus = await Status.findById(req.body.statusId).select("-_id -__v");
   if (!existingStatusIdInStatus) {
     return res.status(406).json({ message: "Not Acceptable Status" });
   }

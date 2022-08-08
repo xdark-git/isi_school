@@ -20,11 +20,9 @@ export const signinEtudiant = async (req, res) => {
   })
     .select("-__v -motDePasse")
     .exec((error, data) => {
-      if (error)
-        return res.status(500).json({ message: "Internal Server Error" });
+      if (error) return res.status(500).json({ message: "Internal Server Error" });
 
-      if (data == null)
-        return res.status(406).json({ message: "Not Acceptable" });
+      if (data == null) return res.status(406).json({ message: "Not Acceptable" });
 
       if (data != null) {
         Status.findById(data.statusId)
@@ -52,20 +50,14 @@ export const signupEtudiant = async (req, res) => {
   const existingTelephoneInProfesseur = await Professeur.findOne({
     telephone: req.body.telephone,
   });
-  if (
-    existingEmailInProfesseur ||
-    existingUsernameInProfesseur ||
-    existingTelephoneInProfesseur
-  ) {
+  if (existingEmailInProfesseur || existingUsernameInProfesseur || existingTelephoneInProfesseur) {
     let email = "ok";
     let username = "ok";
     let telephone = "ok";
     if (existingEmailInProfesseur) email = "Conflict";
     if (existingUsernameInProfesseur) username = "Conflict";
     if (existingTelephoneInProfesseur) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
 
   // verifying if email, username and telephone exist in Etudiant collection
@@ -126,14 +118,10 @@ export const signupEtudiant = async (req, res) => {
     if (existingEmailInAdministration) email = "Conflict";
     if (existingUsernameInAdministration) username = "Conflict";
     if (existingTelephoneInAdministration) telephone = "Conflict";
-    return res
-      .status(409)
-      .json({ email: email, username: username, telephone: telephone });
+    return res.status(409).json({ email: email, username: username, telephone: telephone });
   }
   // verify if the statusid exist and creating the new user
-  const existingStatusIdInStatus = await Status.findById(
-    req.body.statusId
-  ).select("-_id -__v");
+  const existingStatusIdInStatus = await Status.findById(req.body.statusId).select("-_id -__v");
   if (!existingStatusIdInStatus) {
     return res.status(406).json({ message: "Not Acceptable Status" });
   }
