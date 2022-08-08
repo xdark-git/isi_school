@@ -28,15 +28,15 @@ export const signinAdministration = async (req, res) => {
 
     // console.log(hashedMotDePasse);
     if (!result) {
-      return res.status(406).json({ message: "Not Acceptable" });
+      return res.status(400).json({ message: "Invalid credential" });
     }
     if (result) {
       // console.log(result);
-      const checkMotDePasse = await bcrypt.compare(
+      const isMotDePasseCorrect = await bcrypt.compare(
         req.body.motDePasse,
         result["motDePasse"]
       );
-      if (checkMotDePasse) {
+      if (isMotDePasseCorrect) {
         const status = await Status.findById(result.statusId).select(
           "-_id nom"
         );
