@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
@@ -19,12 +20,12 @@ let date = new Date();
 let unix = Date.parse(date);
 // let lienProfile = "User/" + unix;
 
-export const loginAdministration = async (req, res) => {
+export const signinAdministration = async (req, res) => {
   try {
     const result = await Administration.findOne({
       email: req.body.email,
     });
-  
+
     // console.log(hashedMotDePasse);
     if (!result) {
       return res.status(406).json({ message: "Not Acceptable" });
@@ -36,7 +37,9 @@ export const loginAdministration = async (req, res) => {
         result["motDePasse"]
       );
       if (checkMotDePasse) {
-        const status = await Status.findById(result.statusId).select("-_id nom");
+        const status = await Status.findById(result.statusId).select(
+          "-_id nom"
+        );
         return res.status(200).json({ data: result, status });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
@@ -47,7 +50,7 @@ export const loginAdministration = async (req, res) => {
   }
 };
 
-export const createAdministration = async (req, res) => {
+export const signupAdministration = async (req, res) => {
   // verifying if email, username and telephone exist in Professeur collection
   const existingEmailInProfesseur = await Professeur.findOne({
     email: req.body.email,

@@ -5,7 +5,7 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
-export const loginProfesseur = async (req, res) => {
+export const signinProfesseur = async (req, res) => {
   /*
     1. check request format is valid
     2. find user by Email and password
@@ -39,7 +39,7 @@ export const loginProfesseur = async (req, res) => {
 /**
  * create a new Professuer
  */
-export const createProfesseur = async (req, res) => {
+export const signupProfesseur = async (req, res) => {
   // verifying if email, username and telephone exist in Professeur collection
   const existingEmailInProfesseur = await Professeur.findOne({
     email: req.body.email,
@@ -69,14 +69,12 @@ export const createProfesseur = async (req, res) => {
     if (existingUsernameInProfesseur) username = "Conflict";
     if (existingTelephoneInProfesseur) telephone = "Conflict";
     if (existingIdentifiantProfInProfesseur) identifiantProf = "Conflict";
-    return res
-      .status(409)
-      .json({
-        email: email,
-        username: username,
-        telephone: telephone,
-        identifiantProf: identifiantProf,
-      });
+    return res.status(409).json({
+      email: email,
+      username: username,
+      telephone: telephone,
+      identifiantProf: identifiantProf,
+    });
   }
 
   // verifying if email, username and telephone exist in Etudiant collection

@@ -5,7 +5,7 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 
-export const loginEtudiant = async (req, res) => {
+export const signinEtudiant = async (req, res) => {
   /*
     1. check request format is valid
     2. find user by Email and password
@@ -39,7 +39,7 @@ export const loginEtudiant = async (req, res) => {
 /**
  * create a new Etudiant
  */
-export const createEtudiant = async (req, res) => {
+export const signupEtudiant = async (req, res) => {
   // verifying if email, username and telephone exist in Professeur collection
   const existingEmailInProfesseur = await Professeur.findOne({
     email: req.body.email,
