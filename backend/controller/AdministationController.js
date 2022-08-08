@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
@@ -39,12 +40,16 @@ export const signinAdministration = async (req, res) => {
       if (isMotDePasseCorrect) {
         const status = await Status.findById(existingUser.statusId).select("-_id nom");
 
-        const token = jwt.sign({
-          email: existingUser["email"],
-          id: existingUser["_id"],
-        });
+        const token = await jwt.sign(
+          {
+            email: existingUser["email"],
+            id: existingUser["_id"],
+          },
+          process.env.SECRET_JWT,
+          { expiresIn: "1h" }
+        );
 
-        return res.status(200).json({ data: existingUser, status });
+        return res.status(200).json({ data: existingUser, status, token });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
@@ -144,6 +149,15 @@ export const signupAdministration = async (req, res) => {
       if (result) {
         const status = existingStatusIdInStatus;
 
+        const token = await jwt.sign(
+          {
+            email: result["email"],
+            id: result["_id"],
+          },
+          process.env.SECRET_JWT,
+          { expiresIn: "1h" }
+        );
+
         res.status(201).json({
           message: "Created",
           data: {
@@ -157,9 +171,11 @@ export const signupAdministration = async (req, res) => {
             email: req.body.email,
           },
           status,
+          token,
         });
       }
     } catch (err) {
+      // console.log(err);
       return res.status(500).json({ message: "Something went wrong." });
     }
   }
