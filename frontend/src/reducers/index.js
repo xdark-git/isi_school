@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import login from "./login";
+import { profileSelected } from "./login";
 
 export default combineReducers({
-  login,
+  profile: profileSelected,
 });
