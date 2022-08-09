@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Button } from "react-bootstrap";
 
-import "./style.css";
+import "../style.css";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,36 +31,30 @@ const Login = () => {
     event.preventDefault();
 
     if (profileStatus == "etudiant") {
-      const response = await fetch(
-        "http://localhost:5000/api/user/login/etudiant",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            motDePasse,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/user/login/etudiant", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          motDePasse,
+        }),
+      });
       const data = await response.json();
       console.log(data);
     }
     if (profileStatus == "professeur") {
-      const response = await fetch(
-        "http://localhost:5000/api/user/login/professeur",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            motDePasse,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/user/login/professeur", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          motDePasse,
+        }),
+      });
       const data = await response.json();
       console.log(data);
     }
