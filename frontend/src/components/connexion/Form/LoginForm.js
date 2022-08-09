@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {  useNavigate } from "react-router-dom";
 
 import "../style.css";
-import { connectEtudiant } from "../../../actions/login";
+import { signinEtudiant } from "../../../actions/login";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate =  useNavigate();
 
   /*
       changing the profile style depending on the profil clicked
@@ -30,7 +32,7 @@ const LoginForm = () => {
     event.preventDefault();
 
     if (profileStatus == "etudiant") {
-      dispatch(connectEtudiant({ email, motDePasse }));
+      dispatch(signinEtudiant({ email, motDePasse }, navigate));
     }
     // if (profileStatus == "professeur") {
     //   const response = await fetch("http://localhost:5000/api/user/login/professeur", {
