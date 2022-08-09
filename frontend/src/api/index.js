@@ -1,5 +1,6 @@
 import axios from "axios";
+const API = axios.create({ baseURL: "http://localhost:5000/api" });
 
-const url = "http://localhost:5000/api/user/login/etudiant";
-
-const loginEtudiant = () => axios.post(url);
+export const loginEtudiant = () => API.post("/user/login/etudiant");
+export const loginProfesseur = () => API.post("/user/login/professeur");
+export const loginAdministration = () => API.post("/user/login/administration");
