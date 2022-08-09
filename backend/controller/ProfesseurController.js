@@ -1,4 +1,6 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
