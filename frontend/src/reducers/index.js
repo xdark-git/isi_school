@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
-import { profileSelectedReducer } from "./login";
+import { profileSelectedReducer, signinEtudiantReducer } from "./login";
 
 export default combineReducers({
   profile: profileSelectedReducer,
+  signinEtudiant: signinEtudiantReducer,
 });
