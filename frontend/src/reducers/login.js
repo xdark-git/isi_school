@@ -4,7 +4,7 @@ const initialProfileState = {
   profile: "etudiant",
 };
 
-export default (profile = initialProfileState, action) => {
+const login = (profile = initialProfileState, action) => {
   switch (action.type) {
     case "ETUDIANT":
       return initialProfileState;
@@ -18,3 +18,4 @@ export default (profile = initialProfileState, action) => {
       return profile;
   }
 };
+export default login;
