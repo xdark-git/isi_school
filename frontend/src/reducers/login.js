@@ -4,7 +4,7 @@ const initialProfileState = {
   profile: "etudiant",
 };
 
-export const profileSelected = (profile = initialProfileState, action) => {
+export const profileSelectedReducer = (profile = initialProfileState, action) => {
   switch (action.type) {
     case "ETUDIANT":
       return initialProfileState;
@@ -18,3 +18,5 @@ export const profileSelected = (profile = initialProfileState, action) => {
       return profile;
   }
 };
+
+export const loginEtudiantReducer = () => {};
