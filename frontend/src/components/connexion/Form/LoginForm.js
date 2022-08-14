@@ -4,6 +4,7 @@ import {  useNavigate } from "react-router-dom";
 
 import "../style.css";
 import { signinEtudiant } from "../../../actions/login";
+import { LOGIN } from "../../../constantes";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const LoginForm = () => {
   const professeurDefaultStyle = useSelector((state) => state.profile.professeur);
   const profileStatus = useSelector((state) => state.profile.profile);
 
+  //Changing the profil selection
+  
   const handleClick = (event) => {
     if (event.currentTarget.textContent === "Professeur") {
       dispatch({ type: "PROFESSEUR" });
