@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { LOGIN } from "../../../constantes";
+import { LOGIN } from "../constantes";
 
 export const signinEtudiant = (formData, navigate) => async (dispatch) => {
   try {

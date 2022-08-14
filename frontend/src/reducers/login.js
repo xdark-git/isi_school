@@ -1,3 +1,4 @@
+import { LOGIN } from "../constantes";
 const initialProfileState = {
   etudiant: "btn-profil checked",
   professeur: "btn-profil",
@@ -21,7 +22,7 @@ export const profileSelectedReducer = (profile = initialProfileState, action) =>
 
 export const signinEtudiantReducer = (state = { authData: null }, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case LOGIN:
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       
       return { ...state, authData: action?.data };
