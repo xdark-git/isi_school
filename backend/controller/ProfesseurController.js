@@ -6,6 +6,7 @@ import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
+import generateToken from "../functions/generateToken.js";
 
 export const signinProfesseur = async (req, res) => {
   try {
@@ -26,15 +27,11 @@ export const signinProfesseur = async (req, res) => {
       if (isMotDePasseCorrect) {
         const status = await Status.findById(existingUser.statusId).select("-_id nom");
 
-        const token = await jwt.sign(
-          {
-            email: existingUser["email"],
-            id: existingUser["_id"],
-          },
-          process.env.SECRET_JWT,
-          { expiresIn: "1h" }
-        );
-
+        const token = await generateToken({
+          email: existingUser["email"],
+          id: existingUser["_id"],
+        });
+        
         return res.status(200).json({ data: existingUser, status, token });
       } else {
         return res.status(400).json({ message: "Invalid credential" });

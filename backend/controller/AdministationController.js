@@ -6,6 +6,7 @@ import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
+import generateToken from "../functions/generateToken.js";
 
 import path, { resolve } from "path";
 
@@ -40,14 +41,10 @@ export const signinAdministration = async (req, res) => {
       if (isMotDePasseCorrect) {
         const status = await Status.findById(existingUser.statusId).select("-_id nom");
 
-        const token = await jwt.sign(
-          {
-            email: existingUser["email"],
-            id: existingUser["_id"],
-          },
-          process.env.SECRET_JWT,
-          { expiresIn: "1h" }
-        );
+        const token = await generateToken({
+          email: existingUser["email"],
+          id: existingUser["_id"],
+        });
 
         return res.status(200).json({ data: existingUser, status, token });
       } else {
@@ -149,14 +146,10 @@ export const signupAdministration = async (req, res) => {
       if (result) {
         const status = existingStatusIdInStatus;
 
-        const token = await jwt.sign(
-          {
-            email: result["email"],
-            id: result["_id"],
-          },
-          process.env.SECRET_JWT,
-          { expiresIn: "1h" }
-        );
+        // const token = await generateToken({
+        //   email: existingUser["email"],
+        //   id: existingUser["_id"],
+        // });
 
         res.status(201).json({
           message: "Created",
@@ -171,7 +164,6 @@ export const signupAdministration = async (req, res) => {
             email: req.body.email,
           },
           status,
-          token,
         });
       }
     } catch (err) {
