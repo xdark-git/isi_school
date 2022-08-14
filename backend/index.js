@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 //////////Routes//////////
 import userRouter from "./routes/usersRoutes.js";
 import statusRouter from "./routes/statusRoutes.js";
@@ -13,6 +14,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
