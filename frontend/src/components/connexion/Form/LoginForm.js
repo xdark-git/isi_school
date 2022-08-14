@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../style.css";
 import { signinEtudiant } from "../../../actions/login";
-import { LOGIN } from "../../../constantes";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
 
   /*
       changing the profile style depending on the profil clicked
@@ -18,7 +17,7 @@ const LoginForm = () => {
   const profileStatus = useSelector((state) => state.profile.profile);
 
   //Changing the profil selection
-  
+
   const handleClick = (event) => {
     if (event.currentTarget.textContent === "Professeur") {
       dispatch({ type: "PROFESSEUR" });
@@ -33,24 +32,13 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     // Prevent page reload
     event.preventDefault();
-
-    if (profileStatus == "etudiant") {
+  
+    if (profileStatus === "etudiant") {
       dispatch(signinEtudiant({ email, motDePasse }, navigate));
     }
-    // if (profileStatus == "professeur") {
-    //   const response = await fetch("http://localhost:5000/api/user/login/professeur", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       email,
-    //       motDePasse,
-    //     }),
-    //   });
-    //   const data = await response.json();
-    //   console.log(data);
-    // }
+
+    if (profileStatus === "professeur") {
+    }
   };
 
   return (
