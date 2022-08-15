@@ -8,25 +8,24 @@ import verifyRefreshToken from "../functions/refreshToken/verifyRefreshToken.js"
   then we do the same for the refresh token
 */
 const auth = async (req, res, next) => {
-  if (!req?.cookies.token) {
-    return res.status(401).json({ message: "Missing cookie" });
-  }
+  // if (!req?.cookies.token) {
+  //   return res.status(401).json({ message: "Missing cookie" });
+  // }
 
-  const token = req?.cookies?.token?.token;
+  const token = req.body?.token;
+
   const decodedToken  = await verifyToken(token);
 
   if (decodedToken == false) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  const refreshToken = req?.cookies?.token?.refreshToken;
-  const decodedRefreshToken = await verifyRefreshToken(refreshToken)
+  // const refreshToken =req.body?.refreshToken;
+  // const decodedRefreshToken = await verifyRefreshToken(refreshToken)
   
-  if( decodedRefreshToken == false){
-    return res.status(401).json({ message: "Invalid token" });
-  }
-  // let decodedData = jwt.verify(token, process.env.SECRET_JWT);
-  // console.log(decodedData);
+  // if( decodedRefreshToken == false){
+  //   return res.status(401).json({ message: "Invalid token" });
+  // }
   
   req.refreshToken = refreshToken;
 
