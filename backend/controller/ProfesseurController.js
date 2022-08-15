@@ -35,19 +35,18 @@ export const signinProfesseur = async (req, res) => {
           status: status["nom"],
         });
 
-        const refreshToken = await generateRefreshToken({
-          email: existingUser["email"],
-          id: existingUser["_id"],
-          status: status["nom"],
-        });
+        // const refreshToken = await generateRefreshToken({
+        //   email: existingUser["email"],
+        //   id: existingUser["_id"],
+        //   status: status["nom"],
+        // });
 
         //cleaning data to send
         const data = await Professeur.findById(existingUser["_id"]).select("-__v -motDePasse");
 
         return res
           .status(200)
-          .cookie("token", { token: token, refreshToken: refreshToken }, cookieOption)
-          .json({ data: data, status });
+          .json({ data: data, status, token: token });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
