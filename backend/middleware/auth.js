@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
 
   const token = req.body?.token;
 
-  const decodedToken  = await verifyToken(token);
+  const decodedToken = await verifyToken(token);
 
   if (decodedToken == false) {
     return res.status(401).json({ message: "Invalid token" });
@@ -22,12 +22,12 @@ const auth = async (req, res, next) => {
 
   // const refreshToken =req.body?.refreshToken;
   // const decodedRefreshToken = await verifyRefreshToken(refreshToken)
-  
+
   // if( decodedRefreshToken == false){
   //   return res.status(401).json({ message: "Invalid token" });
   // }
-  
-  req.refreshToken = refreshToken;
+
+  req.token = token;
 
   next();
   // const token = req.headers.Authorization.split(" ")[1];
