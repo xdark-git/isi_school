@@ -41,11 +41,13 @@ export const signinEtudiant = async (req, res) => {
           status: status["nom"],
         });
 
-        // console.log(token);
+        //cleaning data to send
+        const data = await Etudiant.findById(existingUser["_id"]).select("-__v -motDePasse");
+
         return res
           .status(200)
           .cookie("token", { token: token, refreshToken: refreshToken }, cookieOption)
-          .json({ data: existingUser, status });
+          .json({ data: data, status });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
