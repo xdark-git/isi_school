@@ -31,6 +31,7 @@ export const signinEtudiant = async (req, res) => {
         const token = await generateToken({
           email: existingUser["email"],
           id: existingUser["_id"],
+          status: status["nom"],
         });
         // console.log(token);
         return res

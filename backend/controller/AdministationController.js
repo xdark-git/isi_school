@@ -41,10 +41,11 @@ export const signinAdministration = async (req, res) => {
       );
       if (isMotDePasseCorrect) {
         const status = await Status.findById(existingUser.statusId).select("-_id nom");
-
+        
         const token = await generateToken({
           email: existingUser["email"],
           id: existingUser["_id"],
+          status: status["nom"],
         });
 
         return res
