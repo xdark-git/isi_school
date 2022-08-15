@@ -10,6 +10,7 @@ import generateToken from "../functions/token/generateToken.js";
 import cookieOption from "../functions/cookieOptions.js";
 
 import path, { resolve } from "path";
+import generateRefreshToken from "../functions/refreshToken/generateRefreshToken.js";
 
 const __dirname = path.resolve();
 
@@ -41,8 +42,14 @@ export const signinAdministration = async (req, res) => {
       );
       if (isMotDePasseCorrect) {
         const status = await Status.findById(existingUser.statusId).select("-_id nom");
-        
+
         const token = await generateToken({
+          email: existingUser["email"],
+          id: existingUser["_id"],
+          status: status["nom"],
+        });
+
+        const refreshToken = await generateRefreshToken({
           email: existingUser["email"],
           id: existingUser["_id"],
           status: status["nom"],
@@ -50,7 +57,7 @@ export const signinAdministration = async (req, res) => {
 
         return res
           .status(200)
-          .cookie("token", token, cookieOption)
+          .cookie("token", { token: token, refreshToken: refreshToken }, cookieOption)
           .json({ data: existingUser, status });
       } else {
         return res.status(400).json({ message: "Invalid credential" });

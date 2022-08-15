@@ -7,6 +7,7 @@ import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 import generateToken from "../functions/token/generateToken.js";
 import cookieOption from "../functions/cookieOptions.js";
+import generateRefreshToken from "../functions/refreshToken/generateRefreshToken.js";
 
 export const signinEtudiant = async (req, res) => {
   // console.log(req?.cookies);
@@ -33,10 +34,17 @@ export const signinEtudiant = async (req, res) => {
           id: existingUser["_id"],
           status: status["nom"],
         });
+
+        const refreshToken = await generateRefreshToken({
+          email: existingUser["email"],
+          id: existingUser["_id"],
+          status: status["nom"],
+        });
+
         // console.log(token);
         return res
           .status(200)
-          .cookie("token", token, cookieOption)
+          .cookie("token", { token: token, refreshToken: refreshToken }, cookieOption)
           .json({ data: existingUser, status });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
