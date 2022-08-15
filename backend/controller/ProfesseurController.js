@@ -6,7 +6,7 @@ import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
-import generateToken from "../functions/generateToken.js";
+import generateToken from "../functions/token/generateToken.js";
 import cookieOption from "../functions/cookieOptions.js";
 
 export const signinProfesseur = async (req, res) => {
