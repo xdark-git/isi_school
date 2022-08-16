@@ -53,7 +53,7 @@ const LoginForm = () => {
       </div>
       <div className="section-input">
         <div className="input">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="text"
             value={email}
@@ -64,7 +64,7 @@ const LoginForm = () => {
           />
         </div>
         <div id="pwd" className="input">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             value={motDePasse}
@@ -79,7 +79,7 @@ const LoginForm = () => {
         </div>
         <div className="remember">
           <input type="checkbox" name="" id="remember" />
-          <label for="remember">Se souvenir ?</label>
+          <label htmlFor="remember">Se souvenir ?</label>
         </div>
         <div className="subscribe">
           <button type="submit">Se connecter</button>
