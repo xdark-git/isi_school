@@ -1,26 +1,20 @@
 import express from "express";
 import {
-  createAdministration,
-  loginAdministration,
+  signinAdministration,
+  signupAdministration,
 } from "../controller/AdministationController.js";
-import {
-  createProfesseur,
-  loginProfesseur,
-} from "../controller/ProfesseurController.js";
-import {
-  createEtudiant,
-  loginEtudiant,
-} from "../controller/EtudiantController.js";
+import { signinProfesseur, signupProfesseur } from "../controller/ProfesseurController.js";
+import { signinEtudiant, signupEtudiant } from "../controller/EtudiantController.js";
 
 const router = express.Router();
 
-router.post("/add/administration", createAdministration);
-router.post("/login/professeur", loginAdministration);
+router.post("/add/administration", signupAdministration);
+router.post("/login/administration", signinAdministration);
 
-router.post("/add/professeur", createProfesseur);
-router.post("/login/professeur", loginProfesseur);
+router.post("/add/professeur", signupProfesseur);
+router.post("/login/professeur", signinProfesseur);
 
-router.post("/add/etudiant", createEtudiant);
-router.post("/login/etudiant", loginEtudiant);
+router.post("/add/etudiant", signupEtudiant);
+router.post("/login/etudiant", signinEtudiant);
 
 export default router;

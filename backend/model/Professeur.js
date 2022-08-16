@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-const defaultPassword = bcrypt.hashSync("passer1234", 12);
 const { Schema } = mongoose;
 
 const professeurSchema = new Schema({
@@ -52,7 +51,7 @@ const professeurSchema = new Schema({
   motDePasse: {
     type: String,
     required: true,
-    default: defaultPassword,
+    // default: defaultPassword,
   },
   statusId: {
     type: String,

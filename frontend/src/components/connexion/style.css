@@ -107,7 +107,9 @@ form > .profil > .btn-profil:hover {
 form > .profil > .btn-profil:active {
   background-color: #64beff;
 }
-
+form > .error {
+  color: red;
+}
 form > .section-input {
   display: flex;
   flex-direction: column;
