@@ -6,6 +6,8 @@ import {
   USER_DATA_COOKIE_NAME,
   USER_TOKEN_LOCAL_STORAGE_NAME,
   USER_COOKIE_OPTION,
+  ETUDIANT,
+  PROFESSEUR,
 } from "../constantes";
 
 const cookies = new Cookies();
@@ -13,25 +15,25 @@ const cookies = new Cookies();
 const initialProfileState = {
   etudiant: "btn-profil checked",
   professeur: "btn-profil",
-  profile: "etudiant",
+  profile: ETUDIANT,
 };
 
 export const profileSelectedReducer = (profile = initialProfileState, action) => {
   switch (action.type) {
-    case "ETUDIANT":
+    case ETUDIANT:
       return initialProfileState;
-    case "PROFESSEUR":
+    case PROFESSEUR:
       return {
         etudiant: "btn-profil ",
         professeur: "btn-profil checked",
-        profile: "prefesseur",
+        profile: PROFESSEUR,
       };
     default:
       return profile;
   }
 };
 
-export const signinEtudiantReducer = (state = { authData: null }, action) => {
+export const signinUserReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case LOGIN:
       const userData = {
