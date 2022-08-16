@@ -1,4 +1,6 @@
 //  Reducers actions
+export const ETUDIANT = "ETUDIANT";
+export const PROFESSEUR = "PROFESSEUR";
 export const LOGIN = "LOGIN";
 export const LOGINERROR = "LOGINERROR";
 export const LOGOUT = "LOGOUT";
