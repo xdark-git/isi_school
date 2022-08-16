@@ -1,5 +1,6 @@
 //  Reducers actions
 export const LOGIN = "LOGIN";
+export const LOGINERROR = "LOGINERROR";
 export const LOGOUT = "LOGOUT";
 
 // cookies names
