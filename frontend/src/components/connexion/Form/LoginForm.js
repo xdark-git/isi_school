@@ -29,10 +29,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
 
+  //getting error from redux
+  const error = useSelector((state) => state?.signinEtudiant?.error);
+  // if()
+
   const handleSubmit = async (event) => {
     // Prevent page reload
     event.preventDefault();
-  
+
     if (profileStatus === "etudiant") {
       dispatch(signinEtudiant({ email, motDePasse }, navigate));
     }
@@ -51,6 +55,7 @@ const LoginForm = () => {
           <span className="label">Professeur</span>
         </div>
       </div>
+      {error && <div className="error">{error}</div>}
       <div className="section-input">
         <div className="input">
           <label htmlFor="email">Email</label>
