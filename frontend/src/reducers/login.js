@@ -1,6 +1,11 @@
 import Cookies from "universal-cookie";
 
-import { LOGIN, USER_COOKIE_NAME, USER_COOKIE_OPTION } from "../constantes";
+import {
+  LOGIN,
+  USER_DATA_COOKIE_NAME,
+  USER_TOKEN_LOCAL_STORAGE_NAME,
+  USER_COOKIE_OPTION,
+} from "../constantes";
 
 const cookies = new Cookies();
 
@@ -28,10 +33,17 @@ export const profileSelectedReducer = (profile = initialProfileState, action) =>
 export const signinEtudiantReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case LOGIN:
-      cookies.set(USER_COOKIE_NAME, action?.data, USER_COOKIE_OPTION);
-      console.log(cookies.get(USER_COOKIE_NAME));
+      const userData = {
+        ...action?.data?.data,
+        status: action?.data?.status["nom"],
+      };
+      const userToken = {
+        ...action?.data?.token,
+      };
 
-      // localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
+      cookies.set(USER_DATA_COOKIE_NAME, userData, USER_COOKIE_OPTION);
+
+      localStorage.setItem(USER_TOKEN_LOCAL_STORAGE_NAME, JSON.stringify(userToken));
 
       return { ...state, authData: action?.data };
     default:
