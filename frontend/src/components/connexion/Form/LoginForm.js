@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import "../style.css";
-import { signinEtudiant } from "../../../actions/login";
+import { signinEtudiant, signinProfesseur } from "../../../actions/login";
+import { ETUDIANT, PROFESSEUR } from "../../../constantes";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,28 +21,30 @@ const LoginForm = () => {
 
   const handleClick = (event) => {
     if (event.currentTarget.textContent === "Professeur") {
-      dispatch({ type: "PROFESSEUR" });
+      dispatch({ type: PROFESSEUR });
     }
     if (event.currentTarget.textContent === "Etudiant") {
-      dispatch({ type: "ETUDIANT" });
+      dispatch({ type: ETUDIANT });
     }
   };
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
 
   //getting error from redux
-  const error = useSelector((state) => state?.signinEtudiant?.error);
+  const error = useSelector((state) => state?.signin?.error);
   // if()
 
   const handleSubmit = async (event) => {
     // Prevent page reload
     event.preventDefault();
 
-    if (profileStatus === "etudiant") {
+    if (profileStatus === ETUDIANT) {
       dispatch(signinEtudiant({ email, motDePasse }, navigate));
     }
 
-    if (profileStatus === "professeur") {
+    if (profileStatus === PROFESSEUR) {
+      console.log("okay");
+      dispatch(signinProfesseur({ email, motDePasse }, navigate));
     }
   };
 
