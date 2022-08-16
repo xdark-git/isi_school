@@ -2,6 +2,7 @@ import Cookies from "universal-cookie";
 
 import {
   LOGIN,
+  LOGINERROR,
   USER_DATA_COOKIE_NAME,
   USER_TOKEN_LOCAL_STORAGE_NAME,
   USER_COOKIE_OPTION,
@@ -45,7 +46,10 @@ export const signinEtudiantReducer = (state = { authData: null }, action) => {
 
       localStorage.setItem(USER_TOKEN_LOCAL_STORAGE_NAME, JSON.stringify(userToken));
 
-      return { ...state, authData: action?.data };
+      return { authData: action?.data };
+    case LOGINERROR:
+      console.log(action?.data);
+      return { error: action?.data };
     default:
       return state;
   }
