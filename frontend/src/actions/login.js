@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { LOGIN } from "../constantes";
+import { LOGIN, LOGINERROR } from "../constantes";
 
 export const signinEtudiant = (formData, navigate) => async (dispatch) => {
   try {
@@ -9,6 +9,12 @@ export const signinEtudiant = (formData, navigate) => async (dispatch) => {
 
     navigate("/dashboard");
   } catch (error) {
-    console.log(error);
+    if (error.response?.data?.message === "Invalid credential") {
+      const data = "informations d'identification invalides";
+      dispatch({ type: LOGINERROR, data });
+    }
+    // console.log(error.response.data);
+    // console.log(error.response.status);
+    // console.log(error.response.headers);
   }
 };
