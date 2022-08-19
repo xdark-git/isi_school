@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginAdmin from "./components/connexion/Admin/LoginAdmin";
 import Login from "./components/connexion/Login/Login";
 import Dashboard from "./components/Dashbord";
 import Missing from "./components/Missing";
@@ -10,6 +11,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/login/admin" element={<LoginAdmin />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
           {/* catch all */}
