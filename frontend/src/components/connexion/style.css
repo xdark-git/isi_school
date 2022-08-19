@@ -219,24 +219,56 @@ div.remember > label {
     Responsive 
 */
 
-@media only screen and (max-width: 1280px) {
-  form > .profil > .btn-profil {
-    width: 110px;
-    height: 35px;
-    font-size: 0.8em;
+@media only screen and (max-width: 1560px) {
+  span#forget {
+    left: 60%;
   }
 }
+@media only screen and (max-width: 1482px) {
+  span#forget {
+    left: 58%;
+  }
+}
+@media only screen and (max-width: 1413px) {
+  span#forget {
+    left: 56%;
+  }
+}
+@media only screen and (max-width: 1347px) {
+  span#forget {
+    left: 54%;
+  }
+}
+
+@media only screen and (max-width: 1290px) {
+  span#forget {
+    left: 53%;
+  }
+}
+@media only screen and (max-width: 1261px) {
+  span#forget {
+    left: 50%;
+  }
+}
+
 @media only screen and (max-width: 1188px) {
+  form > .profil {
+    width: 85%;
+  }
   form > .profil > .btn-profil {
-    width: 110px;
-    height: 35px;
-    font-size: 0.8em;
+    font-size: 13px;
   }
   span#forget {
-    left: 40%;
+    left: 47%;
   }
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1118px) {
+  .container .shape1 {
+    visibility: hidden;
+  }
+  .container .shape2 {
+    visibility: hidden;
+  }
   .form {
     width: 60%;
   }
@@ -249,12 +281,46 @@ div.remember > label {
   form > .profil > .btn-profil {
     width: 100px;
     height: 30px;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   span#forget {
-    left: 30%;
+    left: 58%;
   }
 }
+
+@media only screen and (max-width: 1078px) {
+  span#forget {
+    left: 56%;
+  }
+}
+
+@media only screen and (max-width: 1029px) {
+  span#forget {
+    left: 54%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  span#forget {
+    left: 52%;
+  }
+}
+@media only screen and (max-width: 943px) {
+  span#forget {
+    left: 49%;
+  }
+}
+@media only screen and (max-width: 943px) {
+  span#forget {
+    left: 47%;
+  }
+}
+@media only screen and (max-width: 863px) {
+  span#forget {
+    left: 39%;
+  }
+}
+
 @media only screen and (max-width: 880px) {
   .container .shape1 {
     margin-right: 45vw;
@@ -271,33 +337,37 @@ div.remember > label {
     font-size: 0.8em;
   }
 }
-@media only screen and (max-width: 648px) {
-  form > .section-input > .input > input {
-    font-size: 0.9em;
-  }
+@media only screen and (max-width: 742px) {
   span#forget {
-    font-size: 0.9em;
-    left: 25%;
+    left: 35%;
   }
 }
-@media only screen and (max-width: 617px) {
+@media only screen and (max-width: 706px) {
+  span#forget {
+    left: 35%;
+  }
+}
+@media only screen and (max-width: 697px) {
+  .form {
+    width: 65%;
+  }
   .container .shape1 {
-    visibility: hidden;
+    margin-right: 45vw;
   }
-  .container .shape2 {
-    visibility: hidden;
+  form > .profil {
+    width: 85%;
   }
-}
-@media only screen and (max-width: 527px) {
-  form > .section-input > .input > input {
-    font-size: 0.7em;
+  form > .profil > .btn-profil {
+    width: 100px;
+    height: 30px;
+    font-size: 0.9em;
   }
   span#forget {
-    font-size: 0.7em;
-    left: 24%;
+    left: 38%;
   }
 }
-@media only screen and (max-width: 465px) {
+
+@media only screen and (max-width: 654px) {
   .container {
     flex-direction: column;
     justify-content: flex-start;
@@ -308,7 +378,7 @@ div.remember > label {
     height: 245px;
   }
   .form {
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -337,10 +407,43 @@ div.remember > label {
     font-size: 1em;
     left: 50%;
   }
+  .subscribe > button {
+    width: 260px;
+    height: 50px;
+  }
 }
-@media only screen and (max-width: 393px) {
+
+@media only screen and (max-width: 514px) {
   span#forget {
     font-size: 1em;
     left: 40%;
+  }
+}
+@media only screen and (max-width: 441px) {
+  form > .profil {
+    font-size: 12px;
+  }
+  .subscribe > button {
+    width: 230px;
+    height: 48px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  span#forget {
+    font-size: 1em;
+    left: 35%;
+  }
+}
+
+@media only screen and (max-width: 393px) {
+  .form{
+    width: 90%;
+  }
+  span#forget {
+    left: 35%;
+  }
+  .subscribe > button {
+    width: 250px;
+    height: 50px;
   }
 }
