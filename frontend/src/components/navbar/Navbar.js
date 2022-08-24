@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="input">
         <label htmlFor="search">Rechercher</label>
         <input type="text" id="search" name="search" className="search" />
-        <span class="fa-solid fa-magnifying-glass search-icon"></span>
+        <button class="fa-solid fa-magnifying-glass search-icon"></button>
       </div>
     </header>
   );
