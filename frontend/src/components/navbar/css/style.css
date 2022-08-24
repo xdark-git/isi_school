@@ -54,4 +54,14 @@ header .input .search-icon {
   position: absolute;
   right: 11vw;
   color: #379fda;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
+header .input .search-icon:hover {
+    transform: scale(1.5); 
+  }
