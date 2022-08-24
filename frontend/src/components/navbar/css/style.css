@@ -1,0 +1,52 @@
+header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  box-shadow: 0px 3px 5px #9b9b9d;
+}
+
+header .logo {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+
+  color: #000000;
+}
+header .input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .input label {
+  flex: 0 0 50%;
+
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #1c2126;
+}
+header .input input {
+  width: normal;
+  height: 28px;
+
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+
+  text-align: left;
+  color: #1c2126;
+  border-radius: 015px;
+  border: none;
+  border: #379fda solid 3px;
+
+  background: #ffffff;
+}
