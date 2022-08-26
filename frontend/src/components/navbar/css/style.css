@@ -81,9 +81,9 @@
 
 .nav .profil {
   position: fixed;
+  flex-direction: column;
   display: flex;
-  justify-content: center;
-
+  align-items: center;
   width: 23vw;
   height: 100%;
   left: 0%;
@@ -166,10 +166,51 @@
 
   width: 185px;
   height: 37px;
-  /* position: absolute;
-   */
 }
 .nav .profil .user-infos .user-title button:hover {
   background-color: #c7e6fc;
   transition: ease-in-out 0.2s;
+}
+
+.nav .profil .content {
+  display: grid;
+  width: 260px;
+  height: 260px;
+  margin-top: 25%;
+  position: fixed;
+}
+.nav .profil .content div {
+  display: flex;
+}
+.nav .profil .content span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 50%;
+  border: 1.0155px solid #d3d5d7;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.124px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #646464;
+}
+.nav .profil .content .profil-page {
+  border-radius: 15.1163px 0px 0px 0px;
+}
+
+.nav .profil .content .cours-page {
+  border-radius: 0px 15.1163px 0px 0px;
+}
+
+.nav .profil .content .notification-page {
+  border-radius: 0px 0px 0px 15.1163px;
+}
+
+.nav .profil .content .classe-page {
+  border-radius: 0px 0px 15.1163px 0px;
 }

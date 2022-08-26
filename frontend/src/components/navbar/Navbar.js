@@ -25,6 +25,16 @@ const Navbar = () => {
             <button name="btn-logout">Se deconnecter</button>
           </div>
         </div>
+        <div className="content">
+          <div className="row">
+            <span className="profil-page">Profil</span>
+            <span className="cours-page">Cours</span>
+          </div>
+          <div className="row">
+            <span className="notification-page">Messages</span>
+            <span className="classe-page">Classes</span>
+          </div>
+        </div>
       </div>
     </div>
   );
