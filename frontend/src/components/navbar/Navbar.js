@@ -27,12 +27,24 @@ const Navbar = () => {
         </div>
         <div className="content">
           <div className="row">
-            <span className="profil-page">Profil</span>
-            <span className="cours-page">Cours</span>
+            <span className="profil-page">
+              <i className="fa-solid fa-gear fa-lg"></i>
+              Profil
+            </span>
+            <span className="cours-page">
+              <i className="fa-solid fa-file-lines fa-lg"></i>
+              Cours
+            </span>
           </div>
           <div className="row">
-            <span className="notification-page">Messages</span>
-            <span className="classe-page">Classes</span>
+            <span className="notification-page">
+              <i className="fa-solid fa-bell fa-lg"></i>
+              Messages
+            </span>
+            <span className="classe-page">
+              <i className="fa-solid fa-building fa-lg"></i>
+              Classes
+            </span>
           </div>
         </div>
       </div>

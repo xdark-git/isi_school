@@ -184,6 +184,7 @@
 }
 .nav .profil .content span {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   float: left;
@@ -198,6 +199,11 @@
   text-align: center;
 
   color: #646464;
+}
+
+.nav .profil .content span .fa-solid {
+  color: #379fda;
+  height: 20px;
 }
 .nav .profil .content .profil-page {
   border-radius: 15.1163px 0px 0px 0px;
