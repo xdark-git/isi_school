@@ -1,20 +1,11 @@
-* body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
-  color: #333;
-  background: #fff;
-}
-
 .container {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  width: 100vw; /*view width*/
-  height: 100vh; /*view height*/
+  width: 100%; /*view width*/
+  height: 100vh;
+  background-color: #fff;
 }
 .container > .shape {
   background-size: cover;

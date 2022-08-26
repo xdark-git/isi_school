@@ -17,10 +17,13 @@ const Navbar = () => {
       <div className="profil">
         <div className="user-infos">
           {/* <div className="user-photo"></div> */}
-          <img src={process.env.PUBLIC_URL +"/img/user/default.jpg"} />
-          <div className="user-title"></div>
-          <div className="user-email"></div>
-          <button>Se deconnecter</button>
+          <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil" />
+          <div className="user-title">
+            <span className="label">Admin</span>
+            <div className="user-name">Test test</div>
+            <div className="user-email">test@gmail.com</div>
+            <button name="btn-logout">Se deconnecter</button>
+          </div>
         </div>
       </div>
     </div>
