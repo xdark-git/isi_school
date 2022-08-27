@@ -182,7 +182,7 @@
 .nav .profil .content div {
   display: flex;
 }
-.nav .profil .content span {
+.nav .profil .content .row span {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,11 +199,20 @@
   text-align: center;
 
   color: #646464;
+
+  cursor: pointer;
+  filter: invert(0);
+  mix-blend-mode: normal;
 }
 
 .nav .profil .content span .fa-solid {
-  color: #379fda;
+  /* color: #379fda; */
+
   height: 20px;
+}
+.nav .profil .content .row .checked {
+  background: #379fda;
+  color: #ffffff;
 }
 .nav .profil .content .profil-page {
   border-radius: 15.1163px 0px 0px 0px;
@@ -219,4 +228,80 @@
 
 .nav .profil .content .classe-page {
   border-radius: 0px 0px 15.1163px 0px;
+}
+
+.nav .component {
+  /* background-color: #000; */
+
+  position: fixed;
+  width: 77vw;
+  height: 100vh;
+  right: 0%;
+}
+
+.nav .component .header {
+  /* background-color: #000; */
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 2px solid #d3d5d7;
+}
+
+.nav .component .header .shape {
+  /* background-color: #000; */
+  background-size: contain;
+  background-image: url(../shape/classe_header.png);
+
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  /* align-content: center; */
+  margin: 6% 0 0 3%;
+}
+
+.nav .component .header .shape h1 {
+  position: absolute;
+  /* width: 370px; */
+  /* left: 1%; */
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 38px;
+  text-align: center;
+  color: #ffffff;
+  margin: 6% 0 0 3%;
+  /* flex: none;
+  order: 1;
+  flex-grow: 0; */
+  z-index: 1;
+}
+
+.nav .component .header .shape span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100px;
+  height: 30px;
+  background: #ffffff;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  line-height: 30px;
+  text-align: center;
+  color: #379fda;
+  position: absolute;
+  border-radius: 20px;
+  margin: 7% 0 0 24%;
+}
+
+.nav .component .content {
+  background-color: #000;
+  width: 100%;
+  height: 67%;
 }

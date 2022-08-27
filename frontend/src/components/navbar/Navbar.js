@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/style.css";
+import "./asset/css/style.css";
 
 const Navbar = () => {
   return (
@@ -27,7 +27,7 @@ const Navbar = () => {
         </div>
         <div className="content">
           <div className="row">
-            <span className="profil-page">
+            <span className="profil-page checked">
               <i className="fa-solid fa-gear fa-lg"></i>
               Profil
             </span>
@@ -47,6 +47,15 @@ const Navbar = () => {
             </span>
           </div>
         </div>
+      </div>
+      <div className="component">
+        <div className="header">
+          <div className="shape">
+            <h1>Administration</h1>
+            <span className="label">classes</span>
+          </div>
+        </div>
+        <div className="content"></div>
       </div>
     </div>
   );
