@@ -3,61 +3,43 @@ import "./asset/css/style.css";
 
 const Navbar = () => {
   return (
-    <div className="nav">
+    <main>
       <header>
-        <a className="logo" href="/nav">
+        {/* <a className="logo" href="/nav">
           ISI School
-        </a>
-        <div className="input">
-          <label htmlFor="search">Rechercher</label>
-          <input type="text" id="search" name="search" className="search" />
-          <button class="fa-solid fa-magnifying-glass search-icon"></button>
+        </a> */}
+        <div className="page-name">Classe</div>
+        <div className="profile">
+          <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
+          <div className="user-name">Test</div>
+          <i class="fa-solid fa-caret-down"></i>
         </div>
       </header>
-      <div className="profil">
-        <div className="user-infos">
-          {/* <div className="user-photo"></div> */}
-          <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil" />
-          <div className="user-title">
-            <span className="label">Admin</span>
-            <div className="user-name">Test test</div>
-            <div className="user-email">test@gmail.com</div>
-            <button name="btn-logout">Se deconnecter</button>
-          </div>
+      <nav>
+        <div className="logo"><a href="/nav">ISI</a></div>
+        <div className="profile">
+          <i className="fa-solid fa-gear fa-lg"></i>
+          <div>Profil</div>
         </div>
-        <div className="content">
-          <div className="row">
-            <span className="profil-page checked">
-              <i className="fa-solid fa-gear fa-lg"></i>
-              Profil
-            </span>
-            <span className="cours-page">
-              <i className="fa-solid fa-file-lines fa-lg"></i>
-              Cours
-            </span>
-          </div>
-          <div className="row">
-            <span className="notification-page">
-              <i className="fa-solid fa-bell fa-lg"></i>
-              Messages
-            </span>
-            <span className="classe-page">
-              <i className="fa-solid fa-building fa-lg"></i>
-              Classes
-            </span>
-          </div>
+        <div className="classes">
+          <i className="fa-solid fa-building fa-lg"></i>
+          <div>classes</div>
         </div>
-      </div>
-      <div className="component">
-        <div className="header">
-          <div className="shape">
-            <h1>Administration</h1>
-            <span className="label">classes</span>
-          </div>
+        <div className="cours">
+          <i className="fa-solid fa-file-lines fa-lg"></i>
+          <div>Cours</div>
         </div>
-        <div className="content"></div>
-      </div>
-    </div>
+        <div className="informations">
+          <i className="fa-solid fa-bell fa-lg"></i>
+          <div>Informations</div>
+        </div>
+        <div className="admin-users">
+          <i class="fa-solid fa-users fa-lg"></i>
+          <div>utilisateurs</div>
+        </div>
+      </nav>
+      <div className="component"></div>
+    </main>
   );
 };
 export default Navbar;
