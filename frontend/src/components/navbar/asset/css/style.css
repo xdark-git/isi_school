@@ -145,7 +145,44 @@ main nav div div i {
   margin: 28px 0 0 0;
 }
 main .component {
+  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  /* overflow: auto; */
+  display: flex;
+  flex-direction: column;
+  /* padding: 93px 46px 0 155px; */
   background-color: red;
+
+  /* z-index: 100; */
+}
+
+main .component .new-search {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px 86px 0 185px;
+}
+
+main .component .new-search .new {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .component .new-search .search {
+  position: relative;
+}
+main .component .content {
+  position: fixed;
+  top: 127px;
+  /* width: 100vw;
+  height: 100vh; */
+  background-color: aqua;
+  margin: 17px 0 0 0;
+
+  overflow: auto;
 }
