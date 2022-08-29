@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav>
         <a href="/nav">ISI</a>
         <div className="pages">
-          <div className="profile">
+          <div className="profile checked">
             <i className="fa-solid fa-gear fa-lg"></i>
             <div>Profil</div>
           </div>

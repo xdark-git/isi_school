@@ -77,12 +77,8 @@ main nav {
 }
 
 main nav a {
-  position: absolute;
-  left: 29.41%;
-  right: 29.48%;
-  top: 2.31%;
-  bottom: 93.24%;
-
+  position: fixed;
+  top: 11px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -106,21 +102,50 @@ main nav div {
   align-content: space-between;
 }
 
+main nav div .profile {
+  color: #ffffff;
+}
+
+main nav div .classes {
+  color: #ffffff;
+}
+
+main nav div .cours {
+  color: #ffffff;
+}
+
+main nav div .informations {
+  color: #ffffff;
+}
+main nav div .admin-users {
+  color: #ffffff;
+}
+
+main nav div .checked {
+  background-color: #f7f8fa;
+  color: #2f80ed;
+}
+
 main nav div div {
-  margin-bottom: 36px;
+  width: 109px;
+  height: 85px;
+  align-items: center;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16.124px;
   line-height: 24px;
   text-align: center;
-
-  color: #f7f8fa;
+  cursor: pointer;
 }
-
+main nav div div div {
+  top: 21px;
+}
 main nav div div i {
-  margin-bottom: 17px;
+  margin: 28px 0 0 0;
 }
 main .component {
+  width: 100vw;
+  height: 100vh;
   background-color: red;
 }
