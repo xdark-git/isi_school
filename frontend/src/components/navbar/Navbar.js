@@ -1,7 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import "./asset/css/style.css";
 
-const Navbar = () => {
+const Navbar = () => {  
   return (
     <main>
       <header>
@@ -41,18 +42,25 @@ const Navbar = () => {
         </div>
       </nav>
       <div className="component">
-          <div className="new-search">
-            <div className="new">
-              <i class="fa-solid fa-plus"></i>
-              <div>nouvelle classe</div>
-            </div>
-            <div className="search">
-              <label htmlFor="search">Rechercher</label>
-              <input type="text" id="search" name="search" className="search" />
-              <button class="fa-solid fa-magnifying-glass search-icon"></button>
-            </div>
+        <div className="new-search">
+          <div className="new">
+            <i class="fa-solid fa-plus"></i>
+            <div>nouvelle classe</div>
           </div>
-          <div className="content"></div>
+          <div className="search">
+            <form>
+              <input
+                type="text"
+                id="search"
+                placeholder="Recherche"
+                name="search"
+                className="search"
+              />
+              <button class="fa-solid fa-magnifying-glass search-icon"></button>
+            </form>
+          </div>
+        </div>
+        <div className="content"></div>
       </div>
     </main>
   );
