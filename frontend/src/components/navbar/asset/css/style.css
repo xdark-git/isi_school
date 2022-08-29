@@ -1,4 +1,4 @@
-main header {
+div header {
   position: fixed;
   z-index: 99;
   width: 100vw;
@@ -14,7 +14,7 @@ main header {
   box-shadow: 0px 3px 5px #9b9b9d;
 }
 
-main header .page-name {
+div header .page-name {
   position: static;
   bottom: 93.15%;
   margin: 0 0 0 156px;
@@ -28,7 +28,7 @@ main header .page-name {
   color: #828282;
 }
 
-main header .profile {
+div header .profile {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -38,7 +38,7 @@ main header .profile {
   margin: 0 10% 0 0;
 }
 
-main header .profile img {
+div header .profile img {
   /* position: absolute; */
   width: 30.17px;
   height: 33px;
@@ -47,7 +47,7 @@ main header .profile img {
   border-radius: 50%;
 }
 
-main header .profile .user-name {
+div header .profile .user-name {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -58,11 +58,11 @@ main header .profile .user-name {
   color: #828282;
 }
 
-main header .profile .fa-caret-down {
+div header .profile .fa-caret-down {
   color: #828282;
 }
 
-main nav {
+div nav {
   position: fixed;
   width: 110px;
   height: 100vh;
@@ -76,7 +76,7 @@ main nav {
   background: #379fda;
 }
 
-main nav a {
+div nav a {
   position: fixed;
   top: 11px;
   font-family: "Poppins";
@@ -89,12 +89,12 @@ main nav a {
   color: #ffffff;
 }
 
-main nav .pages {
+div nav .pages {
   position: fixed;
   top: 95px;
 }
 
-main nav div {
+div nav div {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -102,31 +102,31 @@ main nav div {
   align-content: space-between;
 }
 
-main nav div .profile {
+div nav div .profile {
   color: #ffffff;
 }
 
-main nav div .classes {
+div nav div .classes {
   color: #ffffff;
 }
 
-main nav div .cours {
+div nav div .cours {
   color: #ffffff;
 }
 
-main nav div .informations {
+div nav div .informations {
   color: #ffffff;
 }
-main nav div .admin-users {
+div nav div .admin-users {
   color: #ffffff;
 }
 
-main nav div .checked {
+div nav div .checked {
   background-color: #f7f8fa;
   color: #2f80ed;
 }
 
-main nav div div {
+div nav div div {
   width: 109px;
   height: 85px;
   align-items: center;
@@ -138,110 +138,9 @@ main nav div div {
   text-align: center;
   cursor: pointer;
 }
-main nav div div div {
+div nav div div div {
   top: 21px;
 }
-main nav div div i {
+div nav div div i {
   margin: 28px 0 0 0;
-}
-main .component {
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  /* overflow: auto; */
-  display: flex;
-  flex-direction: column;
-  /* padding: 93px 46px 0 155px; */
-  /* background-color: red; */
-
-  /* z-index: 100; */
-}
-
-main .component .new-search {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 100px 86px 0 185px;
-}
-
-main .component .new-search .new {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 150px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  cursor: pointer;
-  color: #379fda;
-}
-
-main .component .new-search .new:hover {
-  transform: scale(1.1);
-}
-
-main .component .new-search .search {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-}
-
-main .component .new-search .search input {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px 35px 0px 18px;
-  gap: 194px;
-  width: 283px;
-  height: 33px;
-  background: #f7f8fa;
-  border: 3px solid #2d9cdb;
-  border-radius: 12px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  transition: all 0.08s ease-out;
-}
-
-main .component .new-search .search input::placeholder {
-  color: #379fda;
-}
-
-main .component .new-search .search input:focus {
-  outline: none !important;
-  border: 1px solid #379fda;
-  box-shadow: 0 0 10px #719ece;
-}
-
-main .component .new-search .search .search-icon {
-  position: absolute;
-  right: 10px;
-  bottom: 9px;
-  color: #379fda;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-}
-
-main .component .new-search .search .search-icon:hover {
-  transform: scale(1.5);
-}
-
-main .component .content {
-  position: fixed;
-  top: 127px;
-  /* width: 100vw;
-  height: 100vh; */
-  background-color: aqua;
-  margin: 17px 0 0 0;
-
-  overflow: auto;
 }
