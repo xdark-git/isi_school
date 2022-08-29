@@ -18,11 +18,11 @@ const Navbar = () => {
       <nav>
         <a href="/nav">ISI</a>
         <div className="pages">
-          <div className="profile checked">
+          <div className="profile">
             <i className="fa-solid fa-gear fa-lg"></i>
             <div>Profil</div>
           </div>
-          <div className="classes">
+          <div className="classes checked">
             <i className="fa-solid fa-building fa-lg"></i>
             <div>classes</div>
           </div>
@@ -40,7 +40,20 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="component"></div>
+      <div className="component">
+          <div className="new-search">
+            <div className="new">
+              <i class="fa-solid fa-plus"></i>
+              <div>nouvelle classe</div>
+            </div>
+            <div className="search">
+              <label htmlFor="search">Rechercher</label>
+              <input type="text" id="search" name="search" className="search" />
+              <button class="fa-solid fa-magnifying-glass search-icon"></button>
+            </div>
+          </div>
+          <div className="content"></div>
+      </div>
     </main>
   );
 };
