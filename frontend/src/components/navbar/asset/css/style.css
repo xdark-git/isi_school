@@ -76,7 +76,7 @@ main nav {
   background: #379fda;
 }
 
-main nav .logo {
+main nav a {
   position: absolute;
   left: 29.41%;
   right: 29.48%;
@@ -89,13 +89,38 @@ main nav .logo {
   font-size: 32px;
   line-height: 48px;
   cursor: pointer;
-}
-
-main nav .logo  a {
   text-decoration: none;
   color: #ffffff;
 }
 
+main nav .pages {
+  position: fixed;
+  top: 95px;
+}
+
+main nav div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+}
+
+main nav div div {
+  margin-bottom: 36px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.124px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #f7f8fa;
+}
+
+main nav div div i {
+  margin-bottom: 17px;
+}
 main .component {
   background-color: red;
 }

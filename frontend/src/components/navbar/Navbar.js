@@ -16,26 +16,28 @@ const Navbar = () => {
         </div>
       </header>
       <nav>
-        <div className="logo"><a href="/nav">ISI</a></div>
-        <div className="profile">
-          <i className="fa-solid fa-gear fa-lg"></i>
-          <div>Profil</div>
-        </div>
-        <div className="classes">
-          <i className="fa-solid fa-building fa-lg"></i>
-          <div>classes</div>
-        </div>
-        <div className="cours">
-          <i className="fa-solid fa-file-lines fa-lg"></i>
-          <div>Cours</div>
-        </div>
-        <div className="informations">
-          <i className="fa-solid fa-bell fa-lg"></i>
-          <div>Informations</div>
-        </div>
-        <div className="admin-users">
-          <i class="fa-solid fa-users fa-lg"></i>
-          <div>utilisateurs</div>
+        <a href="/nav">ISI</a>
+        <div className="pages">
+          <div className="profile">
+            <i className="fa-solid fa-gear fa-lg"></i>
+            <div>Profil</div>
+          </div>
+          <div className="classes">
+            <i className="fa-solid fa-building fa-lg"></i>
+            <div>classes</div>
+          </div>
+          <div className="cours">
+            <i className="fa-solid fa-file-lines fa-lg"></i>
+            <div>Cours</div>
+          </div>
+          <div className="informations">
+            <i className="fa-solid fa-bell fa-lg"></i>
+            <div>Informations</div>
+          </div>
+          <div className="admin-users">
+            <i class="fa-solid fa-users fa-lg"></i>
+            <div>utilisateurs</div>
+          </div>
         </div>
       </nav>
       <div className="component"></div>
