@@ -38,7 +38,7 @@ export const signinAdminitration = (formData, navigate) => async (dispatch) => {
     const { data } = await api.signAdministration(formData);
     dispatch({ type: LOGIN, data });
 
-    navigate("/dashboard");
+    navigate("/classes");
   } catch (error) {
     if (error.response?.data?.message === "Invalid credential") {
       const data = "informations d'identification invalides";
