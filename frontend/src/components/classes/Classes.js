@@ -9,7 +9,7 @@ const Classes = () => {
       <div className="component">
         <div className="new-search">
           <div className="new">
-            <i class="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus"></i>
             <div>nouvelle classe</div>
           </div>
           <div className="search">
@@ -21,7 +21,7 @@ const Classes = () => {
                 name="search"
                 className="search"
               />
-              <button class="fa-solid fa-magnifying-glass search-icon"></button>
+              <button className="fa-solid fa-magnifying-glass search-icon"></button>
             </form>
           </div>
         </div>
