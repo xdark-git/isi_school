@@ -22,7 +22,7 @@ const Navbar = () => {
         </div>
       </header>
       <nav>
-        <a href="/nav">ISI</a>
+        <a href="/classes">ISI</a>
         <div className="pages">
           <div className="profile">
             <i className="fa-solid fa-gear fa-lg"></i>
