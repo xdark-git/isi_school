@@ -38,12 +38,6 @@ const Navbar = () => {
             <i className="fa-solid fa-file-lines fa-lg"></i>
             <div>Cours</div>
           </div>
-          {user?.status === "Administrateur" && (
-            <div className="informations">
-              <i className="fa-solid fa-bell fa-lg"></i>
-              <div>Informations</div>
-            </div>
-          )}
           <div className="informations">
             <i className="fa-solid fa-bell fa-lg"></i>
             <div>Informations</div>
