@@ -14,7 +14,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/login/admin" element={<LoginAdmin />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/classe" element={<Classes />} />
+          <Route path="/classes" element={<Classes />} />
 
           {/* catch all */}
           <Route path="*" element={<Missing />} />
