@@ -8,19 +8,36 @@ const Navbar = () => {
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  useEffect(() => {
+    /**get the window dimention when resized */
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div>
-      <header>
-        {/* <a className="logo" href="/nav">
-          ISI School
-        </a> */}
-        <div className="page-name">Classe</div>
-        <div className="profile">
-          <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
-          <div className="user-name">{user?.prenom}</div>
-          <i className="fa-solid fa-caret-down"></i>
-        </div>
-      </header>
+      {/* changing the header depending on the width */}
+      {dimensions?.width > 785 && (
+        <header>
+          <div className="page-name">Classe</div>
+          <div className="profile">
+            <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
+            <div className="user-name">{user?.prenom}</div>
+            <i className="fa-solid fa-caret-down"></i>
+          </div>
+        </header>
+      )}
+      {/* changing the header depending on the width */}
       <nav>
         <a href="/classes">ISI</a>
         <div className="pages">
