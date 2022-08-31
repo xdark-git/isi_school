@@ -12,6 +12,7 @@ const Navbar = () => {
     height: window.innerHeight,
     width: window.innerWidth,
   });
+  const [didToggleDisplayed, setDidToggleDisplayed] = useState(0);
   useEffect(() => {
     /**get the window dimention when resized */
     function handleResize() {
@@ -23,11 +24,70 @@ const Navbar = () => {
 
     window.addEventListener("resize", handleResize);
   }, []);
+  /*-------------------TOGGLE MENU JS--------------------- */
+  /**
+   * changing the value everytime tha the dimension changes
+   */
+  useEffect(() => {
+    if (dimensions?.width <= 785) {
+      setDidToggleDisplayed(1);
+    } else {
+      setDidToggleDisplayed(0);
+    }
+  }, [dimensions?.width]);
+  useEffect(() => {
+    if (didToggleDisplayed === 1) {
+      // based on Todd Motto functions
+      // https://toddmotto.com/labs/reusable-js/
+      var theToggle = document.getElementById("toggle");
+      // hasClass
+      function hasClass(elem, className) {
+        return new RegExp(" " + className + " ").test(" " + elem.className + " ");
+      }
+      // addClass
+      // function addClass(elem, className) {
+      //   if (!hasClass(elem, className)) {
+      //     elem.className += " " + className;
+      //   }
+      // }
+      // removeClass
+      // function removeClass(elem, className) {
+      //   var newClass = " " + elem.className.replace(/[\t\r\n]/g, " ") + " ";
+      //   if (hasClass(elem, className)) {
+      //     while (newClass.indexOf(" " + className + " ") >= 0) {
+      //       newClass = newClass.replace(" " + className + " ", " ");
+      //     }
+      //     elem.className = newClass.replace(/^\s+|\s+$/g, "");
+      //   }
+      // }
+      // toggleClass
+      function toggleClass(elem, className) {
+        var newClass = " " + elem.className.replace(/[\t\r\n]/g, " ") + " ";
+        if (hasClass(elem, className)) {
+          while (newClass.indexOf(" " + className + " ") >= 0) {
+            newClass = newClass.replace(" " + className + " ", " ");
+          }
+          elem.className = newClass.replace(/^\s+|\s+$/g, "");
+        } else {
+          elem.className += " " + className;
+        }
+      }
 
-  return (
-    <div>
-      {/* changing the header depending on the width */}
-      {dimensions?.width > 785 && (
+      theToggle.onclick = function () {
+        toggleClass(this, "on");
+        return false;
+      };
+    }
+  }, [didToggleDisplayed]);
+
+  /*-------------------TOGGLE MENU JS--------------------- */
+
+  const displayDialog = () =>{
+    console.log(true)
+  }
+  if (dimensions?.width > 785) {
+    return (
+      <div>
         <header>
           <div className="page-name">Classe</div>
           <div className="profile">
@@ -36,38 +96,49 @@ const Navbar = () => {
             <i className="fa-solid fa-caret-down"></i>
           </div>
         </header>
-      )}
-      {/* changing the header depending on the width */}
-      <nav>
-        <a href="/classes">ISI</a>
-        <div className="pages">
-          <div className="profile">
-            <i className="fa-solid fa-gear fa-lg"></i>
-            <div>Profil</div>
-          </div>
-          {user?.status === "Administrateur" && (
-            <div className="classes checked">
-              <i className="fa-solid fa-building fa-lg"></i>
-              <div>classes</div>
+
+        <nav>
+          <a href="/classes">ISI</a>
+          <div className="pages">
+            <div className="profile">
+              <i className="fa-solid fa-gear fa-lg"></i>
+              <div>Profil</div>
             </div>
-          )}
-          <div className="cours">
-            <i className="fa-solid fa-file-lines fa-lg"></i>
-            <div>Cours</div>
-          </div>
-          <div className="informations">
-            <i className="fa-solid fa-bell fa-lg"></i>
-            <div>Informations</div>
-          </div>
-          {user?.status === "Administrateur" && (
-            <div className="admin-users">
-              <i className="fa-solid fa-users fa-lg"></i>
-              <div>utilisateurs</div>
+            {user?.status === "Administrateur" && (
+              <div className="classes checked">
+                <i className="fa-solid fa-building fa-lg"></i>
+                <div>classes</div>
+              </div>
+            )}
+            <div className="cours">
+              <i className="fa-solid fa-file-lines fa-lg"></i>
+              <div>Cours</div>
             </div>
-          )}
-        </div>
-      </nav>
-    </div>
-  );
+            <div className="informations">
+              <i className="fa-solid fa-bell fa-lg"></i>
+              <div>Informations</div>
+            </div>
+            {user?.status === "Administrateur" && (
+              <div className="admin-users">
+                <i className="fa-solid fa-users fa-lg"></i>
+                <div>utilisateurs</div>
+              </div>
+            )}
+          </div>
+        </nav>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <header>
+          <div className="page-name">ISI</div>
+          <a href="#menu" id="toggle" onClick={displayDialog}>
+            <span></span>
+          </a>
+        </header>
+      </div>
+    );
+  }
 };
 export default Navbar;
