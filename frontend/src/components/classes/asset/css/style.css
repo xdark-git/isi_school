@@ -5,10 +5,6 @@ main .component {
   /* overflow: auto; */
   display: flex;
   flex-direction: column;
-  /* padding: 93px 46px 0 155px; */
-  /* background-color: red; */
-
-  /* z-index: 100; */
 }
 
 main .component .new-search {
@@ -20,9 +16,7 @@ main .component .new-search {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  /* margin: 100px 86px 0 185px; */
   z-index: 1;
-  /* background-color: #f7f8fa; */
   background-color: #f7f8fa;
 }
 
@@ -32,7 +26,6 @@ main .component .new-search .new {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   width: 150px;
   font-family: "Poppins";
   font-style: normal;
@@ -42,13 +35,18 @@ main .component .new-search .new {
   color: #379fda;
 }
 
+main .component .new-search .new div {
+  position: relative;
+  left: 5%;
+}
+
 main .component .new-search .new:hover {
   transform: scale(1.1);
 }
 
 main .component .new-search .search {
   position: relative;
-  right: 51px;
+  right: 1vw;
   display: flex;
   flex-direction: row;
 }
@@ -83,7 +81,7 @@ main .component .new-search .search input:focus {
 
 main .component .new-search .search .search-icon {
   position: absolute;
-  right: 65px;
+  right: 23px;
   bottom: 9px;
   color: #379fda;
   background-color: transparent;
@@ -104,6 +102,7 @@ main .component .content {
   height: 80%;
   display: grid;
   overflow: auto;
+  overflow-x: hidden;
   grid-template-columns: 328px 328px 328px 328px;
   grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr;
   gap: 28px;
@@ -125,10 +124,12 @@ main .component .content .classe {
   align-items: flex-start;
 
   cursor: pointer;
+
+  border-radius: 13px;
 }
 
 main .component .content .classe:hover {
-  transform: scale(1.1);
+  box-shadow: 0 0 10px rgb(59, 58, 58);
 }
 
 main .component .content .classe div {
@@ -162,4 +163,207 @@ main .component .content .classe span {
   font-size: 16px;
   line-height: 29px;
   color: #4f4f4f;
+}
+
+@media only screen and (max-width: 1530px) {
+  main .component .content {
+    grid-template-columns: 286px 286px 286px 286px;
+  }
+  main .component .content .classe {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 1364px) {
+  main .component .content {
+    grid-template-columns: 273px 273px 273px 273px;
+  }
+  main .component .content .classe {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 1342px) {
+  main .component .content {
+    grid-template-columns: 240px 240px 240px 240px;
+  }
+  main .component .content .classe {
+    width: 248px;
+    height: 103px;
+  }
+  main .component .content .classe div {
+    height: 28px;
+    font-size: 20px;
+    line-height: 44px;
+  }
+  main .component .content .classe span {
+    width: 93px;
+    height: 22px;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 1191px) {
+  main .component .content {
+    grid-template-columns: 228px 228px 228px 228px;
+  }
+}
+
+@media only screen and (max-width: 1167px) {
+  main .component .content {
+    grid-template-columns: 242px 242px 242px;
+  }
+}
+
+@media only screen and (max-width: 923px) {
+  main .component .content {
+    grid-template-columns: 229px 229px 229px;
+  }
+
+  main .component .content .classe {
+    width: 210px;
+    height: 93px;
+  }
+  main .component .content .classe div {
+    height: 22px;
+    font-size: 16px;
+    line-height: 35px;
+  }
+  main .component .content .classe span {
+    width: 81px;
+    height: 21px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 851px) {
+  main .component .content {
+    grid-template-columns: 193px 193px 212px;
+  }
+}
+
+@media only screen and (max-width: 785px) {
+  main .component .new-search .search input {
+    width: 201px;
+    height: 26px;
+  }
+  main .component .new-search .search .search-icon {
+    bottom: 5px;
+  }
+  main .component .new-search .new {
+    left: 20px;
+    font-size: 17px;
+  }
+  main .component .content {
+    grid-template-columns: 193px 193px 222px;
+  }
+  main .component .content .classe {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 671px) {
+  main .component .content {
+    grid-template-columns: 45vw 46vw;
+  }
+  main .component .content .classe {
+    width: 257px;
+    height: 107px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 562px) {
+  main .component .content .classe {
+    width: 230px;
+    height: 105px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 496px) {
+  main .component .content .classe {
+    width: 208px;
+    height: 93px;
+  }
+  main .component .content .classe div {
+    height: 30px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  main .component .content {
+    grid-template-columns: 70vw;
+  }
+  main .component .content .classe {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  main .component .new-search {
+    top: 56px;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+  }
+  main .component .new-search .new {
+    left: 3vw;
+    top: 11px;
+    font-size: 17px;
+  }
+  main .component .new-search .new div {
+    position: relative;
+    left: 3%;
+  }
+  main .component .new-search .search {
+    bottom: 2px;
+  }
+  main .component .new-search .search input {
+    width: 68vw;
+    height: 26px;
+    left: 8px;
+  }
+  main .component .new-search .search .search-icon {
+    bottom: 7px;
+    right: 3px;
+  }
+  main .component .content {
+    grid-template-columns: none;
+  }
+  main .component .content .classe {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 398px) {
+  
 }
