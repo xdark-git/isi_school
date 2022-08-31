@@ -1,6 +1,6 @@
 div header {
   position: fixed;
-  z-index: 99;
+  z-index: 10;
   width: 100vw;
   height: 30px;
   right: 0%;
@@ -143,4 +143,56 @@ div nav div div div {
 }
 div nav div div i {
   margin: 28px 0 0 0;
+}
+@media only screen and (max-width: 785px) {
+  div header .page-name {
+    margin: 0 0 0 27px;
+  }
+  div header #toggle {
+    display: block;
+    width: 28px;
+    position: relative;
+    right: 21px;
+  }
+
+  div header #toggle span:after,
+  div header #toggle span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -9px;
+  }
+  div header #toggle span:after {
+    top: 9px;
+  }
+  div header #toggle span {
+    position: relative;
+    display: block;
+  }
+
+  div header #toggle span,
+  div header #toggle span:after,
+  div header #toggle span:before {
+    width: 100%;
+    height: 5px;
+    background-color: #888;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    border-radius: 2px;
+  }
+
+  /* on activation */
+  #toggle.on span {
+    background-color: transparent;
+  }
+  #toggle.on span:before {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  #toggle.on span:after {
+    transform: rotate(-45deg) translate(7px, -8px);
+  }
+  #toggle.on + #menu {
+    opacity: 1;
+    visibility: visible;
+  }
 }
