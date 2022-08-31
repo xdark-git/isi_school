@@ -1,0 +1,32 @@
+.menu-dialog{
+    position: relative;
+    z-index: 11;
+    width: 70vw;
+    height: 100vh;
+    right: 0%;
+    left: 31vw;
+    background-color: red;
+    animation-name: menu-dialog;
+    animation-duration: 1s;
+}
+@keyframes menu-dialog {
+    0% {
+      background-color: red;
+      left: 100vw;
+    }
+   
+    100% {
+      background-color: red;
+      left: 31vw;
+    }
+  }
+.menu-dialog .menu-dialog-content{
+    position: relative;
+
+    top: 42px;
+    left: 31px;
+    display: flex;
+    flex-direction: column;
+}
+
+
