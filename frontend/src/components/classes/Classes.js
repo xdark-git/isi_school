@@ -3,6 +3,8 @@ import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 
 const Classes = () => {
+  const backgroundImages = ["bg_1", "bg_2", "bg_3", "bg_4", "bg_5", "bg_6"];
+
   return (
     <main>
       <Navbar />
@@ -25,7 +27,84 @@ const Classes = () => {
             </form>
           </div>
         </div>
-        <div className="content"></div>
+        <div className="content">
+          <div className="classe">
+            <div className="classe-name">Génie logiciel</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Réseau</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Communication</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+          <div className="classe">
+            <div className="classe-name">Droit</div>
+            <span>37 étudiants</span>
+          </div>
+        </div>
       </div>
     </main>
   );
