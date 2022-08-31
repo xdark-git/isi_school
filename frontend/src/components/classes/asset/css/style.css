@@ -111,12 +111,6 @@ main .component .content {
   top: 151px;
 }
 
-main .component .content div {
-  display: flex;
-  /* position: relative; */
-  flex-direction: column;
-  align-items: flex-start;
-}
 main .component .content .classe {
   background-size: cover;
   background-image: url(../shape/bg_classe.png);
@@ -125,4 +119,47 @@ main .component .content .classe {
   height: 130px;
   top: 15px;
   left: 63px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  cursor: pointer;
+}
+
+main .component .content .classe:hover {
+  transform: scale(1.1);
+}
+
+main .component .content .classe div {
+  position: relative;
+  left: 12px;
+  width: 359px;
+  height: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 54px;
+  color: #ffffff;
+}
+main .component .content .classe span {
+  position: relative;
+  top: 16px;
+  left: 12px;
+  width: 108px;
+  height: 31px;
+  background: #ffffff;
+  border-radius: 27px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 29px;
+  color: #4f4f4f;
 }
