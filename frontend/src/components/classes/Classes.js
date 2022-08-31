@@ -3,7 +3,6 @@ import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 
 const Classes = () => {
-  const backgroundImages = ["bg_1", "bg_2", "bg_3", "bg_4", "bg_5", "bg_6"];
 
   return (
     <main>
