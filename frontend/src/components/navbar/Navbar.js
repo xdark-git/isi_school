@@ -14,7 +14,7 @@ import {
   USER_TOKEN_LOCAL_STORAGE_NAME,
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
-import LogoutDialog from "./Dialogs/MenuDialog/LogoutDialog";
+import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
 
 const Navbar = () => {
   const dispatch = useDispatch();

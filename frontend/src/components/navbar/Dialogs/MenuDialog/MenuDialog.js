@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch} from "react-redux";
 import { closeMenuDialog} from "../../../../constantes";
-import "./style.css";
+import "../style.css";
 const MenuDialog = (user, status) => {
   const dispatch = useDispatch();
 
