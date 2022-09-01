@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import "./asset/css/style.css";
+import { useSelector, useDispatch } from "react-redux";
 
-import { USER_DATA_COOKIE_NAME } from "../../constantes";
+import {open, closed, opened, USER_DATA_COOKIE_NAME } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
@@ -24,11 +26,11 @@ const Navbar = () => {
 
     window.addEventListener("resize", handleResize);
   }, []);
-  
 
-  const displayDialog = () =>{
-    console.log(true)
-  }
+  const isMenuDialogOpen = useSelector((state) => state?.stateMenuDialog?.status);
+  const displayDialog = () => {
+    dispatch({type: open})
+  };
   if (dimensions?.width > 785) {
     return (
       <div>
@@ -81,7 +83,8 @@ const Navbar = () => {
             <span></span>
           </a>
         </header>
-        <MenuDialog user={user} />
+        {isMenuDialogOpen==opened && <MenuDialog user={user}/>}
+        
       </div>
     );
   }
