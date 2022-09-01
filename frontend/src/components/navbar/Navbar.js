@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from "react";
-import Cookies from "universal-cookie";
-import "./asset/css/style.css";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import Cookies from "universal-cookie";
+import decode from "jwt-decode";
+import "./asset/css/style.css";
 import {
   openMenuDialog,
   menuDialogOpened,
   USER_DATA_COOKIE_NAME,
   logoutDialogClosed,
   logoutDialogOpened,
-  openLogoutDialog,
-  closeLogoutDialog,
+  LOGOUT,
+  USER_TOKEN_LOCAL_STORAGE_NAME,
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/MenuDialog/LogoutDialog";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
+
+  const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+  // console.log(location);
+  useEffect(() => {
+    const token = userToken;
+    if (token) {
+      const decodedToken = decode(token);
+      
+      if (decodedToken?.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
+    }
+
+    setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+  }, [location]);
+
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+
+    navigate("/");
+
+    setUserToken(null);
+  };
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -63,7 +89,7 @@ const Navbar = () => {
             <div className="user-name">{user?.prenom}</div>
             <i className="fa-solid fa-caret-down"></i>
           </div>
-          {isLogoutDialogOpen === logoutDialogOpened && <LogoutDialog />}
+          {isLogoutDialogOpen === logoutDialogOpened && <LogoutDialog logout={logout} />}
         </header>
 
         <nav>
