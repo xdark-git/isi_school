@@ -19,7 +19,12 @@ export const USER_COOKIE_OPTION = {
 
 // dialogs
 
-export const open = "OPEN";
-export const close = "CLOSE";
-export const opened = "OPENED";
-export const closed = "CLOSED";
+export const openMenuDialog = "OPEN_MENU_DIALOG";
+export const closeMenuDialog = "CLOSE_MENU_DIALOG";
+export const menuDialogOpened = "MENU_DIALOG_OPENED";
+export const menuDialogClosed = "MENU_DIALOG_CLOSED";
+
+export const openLogoutDialog = "OPEN_LOGOUT_DIALOG";
+export const closeLogoutDialog = "CLOSE_LOGOUT_DIALOG";
+export const logoutDialogOpened = "LOGOUT_DIALOG_OPENED";
+export const logoutDialogClosed = "LOGOUT_DIALOG_CLOSED";
