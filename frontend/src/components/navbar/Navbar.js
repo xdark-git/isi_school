@@ -3,8 +3,9 @@ import Cookies from "universal-cookie";
 import "./asset/css/style.css";
 import { useSelector, useDispatch } from "react-redux";
 
-import {open, closed, opened, USER_DATA_COOKIE_NAME } from "../../constantes";
+import { openMenuDialog, menuDialogOpened, USER_DATA_COOKIE_NAME } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
+import LogoutDialog from "./Dialogs/MenuDialog/LogoutDialog";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -29,18 +30,22 @@ const Navbar = () => {
 
   const isMenuDialogOpen = useSelector((state) => state?.stateMenuDialog?.status);
   const displayDialog = () => {
-    dispatch({type: open})
+    dispatch({ type: openMenuDialog });
   };
+  
+  const wantToLogout = () => {};
+
   if (dimensions?.width > 785) {
     return (
       <div>
         <header>
           <div className="page-name">Classe</div>
-          <div className="profile">
+          <div className="profile" onClick={wantToLogout}>
             <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
             <div className="user-name">{user?.prenom}</div>
             <i className="fa-solid fa-caret-down"></i>
           </div>
+          <LogoutDialog />
         </header>
 
         <nav>
@@ -83,8 +88,7 @@ const Navbar = () => {
             <span></span>
           </a>
         </header>
-        {isMenuDialogOpen==opened && <MenuDialog user={user}/>}
-        
+        {isMenuDialogOpen === menuDialogOpened && <MenuDialog user={user} />}
       </div>
     );
   }
