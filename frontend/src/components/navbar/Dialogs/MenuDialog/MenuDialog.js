@@ -1,32 +1,39 @@
 import React from "react";
 import "./style.css"
-const MenuDialog = (user ) => {
+const MenuDialog = (user, menuDialog, close) => {
+  document.addEventListener('click', function handleClickOutsideBox(event) {
+    console.log("clicked")
+  });
+  // if(menuDialog?.isMenuDialogOpen === 1){
+  //   console.log(true)
+  // }else{
+  //   console.log(menuDialog?.isMenuDialogOpen)
+  // }
+  
   return (
     <div className="menu-dialog">
       <div className="menu-dialog-content">
-        <a href="/classes">ISI</a>
+      <div className="close-menu-dialog">
+        <i className="fa-solid fa-xmark"></i>
+      </div>
+      <div className="page-name">Classe</div>
         <div className="pages">
           <div className="profile">
-            <i className="fa-solid fa-gear fa-lg"></i>
             <div>Profil</div>
           </div>
-          {user?.status === "Administrateur" && (
+          {user?.user?.status === "Administrateur" && (
             <div className="classes checked">
-              <i className="fa-solid fa-building fa-lg"></i>
               <div>classes</div>
             </div>
           )}
           <div className="cours">
-            <i className="fa-solid fa-file-lines fa-lg"></i>
             <div>Cours</div>
           </div>
           <div className="informations">
-            <i className="fa-solid fa-bell fa-lg"></i>
             <div>Informations</div>
           </div>
-          {user?.status === "Administrateur" && (
+          {user?.user?.status === "Administrateur" && (
             <div className="admin-users">
-              <i className="fa-solid fa-users fa-lg"></i>
               <div>utilisateurs</div>
             </div>
           )}
