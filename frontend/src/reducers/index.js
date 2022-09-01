@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import { logoutDialogReducer, menuDialogReducer } from "./dialogs";
+import { logoutDialogReducer, menuDialogReducer } from "./singleReducers/dialogs";
 
-import { profileSelectedReducer, signinUserReducer } from "./login";
+import { profileSelectedReducer, signinUserReducer } from "./singleReducers/login";
 
 export default combineReducers({
   profile: profileSelectedReducer,

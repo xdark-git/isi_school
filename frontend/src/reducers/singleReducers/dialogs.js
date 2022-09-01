@@ -7,7 +7,7 @@ import {
   closeLogoutDialog,
   logoutDialogOpened,
   logoutDialogClosed,
-} from "../constantes";
+} from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
     case openMenuDialog:
