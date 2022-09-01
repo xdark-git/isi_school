@@ -27,9 +27,9 @@ const Navbar = () => {
   // console.log(location);
   useEffect(() => {
     const token = userToken;
-    const endSession = async () => {
-      await setTimeout(logout(), 3000);
-    };
+    // const endSession = async () => {
+    //   await setTimeout(logout(), 3000);
+    // };
     if (token) {
       try {
         const decodedToken = decode(token);
