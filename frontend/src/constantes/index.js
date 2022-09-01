@@ -16,3 +16,10 @@ export const USER_COOKIE_OPTION = {
   domaine: toString(window?.location?.origin),
   sameSite: "Strict",
 };
+
+// dialogs
+
+export const open = "OPEN";
+export const close = "CLOSE";
+export const opened = "OPENED";
+export const closed = "CLOSED";
