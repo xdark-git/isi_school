@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { close, closed, opened } from "../../../../constantes";
+import React from "react";
+import { useDispatch} from "react-redux";
+import { closeMenuDialog} from "../../../../constantes";
 import "./style.css";
 const MenuDialog = (user, status) => {
   const dispatch = useDispatch();
 
-  function closeMenuDialog(){
-    dispatch({ type: close });
+  function closeMenu() {
+    dispatch({ type: closeMenuDialog });
   }
 
   return (
     <div className="menu-dialog">
       <div className="menu-dialog-content">
-        <div className="close-menu-dialog" onClick={closeMenuDialog}>
+        <div className="close-menu-dialog" onClick={closeMenu}>
           <i className="fa-solid fa-xmark"></i>
         </div>
         <div className="page-name">Classe</div>
