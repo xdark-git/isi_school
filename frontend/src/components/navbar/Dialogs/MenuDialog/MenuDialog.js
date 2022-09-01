@@ -1,22 +1,21 @@
-import React from "react";
-import "./style.css"
-const MenuDialog = (user, menuDialog, close) => {
-  document.addEventListener('click', function handleClickOutsideBox(event) {
-    console.log("clicked")
-  });
-  // if(menuDialog?.isMenuDialogOpen === 1){
-  //   console.log(true)
-  // }else{
-  //   console.log(menuDialog?.isMenuDialogOpen)
-  // }
-  
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { close, closed, opened } from "../../../../constantes";
+import "./style.css";
+const MenuDialog = (user, status) => {
+  const dispatch = useDispatch();
+
+  function closeMenuDialog(){
+    dispatch({ type: close });
+  }
+
   return (
     <div className="menu-dialog">
       <div className="menu-dialog-content">
-      <div className="close-menu-dialog">
-        <i className="fa-solid fa-xmark"></i>
-      </div>
-      <div className="page-name">Classe</div>
+        <div className="close-menu-dialog" onClick={closeMenuDialog}>
+          <i className="fa-solid fa-xmark"></i>
+        </div>
+        <div className="page-name">Classe</div>
         <div className="pages">
           <div className="profile">
             <div>Profil</div>
