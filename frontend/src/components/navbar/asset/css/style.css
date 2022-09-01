@@ -36,6 +36,7 @@ div header .profile {
   justify-content: center;
   align-items: center;
   margin: 0 10% 0 0;
+  cursor: pointer;
 }
 
 div header .profile img {
