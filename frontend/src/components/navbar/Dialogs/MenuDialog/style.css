@@ -71,3 +71,32 @@
 .menu-dialog .menu-dialog-content .pages .checked {
   text-decoration: underline;
 }
+
+.logout-dialog {
+  width: 153px;
+  height: 49px;
+  position: fixed;
+  /* left: 0%; */
+  right: 9vw;
+  top: 53px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgb(59, 58, 58);
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #828282;
+  cursor: pointer;
+}
+
+.logout-dialog div {
+  position: relative;
+  left: 8px;
+  bottom: 2px;
+}
