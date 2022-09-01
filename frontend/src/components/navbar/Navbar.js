@@ -3,7 +3,15 @@ import Cookies from "universal-cookie";
 import "./asset/css/style.css";
 import { useSelector, useDispatch } from "react-redux";
 
-import { openMenuDialog, menuDialogOpened, USER_DATA_COOKIE_NAME } from "../../constantes";
+import {
+  openMenuDialog,
+  menuDialogOpened,
+  USER_DATA_COOKIE_NAME,
+  logoutDialogClosed,
+  logoutDialogOpened,
+  openLogoutDialog,
+  closeLogoutDialog,
+} from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/MenuDialog/LogoutDialog";
 
@@ -32,8 +40,18 @@ const Navbar = () => {
   const displayDialog = () => {
     dispatch({ type: openMenuDialog });
   };
-  
-  const wantToLogout = () => {};
+
+  const [isLogoutDialogOpen, changeIsLogoutDialogOpen] = useState(
+    useSelector((state) => state?.stateLogoutDialog?.status)
+  );
+
+  const wantToLogout = () => {
+    if (isLogoutDialogOpen === logoutDialogClosed) {
+      changeIsLogoutDialogOpen(logoutDialogOpened);
+    } else if (isLogoutDialogOpen === logoutDialogOpened) {
+      changeIsLogoutDialogOpen(logoutDialogClosed);
+    }
+  };
 
   if (dimensions?.width > 785) {
     return (
@@ -45,7 +63,7 @@ const Navbar = () => {
             <div className="user-name">{user?.prenom}</div>
             <i className="fa-solid fa-caret-down"></i>
           </div>
-          <LogoutDialog />
+          {isLogoutDialogOpen === logoutDialogOpened && <LogoutDialog />}
         </header>
 
         <nav>
