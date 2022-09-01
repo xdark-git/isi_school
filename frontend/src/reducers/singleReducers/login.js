@@ -41,15 +41,15 @@ export const signinUserReducer = (state = { authData: null }, action) => {
         ...action?.data?.data,
         status: action?.data?.status["nom"],
       };
-      const userToken = {
-        ...action?.data?.token,
-      };
+      // const userToken = {
+      //   ...action?.data?.token,
+      // };
 
       cookies.set(USER_DATA_COOKIE_NAME, userData, USER_COOKIE_OPTION);
-
-      localStorage.setItem(USER_TOKEN_LOCAL_STORAGE_NAME, JSON.stringify(userToken));
+      localStorage.setItem(USER_TOKEN_LOCAL_STORAGE_NAME, action?.data?.token);
 
       return { authData: action?.data };
+
     case LOGINERROR:
       console.log(action?.data);
       return { error: action?.data };
