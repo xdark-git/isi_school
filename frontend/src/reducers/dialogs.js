@@ -1,15 +1,39 @@
-import { close, closed, open, opened } from "../constantes";
-export const menuDialogReducer = (menuDialog = { status: closed }, action) => {
+import {
+  openMenuDialog,
+  closeMenuDialog,
+  menuDialogOpened,
+  menuDialogClosed,
+  openLogoutDialog,
+  closeLogoutDialog,
+  logoutDialogOpened,
+  logoutDialogClosed,
+} from "../constantes";
+export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
-    case open:
+    case openMenuDialog:
       return (menuDialog = {
-        status: opened,
+        status: menuDialogOpened,
       });
-    case close:
+    case closeMenuDialog:
       return (menuDialog = {
-        status: closed,
+        status: menuDialogClosed,
       });
     default:
       return menuDialog;
+  }
+};
+
+export const logoutDialogReducer = (logoutDialog = { status: logoutDialogClosed }, action) => {
+  switch (action.type) {
+    case openLogoutDialog:
+      return (logoutDialog = {
+        status: logoutDialogOpened,
+      });
+    case closeLogoutDialog:
+      return (logoutDialog = {
+        status: logoutDialogClosed,
+      });
+    default:
+      return logoutDialog;
   }
 };
