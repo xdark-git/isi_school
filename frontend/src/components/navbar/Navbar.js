@@ -27,10 +27,16 @@ const Navbar = () => {
   // console.log(location);
   useEffect(() => {
     const token = userToken;
+    const endSession = async () => {
+      await setTimeout(logout(), 3000);
+    };
     if (token) {
-      const decodedToken = decode(token);
-      
-      if (decodedToken?.exp * 1000 < new Date().getTime()) {
+      try {
+        const decodedToken = decode(token);
+        if (decodedToken?.exp * 1000 < new Date().getTime()) {
+          logout();
+        }
+      } catch (error) {
         logout();
       }
     }
