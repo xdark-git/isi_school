@@ -28,7 +28,7 @@
   font-family: "Poppins";
   font-style: normal;
   animation-name: nouvelle-classe-contenu;
-  animation-duration: 1.2s; 
+  animation-duration: 0.8s;
 }
 @keyframes nouvelle-classe-contenu {
   0% {
@@ -126,19 +126,83 @@
   color: #000000;
 }
 .nouvelle-classe .nouvelle-classe-contenu form .ajouter:hover {
-  background-color: rgba(0, 143, 201, 0.4);
+  background-color: rgba(0, 201, 50, 0.4);
 }
-.nouvelle-classe .nouvelle-classe-contenu form .annuler:hover {
+.nouvelle-classe .nouvelle-classe-contenu form .reset:hover {
+  background-color: rgba(0, 17, 255, 0.4);
+}
+.nouvelle-classe .nouvelle-classe-contenu .annuler {
+  position: relative;
+  top: 7px;
+
+  /* width: 19%; */
+  width: 81.5px;
+  height: 35.31px;
+  /* right: -1px; */
+  left: 463px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 47px;
+
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
+  color: #000000;
+}
+.nouvelle-classe .nouvelle-classe-contenu .annuler:hover {
   background-color: rgba(255, 0, 0, 0.4);
 }
 @media only screen and (max-width: 730px) {
   .nouvelle-classe .nouvelle-classe-contenu form input {
     width: 63vw;
   }
+  .nouvelle-classe .nouvelle-classe-contenu .annuler {
+    left: 60vw;
+  }
 }
 @media only screen and (max-width: 495px) {
   .nouvelle-classe .nouvelle-classe-contenu form input {
     width: 51vw;
+  }
+  .nouvelle-classe .nouvelle-classe-contenu .annuler {
+    left: 57vw;
+  }
+}
+@media only screen and (max-width: 396px) {
+  .nouvelle-classe .nouvelle-classe-contenu .annuler {
+    left: 54vw;
+  }
+}
+@media only screen and (max-width: 391px) {
+  .nouvelle-classe .nouvelle-classe-contenu .annuler {
+
+    left: 21px;
+    top: 48px;
   }
 }
 @media only screen and (max-width: 300px) {
