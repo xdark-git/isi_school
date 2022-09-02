@@ -24,7 +24,7 @@ const NewClassDialog = () => {
       <div className="nouvelle-classe-contenu">
         <div className="title">Nouvelle Classe</div>
         <div className="description">Merci de donner le nom de la nouvelle classe </div>
-        <form  onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input placeholder="Nom" />
           <button className="ajouter" type="submit">
             Ajouter
@@ -33,7 +33,9 @@ const NewClassDialog = () => {
             Tout effacer
           </button>
         </form>
-        <button className="annuler">Annuler</button>
+        <button className="annuler" onClick={closeDialog}>
+          Annuler
+        </button>
       </div>
     </div>
   );
