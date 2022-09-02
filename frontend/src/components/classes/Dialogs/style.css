@@ -139,7 +139,7 @@
   width: 81.5px;
   height: 35.31px;
   /* right: -1px; */
-  left: 463px;
+  left: 497px;
   display: flex;
   justify-content: flex-end;
   margin-right: 47px;
@@ -200,7 +200,6 @@
 }
 @media only screen and (max-width: 391px) {
   .nouvelle-classe .nouvelle-classe-contenu .annuler {
-
     left: 21px;
     top: 48px;
   }
