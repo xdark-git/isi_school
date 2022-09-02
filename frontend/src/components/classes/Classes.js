@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
+import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
 
 const Classes = () => {
 
@@ -26,6 +27,7 @@ const Classes = () => {
             </form>
           </div>
         </div>
+        <NewClassDialog />
         <div className="content">
           <div className="classe">
             <div className="classe-name">Génie logiciel</div>
