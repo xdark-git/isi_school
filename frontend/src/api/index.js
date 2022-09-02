@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { USER_TOKEN_LOCAL_STORAGE_NAME } from "../../constantes";
+import { USER_TOKEN_LOCAL_STORAGE_NAME } from "../constantes";
 
 const API = axios.create({ baseURL: "http://localhost:5000/api" });
 
