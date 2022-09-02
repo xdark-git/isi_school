@@ -7,6 +7,10 @@ import {
   closeLogoutDialog,
   logoutDialogOpened,
   logoutDialogClosed,
+  newClassDialogClosed,
+  openNewClassDialog,
+  newClassDialogOpened,
+  closeNewClassDialog,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -35,5 +39,23 @@ export const logoutDialogReducer = (logoutDialog = { status: logoutDialogClosed 
       });
     default:
       return logoutDialog;
+  }
+};
+
+export const newClassDialogReducer = (
+  newClassDialog = { status: newClassDialogClosed },
+  action
+) => {
+  switch (action.type) {
+    case openNewClassDialog:
+      return (newClassDialog = {
+        status: newClassDialogOpened,
+      });
+    case closeNewClassDialog:
+      return (newClassDialog = {
+        status: newClassDialogClosed,
+      });
+    default:
+      return newClassDialog;
   }
 };
