@@ -8,31 +8,29 @@ import verifyRefreshToken from "../functions/refreshToken/verifyRefreshToken.js"
   then we do the same for the refresh token
 */
 const auth = async (req, res, next) => {
-  // if (!req?.cookies.token) {
-  //   return res.status(401).json({ message: "Missing cookie" });
-  // }
+  try {
+    const token = req?.headers?.authorization.split(" ")[1];
 
-  const token = req.body?.token;
+    const decodedToken = await verifyToken(token, res);
 
-  const decodedToken = await verifyToken(token);
+    if (decodedToken == "expired") {
+      return res.status(401).json({
+        message: "Token expired",
+      });
+    }
 
-  if (decodedToken == false) {
-    return res.status(401).json({ message: "Invalid token" });
+    if (decodedToken == "invalid") {
+      return res.status(401).json({
+        message: "Invalid Token",
+      });
+    }
+    req.user = decodedToken;
+    req.token = token;
+
+    next();
+  } catch (error) {
+    return res.status(400).json({ message: "Token not found" });
   }
-
-  // const refreshToken =req.body?.refreshToken;
-  // const decodedRefreshToken = await verifyRefreshToken(refreshToken)
-
-  // if( decodedRefreshToken == false){
-  //   return res.status(401).json({ message: "Invalid token" });
-  // }
-
-  req.token = token;
-
-  next();
-  // const token = req.headers.Authorization.split(" ")[1];
-
-  // req.userId = decodedData?.id;
 };
 
 export default auth;
