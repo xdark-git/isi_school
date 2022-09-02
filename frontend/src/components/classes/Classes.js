@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { newClassDialogClosed, newClassDialogOpened, openNewClassDialog } from "../../constantes";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
 
 const Classes = () => {
+  const dispatch = useDispatch();
+  let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
+
+  const displayNewClasseDialog = async () => {
+   dispatch({ type: openNewClassDialog });
+    console.log(isNewClassDialogOpen)
+  };
 
   return (
     <main>
       <Navbar />
       <div className="component">
         <div className="new-search">
-          <div className="new">
+          <div className="new" onClick={displayNewClasseDialog}>
             <i className="fa-solid fa-plus"></i>
             <div>nouvelle classe</div>
           </div>
@@ -27,7 +36,7 @@ const Classes = () => {
             </form>
           </div>
         </div>
-        <NewClassDialog />
+        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
         <div className="content">
           <div className="classe">
             <div className="classe-name">Génie logiciel</div>
