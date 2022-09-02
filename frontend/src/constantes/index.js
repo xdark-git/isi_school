@@ -28,3 +28,8 @@ export const openLogoutDialog = "OPEN_LOGOUT_DIALOG";
 export const closeLogoutDialog = "CLOSE_LOGOUT_DIALOG";
 export const logoutDialogOpened = "LOGOUT_DIALOG_OPENED";
 export const logoutDialogClosed = "LOGOUT_DIALOG_CLOSED";
+
+export const openNewClassDialog = "OPEN_NEW_CLASS_DIALOG";
+export const closeNewClassDialog = "CLOSE_NEW_CLASS_DIALOG";
+export const newClassDialogOpened = "NEW_CLASS_DIALOG_OPENED";
+export const newClassDialogClosed = "NEW_CLASS_DIALOG_CLOSED";
