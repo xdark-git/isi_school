@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newClassDialogClosed, newClassDialogOpened, openNewClassDialog } from "../../constantes";
+import { newClassDialogOpened, openNewClassDialog } from "../../constantes";
+import { getAll } from "../../actions/classe/getClasses";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
@@ -10,10 +11,28 @@ const Classes = () => {
   let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
 
   const displayNewClasseDialog = async () => {
-   dispatch({ type: openNewClassDialog });
-    console.log(isNewClassDialogOpen)
+    dispatch({ type: openNewClassDialog });
   };
 
+  const classes = useSelector((state) => state?.classes);
+  var lisOfClasses;
+  useEffect(() => {
+    dispatch(getAll());
+  }, []);
+
+  // console.log(el)
+
+  // console.log(classes);
+  if (classes.length >= 1) {
+    lisOfClasses = classes.map((el) => (
+      
+      <div className="classe" key={el?._id}>
+        {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
+        {el?.nom.length > 17 && <div className="classe-name">{el?.nom.substring(0, 21)}...</div>}
+        <span>{el?.etudiants_id.length} étudiants</span>
+      </div>
+    ));
+  }
   return (
     <main>
       <Navbar />
@@ -37,84 +56,7 @@ const Classes = () => {
           </div>
         </div>
         {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
-        <div className="content">
-          <div className="classe">
-            <div className="classe-name">Génie logiciel</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Réseau</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Communication</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-          <div className="classe">
-            <div className="classe-name">Droit</div>
-            <span>37 étudiants</span>
-          </div>
-        </div>
+        <div className="content">{lisOfClasses}</div>
       </div>
     </main>
   );
