@@ -21,7 +21,7 @@ export const createClasse = async (req, res) => {
     }
     //check if there isn't a classe who already had the same name
     const existingClasse = await Classe.findOne(req.body);
-    console.log(existingClasse);
+   
     if (existingClasse) {
       return res.status(409).json({ message: "A classe with the same name already exist" });
     }
