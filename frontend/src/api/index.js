@@ -14,3 +14,5 @@ API.interceptors.request.use((req) => {
 export const signEtudiant = (formData) => API.post("/user/login/etudiant", formData);
 export const signProfesseur = (formData) => API.post("/user/login/professeur", formData);
 export const signAdministration = (formData) => API.post("/user/login/administration", formData);
+
+export const getAllClasses = () => API.get("/classe")
