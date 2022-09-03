@@ -34,3 +34,20 @@ export const createClasse = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong." });
   }
 };
+
+export const getAll = async (req, res) => {
+  try {
+    //checking if the user still exist
+    const user = await Administration.findById(req?.user?.id);
+    if (!user) {
+      return res.status(401).json({ message: "Access denied" });
+    }
+
+    const classes = await Classe.find({})
+
+    return res.status(200).json(classes);
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ message: "Something went wrong." });
+  }
+};
