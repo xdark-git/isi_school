@@ -9,13 +9,7 @@ export const createClasse = async (req, res) => {
     //checking if the user still exist
     const user = await Administration.findById(req?.user?.id);
     if (!user) {
-      return res.status(401).json({ message: "User does not exist" });
-    }
-
-    //verifying if the user has the right role to add a class
-    const status = await Status.findOne({ nom: req?.user?.status });
-    if (!status || status?.nom != "Administrateur") {
-      return res.status(401).json({ message: "Access dinied" });
+      return res.status(401).json({ message: "Access denied" });
     }
 
     //verifying if the req body has a nom propety
