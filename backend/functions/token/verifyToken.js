@@ -7,7 +7,7 @@ const verifyToken = (token, res) => {
     return decoded;
   } catch (error) {
     const decoded = jwt.decode(token);
-    console.log(error.toString());
+
     if (decoded?.exp * 1000 < new Date().getTime()) {
       return "expired";
     } else {
