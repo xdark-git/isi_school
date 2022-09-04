@@ -19,9 +19,6 @@ export const USER_COOKIE_OPTION = {
   sameSite: "Strict",
 };
 
-export const TYPE_ERROR = "ERROR"
-export const TYPE_SUCCESS = "SUCCESS"
-
 // dialogs
 
 export const openMenuDialog = "OPEN_MENU_DIALOG";

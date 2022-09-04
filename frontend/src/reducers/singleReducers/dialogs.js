@@ -71,14 +71,12 @@ export const alertDialogReducer = (alertDialog = { status: alertDialogClosed }, 
         type: action?.type,
         status: alertDialogOpened,
         message: action?.message,
-        typeMessage: action?.typeMessage,
       });
     case closeAlertDialog:
       return (alertDialog = {
         type: action?.type,
         status: alertDialogClosed,
         message: action?.message,
-        typeMessage: action?.typeMessage,
       });
     default:
       return alertDialog;

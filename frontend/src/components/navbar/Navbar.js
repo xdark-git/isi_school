@@ -14,8 +14,7 @@ import {
   USER_TOKEN_LOCAL_STORAGE_NAME,
   alertDialogOpened,
   openAlertDialog,
-  TYPE_ERROR,
-  TYPE_SUCCESS,
+
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
@@ -43,11 +42,11 @@ const Navbar = () => {
       try {
         const decodedToken = decode(token);
         if (decodedToken?.exp * 1000 < new Date().getTime()) {
-          dispatch({ type: openAlertDialog, message: "Session expirée", typeMessage: TYPE_ERROR });
+          dispatch({ type: openAlertDialog, message: "Session expirée"});
           setTimeout(logout, 2500);
         }
       } catch (error) {
-        dispatch({ type: openAlertDialog, message: "Problème détecté", typeMessage: TYPE_SUCCESS });
+        dispatch({ type: openAlertDialog, message: "Problème détecté"});
         setTimeout(logout, 2500);
       }
     }
