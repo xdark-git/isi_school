@@ -43,6 +43,7 @@ const Navbar = () => {
     }
 
     setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const logout = () => {
