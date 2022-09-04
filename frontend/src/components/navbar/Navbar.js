@@ -12,6 +12,10 @@ import {
   logoutDialogOpened,
   LOGOUT,
   USER_TOKEN_LOCAL_STORAGE_NAME,
+  alertDialogOpened,
+  openAlertDialog,
+  TYPE_ERROR,
+  TYPE_SUCCESS,
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
@@ -25,25 +29,24 @@ const Navbar = () => {
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
   const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
-  // console.log(location);
+
   useEffect(() => {
     const token = userToken;
-    // const endSession = async () => {
-    //   await setTimeout(logout(), 3000);
-    // };
     if (token) {
       try {
         const decodedToken = decode(token);
         if (decodedToken?.exp * 1000 < new Date().getTime()) {
-          logout();
+          dispatch({ type: openAlertDialog, message: "Session expirée", typeMessage: TYPE_ERROR });
+          setInterval(logout, 2500);
         }
       } catch (error) {
-        logout();
+        dispatch({ type: openAlertDialog, message: "Problème détecté", typeMessage: TYPE_SUCCESS });
+        setInterval(logout, 2500);
       }
     }
 
     setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const logout = () => {
@@ -70,6 +73,8 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
   }, []);
 
+  const isAlertDialogOpen = useSelector((state) => state?.stateAlertDialog?.status);
+
   const isMenuDialogOpen = useSelector((state) => state?.stateMenuDialog?.status);
   const displayDialog = () => {
     dispatch({ type: openMenuDialog });
@@ -91,7 +96,7 @@ const Navbar = () => {
     return (
       <div>
         <header>
-        <AlertDialog />
+          {isAlertDialogOpen === alertDialogOpened && <AlertDialog />}
           <div className="page-name">Classe</div>
           <div className="profile" onClick={wantToLogout}>
             <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
@@ -136,7 +141,7 @@ const Navbar = () => {
     return (
       <div>
         <header>
-        <AlertDialog />
+          {isAlertDialogOpen === alertDialogOpened && <AlertDialog />}
           <div className="page-name">ISI</div>
           <a href="#menu" id="toggle" onClick={displayDialog}>
             <span></span>
