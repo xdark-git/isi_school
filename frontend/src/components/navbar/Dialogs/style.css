@@ -113,7 +113,7 @@
   overflow: auto;
   overflow-x: none;
   animation-name: alert-dialog;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
 
   border-radius: 7px;
   background-color: #ffffff;
@@ -121,7 +121,7 @@
 }
 @keyframes alert-dialog {
   0% {
-    top: -70vh;
+    top: -10vh;
   }
   100% {
     top: 33px;
