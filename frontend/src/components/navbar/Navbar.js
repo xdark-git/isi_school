@@ -28,27 +28,6 @@ const Navbar = () => {
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
-  const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
-
-  useEffect(() => {
-    const token = userToken;
-    if (token) {
-      try {
-        const decodedToken = decode(token);
-        if (decodedToken?.exp * 1000 < new Date().getTime()) {
-          dispatch({ type: openAlertDialog, message: "Session expirée", typeMessage: TYPE_ERROR });
-          setInterval(logout, 2500);
-        }
-      } catch (error) {
-        dispatch({ type: openAlertDialog, message: "Problème détecté", typeMessage: TYPE_SUCCESS });
-        setInterval(logout, 2500);
-      }
-    }
-
-    setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
-
   const logout = () => {
     dispatch({ type: LOGOUT });
 
@@ -56,6 +35,29 @@ const Navbar = () => {
 
     setUserToken(null);
   };
+  const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+
+  useEffect(() => {
+    const token = userToken;
+    if (token != null) {
+      try {
+        const decodedToken = decode(token);
+        if (decodedToken?.exp * 1000 < new Date().getTime()) {
+          dispatch({ type: openAlertDialog, message: "Session expirée", typeMessage: TYPE_ERROR });
+          setTimeout(logout, 2500);
+        }
+      } catch (error) {
+        dispatch({ type: openAlertDialog, message: "Problème détecté", typeMessage: TYPE_SUCCESS });
+        setTimeout(logout, 2500);
+      }
+    }
+    if (userToken == null) {
+      logout();
+    }
+
+    setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location, userToken]);
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
