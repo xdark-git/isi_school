@@ -19,6 +19,9 @@ export const USER_COOKIE_OPTION = {
   sameSite: "Strict",
 };
 
+export const TYPE_ERROR = "ERROR"
+export const TYPE_SUCCESS = "SUCCESS"
+
 // dialogs
 
 export const openMenuDialog = "OPEN_MENU_DIALOG";
@@ -35,3 +38,8 @@ export const openNewClassDialog = "OPEN_NEW_CLASS_DIALOG";
 export const closeNewClassDialog = "CLOSE_NEW_CLASS_DIALOG";
 export const newClassDialogOpened = "NEW_CLASS_DIALOG_OPENED";
 export const newClassDialogClosed = "NEW_CLASS_DIALOG_CLOSED";
+
+export const openAlertDialog = "OPEN_ALERT_DIALOG";
+export const closeAlertDialog = "CLOSE_ALERT_DIALOG";
+export const alertDialogOpened = "ALERT_DIALOG_OPENED";
+export const alertDialogClosed = "ALERT_DIALOG_CLOSED";
