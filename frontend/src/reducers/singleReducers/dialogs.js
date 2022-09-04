@@ -11,6 +11,10 @@ import {
   openNewClassDialog,
   newClassDialogOpened,
   closeNewClassDialog,
+  alertDialogClosed,
+  openAlertDialog,
+  alertDialogOpened,
+  closeAlertDialog,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -57,5 +61,26 @@ export const newClassDialogReducer = (
       });
     default:
       return newClassDialog;
+  }
+};
+
+export const alertDialogReducer = (alertDialog = { status: alertDialogClosed }, action) => {
+  switch (action.type) {
+    case openAlertDialog:
+      return (alertDialog = {
+        type: action?.type,
+        status: alertDialogOpened,
+        message: action?.message,
+        typeMessage: action?.typeMessage,
+      });
+    case closeAlertDialog:
+      return (alertDialog = {
+        type: action?.type,
+        status: alertDialogClosed,
+        message: action?.message,
+        typeMessage: action?.typeMessage,
+      });
+    default:
+      return alertDialog;
   }
 };
