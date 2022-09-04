@@ -15,6 +15,7 @@ import {
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
+import AlertDialog from "./Dialogs/Alert/AlertDialog";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const Navbar = () => {
     return (
       <div>
         <header>
+        <AlertDialog />
           <div className="page-name">Classe</div>
           <div className="profile" onClick={wantToLogout}>
             <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
@@ -133,6 +135,7 @@ const Navbar = () => {
     return (
       <div>
         <header>
+        <AlertDialog />
           <div className="page-name">ISI</div>
           <a href="#menu" id="toggle" onClick={displayDialog}>
             <span></span>

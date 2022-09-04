@@ -100,3 +100,70 @@
   left: 8px;
   bottom: 2px;
 }
+
+.alert {
+  position: absolute;
+  z-index: 100;
+  width: 52vw;
+  min-width: 94px;
+  max-width: 253px;
+  height: 48px;
+  left: 41vw;
+  top: 33px;
+  overflow: auto;
+  overflow-x: none;
+  animation-name: alert-dialog;
+  animation-duration: 1.5s;
+
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgb(148 147 147);
+}
+@keyframes alert-dialog {
+  0% {
+    top: -70vh;
+  }
+  100% {
+    top: 33px;
+  }
+}
+.alert div {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.alert div i {
+  top: 9px;
+  right: 10px;
+  color: black;
+  position: relative;
+}
+.alert div span {
+  position: relative;
+  top: 9px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+@media only screen and (max-width: 785px) {
+  .alert {
+    left: 33vw;
+  }
+}
+@media only screen and (max-width: 627px) {
+  .alert {
+    left: 27vw;
+  }
+}
+@media only screen and (max-width: 465px) {
+  .alert {
+    left: 23vw;
+  }
+}@media only screen and (max-width: 239px) {
+  .alert {
+    left: 23vw;
+  }
+}
