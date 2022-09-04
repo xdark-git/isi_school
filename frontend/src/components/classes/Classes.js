@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newClassDialogOpened, openNewClassDialog } from "../../constantes";
 import { getAll } from "../../actions/classe/getClasses";
@@ -18,14 +18,11 @@ const Classes = () => {
   var lisOfClasses;
   useEffect(() => {
     dispatch(getAll());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // console.log(el)
-
-  // console.log(classes);
   if (classes.length >= 1) {
     lisOfClasses = classes.map((el) => (
-      
       <div className="classe" key={el?._id}>
         {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
         {el?.nom.length > 17 && <div className="classe-name">{el?.nom.substring(0, 21)}...</div>}
