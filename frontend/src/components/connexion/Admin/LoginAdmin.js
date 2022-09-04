@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signinAdminitration } from "../../../actions/login";
-
+import { USER_TOKEN_LOCAL_STORAGE_NAME } from "../../../constantes";
+import decode from "jwt-decode";
 import "../style.css";
+
+
 
 const LoginAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userToken = localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME);
+  useEffect(() => {
+    const token = userToken;
+    if (token != null) {
+      const decodedToken = decode(token);
+      if (decodedToken?.status === "Administrateur") {
+        navigate("/classes");
+      }
+      if (decodedToken?.status === "Professeur") {
+        navigate("/cours");
+      }
+      if (decodedToken?.status === "Etudiant") {
+        navigate("/cours");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
