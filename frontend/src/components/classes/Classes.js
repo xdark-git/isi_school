@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import {
   newClassDialogOpened,
@@ -13,6 +14,7 @@ import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
 
 const Classes = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
 
   const displayNewClasseDialog = async () => {
@@ -27,7 +29,7 @@ const Classes = () => {
     if (token != null) {
       const decodedToken = decode(token);
       if (decodedToken?.exp * 1000 > new Date().getTime()) {
-        dispatch(getAll());
+        dispatch(getAll(navigate));
       }
     }
 
