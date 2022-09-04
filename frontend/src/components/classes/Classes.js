@@ -1,6 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newClassDialogOpened, openNewClassDialog } from "../../constantes";
+import decode from "jwt-decode";
+import {
+  newClassDialogOpened,
+  openNewClassDialog,
+  USER_TOKEN_LOCAL_STORAGE_NAME,
+} from "../../constantes";
 import { getAll } from "../../actions/classe/getClasses";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
@@ -13,11 +18,19 @@ const Classes = () => {
   const displayNewClasseDialog = async () => {
     dispatch({ type: openNewClassDialog });
   };
-
+  // eslint-disable-next-line
+  const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
   const classes = useSelector((state) => state?.classes);
   var lisOfClasses;
   useEffect(() => {
-    dispatch(getAll());
+    const token = userToken;
+    if (token != null) {
+      const decodedToken = decode(token);
+      if (decodedToken?.exp * 1000 > new Date().getTime()) {
+        dispatch(getAll());
+      }
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
