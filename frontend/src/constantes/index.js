@@ -6,6 +6,7 @@ export const LOGINERROR = "LOGINERROR";
 export const LOGOUT = "LOGOUT";
 
 export const GETALLCLASSES = "GET_ALL_CLASSES";
+export const DISPLAYONECLASSE = "DISPLAY_ONE_CLASS";
 
 // cookies names
 export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
