@@ -9,10 +9,10 @@ export const getAllClassesReducers = (state = [], action) => {
   }
 };
 
-export const getOneClasseReducer = (state = [], action) => {
+export const getOneClasseReducer = (state = {}, action) => {
   switch (action.type) {
     case DISPLAYONECLASSE:
-      return action?.data;
+      return {data : action?.data, opened: action.opened};
     default:
       return state;
   }
