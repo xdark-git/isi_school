@@ -7,7 +7,7 @@ import {
   openNewClassDialog,
   USER_TOKEN_LOCAL_STORAGE_NAME,
 } from "../../constantes";
-import { getAll } from "../../actions/classe/getClasses";
+import { getAll, getOne } from "../../actions/classe/getClasses";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
@@ -32,13 +32,17 @@ const Classes = () => {
         dispatch(getAll(navigate));
       }
     }
-
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const getOneClasse = (id) =>{
+    dispatch(getOne(id, navigate))
+  }
+ 
 
   if (classes.length >= 1) {
     lisOfClasses = classes.map((el) => (
-      <div className="classe" key={el?._id}>
+      <div className="classe" key={el?._id} onClick={()=> getOneClasse(el?._id)}>
         {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
         {el?.nom.length > 17 && <div className="classe-name">{el?.nom.substring(0, 21)}...</div>}
         <span>{el?.etudiants_id.length} étudiants</span>
