@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import LoginAdmin from "./components/connexion/Admin/LoginAdmin";
 import Login from "./components/connexion/Login/Login";
 import Dashboard from "./components/Dashbord";
-import Missing from "./components/Missing";
+import Missing from "./components/NotFound/Missing";
 import Classes from "./components/classes/Classes";
 import DisplayOneClasse from "./components/classes/DisplayOne/DisplayOneClasse";
 
