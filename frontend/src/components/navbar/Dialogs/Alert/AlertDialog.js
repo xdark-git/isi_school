@@ -1,8 +1,14 @@
 import React from "react";
 import "../style.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { alertDialogOpened, closeAlertDialog } from "../../../../constantes";
 
 const AlertDialog = () => {
+  const dispatch = useDispatch();
+  const isAlertDialogOpened = useSelector((state) => state?.stateAlertDialog?.status);
+  if (isAlertDialogOpened === alertDialogOpened) {
+    setTimeout(()=>{dispatch({ type: closeAlertDialog })}, 4000);
+  }
   const message = useSelector((state) => state?.stateAlertDialog?.message);
   return (
     <div className="alert">
