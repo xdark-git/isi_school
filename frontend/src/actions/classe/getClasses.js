@@ -1,5 +1,5 @@
 import * as api from "../../api";
-import { GETALLCLASSES, openAlertDialog } from "../../constantes";
+import { DISPLAYONECLASSE, GETALLCLASSES, openAlertDialog } from "../../constantes";
 
 export const getAll = (navigate) => async (dispatch) => {
   try {
@@ -13,5 +13,17 @@ export const getAll = (navigate) => async (dispatch) => {
     if (error?.status === 500) {
       dispatch({ type: openAlertDialog, message: "Une erreur s'est produite" });
     }
+  }
+};
+
+export const getOne = (id, navigate) => async (dispatch) => {
+  try {
+    const classe = await api.getOneClasse(id);
+    const data = classe?.data;
+    dispatch({ type: DISPLAYONECLASSE, data});
+  
+    navigate("/classes/"+data?.lien)
+  } catch (error) {
+    console.log(error);
   }
 };
