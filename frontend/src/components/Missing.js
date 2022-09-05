@@ -1,6 +1,13 @@
 import React from "react";
+import Navbar from "./navbar/Navbar";
 
 const Missing = () => {
-  return <div className="container">Page not Found</div>;
+  return (
+    <main>
+      <Navbar />
+      <div>ERROR 404</div>
+      <div>PAGE NOT FOUND</div>
+    </main>
+  );
 };
 export default Missing;
