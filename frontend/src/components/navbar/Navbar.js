@@ -14,11 +14,11 @@ import {
   USER_TOKEN_LOCAL_STORAGE_NAME,
   alertDialogOpened,
   openAlertDialog,
-
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
 import AlertDialog from "./Dialogs/Alert/AlertDialog";
+import { getOne } from "../../actions/classe/getClasses";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -42,21 +42,36 @@ const Navbar = () => {
       try {
         const decodedToken = decode(token);
         if (decodedToken?.exp * 1000 < new Date().getTime()) {
-          dispatch({ type: openAlertDialog, message: "Session expirée"});
+          dispatch({ type: openAlertDialog, message: "Session expirée" });
           setTimeout(logout, 2500);
         }
       } catch (error) {
-        dispatch({ type: openAlertDialog, message: "Problème détecté"});
+        dispatch({ type: openAlertDialog, message: "Problème détecté" });
         setTimeout(logout, 2500);
       }
     }
     if (userToken == null) {
       logout();
     }
-
     setUserToken(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, userToken]);
+
+  const isDisplayOneClasseOpened = useSelector((state) => state?.classe?.opened);
+  useEffect(() => {
+    //if the location is "/classes/something" then we get the param fetch the element
+    const classeID = location?.pathname.split("/")[2];
+    const isItAClasse = location?.pathname.split("/")[1];
+
+    if (isItAClasse === "classes" && classeID) {
+      if (!isDisplayOneClasseOpened && isDisplayOneClasseOpened !== true){
+        dispatch(getOne(classeID, navigate));
+      }      
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
