@@ -7,7 +7,7 @@ import {
 } from "./singleReducers/dialogs";
 
 import { profileSelectedReducer, signinUserReducer } from "./singleReducers/login";
-import { getAllClassesReducers } from "./singleReducers/classes";
+import { getAllClassesReducers, getOneClasseReducer } from "./singleReducers/classes";
 
 export default combineReducers({
   profile: profileSelectedReducer,
@@ -17,4 +17,5 @@ export default combineReducers({
   stateNewClassDialog: newClassDialogReducer,
   stateAlertDialog: alertDialogReducer,
   classes: getAllClassesReducers,
+  classe: getOneClasseReducer,
 });
