@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
 import LoginAdmin from "./components/connexion/Admin/LoginAdmin";
 import Login from "./components/connexion/Login/Login";
 import Dashboard from "./components/Dashbord";
@@ -10,8 +9,7 @@ import Classes from "./components/classes/Classes";
 import DisplayOneClasse from "./components/classes/DisplayOne/DisplayOneClasse";
 
 const App = () => {
-
-  const lienClasse = useSelector((state) => state?.classe?.lien);
+  const lienClasse = useSelector((state) => state?.classe?.data?._id);
   return (
     <div>
       <BrowserRouter>
