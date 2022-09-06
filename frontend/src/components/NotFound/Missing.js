@@ -10,7 +10,6 @@ const Missing = () => {
   useEffect(() => {
     const pathName = window.location.pathname.split("/")[1];
     const param = window.location.pathname.split("/")[2];
-    console.log(param);
     if (pathName === "classes" && param) {
       if (classeStatus === false) setDisplay(true);
     }
@@ -18,8 +17,6 @@ const Missing = () => {
     if (pathName !== "classes") {
       setDisplay(true);
     }
-    console.log(classeStatus);
-    // console.log();
   }, [classeStatus]);
 
   return (
