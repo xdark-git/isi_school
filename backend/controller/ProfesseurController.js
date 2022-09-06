@@ -7,8 +7,6 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 import generateToken from "../functions/token/generateToken.js";
-import cookieOption from "../functions/cookieOptions.js";
-import generateRefreshToken from "../functions/refreshToken/generateRefreshToken.js";
 
 export const signinProfesseur = async (req, res) => {
   try {
@@ -44,9 +42,7 @@ export const signinProfesseur = async (req, res) => {
         //cleaning data to send
         const data = await Professeur.findById(existingUser["_id"]).select("-__v -motDePasse");
 
-        return res
-          .status(200)
-          .json({ data: data, status, token: token });
+        return res.status(200).json({ data: data, status, token: token });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
@@ -163,6 +159,12 @@ export const signupProfesseur = async (req, res) => {
   }
   if (existingStatusIdInStatus) {
     const hashedMotDePasse = await bcrypt.hash(req.body.motDePasse, 12);
+
+    const admin = await Administration.findById(req?.user?.id);
+    if (!admin) {
+      return res.status(401).json({ message: "Access denied" });
+    }
+
     try {
       const result = await Professeur.create({
         nom: req.body.nom,
@@ -176,18 +178,10 @@ export const signupProfesseur = async (req, res) => {
         email: req.body.email,
         motDePasse: hashedMotDePasse,
         statusId: req.body.statusId,
+        admin_id: req?.user?.id,
       });
       if (result) {
         const status = existingStatusIdInStatus;
-
-        const token = await jwt.sign(
-          {
-            email: result["email"],
-            id: result["_id"],
-          },
-          process.env.SECRET_JWT,
-          { expiresIn: "1h" }
-        );
 
         res.status(201).json({
           message: "Created",
@@ -204,7 +198,6 @@ export const signupProfesseur = async (req, res) => {
             email: req.body.email,
           },
           status,
-          token,
         });
       }
     } catch (err) {
