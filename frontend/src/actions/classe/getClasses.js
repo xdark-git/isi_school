@@ -24,6 +24,6 @@ export const getOne = (id, navigate, onclick) => async (dispatch) => {
     dispatch({ type: DISPLAYONECLASSE, data, opened: true });
     navigate("/classes/" + data?._id);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
