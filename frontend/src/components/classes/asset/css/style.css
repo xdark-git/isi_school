@@ -167,7 +167,7 @@ main .component .content .classe span {
 
 @media only screen and (max-width: 1530px) {
   main .component .content {
-    grid-template-columns: 286px 286px 286px 286px;
+    grid-template-columns: 306px 306px 306px 306px;
   }
   main .component .content .classe {
     width: 289px;
