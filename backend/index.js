@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 //////////Routes//////////
 import userRouter from "./routes/usersRoutes.js";
 import statusRouter from "./routes/statusRoutes.js";
+import classeRoutes from "./routes/classeRoutes.js";
 //////////Routes//////////
 const app = express();
 
@@ -28,6 +29,7 @@ await mongoose
 
 app.use("/api/user", userRouter);
 app.use("/api/status", statusRouter);
+app.use("/api/classe", classeRoutes);
 
 //return a json error when visiting a page that does't exit
 app.use("*", (req, res) => res.status(404).json({ error: "Not found Route" }));

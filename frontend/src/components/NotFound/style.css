@@ -1,0 +1,66 @@
+main .not-found {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+main .not-found div {
+  position: relative;
+
+  top: 126px;
+  left: 13vw;
+}
+
+main .not-found .title {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 135px;
+  line-height: 179px;
+}
+
+main .not-found .description {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+}
+
+@media only screen and (max-width: 1043px) {
+  main .not-found div {
+    left: 17vw;
+  }
+}
+@media only screen and (max-width: 856px) {
+  main .not-found div {
+    left: 20vw;
+  }
+}
+@media only screen and (max-width: 582px) {
+  main .not-found div {
+    left: 13vw;
+  }
+  main .not-found .title {
+    font-size: 128px;
+  }
+
+  main .not-found .description {
+    font-size: 19px;
+  }
+}
+@media only screen and (max-width: 448px) {
+  main .not-found div {
+    left: 13vw;
+  }
+  main .not-found .title {
+    line-height: 40vw;
+    font-size: 29vw;
+  }
+
+  main .not-found .description {
+    font-size: 7vw;
+  }
+}

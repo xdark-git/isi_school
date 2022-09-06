@@ -32,7 +32,6 @@ const LoginForm = () => {
 
   //getting error from redux
   const error = useSelector((state) => state?.signin?.error);
-  // if()
 
   const handleSubmit = async (event) => {
     // Prevent page reload

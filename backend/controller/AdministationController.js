@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 import { Administration } from "../model/Administration.js";
@@ -7,16 +6,6 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import { Status } from "../model/Status.js";
 import generateToken from "../functions/token/generateToken.js";
-import cookieOption from "../functions/cookieOptions.js";
-
-import path, { resolve } from "path";
-import generateRefreshToken from "../functions/refreshToken/generateRefreshToken.js";
-
-const __dirname = path.resolve();
-
-// export const getCreateAdminPage = (req, res) => {
-//   res.sendFile(__dirname + "/views/createUser.html");
-// };
 
 let values;
 let arrayOfValues;
@@ -49,18 +38,10 @@ export const signinAdministration = async (req, res) => {
           status: status["nom"],
         });
 
-        // const refreshToken = await generateRefreshToken({
-        //   email: existingUser["email"],
-        //   id: existingUser["_id"],
-        //   status: status["nom"],
-        // });
-
         //cleaning data to send
         const data = await Administration.findById(existingUser["_id"]).select("-__v -motDePasse");
 
-        return res
-          .status(200)
-          .json({ data: data, status, token: token });
+        return res.status(200).json({ data: data, status, token: token });
       } else {
         return res.status(400).json({ message: "Invalid credential" });
       }
@@ -186,31 +167,3 @@ export const signupAdministration = async (req, res) => {
     }
   }
 };
-
-/**
- * shuffle array to create a userlink
- */
-function shuffle(array) {
-  let currentIndex = array.length,
-    randomIndex;
-  let newArr = [];
-  let count = 0;
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    if (count % 2 == 0 && isNaN(array[randomIndex])) {
-      //console.log(array[randomIndex] + " is not a number");
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex].toUpperCase(),
-        array[currentIndex],
-      ];
-    } else {
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-    }
-    count++;
-  }
-
-  return array.join("");
-}
