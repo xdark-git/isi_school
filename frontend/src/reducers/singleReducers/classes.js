@@ -1,4 +1,4 @@
-import { DISPLAYONECLASSE, GETALLCLASSES } from "../../constantes";
+import { DISPLAYONECLASSE, GETALLCLASSES, NOCLASSEFOUND } from "../../constantes";
 
 export const getAllClassesReducers = (state = [], action) => {
   switch (action.type) {
@@ -12,7 +12,9 @@ export const getAllClassesReducers = (state = [], action) => {
 export const getOneClasseReducer = (state = {}, action) => {
   switch (action.type) {
     case DISPLAYONECLASSE:
-      return {data : action?.data, opened: action.opened};
+      return { data: action?.data, opened: action.opened };
+    case NOCLASSEFOUND:
+      return { opened: action.opened };
     default:
       return state;
   }
