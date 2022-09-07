@@ -25,7 +25,7 @@ await mongoose
     useUnifiedTopology: true,
   })
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
-  .catch((error) => console.log(error.message));
+  .catch((error) => console.log(error.message.toString()));
 
 app.use("/api/user", userRouter);
 app.use("/api/status", statusRouter);
