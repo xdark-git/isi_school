@@ -26,11 +26,14 @@ main .component .display-search .display {
   flex-direction: row;
   align-items: center;
 }
+
 main .component .display-search .display .more {
   position: relative;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 }
+
 main .component .display-search .display .more i {
   position: relative;
   top: 13px;
@@ -43,11 +46,13 @@ main .component .display-search .display .more span {
   font-style: normal;
   font-size: 23px;
 }
+
 main .component .display-search .display .dialog {
   position: relative;
   top: 68px;
   right: 51px;
   width: 188px;
+
   background-color: #ffffff;
 }
 
@@ -74,8 +79,8 @@ main .component .display-search .display ul li {
   align-items: center;
   padding-left: 8px;
 }
-main .component .display-search .display ul li:hover{
-    background-color: rgba(0, 0, 0, 0.4);
+main .component .display-search .display ul li:hover {
+  background-color: rgba(121, 120, 120, 0.4);
 }
 /* main .component .display-search .display .dialog div :hover {
   background-color: rgba(0, 161, 219, 0.4);
@@ -133,7 +138,7 @@ main .component .display-search .search-icon {
   overflow: hidden;
   outline: none;
 }
-main .component .content {
+main .component .content1 {
   position: fixed;
   width: 100%;
   height: 80%;
@@ -146,7 +151,7 @@ main .component .content {
   justify-content: center;
   top: 151px;
 }
-main .component .content .cours {
+main .component .content1 .cours {
   background-size: cover;
   background-image: url(../shape/bg_cours.png);
   position: relative;
@@ -163,21 +168,25 @@ main .component .content .cours {
 
   border-radius: 13px;
 }
-main .component .content .cours .cours-owner {
+main .component .content1 .cours:hover {
+  box-shadow: 0 0 10px rgb(59, 58, 58);
+}
+
+main .component .content1 .cours .cours-owner {
   left: 12px;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-main .component .content .cours .cours-owner img {
+main .component .content1 .cours .cours-owner img {
   width: 22.17px;
   height: 25px;
   top: 13px;
   margin: 0 11px 0 0;
   border-radius: 50%;
 }
-main .component .content .cours .cours-owner .cours-owner-name {
+main .component .content1 .cours .cours-owner .cours-owner-name {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -187,7 +196,7 @@ main .component .content .cours .cours-owner .cours-owner-name {
 
   color: #ffffff;
 }
-main .component .content .cours .cours-name {
+main .component .content1 .cours .cours-name {
   position: relative;
   left: 12px;
   width: 359px;
@@ -198,4 +207,186 @@ main .component .content .cours .cours-name {
   font-size: 25px;
   line-height: 54px;
   color: #ffffff;
+}
+
+@media only screen and (max-width: 1530px) {
+  main .component .content1 {
+    grid-template-columns: 306px 306px 306px 306px;
+  }
+  main .component .content1 .cours {
+    width: 304px;
+    height: 125px;
+  }
+  main .component .content1 .cours div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 1430px) {
+  main .component .content1 {
+    grid-template-columns: 21vw 20vw 20vw 21vw;
+  }
+  main .component .content1 .cours {
+    width: 20vw;
+    height: 103px;
+  }
+  main .component .content1 .cour div {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 1251px) {
+  main .component .content1 {
+    grid-template-columns: 25vw 25vw 28vw;
+  }
+  main .component .content1 .cours {
+    width: 25vw;
+    height: 11vw;
+  }
+  main .component .content1 .cour div {
+    font-size: 12px;
+  }
+  main .component .content1 .cours .cours-name {
+    font-size: 2vw;
+  }
+}
+@media only screen and (max-width: 785px) {
+  main .component .display-search .search input {
+    width: 201px;
+    height: 26px;
+    left: 103px;
+  }
+  main .component .display-search .search .search-icon {
+    bottom: 6px;
+    right: -90px;
+  }
+  main .component .display-search {
+    left: 51px;
+  }
+  main .component .content1 {
+    grid-template-columns: 193px 193px 222px;
+  }
+  main .component .content1 .cours {
+    width: 210px;
+    height: 93px;
+    left: 0;
+  }
+  main .component .display-search .display .more span {
+    font-size: 19px;
+  }
+  main .component .display-search .display .more i {
+    font-size: 15px;
+  }
+  main .component .content1 .cours .cours-name {
+    height: 22px;
+    font-size: 16px;
+    line-height: 35px;
+  }
+}
+
+@media only screen and (max-width: 684px) {
+  main .component .content1 {
+    grid-template-columns: 187px 187px 31vw;
+  }
+  main .component .content1 .cours {
+    width: 199px;
+    height: 93px;
+    left: 0;
+  }
+}
+@media only screen and (max-width: 640px) {
+  main .component .content1 {
+    grid-template-columns: 45vw 43vw;
+  }
+  main .component .content1 .cours {
+    width: 257px;
+    height: 107px;
+  }
+  main .component .content1 .cours .cours-name {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  main .component .content1 {
+    grid-template-columns: 45vw 46vw;
+  }
+  main .component .content1 .cours {
+    width: 235px;
+    height: 107px;
+  }
+  main .component .content1 .cours .cours-name {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  main .component .content1 {
+    grid-template-columns: 43vw 43vw;
+  }
+  main .component .content1 .cours {
+    width: 208px;
+    height: 93px;
+  }
+  main .component .content1 .cours .cours-name {
+    height: 30px;
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  main .component .content1 {
+    grid-template-columns: 43vw 47vw;
+  }
+}
+@media only screen and (max-width: 436px) {
+  main .component .content1 {
+    grid-template-columns: 70vw;
+  }
+  main .component .content1 .cours {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content1 .cours .cours-name {
+    height: 34px;
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 398px) {
+  main .component {
+    overflow-x: auto;
+  }
+  main .component .display-search .search {
+    position: fixed;
+    /* left: 30px; */
+    right: -20px;
+    bottom: 277px;
+    /* top: 35px; */
+    /* display: flex; */
+    /* flex-direction: row; */
+  }
+  main .component .display-search .search {
+    right: unset;
+  }
+  main .component .display-search .search form {
+    right: unset;
+  }
+  main .component .display-search .search input {
+    position: fixed;
+    left: 130px;
+  }
+  main .component .display-search .search .search-icon {
+    right: -269px;
+  }
+}
+@media only screen and (max-width: 398px) {
+  main .component {
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  main .component .content1 {
+    grid-template-columns: 288px;
+  }
+  main .component .display-search .display .more {
+    right: 33px;
+  }
 }
