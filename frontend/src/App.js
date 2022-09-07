@@ -6,7 +6,7 @@ import Login from "./components/connexion/Login/Login";
 import Dashboard from "./components/Dashbord";
 import Missing from "./components/NotFound/Missing";
 import Classes from "./components/classes/Classes";
-import DisplayOneClasse from "./components/classes/DisplayOneClasse/DisplayOneClasse";
+import DisplayOneClasse from "./components/DisplayOneClasse/DisplayOneClasse";
 
 const App = () => {
   const lienClasse = useSelector((state) => state?.classe?.data?._id);
