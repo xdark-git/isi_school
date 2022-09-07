@@ -1,23 +1,25 @@
-import React from "react";
-import Navbar from "../../navbar/Navbar";
-// import "./asset/css/style.css";
+import React, { useState } from "react";
+import Navbar from "../navbar/Navbar";
+import "./asset/css/style.css";
+import Plus from "./dialogs/Plus";
 
 const DisplayOneClasse = () => {
+  const [plusDialog, setPlusDialog] = useState(false);
+  const openPlusDialog = () => {
+    if (plusDialog === true) setPlusDialog(false);
+    else setPlusDialog(true);
+  };
   return (
     <main>
       <Navbar />
       <div className="component">
         <div className="display-search">
           <div className="display">
-            <div className="more">
-              <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+            <div id="plus" className="more" onClick={openPlusDialog}>
+              <i className="fa-solid fa-ellipsis-vertical fa-lg"></i>
               <span>Plus</span>
             </div>
-            <ul className="dialog">
-              <li className="display-prof">Liste des professeurs</li>
-              <li className="display-etudiant">Liste des etudiants</li>
-              <li>Supprimer la classe</li>
-            </ul>
+            {plusDialog === true && <Plus />}
           </div>
           <div className="search">
             <form>
@@ -32,7 +34,7 @@ const DisplayOneClasse = () => {
             </form>
           </div>
         </div>
-        <div className="content">
+        <div className="content1">
           <div className="cours">
             <div className="cours-owner">
               <img
