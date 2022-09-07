@@ -1,0 +1,195 @@
+.listing {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100%;
+  padding-left: 110px;
+  top: 71px;
+  display: flex;
+  flex-direction: column;
+  animation-name: listing-etudiant-prof;
+  animation-duration: 0.7s;
+  background-color: #f7f8fa;
+}
+
+@keyframes listing-etudiant-prof {
+  0% {
+    top: 200vh;
+  }
+  100% {
+    top: 71px;
+  }
+}
+.listing .listing-header {
+  position: relative;
+  width: 100vw;
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #00a1db;
+  box-shadow: 0px 1px 5px #9b9b9d;
+}
+.listing .listing-header i {
+  position: relative;
+  left: 2%;
+  color: #ffffff;
+}
+.listing .listing-header i:hover {
+  transform: scale(1.5);
+}
+.listing .listing-header .listing-header-title {
+  position: relative;
+  left: 58px;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.listing .listing-header .listing-header-button {
+  position: relative;
+  left: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 13px;
+}
+.listing .listing-header .listing-header-button button {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  color: #ffffff;
+}
+.listing .listing-header span .btn-ajouter:hover {
+  background-color: rgba(0, 241, 80, 1.7);
+}
+.listing .listing-header span .btn-supprimer:hover {
+  background-color: rgba(232, 17, 35, 1.7);
+}
+
+.listing .listing-content {
+  position: relative;
+  width: 100vw;
+  height: 92vh;
+  display: flex;
+
+  flex-direction: column;
+
+  font-family: "Poppins";
+  font-style: normal;
+}
+/* .listing .listing-content::-webkit-scrollbar {
+    width: 12px;
+  } */
+.listing .listing-content ul {
+  position: relative;
+  width: 93vw;
+  height: 100%;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75;
+  font-size: 23px;
+  /* overflow: hidden; */
+  /* overflow: scroll;
+  overflow-y: visible;
+  overflow-x: hidden; */
+  /* margin: 12px;
+  min-width: 64px; */
+  color: #000000;
+}
+.listing .listing-content ul li {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 17px;
+  background-color: #f7f8fa;
+}
+.listing .listing-content ul li:hover {
+  background-color: rgba(121, 120, 120, 0.4);
+}
+.listing .listing-content ul li img {
+  width: 22.17px;
+  height: 25px;
+  top: 13px;
+  margin: 0 11px 0 0;
+  border-radius: 50%;
+}
+.listing .listing-content ul li input[type="checkbox"] {
+  position: relative;
+  width: 22.17px;
+  height: 25px;
+  margin-left: 79vw;
+
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #d5d5d5;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+.listing .listing-content ul li input[type="checkbox"]:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00c";
+  font-size: 15px;
+  color: #ffffff;
+  display: none;
+}
+.listing .listing-content ul li input[type="checkbox"]:hover {
+  background-color: #a5a5a5;
+}
+.listing .listing-content ul li input[type="checkbox"]:checked {
+  background-color: #00a1db;
+}
+.listing .listing-content ul li input[type="checkbox"]:checked:after {
+display: block;
+}

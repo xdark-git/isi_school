@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
+import ListProf from "./dialogs/ListProf/ListProf";
 import Plus from "./dialogs/Plus";
 
 const DisplayOneClasse = () => {
@@ -146,6 +147,7 @@ const DisplayOneClasse = () => {
             <div className="cours-name">Developpement Web</div>
           </div>
         </div>
+        <ListProf />
       </div>
     </main>
   );
