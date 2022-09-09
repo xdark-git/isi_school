@@ -43,6 +43,11 @@ export const closeAlertDialog = "CLOSE_ALERT_DIALOG";
 export const alertDialogOpened = "ALERT_DIALOG_OPENED";
 export const alertDialogClosed = "ALERT_DIALOG_CLOSED";
 
+export const openDeleteDialog = "OPEN_DELETE_DIALOG";
+export const closeDeleteDialog = "CLOSE_DELETE_DIALOG";
+export const deleteDialogOpened = "DELETE_DIALOG_OPENED";
+export const deleteDialogClosed = "DELETE_DIALOG_CLOSED";
+
 export const openListProfEtudiantDialog = "OPEN_LIST_PROF_ETUDIANT_DIALOG";
 export const closeListProfEtudiantDialog = "CLOSE_LIST_PROF_ETUDIANT_DIALOG";
 export const listProfEtudiantDialogOpened = "LIST_PROF_ETUDIANT_DIALOG_OPENED";
