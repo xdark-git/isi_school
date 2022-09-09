@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { openListProfEtudiantDialog } from "../../../constantes";
+import { openDeleteDialog, openListProfEtudiantDialog } from "../../../constantes";
 
 const Plus = (changeState, state) => {
   const dispatch = useDispatch();
@@ -10,6 +10,11 @@ const Plus = (changeState, state) => {
   const listEtudiant = () => {
     dispatch({ type: openListProfEtudiantDialog, profile: "Etudiant" });
   };
+
+  //opening deleteDialog to confirm or cancel
+  const confirmDeletion = () => {
+    dispatch({ type: openDeleteDialog });
+  };
   return (
     <ul id="plusDialog" className="dialog">
       <li className="display-prof" onClick={listProf}>
@@ -18,7 +23,7 @@ const Plus = (changeState, state) => {
       <li className="display-etudiant" onClick={listEtudiant}>
         Liste des etudiants
       </li>
-      <li>Supprimer la classe</li>
+      <li onClick={confirmDeletion}>Supprimer la classe</li>
     </ul>
   );
 };
