@@ -19,6 +19,10 @@ import {
   listProfEtudiantDialogClosed,
   listProfEtudiantDialogOpened,
   closeListProfEtudiantDialog,
+  deleteDialogClosed,
+  openDeleteDialog,
+  deleteDialogOpened,
+  closeDeleteDialog,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -81,6 +85,20 @@ export const alertDialogReducer = (alertDialog = { status: alertDialogClosed }, 
       });
     default:
       return alertDialog;
+  }
+};
+export const deleteDialogReducer = (state = { status: deleteDialogClosed }, action) => {
+  switch (action.type) {
+    case openDeleteDialog:
+      return (state = {
+        status: deleteDialogOpened,
+        target: action?.target,
+        id: action?.id,
+      });
+    case closeDeleteDialog:
+      return (state = { status: deleteDialogClosed });
+    default:
+      return state;
   }
 };
 
