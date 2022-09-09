@@ -79,3 +79,5 @@ export const alertDialogReducer = (alertDialog = { status: alertDialogClosed }, 
       return alertDialog;
   }
 };
+
+export const listProfEtudiantReducer = (state = {}, action) => {};
