@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { listProfEtudiantDialogOpened } from "../../constantes";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
@@ -12,7 +13,8 @@ const DisplayOneClasse = () => {
     else setPlusDialog(true);
   };
 
-  const isProfEtudiantDialogOpened = useSelector((state)=>{ })
+  const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
+
   return (
     <main>
       <Navbar />
@@ -150,7 +152,7 @@ const DisplayOneClasse = () => {
             <div className="cours-name">Developpement Web</div>
           </div>
         </div>
-        <ListProfEtudiant />
+        {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
       </div>
     </main>
   );
