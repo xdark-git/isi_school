@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
@@ -10,6 +11,8 @@ const DisplayOneClasse = () => {
     if (plusDialog === true) setPlusDialog(false);
     else setPlusDialog(true);
   };
+
+  const isProfEtudiantDialogOpened = useSelector((state)=>{ })
   return (
     <main>
       <Navbar />

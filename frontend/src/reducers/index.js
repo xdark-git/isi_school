@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import {
   alertDialogReducer,
+  listProfEtudiantReducer,
   logoutDialogReducer,
   menuDialogReducer,
   newClassDialogReducer,
@@ -16,6 +17,7 @@ export default combineReducers({
   stateLogoutDialog: logoutDialogReducer,
   stateNewClassDialog: newClassDialogReducer,
   stateAlertDialog: alertDialogReducer,
+  stateProfEtudiantDialog: listProfEtudiantReducer,
   classes: getAllClassesReducers,
   classe: getOneClasseReducer,
 });
