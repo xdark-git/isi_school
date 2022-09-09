@@ -1,0 +1,90 @@
+.delete {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.delete .delete-main {
+  position: relative;
+  top: 80px;
+  width: 70vw;
+  min-width: 289px;
+  max-width: 400px;
+  height: 60vw;
+  min-height: 182px;
+  max-height: 197px;
+  bottom: 11vh;
+  border-radius: 3px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  font-family: "Poppins";
+  font-style: normal;
+  animation-name: nouvelle-classe-contenu;
+  animation-duration: 0.8s;
+}
+
+.delete .delete-main i {
+  position: relative;
+  top: 20px;
+  font-family: "Font Awesome 5 Free";
+  /* font-weight: 900; */
+  font-size: 45px;
+  color: red;
+}
+
+.delete .delete-main .description {
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 16px;
+
+  color: #333333;
+}
+.delete .delete-main .btn {
+  position: relative;
+  bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.delete .delete-main .btn button {
+  /* background-color: #04AA6D; */
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20vw;
+  max-width: 150px;
+  min-width: 113px;
+  height: 43px;
+  opacity: 0.8;
+}
+.delete .delete-main .btn button:hover {
+  opacity: 1;
+}
+.delete .delete-main .btn .btn-supprimer {
+  background-color: #f44336;
+  /* width: 500px;*/
+}
+.delete .delete-main .btn .btn-annuler {
+  background-color: #cccccc;
+  color: #000000;
+}
+@media only screen and (max-width: 469px) {
+  .delete .delete-main .description {
+    font-family: "Poppins";
+    font-style: normal;
+    font-size: 14px;
+
+    color: #333333;
+  }
+}
