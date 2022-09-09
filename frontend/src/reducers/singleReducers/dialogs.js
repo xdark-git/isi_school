@@ -98,6 +98,7 @@ export const listProfEtudiantReducer = (
     case closeListProfEtudiantDialog:
       return (state = {
         status: listProfEtudiantDialogClosed,
+        profile: action?.profile,
       });
     default:
       return state;
