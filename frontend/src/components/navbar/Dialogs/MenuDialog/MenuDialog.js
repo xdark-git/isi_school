@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch} from "react-redux";
-import { closeMenuDialog} from "../../../../constantes";
+import { useDispatch } from "react-redux";
+import { closeMenuDialog } from "../../../../constantes";
 import "../style.css";
 const MenuDialog = (user, status) => {
   const dispatch = useDispatch();
@@ -20,11 +20,9 @@ const MenuDialog = (user, status) => {
           <div className="profile">
             <div>Profil</div>
           </div>
-          {user?.user?.status === "Administrateur" && (
-            <div className="classes checked">
-              <div>classes</div>
-            </div>
-          )}
+          <div className="classes checked">
+            <div>classes</div>
+          </div>
           {/* <div className="cours">
             <div>Cours</div>
           </div> */}
