@@ -7,7 +7,7 @@ export const signinEtudiant = (formData, navigate) => async (dispatch) => {
 
     dispatch({ type: LOGIN, data });
 
-    navigate("/dashboard");
+    navigate("/classes");
   } catch (error) {
     if (error.response?.data?.message === "Invalid credential") {
       const data = "informations d'identification invalides";
@@ -24,7 +24,7 @@ export const signinProfesseur = (formData, navigate) => async (dispatch) => {
     const { data } = await api.signProfesseur(formData);
     dispatch({ type: LOGIN, data });
 
-    navigate("/dashboard");
+    navigate("/classes");
   } catch (error) {
     if (error.response?.data?.message === "Invalid credential") {
       const data = "informations d'identification invalides";
