@@ -11,6 +11,14 @@ const DeleteDialog = () => {
       type: closeDeleteDialog,
     });
   };
+  // closing the dialog on click ouside chil div
+  window.onclick = (event) => {
+    var parentDiv = document.getElementById("delete");
+    if (event.target === parentDiv)
+      dispatch({
+        type: closeDeleteDialog,
+      });
+  };
   return (
     <div id="delete" className="delete">
       <div className="delete-main">
