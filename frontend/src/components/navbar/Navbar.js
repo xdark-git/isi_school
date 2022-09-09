@@ -135,10 +135,10 @@ const Navbar = () => {
                 <div>classes</div>
               </div>
             )}
-            <div className="cours">
+            {/* <div className="cours">
               <i className="fa-solid fa-file-lines fa-lg"></i>
               <div>Cours</div>
-            </div>
+            </div> */}
             <div className="informations">
               <i className="fa-solid fa-bell fa-lg"></i>
               <div>Informations</div>

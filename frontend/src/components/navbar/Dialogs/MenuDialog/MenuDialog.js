@@ -25,9 +25,9 @@ const MenuDialog = (user, status) => {
               <div>classes</div>
             </div>
           )}
-          <div className="cours">
+          {/* <div className="cours">
             <div>Cours</div>
-          </div>
+          </div> */}
           <div className="informations">
             <div>Informations</div>
           </div>
