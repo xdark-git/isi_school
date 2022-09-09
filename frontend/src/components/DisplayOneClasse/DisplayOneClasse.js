@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { listProfEtudiantDialogOpened } from "../../constantes";
+import { deleteDialogOpened, listProfEtudiantDialogOpened } from "../../constantes";
 import DeleteDialog from "../Delete/DeleteDialog";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
@@ -15,7 +15,7 @@ const DisplayOneClasse = () => {
   };
 
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
-
+  const isDeleteDialogOpened = useSelector((state) => state?.stateDeleteDialog?.status);
   return (
     <main>
       <Navbar />
@@ -154,7 +154,7 @@ const DisplayOneClasse = () => {
           </div>
         </div>
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
-        <DeleteDialog />
+        {isDeleteDialogOpened === deleteDialogOpened && <DeleteDialog />}
       </div>
     </main>
   );
