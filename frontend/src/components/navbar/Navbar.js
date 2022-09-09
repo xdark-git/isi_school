@@ -129,12 +129,10 @@ const Navbar = () => {
               <i className="fa-solid fa-gear fa-lg"></i>
               <div>Profil</div>
             </div>
-            {user?.status === "Administrateur" && (
-              <div className="classes checked">
-                <i className="fa-solid fa-building fa-lg"></i>
-                <div>classes</div>
-              </div>
-            )}
+            <div className="classes checked">
+              <i className="fa-solid fa-building fa-lg"></i>
+              <div>classes</div>
+            </div>
             {/* <div className="cours">
               <i className="fa-solid fa-file-lines fa-lg"></i>
               <div>Cours</div>
