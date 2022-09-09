@@ -18,6 +18,10 @@ const classeSchema = new Schema(
     },
     profs_id: [String],
     etudiants_id: [String],
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
