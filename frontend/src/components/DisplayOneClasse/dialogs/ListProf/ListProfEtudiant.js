@@ -1,12 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { closeListProfEtudiantDialog } from "../../../../constantes";
 import "./asset/css/style.css";
 
 const ListProfEtudiant = () => {
+  const dispatch = useDispatch();
+
+  const closeDialog = () => {
+    dispatch({ type: closeListProfEtudiantDialog });
+  };
   return (
     <div id="listing" className="listing">
       <div className="listing-header">
         <div>
-          <i class="fa-solid fa-xmark fa-xl"></i>
+          <i class="fa-solid fa-xmark fa-xl" onClick={closeDialog}></i>
           <span className="listing-header-title">Professeurs</span>
         </div>
         <span className="listing-header-button">
