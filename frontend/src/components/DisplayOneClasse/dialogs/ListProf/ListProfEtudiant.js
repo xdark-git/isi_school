@@ -1,7 +1,7 @@
 import React from "react";
 import "./asset/css/style.css";
 
-const ListProf = () => {
+const ListProfEtudiant = () => {
   return (
     <div id="listing" className="listing">
       <div className="listing-header">
@@ -33,4 +33,4 @@ const ListProf = () => {
   );
 };
 
-export default ListProf;
+export default ListProfEtudiant;
