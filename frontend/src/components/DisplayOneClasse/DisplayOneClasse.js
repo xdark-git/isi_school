@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { listProfEtudiantDialogOpened } from "../../constantes";
+import DeleteDialog from "../Delete/DeleteDialog";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
@@ -153,6 +154,7 @@ const DisplayOneClasse = () => {
           </div>
         </div>
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
+        <DeleteDialog />
       </div>
     </main>
   );
