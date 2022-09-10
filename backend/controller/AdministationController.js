@@ -183,7 +183,7 @@ export const signupAdministration = async (req, res) => {
         });
       }
     } catch (err) {
-      console.log(err.toString());
+      // console.log(err.toString());
       return res.status(500).json({ message: "Something went wrong." });
     }
   }
