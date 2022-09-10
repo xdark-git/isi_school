@@ -175,7 +175,7 @@ export const signupProfesseur = async (req, res) => {
   }
   // verify if the statusid exist and creating the new user
   const existingStatusIdInStatus = await Status.findById(req.body.statusId).select("-_id -__v");
-  if (!existingStatusIdInStatus || existingStatusIdInStatus != "Professeur") {
+  if (!existingStatusIdInStatus || existingStatusIdInStatus?.nom != "Professeur") {
     return res.status(406).json({ message: "Not Acceptable Status" });
   }
   if (existingStatusIdInStatus) {
