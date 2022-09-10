@@ -47,7 +47,7 @@ export const signinEtudiant = async (req, res) => {
         const data = await Etudiant.findById(existingUser["_id"])
           .where("isDeleted")
           .equals(false)
-          .select("-__v -motDePasse");
+          .select("-__v -motDePasse -isDeleted");
 
         return res.status(200).json({ data: data, status, token: token });
       } else {
