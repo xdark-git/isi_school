@@ -203,7 +203,7 @@ export const signupProfesseur = async (req, res) => {
       });
       if (result) {
         const status = existingStatusIdInStatus;
-        const newUser = Professeur.findById(result["_id"])
+        const newUser = await Professeur.findById(result["_id"])
           .where("isDeleted")
           .equals(false)
           .select("-__v -motDePasse -isDeleted");
@@ -215,7 +215,7 @@ export const signupProfesseur = async (req, res) => {
         });
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err.toString());
       res.status(500).json({ message: "Internal Server Error" });
     }
   }
