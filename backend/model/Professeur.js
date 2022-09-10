@@ -20,12 +20,12 @@ const professeurSchema = new Schema(
     telephone: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     identifiantProf: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     specialite: {
       type: [String],
@@ -42,7 +42,7 @@ const professeurSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     email: {
       type: String,

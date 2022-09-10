@@ -19,12 +19,12 @@ const etudiantSchema = new Schema(
     telephone: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     numeroDeCarte: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     dateDeNaissance: {
       type: Date,
@@ -37,12 +37,12 @@ const etudiantSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     motDePasse: {
       type: String,
