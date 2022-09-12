@@ -3,6 +3,7 @@ import { Classe } from "../model/Classe.js";
 import { Administration } from "../model/Administration.js";
 import { Status } from "../model/Status.js";
 import generateUniqueLink from "../functions/generateUniqueLink.js";
+import { handleClasseError } from "../functions/handleError.js";
 
 export const createClasse = async (req, res) => {
   try {
@@ -36,7 +37,8 @@ export const createClasse = async (req, res) => {
       .select("-__v -isDeleted");
     return res.status(200).json(newClasse);
   } catch (error) {
-    return res.status(500).json({ message: "Something went wrong." });
+    const errors = handleClasseError(error);
+    return res.status(500).json({ errors });
   }
 };
 
