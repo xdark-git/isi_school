@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createClasse } from "../../../../actions/classe/createUpdateClasses";
-import { closeNewClassDialog } from "../../../../constantes";
+import { closeNewClassDialog, CREATIONCLASSEDIALOGCLOSED } from "../../../../constantes";
 import "../style.css";
 
 const NewClassDialog = () => {
@@ -12,19 +12,23 @@ const NewClassDialog = () => {
     var nouvelleClasseDiv = document.getElementById("nouvelleClasse");
     if (event.target === nouvelleClasseDiv) {
       dispatch({ type: closeNewClassDialog });
+      //cleaning error message
+      dispatch({ type: CREATIONCLASSEDIALOGCLOSED });
     }
   };
   const closeDialog = () => {
     dispatch({ type: closeNewClassDialog });
-    console.log("okay");
+    //cleaning error message
+    dispatch({ type: CREATIONCLASSEDIALOGCLOSED });
   };
 
   const [nomClasse, setNomClasse] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(nomClasse);
-    dispatch(createClasse({nom: nomClasse}, navigate))
+    dispatch(createClasse({ nom: nomClasse }, navigate));
   };
+  const error = useSelector((state) => state?.createClasse?.errors);
 
   return (
     <div id="nouvelleClasse" className="nouvelle-classe">
@@ -32,6 +36,7 @@ const NewClassDialog = () => {
         <div className="title">Nouvelle Classe</div>
         <div className="description">Merci de donner le nom de la nouvelle classe </div>
         <form onSubmit={handleSubmit}>
+          <div className="error">{error?.nom}</div>
           <input
             type="text"
             name="nom"
