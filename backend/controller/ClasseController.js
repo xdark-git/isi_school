@@ -10,7 +10,7 @@ export const createClasse = async (req, res) => {
     //checking if the user still exist and is Admin
     const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!user) {
-      return res.status(401).json({ message: "Access denied" });
+      return res.status(401).json({ message: "Accès non autorisé" });
     }
 
     //verifying if the req body has a nom propety
@@ -24,7 +24,9 @@ export const createClasse = async (req, res) => {
     const existingClasse = await Classe.findOne(req.body).where("isDeleted").equals(false);
 
     if (existingClasse) {
-      return res.status(409).json({ message: "A classe with the same name already exist" });
+      return res
+        .status(409)
+        .json({ errors: { message: "Une classe portant le même nom existe déjà" } });
     }
 
     //classe creation
@@ -47,7 +49,7 @@ export const getAll = async (req, res) => {
     //checking if the user still exist
     const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!user) {
-      return res.status(401).json({ message: "Access denied" });
+      return res.status(401).json({ message: "Accès non autorisé" });
     }
 
     const classes = await Classe.find({})
@@ -58,7 +60,7 @@ export const getAll = async (req, res) => {
     return res.status(200).json(classes);
   } catch (error) {
     // console.log(error);
-    return res.status(500).json({ message: "Something went wrong." });
+    return res.status(500).json({ message: "Un problème est survenu" });
   }
 };
 
@@ -67,7 +69,7 @@ export const getOne = async (req, res) => {
     //checking if the user still exist
     const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!user) {
-      return res.status(401).json({ message: "Access denied" });
+      return res.status(401).json({ message: "Accès non autorisé" });
     }
 
     const classe = await Classe.findById(req?.params?._id)
@@ -76,12 +78,12 @@ export const getOne = async (req, res) => {
       .select("-__v -isDeleted");
 
     if (!classe) {
-      return res.status(404).json({ message: "Not found" });
+      return res.status(404).json({ message: "Introuvable" });
     }
 
     return res.status(200).json(classe);
   } catch (error) {
     // return res.status(400).json({ message: "malformed request syntax." });
-    return res.status(404).json({ message: "Not Found" });
+    return res.status(404).json({ message: "Introuvable" });
   }
 };
