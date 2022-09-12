@@ -23,26 +23,30 @@ const Classes = () => {
   // eslint-disable-next-line
   const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
   const classes = useSelector((state) => state?.classes);
+  const [isAdmin, setIsAdmin] = useState(false);
   var lisOfClasses;
   useEffect(() => {
     const token = userToken;
     if (token != null) {
       const decodedToken = decode(token);
+      //displaying newClassOption
+      if (decodedToken?.status === "Administrateur") {
+        setIsAdmin(true);
+      }
       if (decodedToken?.exp * 1000 > new Date().getTime()) {
         dispatch(getAll(navigate));
       }
     }
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const getOneClasse = (id) =>{
-    dispatch(getOne(id, navigate))
-  }
- 
+  const getOneClasse = (id) => {
+    dispatch(getOne(id, navigate));
+  };
 
   if (classes.length >= 1) {
     lisOfClasses = classes.map((el) => (
-      <div className="classe" key={el?._id} onClick={()=> getOneClasse(el?._id)}>
+      <div className="classe" key={el?._id} onClick={() => getOneClasse(el?._id)}>
         {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
         {el?.nom.length > 17 && <div className="classe-name">{el?.nom.substring(0, 21)}...</div>}
         <span>{el?.etudiants_id.length} étudiants</span>
@@ -54,10 +58,12 @@ const Classes = () => {
       <Navbar />
       <div className="component">
         <div className="new-search">
-          <div className="new" onClick={displayNewClasseDialog}>
-            <i className="fa-solid fa-plus"></i>
-            <div>nouvelle classe</div>
-          </div>
+          {isAdmin === true && (
+            <div className="new" onClick={displayNewClasseDialog}>
+              <i className="fa-solid fa-plus"></i>
+              <div>nouvelle classe</div>
+            </div>
+          )}
           <div className="search">
             <form>
               <input
