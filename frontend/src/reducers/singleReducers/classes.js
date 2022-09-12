@@ -1,4 +1,10 @@
-import { DISPLAYONECLASSE, GETALLCLASSES, NOCLASSEFOUND } from "../../constantes";
+import {
+  DISPLAYONECLASSE,
+  GETALLCLASSES,
+  NOCLASSEFOUND,
+  ERRORONCLASSECREATION,
+  CREATIONCLASSEDIALOGCLOSED
+} from "../../constantes";
 
 export const getAllClassesReducers = (state = [], action) => {
   switch (action.type) {
@@ -15,6 +21,17 @@ export const getOneClasseReducer = (state = {}, action) => {
       return { data: action?.data, opened: action.opened };
     case NOCLASSEFOUND:
       return { opened: action.opened };
+    default:
+      return state;
+  }
+};
+
+export const createOneClasseReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ERRORONCLASSECREATION:
+      return action.errors;
+    case CREATIONCLASSEDIALOGCLOSED:
+      return (state = {});
     default:
       return state;
   }
