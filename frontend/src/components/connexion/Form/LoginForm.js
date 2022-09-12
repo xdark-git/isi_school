@@ -42,7 +42,6 @@ const LoginForm = () => {
     }
 
     if (profileStatus === PROFESSEUR) {
-      console.log("okay");
       dispatch(signinProfesseur({ email, motDePasse }, navigate));
     }
   };
