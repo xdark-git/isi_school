@@ -36,7 +36,8 @@ const NewClassDialog = () => {
         <div className="title">Nouvelle Classe</div>
         <div className="description">Merci de donner le nom de la nouvelle classe </div>
         <form onSubmit={handleSubmit}>
-          <div className="error">{error?.nom}</div>
+          {error?.message && <div className="error">{error?.message}</div>}
+          {error?.nom && <div className="error">{error?.nom}</div>}
           <input
             type="text"
             name="nom"
