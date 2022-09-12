@@ -9,7 +9,11 @@ import {
 } from "./singleReducers/dialogs";
 
 import { profileSelectedReducer, signinUserReducer } from "./singleReducers/login";
-import { getAllClassesReducers, getOneClasseReducer } from "./singleReducers/classes";
+import {
+  getAllClassesReducers,
+  getOneClasseReducer,
+  createOneClasseReducer,
+} from "./singleReducers/classes";
 
 export default combineReducers({
   profile: profileSelectedReducer,
@@ -22,4 +26,5 @@ export default combineReducers({
   stateDeleteDialog: deleteDialogReducer,
   classes: getAllClassesReducers,
   classe: getOneClasseReducer,
+  createClasse: createOneClasseReducer,
 });
