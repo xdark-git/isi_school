@@ -6,7 +6,8 @@ const classeSchema = new Schema(
   {
     nom: {
       type: String,
-      required: true,
+      required: [true, "Le nom de la classe est requis"],
+      minlength: [3, "La taille minimale est de 3 caractères"]
     },
     lien: {
       type: String,
