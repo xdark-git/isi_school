@@ -16,7 +16,7 @@ export const getAll = (navigate) => async (dispatch) => {
   }
 };
 
-export const getOne = (id, navigate, onclick) => async (dispatch) => {
+export const getOne = (id, navigate) => async (dispatch) => {
   try {
     const classe = await api.getOneClasse(id);
     const data = classe?.data;
