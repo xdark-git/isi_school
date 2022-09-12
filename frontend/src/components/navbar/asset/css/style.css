@@ -2,6 +2,7 @@ div header {
   position: fixed;
   z-index: 10;
   width: 100vw;
+  min-width: 115px;
   height: 30px;
   right: 0%;
   display: flex;
