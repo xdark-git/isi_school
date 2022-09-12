@@ -6,7 +6,7 @@ import generateUniqueLink from "../functions/generateUniqueLink.js";
 
 export const createClasse = async (req, res) => {
   try {
-    //checking if the user still exist
+    //checking if the user still exist and is Admin
     const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!user) {
       return res.status(401).json({ message: "Access denied" });
