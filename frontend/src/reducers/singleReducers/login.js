@@ -25,7 +25,7 @@ export const profileSelectedReducer = (profile = initialProfileState, action) =>
       return initialProfileState;
     case PROFESSEUR:
       return {
-        etudiant: "btn-profil ",
+        etudiant: "btn-profil",
         professeur: "btn-profil checked",
         profile: PROFESSEUR,
       };
