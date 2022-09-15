@@ -9,3 +9,7 @@ export const handleClasseError = (err) => {
   }
   return error;
 };
+export const handleModelIdOnFindError = (err) => {
+  if (err.message.includes("Cast to ObjectId failed for value")) return true;
+  else return false;
+};
