@@ -2,7 +2,7 @@ import "dotenv/config";
 import { Classe } from "../model/Classe.js";
 import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
-import { Status } from "../model/Status.js";
+import { Etudiant } from "../model/Etudiant.js";
 import generateUniqueLink from "../functions/generateUniqueLink.js";
 import { handleClasseError, handleModelIdOnFindError } from "../functions/handleError.js";
 import { Cours } from "../model/Cours.js";
@@ -104,7 +104,6 @@ export const getOne = async (req, res) => {
       isDeleted: false,
       classe_id: classe["_id"],
     });
-    console.log(existingCoursInThisClasse);
 
     return res.status(200).json(classe);
   } catch (error) {
@@ -115,7 +114,7 @@ export const getOne = async (req, res) => {
 
 export const addNewProf = async (req, res) => {
   try {
-    //checking if the user still exist
+    //checking if the user still exist and is admin
     const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!user) {
       return res.status(401).json({ message: "Accès non autorisé" });
@@ -154,4 +153,44 @@ export const addNewProf = async (req, res) => {
         .status(401)
         .json({ errors: { message: "Le professeur sélectionné n'existe pas" } });
   }
+};
+
+export const addNewEtudiant = async (req, res) => {
+  try {
+    //checking if the user still exist and is admin
+    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    if (!user) {
+      return res.status(401).json({ message: "Accès non autorisé" });
+    }
+    // verifying if the Etudiant still exist and isn't in any classe yet
+    const existingEtudiant = await Etudiant.findById(req?.body?.etudiant_id)
+      .where("isDeleted")
+      .equals(false);
+    if (!existingEtudiant) {
+      return res.status(401).json({ errors: { message: "L'étudiant sélectionné n'existe pas" } });
+    }
+
+    const isEtudiantAlreadyInAClasse = await Classe.find({
+      etudiants_id: { $in: [req?.body?.etudiant_id] },
+    })
+      .where("isDeleted")
+      .equals(false)
+      .select("-__v -isDeleted");
+    if (isEtudiantAlreadyInAClasse.length > 0) {
+      return res
+        .status(401)
+        .json({ errors: { message: "L'étudiant sélectionné existe déjà dans une classe" } });
+    }
+
+    //verifying if the classe that we try to add the Etudiant exist
+    //updating classe
+    const existingClasse = await Classe.findById(req?.params?._id).where("isDeleted").equals(false);
+    if (!existingClasse) {
+      return res.status(401).json({ errors: { message: "La classe sélectionnée n'existe pas" } });
+    }
+    existingClasse?.etudiants_id.push(req?.body?.etudiant_id);
+    const isItUpdated = await existingClasse.save();
+    return res.status(200).json({ message: "Etudiant ajouté avec succès" });
+
+  } catch (error) {}
 };
