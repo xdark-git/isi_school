@@ -76,6 +76,20 @@ export const getAll = async (req, res) => {
 
       return res.status(200).json(classes);
     }
+    if(req?.user?.status == "Etudiant")
+    {
+      const user = await Etudiant.findById(req?.user?.id).where("isDeleted").equals(false);
+
+      if (!user) {
+        return res.status(401).json({ message: "Accès non autorisé" });
+      }
+      const classes = await Classe.find({ etudiants_id: { $in: [req?.user?.id] } })
+        .where("isDeleted")
+        .equals(false)
+        .select("-__v -isDeleted");
+
+      return res.status(200).json(classes)
+    }
     // console.log(req?.user);
   } catch (error) {
     // console.log(error);
