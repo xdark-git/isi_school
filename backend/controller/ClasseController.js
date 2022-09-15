@@ -76,8 +76,7 @@ export const getAll = async (req, res) => {
 
       return res.status(200).json(classes);
     }
-    if(req?.user?.status == "Etudiant")
-    {
+    if (req?.user?.status == "Etudiant") {
       const user = await Etudiant.findById(req?.user?.id).where("isDeleted").equals(false);
 
       if (!user) {
@@ -88,9 +87,8 @@ export const getAll = async (req, res) => {
         .equals(false)
         .select("-__v -isDeleted");
 
-      return res.status(200).json(classes)
+      return res.status(200).json(classes);
     }
-    // console.log(req?.user);
   } catch (error) {
     // console.log(error);
     return res.status(500).json({ message: "Un problème est survenu" });
@@ -100,7 +98,16 @@ export const getAll = async (req, res) => {
 export const getOne = async (req, res) => {
   try {
     //checking if the user still exist
-    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    let user;
+    if (req?.user?.status == "Administrateur")
+      user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+
+    if (req?.user?.status == "Professeur")
+      user = await Professeur.findById(req?.user?.id).where("isDeleted").equals(false);
+
+    if (req?.user?.status == "Etudiant")
+      user = await Etudiant.findById(req?.user?.id).where("isDeleted").equals(false);
+
     if (!user) {
       return res.status(401).json({ message: "Accès non autorisé" });
     }
@@ -205,6 +212,5 @@ export const addNewEtudiant = async (req, res) => {
     existingClasse?.etudiants_id.push(req?.body?.etudiant_id);
     const isItUpdated = await existingClasse.save();
     return res.status(200).json({ message: "Etudiant ajouté avec succès" });
-
   } catch (error) {}
 };
