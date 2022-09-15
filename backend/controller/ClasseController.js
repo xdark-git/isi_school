@@ -49,17 +49,34 @@ export const createClasse = async (req, res) => {
 export const getAll = async (req, res) => {
   try {
     //checking if the user still exist
-    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
-    if (!user) {
-      return res.status(401).json({ message: "Accès non autorisé" });
+    if (req?.user?.status == "Administrateur") {
+      const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+
+      if (!user) {
+        return res.status(401).json({ message: "Accès non autorisé" });
+      }
+
+      const classes = await Classe.find({})
+        .where("isDeleted")
+        .equals(false)
+        .select("-__v -isDeleted");
+
+      return res.status(200).json(classes);
     }
+    if (req?.user?.status == "Professeur") {
+      const user = await Professeur.findById(req?.user?.id).where("isDeleted").equals(false);
 
-    const classes = await Classe.find({})
-      .where("isDeleted")
-      .equals(false)
-      .select("-__v -isDeleted");
+      if (!user) {
+        return res.status(401).json({ message: "Accès non autorisé" });
+      }
+      const classes = await Classe.find({ profs_id: { $in: [req?.user?.id] } })
+        .where("isDeleted")
+        .equals(false)
+        .select("-__v -isDeleted");
 
-    return res.status(200).json(classes);
+      return res.status(200).json(classes);
+    }
+    // console.log(req?.user);
   } catch (error) {
     // console.log(error);
     return res.status(500).json({ message: "Un problème est survenu" });
