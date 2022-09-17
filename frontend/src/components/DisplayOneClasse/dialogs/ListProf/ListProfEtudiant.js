@@ -13,7 +13,7 @@ const ListProfEtudiant = () => {
     <div id="listing" className="listing">
       <div className="listing-header">
         <div>
-          <i class="fa-solid fa-xmark fa-xl" onClick={closeDialog}></i>
+          <i className="fa-solid fa-xmark fa-xl" onClick={closeDialog}></i>
           <span className="listing-header-title">Professeurs</span>
         </div>
         <span className="listing-header-button">
