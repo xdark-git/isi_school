@@ -5,6 +5,7 @@ import {
 } from "../controller/AdministationController.js";
 import { signinProfesseur, signupProfesseur } from "../controller/ProfesseurController.js";
 import { signinEtudiant, signupEtudiant } from "../controller/EtudiantController.js";
+import { getUserProfile } from "../controller/assetController.js";
 import auth from "../middleware/auth.js";
 const router = express.Router();
 
@@ -17,4 +18,5 @@ router.post("/login/professeur", signinProfesseur);
 router.post("/add/etudiant", auth, signupEtudiant);
 router.post("/login/etudiant", signinEtudiant);
 
+router.get("/img/:imageName", getUserProfile);
 export default router;
