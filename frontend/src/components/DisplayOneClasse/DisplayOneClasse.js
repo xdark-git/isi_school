@@ -14,6 +14,20 @@ const DisplayOneClasse = () => {
     else setPlusDialog(true);
   };
 
+  var listOfCours;
+  const cours = useSelector((state) => state?.classe?.data?.cours);
+  if (cours?.length >= 1) {
+    listOfCours = cours.map((el) => (
+      <div className="cours">
+        <div className="cours-owner">
+          <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
+          <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
+        </div>
+        <div className="cours-name">{`${el?.titre}`}</div>
+      </div>
+    ));
+  }
+
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
   const isDeleteDialogOpened = useSelector((state) => state?.stateDeleteDialog?.status);
   return (
@@ -41,118 +55,7 @@ const DisplayOneClasse = () => {
             </form>
           </div>
         </div>
-        <div className="content1">
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-          <div className="cours">
-            <div className="cours-owner">
-              <img
-                src={process.env.PUBLIC_URL + "/img/user/default.jpg"}
-                alt="profil utilisateur"
-              />
-              <div className="cours-owner-name">Test Test</div>
-            </div>
-            <div className="cours-name">Developpement Web</div>
-          </div>
-        </div>
+        <div className="content1">{listOfCours}</div>
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
         {isDeleteDialogOpened === deleteDialogOpened && <DeleteDialog />}
       </div>
