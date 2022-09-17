@@ -12,9 +12,25 @@ const coursSchema = new Schema(
       type: String,
       required: true,
     },
-    prof_id: {
-      type: String,
-      required: [true, "L'identifiant du prof est requis"],
+    prof: {
+      type: Map,
+      _id: {
+        type: String,
+        required: true,
+      },
+      nom: {
+        type: String,
+        required: true,
+      },
+      prenom: {
+        type: String,
+        required: true,
+      },
+      photoDeProfil: {
+        type: String,
+        required: true,
+      },
+      required: [true, "Les informatins du prof sont requise"],
     },
     classe_id: {
       type: String,
