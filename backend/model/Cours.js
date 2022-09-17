@@ -12,13 +12,17 @@ const coursSchema = new Schema(
       type: String,
       required: true,
     },
-    admin_id: {
-      type: String,
-      required: true,
-    },
     prof_id: {
       type: String,
       required: [true, "L'identifiant du prof est requis"],
+    },
+    classe_id: {
+      type: String,
+      required: [true, "L'identifiant de la classe est requis"],
+    },
+    admin_id: {
+      type: String,
+      required: true,
     },
     isDeleted: {
       type: Boolean,
