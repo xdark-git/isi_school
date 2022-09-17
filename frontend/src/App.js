@@ -8,7 +8,8 @@ import Classes from "./components/classes/Classes";
 import DisplayOneClasse from "./components/DisplayOneClasse/DisplayOneClasse";
 
 const App = () => {
-  const lienClasse = useSelector((state) => state?.classe?.data?._id);
+  const lienClasse = useSelector((state) => state?.classe?.data?.classe?._id);
+
   return (
     <div>
       <BrowserRouter>
@@ -17,7 +18,9 @@ const App = () => {
           <Route path="/login/admin" element={<LoginAdmin />} />
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/classes" element={<Classes />} />
-          <Route path={"/classes/" + lienClasse} element={<DisplayOneClasse />} />
+          {lienClasse !== undefined && (
+            <Route path={"/classes/" + lienClasse} element={<DisplayOneClasse />} />
+          )}
 
           {/* catch all */}
           <Route path="*" element={<Missing />} />
