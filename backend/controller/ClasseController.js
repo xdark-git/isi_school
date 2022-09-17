@@ -124,9 +124,9 @@ export const getOne = async (req, res) => {
     const existingCoursInThisClasse = await Cours.find({}).where({
       isDeleted: false,
       classe_id: classe["_id"],
-    });
+    }).select("-__v -isDeleted");
 
-    return res.status(200).json(classe);
+    return res.status(200).json({ classe, cours: existingCoursInThisClasse });
   } catch (error) {
     // return res.status(400).json({ message: "malformed request syntax." });
     return res.status(404).json({ message: "Introuvable" });
