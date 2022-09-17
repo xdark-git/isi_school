@@ -14,11 +14,9 @@
   position: relative;
   top: 80px;
   width: 70vw;
-  min-width: 289px;
-  max-width: 400px;
-  height: 60vw;
-  min-height: 182px;
-  max-height: 197px;
+  min-width: 288px;
+  max-width: 437px;
+  height: 211px;
   bottom: 11vh;
   border-radius: 3px;
   background-color: #ffffff;
