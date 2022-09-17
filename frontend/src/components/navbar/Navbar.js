@@ -65,9 +65,9 @@ const Navbar = () => {
     const isItAClasse = location?.pathname.split("/")[1];
 
     if (isItAClasse === "classes" && classeID) {
-      if (!isDisplayOneClasseOpened && isDisplayOneClasseOpened !== true){
+      if (!isDisplayOneClasseOpened && isDisplayOneClasseOpened !== true) {
         dispatch(getOne(classeID, navigate));
-      }      
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,7 +115,11 @@ const Navbar = () => {
           {isAlertDialogOpen === alertDialogOpened && <AlertDialog />}
           <div className="page-name">Classe</div>
           <div className="profile" onClick={wantToLogout}>
-            <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
+            <img
+              preload="auto"
+              src={`http://localhost:5000/api/user/img/${user?.photoDeProfil}`}
+              alt="profil utilisateur"
+            />
             <div className="user-name">{user?.prenom}</div>
             <i className="fa-solid fa-caret-down"></i>
           </div>
