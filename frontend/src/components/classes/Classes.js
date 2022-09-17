@@ -11,6 +11,7 @@ import { getAll, getOne } from "../../actions/classe/getClasses";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
+import Loading from "../Loading/Loading";
 
 const Classes = () => {
   const dispatch = useDispatch();
@@ -78,7 +79,8 @@ const Classes = () => {
           </div>
         </div>
         {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
-        <div className="content">{lisOfClasses}</div>
+        {classes.length >= 1 && <div className="content">{lisOfClasses}</div> }
+       {classes.length ===0 && <Loading />}
       </div>
     </main>
   );
