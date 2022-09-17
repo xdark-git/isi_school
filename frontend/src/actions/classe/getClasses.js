@@ -20,8 +20,8 @@ export const getOne = (id, navigate) => async (dispatch) => {
   try {
     const classe = await api.getOneClasse(id);
     const data = classe?.data;
- dispatch({ type: DISPLAYONECLASSE, data, opened: true });
-    navigate("/classes/" + data?._id);
+    dispatch({ type: DISPLAYONECLASSE, data, opened: true });
+    navigate("/classes/" + data?.classe?._id);
   } catch (error) {
     dispatch({ type: NOCLASSEFOUND, opened: false });
   }
