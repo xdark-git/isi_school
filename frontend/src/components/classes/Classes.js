@@ -41,7 +41,9 @@ const Classes = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [isLoading, setIsloading] = useState(false);
   const getOneClasse = (id) => {
+    setIsloading(true);
     dispatch(getOne(id, navigate));
   };
 
@@ -79,8 +81,9 @@ const Classes = () => {
           </div>
         </div>
         {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
-        {classes.length >= 1 && <div className="content">{lisOfClasses}</div> }
-       {classes.length ===0 && <Loading />}
+        {classes.length >= 1 && <div className="content">{lisOfClasses}</div>}
+        {classes.length === 0 && <Loading />}
+        {isLoading === true && <Loading />}
       </div>
     </main>
   );
