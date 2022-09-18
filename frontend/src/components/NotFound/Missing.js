@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Loading from "../Loading/Loading";
 import Navbar from "../navbar/Navbar";
-import "./style.css";
+import "./asset/css/missing.css";
 
 const Missing = () => {
   const [display, setDisplay] = useState();
@@ -28,6 +29,7 @@ const Missing = () => {
           <div className="description">La page que vous recherchez semble introuvable</div>
         </div>
       )}
+      {display !== true && <Loading />}
     </main>
   );
 };
