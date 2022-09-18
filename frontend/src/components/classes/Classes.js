@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import {
+  loaderComponentClosed,
+  loaderComponentOpened,
   newClassDialogOpened,
+  openLoaderComponent,
   openNewClassDialog,
   USER_TOKEN_LOCAL_STORAGE_NAME,
 } from "../../constantes";
@@ -12,6 +15,7 @@ import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import NewClassDialog from "./Dialogs/NewClasse/NewClassDialog";
 import Loading from "../Loading/Loading";
+import NoContent from "../NotFound/NoContent";
 
 const Classes = () => {
   const dispatch = useDispatch();
@@ -25,6 +29,7 @@ const Classes = () => {
   const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
   const classes = useSelector((state) => state?.classes);
   const [isAdmin, setIsAdmin] = useState(false);
+  const isLoading = useSelector((state) => state?.isLoading?.loader);
   var lisOfClasses;
   useEffect(() => {
     const token = userToken;
@@ -35,15 +40,16 @@ const Classes = () => {
         setIsAdmin(true);
       }
       if (decodedToken?.exp * 1000 > new Date().getTime()) {
+        dispatch({ type: openLoaderComponent });
         dispatch(getAll(navigate));
       }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [isLoading, setIsloading] = useState(false);
+
   const getOneClasse = (id) => {
-    setIsloading(true);
+    dispatch({ type: openLoaderComponent });
     dispatch(getOne(id, navigate));
   };
 
@@ -55,6 +61,9 @@ const Classes = () => {
         <span>{el?.etudiants_id.length} étudiants</span>
       </div>
     ));
+  }
+  if (classes.length === 0 && isLoading === loaderComponentClosed) {
+    lisOfClasses = <NoContent />;
   }
   return (
     <main>
@@ -81,9 +90,8 @@ const Classes = () => {
           </div>
         </div>
         {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
-        {classes.length >= 1 && <div className="content">{lisOfClasses}</div>}
-        {classes.length === 0 && <Loading />}
-        {isLoading === true && <Loading />}
+        <div className="content">{lisOfClasses}</div>
+        {isLoading === loaderComponentOpened && <Loading />}
       </div>
     </main>
   );
