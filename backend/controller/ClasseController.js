@@ -121,10 +121,12 @@ export const getOne = async (req, res) => {
       return res.status(404).json({ message: "Introuvable" });
     }
     //fetching all cours that has a cours_id equals to classe id
-    const existingCoursInThisClasse = await Cours.find({}).where({
-      isDeleted: false,
-      classe_id: classe["_id"],
-    }).select("-__v -isDeleted");
+    const existingCoursInThisClasse = await Cours.find({})
+      .where({
+        isDeleted: false,
+        classe_id: classe["_id"],
+      })
+      .select("-__v -isDeleted");
 
     return res.status(200).json({ classe, cours: existingCoursInThisClasse });
   } catch (error) {
@@ -213,4 +215,37 @@ export const addNewEtudiant = async (req, res) => {
     const isItUpdated = await existingClasse.save();
     return res.status(200).json({ message: "Etudiant ajouté avec succès" });
   } catch (error) {}
+};
+
+export const deleteClasse = async (req, res) => {
+  //checking if the user still exist and is admin
+  try {
+    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    if (!user) {
+      return res.status(401).json({ message: "Accès non autorisé" });
+    }
+
+    const classe = await Classe.findById(req?.params?._id)
+      .where("isDeleted")
+      .equals(false)
+      .select("-__v");
+
+    if (!classe) {
+      return res.status(404).json({ message: "Introuvable" });
+    }
+
+    //deleting the classe
+    classe["isDeleted"] = true;
+    const isDeletionSuccess = await classe.save();
+
+    if (isDeletionSuccess["isDeleted"] == true)
+      return res.status(200).json({ messge: "Classe supprimée avec succès" });
+    else return res.status(500).json({ message: "Problème survenu lors la suppression" });
+  } catch (error) {
+    if (handleModelIdOnFindError(error) == true) {
+      return res.status(404).json({ message: "Introuvable" });
+    } else {
+      return res.status(500).json({ message: "Problème survenu lors la suppression" });
+    }
+  }
 };

@@ -1,5 +1,5 @@
 import express from "express";
-import { addNewEtudiant, addNewProf, createClasse, getAll, getOne } from "../controller/ClasseController.js";
+import { addNewEtudiant, addNewProf, createClasse, getAll, getOne, deleteClasse } from "../controller/ClasseController.js";
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
@@ -9,5 +9,6 @@ router.get("/", auth, getAll);
 router.get("/:_id", auth, getOne);
 router.put("/addprof/:_id", auth, addNewProf);
 router.put("/addetudiant/:_id", auth, addNewEtudiant)
+router.delete("/delete/:_id", auth, deleteClasse)
 
 export default router;
