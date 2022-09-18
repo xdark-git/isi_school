@@ -231,7 +231,7 @@ export const deleteClasse = async (req, res) => {
       .select("-__v");
 
     if (!classe) {
-      return res.status(404).json({ message: "Introuvable" });
+      return res.status(404).json({ message: "Classe introuvable" });
     }
 
     //deleting the classe
@@ -239,13 +239,13 @@ export const deleteClasse = async (req, res) => {
     const isDeletionSuccess = await classe.save();
 
     if (isDeletionSuccess["isDeleted"] == true)
-      return res.status(200).json({ messge: "Classe supprimée avec succès" });
+      return res.status(200).json({ message: "Classe supprimée" });
     else return res.status(500).json({ message: "Problème survenu lors la suppression" });
   } catch (error) {
     if (handleModelIdOnFindError(error) == true) {
-      return res.status(404).json({ message: "Introuvable" });
+      return res.status(404).json({ message: "Classe introuvable" });
     } else {
-      return res.status(500).json({ message: "Problème survenu lors la suppression" });
+      return res.status(500).json({ message: "Une erreur est survenue" });
     }
   }
 };
