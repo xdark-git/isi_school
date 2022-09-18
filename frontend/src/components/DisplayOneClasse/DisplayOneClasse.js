@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { deleteDialogOpened, listProfEtudiantDialogOpened } from "../../constantes";
 import DeleteDialog from "../Delete/DeleteDialog";
 import Navbar from "../navbar/Navbar";
+import NoContent from "../NotFound/NoContent";
 import "./asset/css/style.css";
 import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
 import Plus from "./dialogs/Plus";
@@ -18,7 +19,7 @@ const DisplayOneClasse = () => {
   const cours = useSelector((state) => state?.classe?.data?.cours);
   if (cours?.length >= 1) {
     listOfCours = cours.map((el) => (
-      <div className="cours">
+      <div className="cours" key={el?._id}>
         <div className="cours-owner">
           <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
           <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
@@ -26,6 +27,8 @@ const DisplayOneClasse = () => {
         <div className="cours-name">{`${el?.titre}`}</div>
       </div>
     ));
+  } else {
+    listOfCours = <NoContent />;
   }
 
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
