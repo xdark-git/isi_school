@@ -55,3 +55,8 @@ export const openListProfEtudiantDialog = "OPEN_LIST_PROF_ETUDIANT_DIALOG";
 export const closeListProfEtudiantDialog = "CLOSE_LIST_PROF_ETUDIANT_DIALOG";
 export const listProfEtudiantDialogOpened = "LIST_PROF_ETUDIANT_DIALOG_OPENED";
 export const listProfEtudiantDialogClosed = "LIST_PROF_ETUDIANT_DIALOG_CLOSED";
+
+export const openLoaderComponent = "OPEN_LOADER_COMPONENT";
+export const closeLoaderComponent = "CLOSE_LOADER_COMPENENT";
+export const loaderComponentOpened = "LOADER_COMPONENT_OPENED";
+export const loaderComponentClosed = "LOADER_COMPONENT_CLOSED";

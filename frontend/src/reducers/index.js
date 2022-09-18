@@ -14,6 +14,7 @@ import {
   getOneClasseReducer,
   createOneClasseReducer,
 } from "./singleReducers/classes";
+import { loaderReducer } from "./singleReducers/loader";
 
 export default combineReducers({
   profile: profileSelectedReducer,
@@ -27,4 +28,5 @@ export default combineReducers({
   classes: getAllClassesReducers,
   classe: getOneClasseReducer,
   createClasse: createOneClasseReducer,
+  isLoading : loaderReducer
 });
