@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginAdmin from "./components/connexion/Admin/LoginAdmin";
 import Login from "./components/connexion/Login/Login";
-import Missing from "./components/NotFound/Missing";
+import Missing from "./components/NotFound/missing";
 import Classes from "./components/classes/Classes";
 import DisplayOneClasse from "./components/DisplayOneClasse/DisplayOneClasse";
 
