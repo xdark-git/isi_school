@@ -3,13 +3,16 @@ import {
   GETALLCLASSES,
   NOCLASSEFOUND,
   ERRORONCLASSECREATION,
-  CREATIONCLASSEDIALOGCLOSED
+  CREATIONCLASSEDIALOGCLOSED,
+  LOGOUT,
 } from "../../constantes";
 
 export const getAllClassesReducers = (state = [], action) => {
   switch (action.type) {
     case GETALLCLASSES:
       return action?.data;
+    case LOGOUT:
+      return (state = []);
     default:
       return state;
   }
@@ -21,6 +24,8 @@ export const getOneClasseReducer = (state = {}, action) => {
       return { data: action?.data, opened: action.opened };
     case NOCLASSEFOUND:
       return { opened: action.opened };
+    case LOGOUT:
+      return (state = {});
     default:
       return state;
   }
