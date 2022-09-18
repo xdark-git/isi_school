@@ -4,7 +4,11 @@ import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 
 export const getUserProfile = async (req, res) => {
-  if (req?.params?.imageName == "defaultProfilePicture")
-    return res.sendFile(process.cwd() + "/asset/images/default.jpg");
-  else return res.sendFile(process.cwd() + "/asset/images/" + req?.params?.imageName + ".jpg");
+  try {
+    if (req?.params?.imageName == "defaultProfilePicture")
+      return res.sendFile(process.cwd() + "/asset/images/default.jpg");
+    else return res.sendFile(process.cwd() + "/asset/images/" + req?.params?.imageName + ".jpg");
+  } catch (error) {
+    console.log(error);
+  }
 };
