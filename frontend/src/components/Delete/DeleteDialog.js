@@ -1,10 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { deleteClasse } from "../../actions/classe/createUpdateClasses";
 import { closeDeleteDialog } from "../../constantes";
 import "./asset/css/style.css";
 
 const DeleteDialog = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // closing the dialog onclik on annuler button
   const closeConfirmDeletion = () => {
     dispatch({
@@ -19,6 +22,12 @@ const DeleteDialog = () => {
         type: closeDeleteDialog,
       });
   };
+  const stateDeleteDialog = useSelector((state) => state?.stateDeleteDialog);
+  const processDeletion = () => {
+    if (stateDeleteDialog?.target == "Classe") {
+      dispatch(deleteClasse(stateDeleteDialog?.id, navigate));
+    }
+  };
   return (
     <div id="delete" className="delete">
       <div className="delete-main">
@@ -28,7 +37,9 @@ const DeleteDialog = () => {
           <button className="btn-annuler" onClick={closeConfirmDeletion}>
             Annuler
           </button>
-          <button className="btn-supprimer">Supprimer</button>
+          <button className="btn-supprimer" onClick={processDeletion}>
+            Supprimer
+          </button>
         </div>
       </div>
     </div>
