@@ -10,7 +10,6 @@
   flex-direction: column;
   gap: 25px;
   overflow: auto;
-
 }
 .no-content-main .no-content-description {
   font-family: "Poppins";
