@@ -14,6 +14,7 @@ const DisplayOneClasse = () => {
     if (plusDialog === true) setPlusDialog(false);
     else setPlusDialog(true);
   };
+  const actualClasse = useSelector((state) => state?.classe?.data?.classe);
 
   var listOfCours;
   const cours = useSelector((state) => state?.classe?.data?.cours);
@@ -43,7 +44,7 @@ const DisplayOneClasse = () => {
               <i className="fa-solid fa-ellipsis-vertical fa-lg"></i>
               <span>Plus</span>
             </div>
-            {plusDialog === true && <Plus />}
+            {plusDialog === true && <Plus classe={actualClasse} />}
           </div>
           <div className="search">
             <form>
