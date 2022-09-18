@@ -3,8 +3,8 @@ import "./asset/style.css";
 
 const Loading = () => {
   return (
-    <div className="div">
-        <div class="loader"></div>
+    <div className="loader-main">
+      <div className="loader"></div>
     </div>
   );
 };

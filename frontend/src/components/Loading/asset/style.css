@@ -1,15 +1,16 @@
-.div {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width: 100vw;
-    min-width: 249px;
-    height: 100vh;
-    min-height: 476px;
+.loader-main {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+  min-width: 249px;
+  height: 100vh;
+  min-height: 476px;
+  z-index: 100;
 }
-.div .loader {
+.loader-main .loader {
   border: 16px solid #ffffff;
   border-radius: 50%;
   border-top: 16px solid #379fda;
