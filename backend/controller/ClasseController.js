@@ -164,6 +164,10 @@ export const addNewProf = async (req, res) => {
     //updating the classe
     existingClasse?.profs_id.push(req?.body?.prof_id);
     const isItUpdated = await existingClasse.save();
+    //adding the classe id professeur classe_id
+    existingProf?.classe_id.push(req?.params?._id);
+    await existingProf.save();
+
     return res.status(200).json({ message: "Professeur ajouter avec succès" });
   } catch (errors) {
     const error = handleModelIdOnFindError(errors);
@@ -213,11 +217,13 @@ export const addNewEtudiant = async (req, res) => {
     }
     existingClasse?.etudiants_id.push(req?.body?.etudiant_id);
     const isItUpdated = await existingClasse.save();
-    const updateEtudiantClasseId = await Etudiant.findByIdAndUpdate(existingEtudiant['_id'],{classe_id: req?.params?._id})
+    const updateEtudiantClasseId = await Etudiant.findByIdAndUpdate(existingEtudiant["_id"], {
+      classe_id: req?.params?._id,
+    });
 
     return res.status(200).json({ message: "Etudiant ajouté avec succès" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -238,9 +244,30 @@ export const deleteClasse = async (req, res) => {
       return res.status(404).json({ message: "Classe introuvable" });
     }
     //fetch all etudiant in the classe and change classe id to null
-    const etudiantInTheClasse = await Etudiant.updateMany({classe_id: req?.params?._id}, {classe_id: null})
+    const existingEtudiantsInTheClasse = await Etudiant.updateMany(
+      { classe_id: req?.params?._id },
+      { classe_id: null }
+    );
     //fetch all prof in the classe and delete current classe id in the array
+    const existingProfsInTheClasse = await Professeur.updateMany(
+      {
+        classe_id: { $in: [req?.params?._id] },
+      },
+      {
+        $pullAll: {
+          classe_id: [req?.params?._id],
+        },
+      }
+    );
     //fetch all cours and change isDeleted to true
+    const existingCoursInTheClasse = await Cours.updateMany(
+      {
+        classe_id: req?.params?._id,
+      },
+      {
+        isDeleted: true,
+      }
+    );
     //deleting the classe
     classe["isDeleted"] = true;
     const isDeletionSuccess = await classe.save();
