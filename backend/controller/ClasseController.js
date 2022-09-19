@@ -120,7 +120,19 @@ export const getOne = async (req, res) => {
     if (!classe) {
       return res.status(404).json({ message: "Introuvable" });
     }
-    //fetching all cours that has a cours_id equals to classe id
+    //fetching all etudiants and professeurs that is in the classe
+    const existingEtudiantsInThisClasse = await Etudiant.find({})
+      .where({
+        isDeleted: false,
+        classe_id: classe["_id"],
+      })
+      .select("_id nom prenom photoDeProfil username email");
+    const existingProfsInThisClasse = await Professeur.find({
+      classe_id: { $in: [classe["_id"]] },
+    })
+      .where({ isDeleted: false })
+      .select("_id nom prenom photoDeProfil username email");
+    //fetching all cours that has a classe_id equals to classe id
     const existingCoursInThisClasse = await Cours.find({})
       .where({
         isDeleted: false,
@@ -128,7 +140,12 @@ export const getOne = async (req, res) => {
       })
       .select("-__v -isDeleted");
 
-    return res.status(200).json({ classe, cours: existingCoursInThisClasse });
+    return res.status(200).json({
+      classe,
+      cours: existingCoursInThisClasse,
+      professeurs: existingProfsInThisClasse,
+      etudiants: existingEtudiantsInThisClasse,
+    });
   } catch (error) {
     // return res.status(400).json({ message: "malformed request syntax." });
     return res.status(404).json({ message: "Introuvable" });
