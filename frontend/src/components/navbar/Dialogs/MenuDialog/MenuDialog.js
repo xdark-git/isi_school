@@ -15,7 +15,7 @@ const MenuDialog = (user, status) => {
         <div className="close-menu-dialog" onClick={closeMenu}>
           <i className="fa-solid fa-xmark"></i>
         </div>
-        <div className="page-name">Classe</div>
+        <div className="page-name"></div>
         <div className="pages">
           <div className="profile">
             <div>Profil</div>
