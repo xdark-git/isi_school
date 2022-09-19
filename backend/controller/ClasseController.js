@@ -213,8 +213,12 @@ export const addNewEtudiant = async (req, res) => {
     }
     existingClasse?.etudiants_id.push(req?.body?.etudiant_id);
     const isItUpdated = await existingClasse.save();
+    const updateEtudiantClasseId = await Etudiant.findByIdAndUpdate(existingEtudiant['_id'],{classe_id: req?.params?._id})
+
     return res.status(200).json({ message: "Etudiant ajouté avec succès" });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const deleteClasse = async (req, res) => {
@@ -233,7 +237,10 @@ export const deleteClasse = async (req, res) => {
     if (!classe) {
       return res.status(404).json({ message: "Classe introuvable" });
     }
-
+    //fetch all etudiant in the classe and change classe id to null
+    const etudiantInTheClasse = await Etudiant.updateMany({classe_id: req?.params?._id}, {classe_id: null})
+    //fetch all prof in the classe and delete current classe id in the array
+    //fetch all cours and change isDeleted to true
     //deleting the classe
     classe["isDeleted"] = true;
     const isDeletionSuccess = await classe.save();
