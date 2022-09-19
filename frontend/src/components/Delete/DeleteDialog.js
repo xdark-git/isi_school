@@ -24,7 +24,7 @@ const DeleteDialog = () => {
   };
   const stateDeleteDialog = useSelector((state) => state?.stateDeleteDialog);
   const processDeletion = () => {
-    if (stateDeleteDialog?.target == "Classe") {
+    if (stateDeleteDialog?.target === "Classe") {
       dispatch(deleteClasse(stateDeleteDialog?.id, navigate));
     }
   };
