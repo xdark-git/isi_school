@@ -53,7 +53,7 @@ const etudiantSchema = new Schema(
       type: String,
       required: true,
     },
-    classe_id: { type: String },
+    classe_id: { type: String, default: null },
     admin_id: {
       type: String,
       required: true,
