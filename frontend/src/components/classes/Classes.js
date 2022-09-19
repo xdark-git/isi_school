@@ -57,7 +57,7 @@ const Classes = () => {
     lisOfClasses = classes.map((el) => (
       <div className="classe" key={el?._id} onClick={() => getOneClasse(el?._id)}>
         {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
-        {el?.nom.length > 17 && <div className="classe-name">{el?.nom.substring(0, 21)}...</div>}
+        {el?.nom.length >= 17 && <div className="classe-name">{el?.nom.substring(0, 17)}...</div>}
         <span>{el?.etudiants_id.length} étudiants</span>
       </div>
     ));
