@@ -47,10 +47,13 @@ main .component .display-search .display .more span {
   font-size: 23px;
 }
 
+main .component .display-search .display .plusDialog {
+  position: fixed;
+  top: 115px;
+}
 main .component .display-search .display .dialog {
   position: relative;
-  top: 78px;
-  right: 51px;
+  bottom: 3px;
   width: 188px;
 
   background-color: #ffffff;
