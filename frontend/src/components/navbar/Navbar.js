@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -20,10 +20,11 @@ import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
 import AlertDialog from "./Dialogs/Alert/AlertDialog";
 import { getOne } from "../../actions/classe/getClasses";
 
-const Navbar = () => {
+const Navbar = (currentPage) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
@@ -107,13 +108,23 @@ const Navbar = () => {
       changeIsLogoutDialogOpen(logoutDialogClosed);
     }
   };
+  const pageName = useRef();
+  if (currentPage?.path === undefined) {
+    pageName.current = location?.pathname.split("/")[1];
+  } else {
+    pageName.current = currentPage?.path;
+  }
 
   if (dimensions?.width > 785) {
     return (
       <div>
         <header>
           {isAlertDialogOpen === alertDialogOpened && <AlertDialog />}
-          <div className="page-name">Classe</div>
+
+          {pageName.current.length >= 27 && (
+            <div className="page-name">{pageName.current.substring(0, 27)}...</div>
+          )}
+          {pageName.current.length < 27 && <div className="page-name">{pageName.current}</div>}
           <div className="profile" onClick={wantToLogout}>
             <img
               preload="auto"

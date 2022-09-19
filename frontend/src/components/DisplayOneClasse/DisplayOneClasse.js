@@ -36,7 +36,7 @@ const DisplayOneClasse = () => {
   const isDeleteDialogOpened = useSelector((state) => state?.stateDeleteDialog?.status);
   return (
     <main>
-      <Navbar />
+      <Navbar path={actualClasse.nom} />
       <div className="component">
         <div className="display-search">
           <div className="display">
