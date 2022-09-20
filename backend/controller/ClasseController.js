@@ -39,10 +39,10 @@ export const createClasse = async (req, res) => {
       .where("isDeleted")
       .equals(false)
       .select("-__v -isDeleted");
-    return res.status(200).json(newClasse);
+    return res.status(201).json(newClasse);
   } catch (error) {
     const errors = handleClasseError(error);
-    return res.status(500).json({ errors });
+    return res.status(400).json({ errors });
   }
 };
 
@@ -74,10 +74,10 @@ export const updateClasseName = async (req, res) => {
     })
       .where("isDeleted")
       .equals(false);
-    if (updateNomClasse) return res.status(200).json({ message: "Modification effectuée" });
+    if (updateNomClasse) return res.status(201).json({ message: "Modification effectuée" });
   } catch (error) {
-    const errors = handleClasseError(error,res);
-    return res.status(500).json({ errors });
+    const errors = handleClasseError(error, res);
+    return res.status(400).json({ errors });
   }
 };
 
