@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteClasse } from "../../actions/classe/createUpdateClasses";
-import { closeDeleteDialog } from "../../constantes";
+import { closeDeleteDialog, loaderComponentClosed, openLoaderComponent } from "../../constantes";
 import "./asset/css/style.css";
 
 const DeleteDialog = () => {
@@ -23,12 +23,14 @@ const DeleteDialog = () => {
       });
   };
   const stateDeleteDialog = useSelector((state) => state?.stateDeleteDialog);
+  const isLoading = useSelector((state) => state?.isLoading?.loader);
   const processDeletion = () => {
     if (stateDeleteDialog?.target === "Classe") {
       dispatch(deleteClasse(stateDeleteDialog?.id, navigate));
+      dispatch({ type: openLoaderComponent });
     }
   };
-  return (
+  return isLoading === loaderComponentClosed ? (
     <div id="delete" className="delete">
       <div className="delete-main">
         <i className="fa-thin fa-circle-xmark"></i>
@@ -43,6 +45,8 @@ const DeleteDialog = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <div id="delete" className="delete"></div>
   );
 };
 
