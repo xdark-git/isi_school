@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createClasse } from "../../../../actions/classe/createUpdateClasses";
-import { closeNewClassDialog, CREATIONCLASSEDIALOGCLOSED } from "../../../../constantes";
+import { createClasse, updateName } from "../../../../actions/classe/createUpdateClasses";
+import {
+  closeNewClassDialog,
+  CREATIONCLASSEDIALOGCLOSED,
+  loaderComponentClosed,
+  openLoaderComponent,
+} from "../../../../constantes";
 import "../style.css";
 
 const NewClassDialog = (action) => {
@@ -21,19 +26,28 @@ const NewClassDialog = (action) => {
     //cleaning error message
     dispatch({ type: CREATIONCLASSEDIALOGCLOSED });
   };
-
+  const isLoading = useSelector((state) => state?.isLoading?.loader);
   const [nomClasse, setNomClasse] = useState("");
-  const nomClasseToUpdate = useSelector((state) => state?.classe?.data?.classe?.nom);
+  const [nomClasseOnUpdate, setNomClasseOnUpdate] = useState();
+  const classeToUpdate = useSelector((state) => state?.classe?.data?.classe);
+
   const error = useSelector((state) => state?.createClasse?.errors);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(nomClasse);
-    if (action?.objectif === "Creation") dispatch(createClasse({ nom: nomClasse }, navigate));
+    if (action?.objectif === "Creation") {
+      dispatch(createClasse({ nom: nomClasse }, navigate));
+      dispatch({ type: openLoaderComponent });
+    }
+    if (action?.objectif === "Modification") {
+      dispatch(updateName(classeToUpdate?._id, { nom: nomClasseOnUpdate }, navigate));
+      dispatch({ type: openLoaderComponent });
+    }
   };
 
   if (action?.objectif === "Creation") {
-    return (
+    return isLoading === loaderComponentClosed ? (
       <div id="nouvelleClasse" className="nouvelle-classe">
         <div className="nouvelle-classe-contenu">
           <div className="title">Nouvelle Classe</div>
@@ -60,9 +74,11 @@ const NewClassDialog = (action) => {
           </button>
         </div>
       </div>
+    ) : (
+      <div id="nouvelleClasse" className="nouvelle-classe"></div>
     );
   } else if (action?.objectif === "Modification") {
-    return (
+    return isLoading === loaderComponentClosed ? (
       <div id="nouvelleClasse" className="nouvelle-classe">
         <div className="nouvelle-classe-contenu">
           <div className="title">Modification Classe</div>
@@ -74,8 +90,8 @@ const NewClassDialog = (action) => {
               type="text"
               name="nom"
               placeholder="Nom"
-              value={nomClasseToUpdate}
-              onChange={(e) => setNomClasse(e.target.value)}
+              value={nomClasseOnUpdate !== undefined ? nomClasseOnUpdate : classeToUpdate?.nom}
+              onChange={(e) => setNomClasseOnUpdate(e.target.value)}
             />
             <button className="ajouter" type="submit">
               Ajouter
@@ -89,6 +105,8 @@ const NewClassDialog = (action) => {
           </button>
         </div>
       </div>
+    ) : (
+      <div id="nouvelleClasse" className="nouvelle-classe"></div>
     );
   }
 };
