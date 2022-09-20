@@ -138,7 +138,7 @@
   list-style-type: none;
   -webkit-tap-highlight-color: transparent;
   background-color: transparent;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -201,7 +201,7 @@
   color: #ffffff;
   display: none;
 }
-.listing .listing-content ul li div input[type="checkbox"]:hover {
+/* .listing .listing-content ul li div input[type="checkbox"]:hover {
   background-color: #a5a5a5;
 }
 .listing .listing-content ul li div input[type="checkbox"]:checked {
@@ -209,7 +209,7 @@
 }
 .listing .listing-content ul li div input[type="checkbox"]:checked:after {
   display: block;
-}
+} */
 @media only screen and (max-width: 785px) {
   .listing {
     padding-left: unset;

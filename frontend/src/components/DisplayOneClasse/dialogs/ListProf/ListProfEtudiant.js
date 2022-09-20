@@ -28,7 +28,7 @@ const ListProfEtudiant = () => {
         <img src={`http://localhost:5000/api/user/img/${el?.photoDeProfil}`} alt="" />
         <div>
           <label htmlFor="user-checkbox">{`${el?.prenom} ${el?.nom}`}</label>
-          <input id="user-checkbox" type="checkbox" />
+          {/* <input id="user-checkbox" type="checkbox" /> */}
         </div>
       </li>
     ));
@@ -41,12 +41,12 @@ const ListProfEtudiant = () => {
           <span className="listing-header-title">{whoAreThey}</span>
         </div>
         <span className="listing-header-button">
-          <button type="submit" className="btn-ajouter">
+          {/* <button type="submit" className="btn-ajouter">
             Ajouter
           </button>
           <button type="submit" className="btn-supprimer">
             Supprimer
-          </button>
+          </button> */}
         </span>
       </div>
       <div className="listing-content">
