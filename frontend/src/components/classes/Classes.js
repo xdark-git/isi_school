@@ -89,7 +89,7 @@ const Classes = () => {
             </form>
           </div>
         </div>
-        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog />}
+        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation"/>}
         <div className="content">{lisOfClasses}</div>
         {isLoading === loaderComponentOpened && <Loading />}
       </div>
