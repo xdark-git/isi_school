@@ -1,4 +1,4 @@
-export const handleClasseError = (err) => {
+export const handleClasseError = (err, res) => {
   let error = {
     nom: "",
   };
@@ -12,16 +12,11 @@ export const handleClasseError = (err) => {
       error[properties.path] = properties.message;
     });
   }
+  if (err.message.includes("Cast to ObjectId failed for value")) {
+    return res.status(404).json({ message: "Classe Introuvable" })
+  }
   return error;
 };
-
-// export const handleClasseOnUpdateError = (err) => {
-//   let error = {
-//     nom: "",
-//   };
-  
-//   return error;
-// };
 
 export const handleModelIdOnFindError = (err) => {
   if (err.message.includes("Cast to ObjectId failed for value")) return true;
