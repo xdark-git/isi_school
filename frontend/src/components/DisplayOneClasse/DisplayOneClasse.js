@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { deleteDialogOpened, listProfEtudiantDialogOpened } from "../../constantes";
+import { deleteDialogOpened, listProfEtudiantDialogOpened, newClassDialogOpened } from "../../constantes";
+import NewClassDialog from "../classes/Dialogs/NewClasse/NewClassDialog";
 import DeleteDialog from "../Delete/DeleteDialog";
 import Navbar from "../navbar/Navbar";
 import NoContent from "../NotFound/NoContent";
@@ -32,6 +33,7 @@ const DisplayOneClasse = () => {
     listOfCours = <NoContent />;
   }
 
+  let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status)
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
   const isDeleteDialogOpened = useSelector((state) => state?.stateDeleteDialog?.status);
   return (
@@ -58,7 +60,9 @@ const DisplayOneClasse = () => {
               <button className="fa-solid fa-magnifying-glass search-icon"></button>
             </form>
           </div>
+          
         </div>
+        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Modification"/>}
         <div className="content1">{listOfCours}</div>
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
         {isDeleteDialogOpened === deleteDialogOpened && <DeleteDialog />}
