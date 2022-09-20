@@ -46,6 +46,41 @@ export const createClasse = async (req, res) => {
   }
 };
 
+export const updateClasseName = async (req, res) => {
+  try {
+    //checking if the user still exist and is Admin
+    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    if (!user) {
+      return res.status(401).json({ message: "Accès non autorisé" });
+    }
+    //verifying if the req body has a nom propety
+    var keys = Object.keys(req.body);
+    if (keys.length != 1 || keys[0] != "nom") {
+      return res.status(400).json({
+        message: "malformed request syntax",
+      });
+    }
+    //check if there isn't a classe who already has the new nom
+    const existingClasse = await Classe.findOne(req.body).where("isDeleted").equals(false);
+
+    if (existingClasse) {
+      return res
+        .status(409)
+        .json({ errors: { message: "Une classe portant le même nom existe déjà" } });
+    }
+    // checking if the classe exist and updating it
+    const updateNomClasse = await Classe.findByIdAndUpdate(req?.params?._id, req?.body, {
+      runValidators: true,
+    })
+      .where("isDeleted")
+      .equals(false);
+    if (updateNomClasse) return res.status(200).json({ message: "Modification effectuée" });
+  } catch (error) {
+    const errors = handleClasseError(error);
+    return res.status(500).json({ errors });
+  }
+};
+
 export const getAll = async (req, res) => {
   try {
     //checking if the user still exist
