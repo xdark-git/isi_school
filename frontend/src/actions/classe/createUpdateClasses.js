@@ -10,10 +10,24 @@ import { getOne } from "./getClasses";
 export const createClasse = (formData, navigate) => async (dispatch) => {
   try {
     const classe = await api.createNewClasse(formData);
-    dispatch(getOne(classe?.data?._id, navigate));
     dispatch({ type: closeNewClassDialog });
+    dispatch(getOne(classe?.data?._id, navigate));
   } catch (error) {
-    if (error.response.status === 409)
+    if (error.response.status === 409 || error.response.status === 400)
+      dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
+    if (error?.response?.status === 500)
+      dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
+  }
+};
+
+export const updateName = (id, formData, navigate) => async (dispatch) => {
+  try {
+    const classe = await api.updateClasseName(id, formData);
+    dispatch(getOne(id, navigate));
+    dispatch({ type: closeNewClassDialog });
+    dispatch({ type: openAlertDialog, message: classe?.data?.message });
+  } catch (error) {
+    if (error.response.status === 409 || error.response.status === 400)
       dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
     if (error?.response?.status === 500)
       dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
