@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { deleteDialogOpened, listProfEtudiantDialogOpened, newClassDialogOpened } from "../../constantes";
+import {
+  deleteDialogOpened,
+  listProfEtudiantDialogOpened,
+  loaderComponentOpened,
+  newClassDialogOpened,
+} from "../../constantes";
 import NewClassDialog from "../classes/Dialogs/NewClasse/NewClassDialog";
 import DeleteDialog from "../Delete/DeleteDialog";
+import Loading from "../Loading/Loading";
 import Navbar from "../navbar/Navbar";
 import NoContent from "../NotFound/NoContent";
 import "./asset/css/style.css";
@@ -15,6 +21,7 @@ const DisplayOneClasse = () => {
     if (plusDialog === true) setPlusDialog(false);
     else setPlusDialog(true);
   };
+  const isLoading = useSelector((state) => state?.isLoading?.loader);
   const actualClasse = useSelector((state) => state?.classe?.data?.classe);
 
   var listOfCours;
@@ -33,7 +40,7 @@ const DisplayOneClasse = () => {
     listOfCours = <NoContent />;
   }
 
-  let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status)
+  let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
   const isDeleteDialogOpened = useSelector((state) => state?.stateDeleteDialog?.status);
   return (
@@ -60,10 +67,12 @@ const DisplayOneClasse = () => {
               <button className="fa-solid fa-magnifying-glass search-icon"></button>
             </form>
           </div>
-          
         </div>
-        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Modification"/>}
+        {isNewClassDialogOpen === newClassDialogOpened && (
+          <NewClassDialog objectif="Modification" />
+        )}
         <div className="content1">{listOfCours}</div>
+        {isLoading === loaderComponentOpened && <Loading />}
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
         {isDeleteDialogOpened === deleteDialogOpened && <DeleteDialog />}
       </div>
