@@ -76,7 +76,7 @@ export const updateClasseName = async (req, res) => {
       .equals(false);
     if (updateNomClasse) return res.status(200).json({ message: "Modification effectuée" });
   } catch (error) {
-    const errors = handleClasseError(error);
+    const errors = handleClasseError(error,res);
     return res.status(500).json({ errors });
   }
 };
