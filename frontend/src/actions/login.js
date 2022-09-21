@@ -13,9 +13,6 @@ export const signinEtudiant = (formData, navigate) => async (dispatch) => {
       const data = "informations d'identification invalides";
       dispatch({ type: LOGINERROR, data });
     }
-    // console.log(error.response.data);
-    // console.log(error.response.status);
-    // console.log(error.response.headers);
   }
 };
 
