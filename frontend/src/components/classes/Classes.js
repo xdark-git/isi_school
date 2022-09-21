@@ -77,7 +77,7 @@ const Classes = () => {
             </div>
           )}
           <div className="search">
-            <form>
+            {classes.length > 0 && <form>
               <input
                 type="text"
                 id="search"
@@ -86,7 +86,7 @@ const Classes = () => {
                 className="search"
               />
               <button className="fa-solid fa-magnifying-glass search-icon"></button>
-            </form>
+            </form>}
           </div>
         </div>
         {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation"/>}
