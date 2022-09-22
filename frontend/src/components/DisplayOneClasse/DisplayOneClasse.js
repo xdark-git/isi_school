@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   deleteDialogOpened,
@@ -16,6 +16,7 @@ import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
 import Plus from "./dialogs/Plus";
 
 const DisplayOneClasse = () => {
+  const [isSearching, setIsSearching] = useState("");
   const [plusDialog, setPlusDialog] = useState(false);
   const openPlusDialog = () => {
     if (plusDialog === true) setPlusDialog(false);
@@ -24,10 +25,10 @@ const DisplayOneClasse = () => {
   const isLoading = useSelector((state) => state?.isLoading?.loader);
   const actualClasse = useSelector((state) => state?.classe?.data?.classe);
 
-  var listOfCours;
+  const listOfCours = useRef();
   const cours = useSelector((state) => state?.classe?.data?.cours);
-  if (cours?.length >= 1) {
-    listOfCours = cours.map((el) => (
+  if (cours?.length >= 1 && !isSearching) {
+    listOfCours.current = cours.map((el) => (
       <div className="cours" key={el?._id}>
         <div className="cours-owner">
           <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
@@ -36,9 +37,33 @@ const DisplayOneClasse = () => {
         <div className="cours-name">{`${el?.titre}`}</div>
       </div>
     ));
-  } else {
-    listOfCours = <NoContent />;
   }
+  if (cours?.length === 0) {
+    listOfCours.current = <NoContent />;
+  }
+
+  const handleSearch = async (event) => {
+    listOfCours.current = cours
+      .filter((el) => {
+        const regex = new RegExp(`^${event.target.value}.*$`, "i");
+        return el?.titre.match(regex);
+      })
+      .map((el) => {
+        return (
+          <div className="cours" key={el?._id}>
+            <div className="cours-owner">
+              <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
+              <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
+            </div>
+            <div className="cours-name">{`${el?.titre}`}</div>
+          </div>
+        );
+      });
+  };
+  
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+  };
 
   let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
   const isProfEtudiantDialogOpened = useSelector((state) => state?.stateProfEtudiantDialog?.status);
@@ -56,13 +81,18 @@ const DisplayOneClasse = () => {
             {plusDialog === true && <Plus classe={actualClasse} />}
           </div>
           <div className="search">
-            <form>
+            <form onSubmit={handleSearchSubmit}>
               <input
                 type="text"
                 id="search"
                 placeholder="Recherche"
                 name="search"
+                value={isSearching}
                 className="search"
+                onChange={(e) => {
+                  setIsSearching(e.target.value);
+                  handleSearch(e);
+                }}
               />
               <button className="fa-solid fa-magnifying-glass search-icon"></button>
             </form>
@@ -71,8 +101,11 @@ const DisplayOneClasse = () => {
         {isNewClassDialogOpen === newClassDialogOpened && (
           <NewClassDialog objectif="Modification" />
         )}
-        <div className="content1">{listOfCours}</div>
-        {isLoading === loaderComponentOpened && <Loading />}
+        {isLoading === loaderComponentOpened ? (
+          <Loading />
+        ) : (
+          <div className="content1">{listOfCours.current}</div>
+        )}
         {isProfEtudiantDialogOpened === listProfEtudiantDialogOpened && <ListProfEtudiant />}
         {isDeleteDialogOpened === deleteDialogOpened && <DeleteDialog />}
       </div>
