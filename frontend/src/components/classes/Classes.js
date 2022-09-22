@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
@@ -29,8 +29,9 @@ const Classes = () => {
   const [userToken, setUserToken] = useState(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
   const classes = useSelector((state) => state?.classes);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSearching, setIsSearching] = useState("");
   const isLoading = useSelector((state) => state?.isLoading?.loader);
-  var lisOfClasses;
+  const listOfclasses = useRef();
   useEffect(() => {
     const token = userToken;
     if (token != null) {
@@ -44,7 +45,6 @@ const Classes = () => {
         dispatch(getAll(navigate));
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -53,8 +53,8 @@ const Classes = () => {
     dispatch(getOne(id, navigate));
   };
 
-  if (classes.length >= 1) {
-    lisOfClasses = classes.map((el) => (
+  if (classes?.data.length >= 1 && !isSearching) {
+    listOfclasses.current = classes?.data.map((el) => (
       <div className="classe" key={el?._id} onClick={() => getOneClasse(el?._id)}>
         {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
         {el?.nom.length >= 17 && <div className="classe-name">{el?.nom.substring(0, 17)}...</div>}
@@ -62,9 +62,32 @@ const Classes = () => {
       </div>
     ));
   }
-  if (classes.length === 0 && isLoading === loaderComponentClosed) {
-    lisOfClasses = <NoContent />;
+  if (classes?.data?.length === 0 && classes?.status && isLoading === loaderComponentClosed) {
+    listOfclasses.current = <NoContent />;
   }
+  const handleSearch = async (event) => {
+    event.preventDefault();
+
+    listOfclasses.current = classes?.data
+      .filter((el) => {
+        const regex = new RegExp(`^${event.target.value}.*$`, "i");
+        return el?.nom.match(regex);
+      })
+      .map((el) => {
+        return (
+          <div className="classe" key={el?._id} onClick={() => getOneClasse(el?._id)}>
+            {el?.nom.length < 17 && <div className="classe-name">{el?.nom}</div>}
+            {el?.nom.length >= 17 && (
+              <div className="classe-name">{el?.nom.substring(0, 17)}...</div>
+            )}
+            <span>{el?.etudiants_id.length} étudiants</span>
+          </div>
+        );
+      });
+  };
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <main>
       <Navbar />
@@ -77,21 +100,32 @@ const Classes = () => {
             </div>
           )}
           <div className="search">
-            {classes.length > 0 && <form>
-              <input
-                type="text"
-                id="search"
-                placeholder="Recherche"
-                name="search"
-                className="search"
-              />
-              <button className="fa-solid fa-magnifying-glass search-icon"></button>
-            </form>}
+            {classes?.data.length >=1 && (
+              <form onSubmit={handleSearchSubmit}>
+                <input
+                  type="text"
+                  id="search"
+                  placeholder="Recherche"
+                  name="search"
+                  value={isSearching}
+                  className="search"
+                  onChange={(e) => {
+                    setIsSearching(e.target.value);
+                    handleSearch(e);
+                  }}
+                />
+                <button className="fa-solid fa-magnifying-glass search-icon"></button>
+              </form>
+            )}
           </div>
         </div>
-        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation"/>}
-        <div className="content">{lisOfClasses}</div>
-        {isLoading === loaderComponentOpened && <Loading />}
+        {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation" />}
+
+        {isLoading === loaderComponentOpened ? (
+          <Loading />
+        ) : (
+          <div className="content">{listOfclasses.current}</div>
+        )}
       </div>
     </main>
   );

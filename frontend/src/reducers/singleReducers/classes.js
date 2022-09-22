@@ -12,7 +12,7 @@ export const getAllClassesReducers = (state = { data: [] }, action) => {
     case GETALLCLASSES:
       return (state = { data: action?.data, status: "done" });
     case LOGOUT:
-      return (state = {});
+      return (state = { data: [] });
     default:
       return state;
   }
