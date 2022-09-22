@@ -134,23 +134,31 @@ export const getOne = async (req, res) => {
   try {
     //checking if the user still exist
     let user;
-    if (req?.user?.status == "Administrateur")
+    let classe;
+    if (req?.user?.status == "Administrateur") {
       user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+      classe = await Classe.findById(req?.params?._id)
+        .where({ isDeleted: false })
+        .select("-__v -isDeleted");
+    }
 
-    if (req?.user?.status == "Professeur")
+    if (req?.user?.status == "Professeur") {
       user = await Professeur.findById(req?.user?.id).where("isDeleted").equals(false);
+      classe = await Classe.findById(req?.params?._id)
+        .where({ isDeleted: false, profs_id: { $in: [req?.user?.id] } })
+        .select("-__v -isDeleted");
+    }
 
-    if (req?.user?.status == "Etudiant")
+    if (req?.user?.status == "Etudiant") {
       user = await Etudiant.findById(req?.user?.id).where("isDeleted").equals(false);
+      classe = await Classe.findById(req?.params?._id)
+        .where({ isDeleted: false, etudiants_id: { $in: [req?.user?.id] } })
+        .select("-__v -isDeleted");
+    }
 
     if (!user) {
       return res.status(401).json({ message: "Accès non autorisé" });
     }
-
-    const classe = await Classe.findById(req?.params?._id)
-      .where("isDeleted")
-      .equals(false)
-      .select("-__v -isDeleted");
 
     if (!classe) {
       return res.status(404).json({ message: "Introuvable" });
