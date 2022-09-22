@@ -1,6 +1,7 @@
 import * as api from "../../api";
 import {
   closeDeleteDialog,
+  closeLoaderComponent,
   closeNewClassDialog,
   ERRORONCLASSECREATION,
   openAlertDialog,
@@ -13,6 +14,7 @@ export const createClasse = (formData, navigate) => async (dispatch) => {
     dispatch({ type: closeNewClassDialog });
     dispatch(getOne(classe?.data?._id, navigate));
   } catch (error) {
+    dispatch({ type: closeLoaderComponent });
     if (error.response.status === 409 || error.response.status === 400)
       dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
     if (error?.response?.status === 500)
@@ -27,6 +29,7 @@ export const updateName = (id, formData, navigate) => async (dispatch) => {
     dispatch({ type: closeNewClassDialog });
     dispatch({ type: openAlertDialog, message: classe?.data?.message });
   } catch (error) {
+    dispatch({ type: closeLoaderComponent })
     if (error.response.status === 409 || error.response.status === 400)
       dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
     if (error?.response?.status === 500)
