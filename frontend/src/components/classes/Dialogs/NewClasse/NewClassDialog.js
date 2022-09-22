@@ -30,7 +30,7 @@ const NewClassDialog = (action) => {
   const [nomClasse, setNomClasse] = useState("");
   const [nomClasseOnUpdate, setNomClasseOnUpdate] = useState();
   const classeToUpdate = useSelector((state) => state?.classe?.data?.classe);
-
+  const [errorOnSubmitWithSameName, setErrorOnSubmitWithSameName] = useState();
   const error = useSelector((state) => state?.createClasse?.errors);
 
   const handleSubmit = (event) => {
@@ -40,7 +40,11 @@ const NewClassDialog = (action) => {
       dispatch(createClasse({ nom: nomClasse }, navigate));
       dispatch({ type: openLoaderComponent });
     }
+    if (nomClasseOnUpdate === undefined) {
+      return setErrorOnSubmitWithSameName("Merci de modifier le nom de la classe d'abord");
+    }
     if (action?.objectif === "Modification") {
+      if (errorOnSubmitWithSameName) setErrorOnSubmitWithSameName(undefined);
       dispatch(updateName(classeToUpdate?._id, { nom: nomClasseOnUpdate }, navigate));
       dispatch({ type: openLoaderComponent });
     }
@@ -84,6 +88,7 @@ const NewClassDialog = (action) => {
           <div className="title">Modification Classe</div>
           <div className="description">Merci de donner le nouveau nom de la classe </div>
           <form onSubmit={handleSubmit}>
+            {errorOnSubmitWithSameName && <div className="error">{errorOnSubmitWithSameName}</div>}
             {error?.message && <div className="error">{error?.message}</div>}
             {error?.nom && <div className="error">{error?.nom}</div>}
             <input
