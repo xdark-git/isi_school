@@ -7,12 +7,12 @@ import {
   LOGOUT,
 } from "../../constantes";
 
-export const getAllClassesReducers = (state = [], action) => {
+export const getAllClassesReducers = (state = { data: [] }, action) => {
   switch (action.type) {
     case GETALLCLASSES:
-      return action?.data;
+      return (state = { data: action?.data, status: "done" });
     case LOGOUT:
-      return (state = []);
+      return (state = {});
     default:
       return state;
   }
