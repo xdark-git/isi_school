@@ -4,7 +4,7 @@ import { Administration } from "../model/Administration.js";
 import { Professeur } from "../model/Professeur.js";
 import { Etudiant } from "../model/Etudiant.js";
 import generateUniqueLink from "../functions/generateUniqueLink.js";
-import { handleClasseError, handleModelIdOnFindError } from "../functions/handleError.js";
+import { handleClasseError, handleModelIdOnFindError } from "../functions/handleErrors/handleClasseError.js";
 import { Cours } from "../model/Cours.js";
 
 export const createClasse = async (req, res) => {
