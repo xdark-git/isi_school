@@ -63,6 +63,7 @@ export const createCours = async (req, res) => {
         _id: existingProf?._id,
         nom: existingProf?.nom,
         prenom: existingProf?.prenom,
+        email: existingProf?.email,
         photoDeprofil: existingProf?.photoDeProfil,
       },
       classe_id: req?.body?.classe_id,
@@ -113,7 +114,7 @@ export const getOne = async (req, res) => {
     if (!classe) {
       return res.status(404).json({ message: "Classe supprimée" });
     }
-    
+
     //check if classe_id exist in user
     // if it exist and is an array, check if it includes the classe id
     // if it exist but not an array, check if it's equall to classe id
