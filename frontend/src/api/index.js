@@ -17,6 +17,8 @@ export const signAdministration = (formData) => API.post("/user/login/administra
 
 export const createNewClasse = (formData) => API.post("/classe/create", formData);
 export const getAllClasses = () => API.get("/classe");
-export const getOneClasse = (id) => API.get("/classe/" + id,);
+export const getOneClasse = (id) => API.get("/classe/" + id);
 export const updateClasseName = (id, formData) => API.put("/classe/updatename/" + id, formData);
 export const deleteOneClasse = (id) => API.delete("/classe/delete/" + id);
+
+export const getOneCours = (id) => API.get("/cours/" + id);
