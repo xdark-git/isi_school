@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getOne } from "../../actions/cours/crudCours";
 import {
   deleteDialogOpened,
   listProfEtudiantDialogOpened,
   loaderComponentOpened,
   newClassDialogOpened,
+  openLoaderComponent,
 } from "../../constantes";
 import NewClassDialog from "../classes/Dialogs/NewClasse/NewClassDialog";
 import DeleteDialog from "../Delete/DeleteDialog";
@@ -16,6 +19,9 @@ import ListProfEtudiant from "./dialogs/ListProf/ListProfEtudiant";
 import Plus from "./dialogs/Plus";
 
 const DisplayOneClasse = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isSearching, setIsSearching] = useState("");
   const [plusDialog, setPlusDialog] = useState(false);
   const openPlusDialog = () => {
@@ -29,7 +35,7 @@ const DisplayOneClasse = () => {
   const cours = useSelector((state) => state?.classe?.data?.cours);
   if (cours?.length >= 1 && !isSearching) {
     listOfCours.current = cours.map((el) => (
-      <div className="cours" key={el?._id}>
+      <div className="cours" key={el?._id} onClick={() => getOneCours(el?._id)}>
         <div className="cours-owner">
           <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
           <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
@@ -50,7 +56,7 @@ const DisplayOneClasse = () => {
       })
       .map((el) => {
         return (
-          <div className="cours" key={el?._id}>
+          <div className="cours" key={el?._id} onClick={() => getOneCours(el?._id)}>
             <div className="cours-owner">
               <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
               <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
@@ -60,7 +66,10 @@ const DisplayOneClasse = () => {
         );
       });
   };
-  
+  const getOneCours = (id) => {
+    dispatch(getOne(id, navigate));
+    dispatch({type: openLoaderComponent})
+  };
   const handleSearchSubmit = (event) => {
     event.preventDefault();
   };
