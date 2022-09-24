@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getOne } from "../../actions/cours/crudCours";
+import { getTheCours } from "../../actions/cours/crudCours";
 import {
   deleteDialogOpened,
   listProfEtudiantDialogOpened,
@@ -67,8 +67,8 @@ const DisplayOneClasse = () => {
       });
   };
   const getOneCours = (id) => {
-    dispatch(getOne(id, navigate));
-    dispatch({type: openLoaderComponent})
+    dispatch(getTheCours(id, navigate));
+    dispatch({ type: openLoaderComponent });
   };
   const handleSearchSubmit = (event) => {
     event.preventDefault();
