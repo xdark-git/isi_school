@@ -140,7 +140,6 @@ export const getOne = async (req, res) => {
 
     return res.status(201).json({ cours: cours, contenus: contenu });
   } catch (error) {
-    console.log(error);
     const errors = handleModelIdOnFindCours(error, res);
   }
 };
