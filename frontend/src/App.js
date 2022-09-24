@@ -6,10 +6,11 @@ import Login from "./components/connexion/Login/Login";
 import Missing from "./components/NotFound/missing";
 import Classes from "./components/classes/Classes";
 import DisplayOneClasse from "./components/DisplayOneClasse/DisplayOneClasse";
+import DisplayOneCours from "./components/cours/DisplayOne/DisplayOneCours";
 
 const App = () => {
   const lienClasse = useSelector((state) => state?.classe?.data?.classe?._id);
-
+  const lienCours = useSelector((state) => state?.cours?.data?.cours?._id);
   return (
     <div>
       <BrowserRouter>
@@ -21,7 +22,9 @@ const App = () => {
           {lienClasse !== undefined && (
             <Route path={"/classes/" + lienClasse} element={<DisplayOneClasse />} />
           )}
-
+          {lienCours !== undefined && (
+            <Route path={"/cours/" + lienCours} element={<DisplayOneCours />} />
+          )}
           {/* catch all */}
           <Route path="*" element={<Missing />} />
         </Routes>
