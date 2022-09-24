@@ -21,7 +21,7 @@ export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
 //cookie options
 export const USER_COOKIE_OPTION = {
   path: "/",
-  expires: new Date(Date.now() + 86400000),
+  expires: new Date(Date.now() + 2592000000),
   domaine: toString(window?.location?.origin),
   sameSite: "Strict",
 };
