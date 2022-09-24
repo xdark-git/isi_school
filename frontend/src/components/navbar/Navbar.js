@@ -19,6 +19,7 @@ import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
 import AlertDialog from "./Dialogs/Alert/AlertDialog";
 import { getOne } from "../../actions/classe/getClasses";
+import { getTheCours } from "../../actions/cours/crudCours";
 
 const Navbar = (currentPage) => {
   const dispatch = useDispatch();
@@ -60,14 +61,20 @@ const Navbar = (currentPage) => {
   }, [location, userToken]);
 
   const isDisplayOneClasseOpened = useSelector((state) => state?.classe?.opened);
+  const isDisplayOneCoursOpened = useSelector((state) => state?.cours?.opened);
   useEffect(() => {
     //if the location is "/classes/something" then we get the param fetch the element
-    const classeID = location?.pathname.split("/")[2];
-    const isItAClasse = location?.pathname.split("/")[1];
+    const urlId = location?.pathname.split("/")[2];
+    const urlPathName = location?.pathname.split("/")[1];
 
-    if (isItAClasse === "classes" && classeID) {
-      if (!isDisplayOneClasseOpened && isDisplayOneClasseOpened !== true) {
-        dispatch(getOne(classeID, navigate));
+    if (urlPathName === "classes" && urlId) {
+      if (!isDisplayOneClasseOpened) {
+        dispatch(getOne(urlId, navigate));
+      }
+    } else if (urlPathName === "cours" && urlId) {
+      //if the location is "/cours/something" then we get the param fetch the element
+      if (!isDisplayOneCoursOpened) {
+        dispatch(getTheCours(urlId, navigate));
       }
     }
 
