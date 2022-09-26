@@ -1,0 +1,132 @@
+main .component {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  /* overflow: auto; */
+  display: flex;
+  flex-direction: column;
+}
+
+main .component .display-search {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  top: 70px;
+  left: 171px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  background-color: #f7f8fa;
+}
+
+main .component .display-search .display {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+main .component .display-search .display .more {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+main .component .display-search .display .more i {
+  position: relative;
+  top: 13px;
+  right: 5px;
+}
+main .component .display-search .display .more span {
+  position: relative;
+  left: 3px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 23px;
+}
+
+main .component .content-cours {
+  position: fixed;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  overflow: auto;
+  overflow-x: hidden;
+  justify-content: center;
+  top: 151px;
+}
+main .component .content-cours ul {
+  width: 71vw;
+  min-width: 230px;
+  list-style: none;
+  list-style-type: none;
+  background-color: transparent;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75;
+}
+main .component .content-cours ul li {
+  height: 35px;
+  display: grid;
+  grid-template-columns: 6vw 36vw 23vw 62px;
+  background: #ffffff;
+  align-items: center;
+  padding: 6px;
+  margin-bottom: 7px;
+  border-radius: 6px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+}
+main .component .content-cours ul li .cours-number {
+}
+main .component .content-cours ul li .cours-title {
+}
+/* main .component .content-cours ul li .cours-description {
+  position: fixed;
+  margin-top: 113px;
+  width: 582px;
+  z-index: 1;
+  background-color: #555555;
+  color: #fff;
+  /* text-align: center; 
+  border-radius: 6px;
+  padding: 5px;
+  visibility: hidden;
+}
+main .component .content-cours ul li .cours-description:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555555 transparent;
+}
+main .component .content-cours ul li:hover .cours-description {
+  visibility: visible;
+} */
+main .component .content-cours ul li .cours-date {
+}
+main .component .content-cours ul li .cours-options {
+  display: flex;
+  /* align-content: center; */
+  gap: 23px;
+  align-items: center;
+}
+main .component .content-cours ul li .cours-options i {
+    cursor: pointer;
+    color: #00a1db;
+}
+main .component .content-cours ul li .cours-options .fa-download {
+
+}
