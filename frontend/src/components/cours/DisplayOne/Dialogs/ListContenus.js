@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./asset/css/style.css";
 
 const ListContenus = () => {
+  const [buttonSelectClicked, setButtonSelectClicked] = useState(false);
   return (
     <div className="contenu-listing">
       <div className="contenu-listing-header">
@@ -14,17 +15,36 @@ const ListContenus = () => {
         <div className="description"></div>
         <div className="title">LISTE DES PIECES JOINTES</div>
         <div className="buttons">
-          <button className="select-contenu">
+          <button
+            className="select-contenu"
+            onClick={() =>
+              buttonSelectClicked === false
+                ? setButtonSelectClicked(true)
+                : setButtonSelectClicked(false)
+            }
+          >
             Sélectionner <i className="fa-light fa-check"></i>
           </button>
           <button className="download-contenu">
             Télécharger <i className="fa-thin fa-download"></i>
           </button>
-          <button className="delete-contenu">
-            Supprimer <i className="fa-regular fa-trash"></i>
-          </button>
+          {buttonSelectClicked === true && (
+            <button className="delete-contenu">
+              Supprimer <i className="fa-regular fa-trash"></i>
+            </button>
+          )}
         </div>
-        <div className="list"></div>
+        <div className="list-piece-jointe">
+          <div>
+            <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
+            <div className="title-checkbox">
+              <label htmlFor="select-piece-jointe">exemple.pdf</label>
+              {buttonSelectClicked === true && (
+                <input type="checkbox" name="select-piece-jointe" id="select-piece-jointe" />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
