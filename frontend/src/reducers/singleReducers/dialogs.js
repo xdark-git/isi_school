@@ -23,6 +23,10 @@ import {
   openDeleteDialog,
   deleteDialogOpened,
   closeDeleteDialog,
+  openListContenusDialog,
+  listContenusDialogOpened,
+  closeListContenusDialog,
+  listContenusDialogClosed,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -118,6 +122,17 @@ export const listProfEtudiantReducer = (
         status: listProfEtudiantDialogClosed,
         profile: action?.profile,
       });
+    default:
+      return state;
+  }
+};
+
+export const listContenusDialogReducer = (state = { status: listContenusDialogClosed }, action) => {
+  switch (action.type) {
+    case openListContenusDialog:
+      return (state = { status: listContenusDialogOpened });
+    case closeListContenusDialog:
+      return (state = { status: listContenusDialogClosed });
     default:
       return state;
   }

@@ -62,3 +62,8 @@ export const openLoaderComponent = "OPEN_LOADER_COMPONENT";
 export const closeLoaderComponent = "CLOSE_LOADER_COMPENENT";
 export const loaderComponentOpened = "LOADER_COMPONENT_OPENED";
 export const loaderComponentClosed = "LOADER_COMPONENT_CLOSED";
+
+export const openListContenusDialog = "OPEN_LIST_CONSTENUS_DIALOG";
+export const closeListContenusDialog = "CLOSE_LIST_CONSTENUS_DIALOG";
+export const listContenusDialogOpened = "LIST_CONSTENUS_DIALOG_OPENED";
+export const listContenusDialogClosed = "LIST_CONSTENUS_DIALOG_CLOSED";
