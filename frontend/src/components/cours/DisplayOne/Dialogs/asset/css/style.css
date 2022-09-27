@@ -1,0 +1,115 @@
+.contenu-listing {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100%;
+  padding-left: 110px;
+  top: 71px;
+  display: flex;
+  flex-direction: column;
+  animation-name: contenu-listing;
+  animation-duration: 0.7s;
+  background-color: #f7f8fa;
+}
+@keyframes contenu-listing {
+  0% {
+    top: 200vh;
+  }
+  100% {
+    top: 71px;
+  }
+}
+.contenu-listing .contenu-listing-header {
+  position: relative;
+  width: 100vw;
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 21px;
+  padding-left: 16px;
+  background-color: #ff1b1d;
+  box-shadow: 0px 1px 5px #9b9b9d;
+}
+.contenu-listing .contenu-listing-header .contenu-listing-close {
+  width: 21px;
+  height: 20px;
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.contenu-listing .contenu-listing-header .contenu-listing-close i {
+  font-family: "FontAwesome";
+  font-size: 16px;
+}
+.contenu-listing .contenu-listing-header .contenu-listing-header-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.contenu-listing .contenu-listing-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 70px 0px 70px;
+}
+.contenu-listing .contenu-listing-body .description {
+  position: fixed;
+  background: white;
+  width: 86%;
+  height: 14%;
+  border-radius: 7px;
+}
+.contenu-listing .contenu-listing-body .title {
+  position: relative;
+  top: 111px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24.321px;
+}
+.contenu-listing .contenu-listing-body .buttons {
+  position: relative;
+  top: 128px;
+  display: flex;
+  align-items: center;
+  gap: 88px;
+}
+.contenu-listing .contenu-listing-body .buttons button {
+  padding: 6px;
+  gap: 10px;
+
+  width: 136px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  border: none;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.contenu-listing .contenu-listing-body .buttons button i {
+  font-family: "FontAwesome";
+}
+
+.contenu-listing .contenu-listing-body .buttons .select-contenu {
+  background: #2d9cdb;
+}
+.contenu-listing .contenu-listing-body .buttons .download-contenu {
+  background: #54eb40;
+}
+.contenu-listing .contenu-listing-body .buttons .delete-contenu {
+  background: #ff4a4b;
+}

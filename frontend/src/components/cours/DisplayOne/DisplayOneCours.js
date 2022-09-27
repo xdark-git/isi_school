@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../../navbar/Navbar";
 import "./asset/style.css";
+import ListContenus from "./Dialogs/ListContenus";
 
 const DisplayOneCours = () => {
   const cours = useSelector((state) => state?.cours?.data?.cours);
@@ -42,6 +43,7 @@ const DisplayOneCours = () => {
             </li>
           </ul>
         </div>
+        <ListContenus />
       </div>
     </main>
   );
