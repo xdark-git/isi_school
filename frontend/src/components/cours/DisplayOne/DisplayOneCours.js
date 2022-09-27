@@ -1,11 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { listContenusDialogOpened, openListContenusDialog } from "../../../constantes";
 import Navbar from "../../navbar/Navbar";
 import "./asset/style.css";
 import ListContenus from "./Dialogs/ListContenus";
 
 const DisplayOneCours = () => {
+  const dispatch = useDispatch();
   const cours = useSelector((state) => state?.cours?.data?.cours);
+  const isListContenusDialogOpened = useSelector((state) => state?.stateListContenusDialog?.status);
+  
+
   return (
     <main>
       <Navbar path={cours?.titre} />
@@ -38,12 +43,12 @@ const DisplayOneCours = () => {
               <span className="cours-date">date de création</span>
               <span className="cours-options">
                 <i className="fa-solid fa-download"></i>
-                <i className="fa-solid fa-eye"></i>
+                <i className="fa-solid fa-eye" onClick={()=>dispatch({type: openListContenusDialog})}></i>
               </span>
             </li>
           </ul>
         </div>
-        <ListContenus />
+        {isListContenusDialogOpened === listContenusDialogOpened && <ListContenus />}
       </div>
     </main>
   );

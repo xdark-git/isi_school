@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { closeListContenusDialog } from "../../../../constantes";
 import "./asset/css/style.css";
 
 const ListContenus = () => {
+  const dispatch = useDispatch();
   const [buttonSelectClicked, setButtonSelectClicked] = useState(false);
+
   return (
     <div className="contenu-listing">
       <div className="contenu-listing-header">
-        <div className="contenu-listing-close">
+        <div
+          className="contenu-listing-close"
+          onClick={() => dispatch({ type: closeListContenusDialog })}
+        >
           <i className="fa-thin fa-xmark"></i>
         </div>
         <span className="contenu-listing-header-title">Première partie</span>
