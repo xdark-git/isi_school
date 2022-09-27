@@ -87,17 +87,19 @@
   padding: 6px;
   gap: 10px;
 
-  width: 136px;
+  width: 147px;
+  height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 9px;
+  border-radius: 25px;
   border: none;
   color: #ffffff;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .contenu-listing .contenu-listing-body .buttons button i {
@@ -107,9 +109,78 @@
 .contenu-listing .contenu-listing-body .buttons .select-contenu {
   background: #2d9cdb;
 }
+.contenu-listing .contenu-listing-body .buttons .select-contenu:hover {
+  background: #6ebfee;
+}
 .contenu-listing .contenu-listing-body .buttons .download-contenu {
   background: #54eb40;
+}
+.contenu-listing .contenu-listing-body .buttons .download-contenu:hover {
+  background: #7ef76e;
 }
 .contenu-listing .contenu-listing-body .buttons .delete-contenu {
   background: #ff4a4b;
 }
+.contenu-listing .contenu-listing-body .buttons .delete-contenu:hover {
+  background: #fa6a6a;
+}
+.contenu-listing .contenu-listing-body .list-piece-jointe {
+  position: relative;
+  top: 175px;
+  display: grid;
+  grid-template-columns: 328px 328px 328px 328px;
+  grid-template-rows: 83px 83px 83px 83px;
+}
+.contenu-listing .contenu-listing-body .list-piece-jointe div {
+  height: 58.66px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.contenu-listing .contenu-listing-body .list-piece-jointe div img {
+  width: 55.21px;
+  height: 58.66px;
+}
+.contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 150px;
+  gap: 43px;
+  padding-left: 8px;
+
+  background: #ffffff;
+  border-radius: 0px 6px 6px 0px;
+}
+.contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox input[type="checkbox"] {
+    position: relative;
+    width: 15.17px;
+    height: 15px;
+    /* margin-left: 79vw; */
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #d5d5d5;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
+  .contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox input[type="checkbox"]:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    font-size: 10px;
+    color: #ffffff;
+    display: none;
+  }
+  .contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox:hover input[type="checkbox"] {
+    background-color: #a5a5a5;
+  }
+  .contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox input[type="checkbox"]:checked {
+    background-color: #00a1db;
+  }
+  .contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox input[type="checkbox"]:checked:after {
+    display: block;
+  }
