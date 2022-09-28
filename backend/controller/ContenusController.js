@@ -60,11 +60,8 @@ export const createNewCoursContenu = async (req, res) => {
         cours_id: req?.body?.cours_id,
       });
     } catch (error) {
-      console.log(error);
       req?.files.map(async (el) => {
-        await fs.rm(`${process.cwd()}/asset/docs/${el?.filename}`, (err) => {
-          if (!err) console.log("deleted successfully");
-        });
+        await fs.rm(`${process.cwd()}/asset/docs/${el?.filename}`, (err) => {});
       });
       const errors = handleContenuError(error, res);
       return res.status(400).json({ errors });

@@ -13,7 +13,7 @@ const contenuSchema = new Schema(
     description: {
       type: String,
       minlength: [15, "La taille minimale est de 15 caractères"],
-      maxlength: [70, "la taille maximale de la description est de 70 caractères"],
+      maxlength: [150, "la taille maximale de la description est de 150 caractères"],
     },
     piece_jointe: [
       {
