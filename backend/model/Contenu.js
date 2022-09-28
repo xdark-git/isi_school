@@ -18,13 +18,13 @@ const contenuSchema = new Schema(
     piece_jointe: [
       {
         type: Map,
-        nom: {
+        filename: {
           type: String,
         },
-        nomReel: {
+        originalname: {
           type: String,
         },
-        ext: {
+        mimetype: {
           type: String,
         },
         required: [true, "Au minimum, une pièce jointe est requise"],
