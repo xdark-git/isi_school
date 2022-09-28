@@ -2,7 +2,12 @@ import multer from "multer";
 import path from "path";
 import { Professeur } from "../model/Professeur.js";
 import { Cours } from "../model/Cours.js";
+import fs from "fs";
 import "dotenv/config";
+import { fileFilterContenusCours } from "../functions/multer/fileFilter/fileFilterContenusCours.js";
+import { error } from "console";
+import { Contenu } from "../model/Contenu.js";
+import { handleContenuError } from "../functions/handleErrors/handleContenuErro.js";
 
 export const storage = multer.diskStorage({
   destination: async (req, file, cb) => {
@@ -14,63 +19,57 @@ export const storage = multer.diskStorage({
 });
 const upload = multer({
   storage: storage,
-  fileFilter: async (req, file, cb) => {
-    const user = await Professeur.findById(req?.user?.id).where("isDeleted").equals(false);
-    if (!user) {
-      cb(null, false);
-      return cb(new Error("Accès non autorisé"));
-    }
-    const existingCours = await Cours.findById(req?.body?.cours_id).where({
-      isDeleted: false,
-      //"prof._id": user?._id?.toString(),
-    });
-    if (!existingCours) {
-      cb(null, false);
-      return cb(new Error("Cours introuvable"));
-    }
-
-    if (user?._id.toString() != existingCours?.prof?.get("_id")?.toString()) {
-      console.log(user?._id.toString(), existingCours?.prof);
-      cb(null, false);
-      return cb(new Error("Accès non autorisé"));
-    }
-    cb(null, false);
-  },
-}).array("files");
+  fileFilter: (req, file, cb) => fileFilterContenusCours(req, file, cb),
+}).array("files", 10);
 
 export const createNewCoursContenu = async (req, res) => {
-  upload(req, res, (err) => {
-    if (err) console.log(err);
-  });
-  // verifying if the user is prof and still exist
+  upload(req, res, async (err) => {
+    if (err?.message.includes("Accès non autorisé")) {
+      return res.status(401).json({ message: err?.message });
+    }
+    if (err?.message.includes("Cours introuvable")) {
+      return res.status(404).json({ message: err?.message });
+    }
+    if (err?.message.includes("syntaxe de requête malformée")) {
+      return res.status(400).json({ message: err?.message });
+    }
+    if (err?.message.includes("Un élément portant le même titre existe déjà dans le cours")) {
+      return res.status(409).json({ message: err?.message });
+    }
+    if (err?.message.includes("Fichier non supporté")) {
+      return res.status(409).json({ message: err?.message });
+    }
+    if (req?.files.length === 0 && !err) {
+      return res.status(400).json({ message: "Un fichier est au minimum requis" });
+    }
 
-  //   const user = await Professeur.findById(req?.user?.id).where("isDeleted").equals(false);
-  //   if (!user) {
-  //     return res.status(401).json({ message: "Accès non autorisé" });
-  //   }
-  //   // verify if the cours exist and user is owner
-  //   const existingCours = await Cours.findById(req?.body?.cours_id).where({
-  //     isDeleted: false,
-  //   });
-  //   console.log(req.body);
-  //   if (!existingCours) {
-  //     return res.status(404).json({
-  //       message: "Le cours sélectionné n'existe pas",
-  //     });
-  //   }
-  //   if (existingCours?.prof?._id != user?._id) {
-  //     return res
-  //       .status(401)
-  //       .json({ message: "Vous n'avez pas les droits nécessaire pour ajouter dans ce cours" });
-  //   }
+    try {
+      let piece_jointe = [];
+      req?.files.forEach((el) =>
+        piece_jointe.push({
+          filename: el?.filename,
+          originalname: el?.originalname,
+          mimetype: el?.mimetype,
+        })
+      );
 
-  return res.json({
-    message: "succes",
+      const contenu = await Contenu.create({
+        titre: req?.body?.titre,
+        description: req?.body?.description,
+        piece_jointe: piece_jointe,
+        cours_id: req?.body?.cours_id,
+      });
+    } catch (error) {
+      console.log(error);
+      req?.files.map(async (el) => {
+        await fs.rm(`${process.cwd()}/asset/docs/${el?.filename}`, (err) => {
+          if (!err) console.log("deleted successfully");
+        });
+      });
+      const errors = handleContenuError(error, res);
+      return res.status(400).json({ errors });
+    }
+
+    return res.status(201).json({ message: "Contenu ajouté" });
   });
 };
-
-//  const existingCours = await Cours.findById(req?.body?.cours_id).where({
-//    isDeleted: false,
-//  });
-//  console.log(existingCours._id.toString());
-// cb(null, `${process.cwd()}/asset/docs`);
