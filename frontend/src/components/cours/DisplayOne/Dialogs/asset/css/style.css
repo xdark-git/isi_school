@@ -42,7 +42,7 @@
   color: #ffffff;
 }
 .contenu-listing .contenu-listing-header .contenu-listing-close:hover {
-transform: scale(1.2);
+  transform: scale(1.2);
 }
 .contenu-listing .contenu-listing-header .contenu-listing-close i {
   font-family: "FontAwesome";
@@ -70,6 +70,15 @@ transform: scale(1.2);
   width: 86%;
   height: 14%;
   border-radius: 7px;
+  padding: 4px 7px 4px 7px;
+  color: #000000;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.321px;
+
+  overflow: auto;
+  overflow-x: hidden;
 }
 .contenu-listing .contenu-listing-body .title {
   position: relative;
@@ -84,7 +93,7 @@ transform: scale(1.2);
   top: 128px;
   display: flex;
   align-items: center;
-  gap: 88px;
+  gap: 38px;
 }
 .contenu-listing .contenu-listing-body .buttons button {
   padding: 6px;
@@ -140,18 +149,24 @@ transform: scale(1.2);
   flex-direction: row;
   align-items: center;
 }
+.contenu-listing .contenu-listing-body .list-piece-jointe div .document-detail {
+  position: relative;
+  bottom: 40px;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+}
 .contenu-listing .contenu-listing-body .list-piece-jointe div img {
   width: 55.21px;
   height: 58.66px;
 }
 .contenu-listing .contenu-listing-body .list-piece-jointe div .title-checkbox {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 114px 23px;
   align-items: center;
   width: 150px;
-  gap: 43px;
   padding-left: 8px;
-
+  gap: 6px;
   background: #ffffff;
   border-radius: 0px 6px 6px 0px;
 }
@@ -161,7 +176,6 @@ transform: scale(1.2);
   div
   .title-checkbox
   input[type="checkbox"] {
-  position: relative;
   width: 15.17px;
   height: 15px;
   /* margin-left: 79vw; */
@@ -192,8 +206,8 @@ transform: scale(1.2);
   .contenu-listing-body
   .list-piece-jointe
   div
-  .title-checkbox:hover
-  input[type="checkbox"] {
+  .title-checkbox
+  input[type="checkbox"]:hover {
   background-color: #a5a5a5;
 }
 .contenu-listing
