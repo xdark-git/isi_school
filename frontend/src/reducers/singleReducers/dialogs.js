@@ -130,7 +130,7 @@ export const listProfEtudiantReducer = (
 export const listContenusDialogReducer = (state = { status: listContenusDialogClosed }, action) => {
   switch (action.type) {
     case openListContenusDialog:
-      return (state = { status: listContenusDialogOpened });
+      return (state = { status: listContenusDialogOpened, data: action?.data });
     case closeListContenusDialog:
       return (state = { status: listContenusDialogClosed });
     default:
