@@ -1,3 +1,17 @@
+export const months = [
+  "janv",
+  "févr",
+  "mars",
+  "avr",
+  "mai",
+  "juin",
+  "juill",
+  "août",
+  "sept",
+  "oct",
+  "nov",
+  "déc",
+];
 //  Reducers actions
 export const ETUDIANT = "ETUDIANT";
 export const PROFESSEUR = "PROFESSEUR";
