@@ -1,11 +1,34 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeListContenusDialog } from "../../../../constantes";
 import "./asset/css/style.css";
 
 const ListContenus = () => {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state?.stateListContenusDialog?.data);
   const [buttonSelectClicked, setButtonSelectClicked] = useState(false);
+
+  let listOfPiecJointe = data?.piece_jointe.map((el, index) => {
+    return (
+      <div key={index}>
+        {/* <div className="document-detail">
+          <span className="document-type">type: png</span>
+          <span className="document-size">taille :124mb</span>
+        </div> */}
+        <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
+        <div className="title-checkbox">
+          <label htmlFor="#">
+            {el?.originalname.length > 17
+              ? `${el?.originalname.substring(0, 15)}...`
+              : `${el?.originalname}`}
+          </label>
+          {buttonSelectClicked === true && (
+            <input type="checkbox" name="select-piece-jointe" id="select-piece-jointe" />
+          )}
+        </div>
+      </div>
+    );
+  });
 
   return (
     <div className="contenu-listing">
@@ -16,10 +39,10 @@ const ListContenus = () => {
         >
           <i className="fa-thin fa-xmark"></i>
         </div>
-        <span className="contenu-listing-header-title">Première partie</span>
+        <span className="contenu-listing-header-title">{data?.titre}</span>
       </div>
       <div className="contenu-listing-body">
-        <div className="description"></div>
+        <div className="description">{data?.description}</div>
         <div className="title">LISTE DES PIECES JOINTES</div>
         <div className="buttons">
           <button
@@ -41,17 +64,7 @@ const ListContenus = () => {
             </button>
           )}
         </div>
-        <div className="list-piece-jointe">
-          <div>
-            <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
-            <div className="title-checkbox">
-              <label htmlFor="select-piece-jointe">exemple.pdf</label>
-              {buttonSelectClicked === true && (
-                <input type="checkbox" name="select-piece-jointe" id="select-piece-jointe" />
-              )}
-            </div>
-          </div>
-        </div>
+        <div className="list-piece-jointe">{listOfPiecJointe}</div>
       </div>
     </div>
   );
