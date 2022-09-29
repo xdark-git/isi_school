@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listContenusDialogOpened, openListContenusDialog } from "../../../constantes";
+import { listContenusDialogOpened, months, openListContenusDialog } from "../../../constantes";
 import Navbar from "../../navbar/Navbar";
 import "./asset/style.css";
 import ListContenus from "./Dialogs/ListContenus";
@@ -8,8 +8,42 @@ import ListContenus from "./Dialogs/ListContenus";
 const DisplayOneCours = () => {
   const dispatch = useDispatch();
   const cours = useSelector((state) => state?.cours?.data?.cours);
+  const contenus = useSelector((state) => state?.cours?.data?.contenus);
   const isListContenusDialogOpened = useSelector((state) => state?.stateListContenusDialog?.status);
-  
+  let listContenus = contenus.map((el, index) => {
+    const date = new Date(el?.createdAt);
+    let diff = new Date(Date.now() - date).getHours();
+    if (diff < 1) {
+      diff = -1;
+    }
+    return (
+      <li key={el?._id}>
+        <span className="cours-number">{index + 1}</span>
+        <span className="cours-title">{el?.titre}</span>
+        <span className="cours-date">
+          {diff < 24
+            ? `il y a ${diff}h`
+            : `${date.getDay()} ${months[date.getMonth()]} ${date.getFullYear()}`}
+        </span>
+        <span className="cours-options">
+          <i className="fa-solid fa-download"></i>
+          <i
+            className="fa-solid fa-eye"
+            onClick={() =>
+              dispatch({
+                type: openListContenusDialog,
+                data: {
+                  titre: el?.titre,
+                  description: el?.description,
+                  piece_jointe: el?.piece_jointe,
+                },
+              })
+            }
+          ></i>
+        </span>
+      </li>
+    );
+  });
 
   return (
     <main>
@@ -36,17 +70,7 @@ const DisplayOneCours = () => {
           </div>
         </div>
         <div className="content-cours">
-          <ul>
-            <li>
-              <span className="cours-number">Numéro</span>
-              <span className="cours-title">titre</span>
-              <span className="cours-date">date de création</span>
-              <span className="cours-options">
-                <i className="fa-solid fa-download"></i>
-                <i className="fa-solid fa-eye" onClick={()=>dispatch({type: openListContenusDialog})}></i>
-              </span>
-            </li>
-          </ul>
+          <ul>{listContenus}</ul>
         </div>
         {isListContenusDialogOpened === listContenusDialogOpened && <ListContenus />}
       </div>
