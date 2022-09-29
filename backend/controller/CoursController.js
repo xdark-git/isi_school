@@ -136,8 +136,8 @@ export const getOne = async (req, res) => {
     // fetching all contenu of the classe
     const contenu = await Contenu.find({})
       .where({ isDeleted: false, cours_id: cours?.id })
-      .select("-__v -isDeleted");
-
+      .select("-__v -isDeleted")
+      .sort({ createdAt: "asc" });
     return res.status(201).json({ cours: cours, contenus: contenu });
   } catch (error) {
     const errors = handleModelIdOnFindCours(error, res);
