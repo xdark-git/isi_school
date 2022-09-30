@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeListContenusDialog } from "../../../../constantes";
+import decode from "jwt-decode";
+import { closeListContenusDialog, USER_TOKEN_LOCAL_STORAGE_NAME } from "../../../../constantes";
 import "./asset/css/style.css";
 
 const ListContenus = () => {
   const dispatch = useDispatch();
+
+  const userToken = useRef(localStorage.getItem(USER_TOKEN_LOCAL_STORAGE_NAME));
+  const decodedToken = useRef(decode(userToken.current));
+
   const data = useSelector((state) => state?.stateListContenusDialog?.data);
   const [buttonSelectClicked, setButtonSelectClicked] = useState(false);
 
@@ -58,10 +63,12 @@ const ListContenus = () => {
           <button className="download-contenu">
             Télécharger <i className="fa-thin fa-download"></i>
           </button>
-          {buttonSelectClicked === true && (
+          {buttonSelectClicked === true && decodedToken.current.id === data?.prof_id ? (
             <button className="delete-contenu">
               Supprimer <i className="fa-regular fa-trash"></i>
             </button>
+          ) : (
+            <></>
           )}
         </div>
         <div className="list-piece-jointe">{listOfPiecJointe}</div>
