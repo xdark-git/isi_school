@@ -25,7 +25,20 @@ const DisplayOneCours = () => {
       }
     }
     return (
-      <li key={el?._id}>
+      <li
+        key={el?._id}
+        onClick={() =>
+          dispatch({
+            type: openListContenusDialog,
+            data: {
+              titre: el?.titre,
+              description: el?.description,
+              piece_jointe: el?.piece_jointe,
+              prof_id: cours?.prof?._id,
+            },
+          })
+        }
+      >
         <span className="cours-number">{index + 1}</span>
         <span className="cours-title">{el?.titre}</span>
         <span className="cours-date">
