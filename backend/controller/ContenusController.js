@@ -44,7 +44,6 @@ export const createNewCoursContenu = async (req, res) => {
     }
 
     try {
-     
       let piece_jointe = [];
       req?.files.forEach((el) =>
         piece_jointe.push({
