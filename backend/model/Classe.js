@@ -6,7 +6,9 @@ const classeSchema = new Schema(
   {
     nom: {
       type: String,
-      required: true,
+      required: [true, "Le nom de la classe est requis"],
+      minlength: [3, "La taille minimale est de 3 caractères"],
+      maxlength: [50, "La taille maximale est de 50 caractères"]
     },
     lien: {
       type: String,
@@ -18,6 +20,10 @@ const classeSchema = new Schema(
     },
     profs_id: [String],
     etudiants_id: [String],
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

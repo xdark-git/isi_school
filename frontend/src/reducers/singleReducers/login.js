@@ -25,7 +25,7 @@ export const profileSelectedReducer = (profile = initialProfileState, action) =>
       return initialProfileState;
     case PROFESSEUR:
       return {
-        etudiant: "btn-profil ",
+        etudiant: "btn-profil",
         professeur: "btn-profil checked",
         profile: PROFESSEUR,
       };
@@ -51,7 +51,6 @@ export const signinUserReducer = (state = { authData: null }, action) => {
       return { authData: action?.data };
 
     case LOGINERROR:
-      console.log(action?.data);
       return { error: action?.data };
     case LOGOUT:
       localStorage.clear();

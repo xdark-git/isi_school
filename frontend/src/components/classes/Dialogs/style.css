@@ -15,7 +15,7 @@
   width: 81vw;
   max-width: 600px;
   height: 27vh;
-  min-height: 80px;
+  min-height: 210px;
   max-height: 197px;
   bottom: 11vh;
   border-radius: 7px;
@@ -61,6 +61,12 @@
   position: relative;
   top: 19px;
   left: 20px;
+}
+
+.nouvelle-classe .nouvelle-classe-contenu form .error{
+color: red;
+margin-bottom: 5px;
+
 }
 .nouvelle-classe .nouvelle-classe-contenu form input {
   display: flex;

@@ -19,12 +19,12 @@ const etudiantSchema = new Schema(
     telephone: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     numeroDeCarte: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     dateDeNaissance: {
       type: Date,
@@ -37,12 +37,12 @@ const etudiantSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     motDePasse: {
       type: String,
@@ -53,10 +53,14 @@ const etudiantSchema = new Schema(
       type: String,
       required: true,
     },
-    classe_id: { type: String },
+    classe_id: { type: String, default: null },
     admin_id: {
       type: String,
       required: true,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

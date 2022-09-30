@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -19,11 +19,13 @@ import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
 import AlertDialog from "./Dialogs/Alert/AlertDialog";
 import { getOne } from "../../actions/classe/getClasses";
+import { getTheCours } from "../../actions/cours/crudCours";
 
-const Navbar = () => {
+const Navbar = (currentPage) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
   const cookies = new Cookies();
   const user = cookies.get(USER_DATA_COOKIE_NAME);
 
@@ -59,15 +61,21 @@ const Navbar = () => {
   }, [location, userToken]);
 
   const isDisplayOneClasseOpened = useSelector((state) => state?.classe?.opened);
+  const isDisplayOneCoursOpened = useSelector((state) => state?.cours?.opened);
   useEffect(() => {
     //if the location is "/classes/something" then we get the param fetch the element
-    const classeID = location?.pathname.split("/")[2];
-    const isItAClasse = location?.pathname.split("/")[1];
+    const urlId = location?.pathname.split("/")[2];
+    const urlPathName = location?.pathname.split("/")[1];
 
-    if (isItAClasse === "classes" && classeID) {
-      if (!isDisplayOneClasseOpened && isDisplayOneClasseOpened !== true){
-        dispatch(getOne(classeID, navigate));
-      }      
+    if (urlPathName === "classes" && urlId) {
+      if (!isDisplayOneClasseOpened) {
+        dispatch(getOne(urlId, navigate));
+      }
+    } else if (urlPathName === "cours" && urlId) {
+      //if the location is "/cours/something" then we get the param fetch the element
+      if (!isDisplayOneCoursOpened) {
+        dispatch(getTheCours(urlId, navigate));
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,15 +115,29 @@ const Navbar = () => {
       changeIsLogoutDialogOpen(logoutDialogClosed);
     }
   };
+  const pageName = useRef();
+  if (currentPage?.path === undefined) {
+    pageName.current = location?.pathname.split("/")[1];
+  } else {
+    pageName.current = currentPage?.path;
+  }
 
   if (dimensions?.width > 785) {
     return (
       <div>
         <header>
           {isAlertDialogOpen === alertDialogOpened && <AlertDialog />}
-          <div className="page-name">Classe</div>
+
+          {pageName.current.length >= 27 && (
+            <div className="page-name">{pageName.current.substring(0, 27)}...</div>
+          )}
+          {pageName.current.length < 27 && <div className="page-name">{pageName.current}</div>}
           <div className="profile" onClick={wantToLogout}>
-            <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="profil utilisateur" />
+            <img
+              preload="auto"
+              src={`http://localhost:5000/api/user/img/${user?.photoDeProfil}`}
+              alt="profil utilisateur"
+            />
             <div className="user-name">{user?.prenom}</div>
             <i className="fa-solid fa-caret-down"></i>
           </div>
@@ -129,16 +151,14 @@ const Navbar = () => {
               <i className="fa-solid fa-gear fa-lg"></i>
               <div>Profil</div>
             </div>
-            {user?.status === "Administrateur" && (
-              <div className="classes checked">
-                <i className="fa-solid fa-building fa-lg"></i>
-                <div>classes</div>
-              </div>
-            )}
-            <div className="cours">
+            <div className="classes checked">
+              <i className="fa-solid fa-building fa-lg"></i>
+              <div>classes</div>
+            </div>
+            {/* <div className="cours">
               <i className="fa-solid fa-file-lines fa-lg"></i>
               <div>Cours</div>
-            </div>
+            </div> */}
             <div className="informations">
               <i className="fa-solid fa-bell fa-lg"></i>
               <div>Informations</div>

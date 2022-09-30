@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/usersRoutes.js";
 import statusRouter from "./routes/statusRoutes.js";
 import classeRoutes from "./routes/classeRoutes.js";
+import coursRoutes from "./routes/coursRoutes.js";
 //////////Routes//////////
 const app = express();
 
@@ -25,11 +26,12 @@ await mongoose
     useUnifiedTopology: true,
   })
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
-  .catch((error) => console.log(error.message));
+  .catch((error) => console.log(error.message.toString()));
 
 app.use("/api/user", userRouter);
 app.use("/api/status", statusRouter);
 app.use("/api/classe", classeRoutes);
+app.use("/api/cours", coursRoutes);
 
 //return a json error when visiting a page that does't exit
 app.use("*", (req, res) => res.status(404).json({ error: "Not found Route" }));

@@ -1,0 +1,39 @@
+.loader-main {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+  min-width: 249px;
+  height: 100vh;
+  min-height: 476px;
+  z-index: 1;
+}
+.loader-main .loader {
+  border: 16px solid #ffffff;
+  border-radius: 50%;
+  border-top: 16px solid #379fda;
+  width: 48px;
+  height: 48px;
+  animation: spin 0.9s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

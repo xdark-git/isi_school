@@ -14,7 +14,9 @@ export const signinEtudiant = async (req, res) => {
   try {
     const existingUser = await Etudiant.findOne({
       email: req.body.email,
-    });
+    })
+      .where("isDeleted")
+      .equals(false);
 
     // console.log(hashedMotDePasse);
     if (!existingUser) {
@@ -42,7 +44,10 @@ export const signinEtudiant = async (req, res) => {
         // });
 
         //cleaning data to send
-        const data = await Etudiant.findById(existingUser["_id"]).select("-__v -motDePasse");
+        const data = await Etudiant.findById(existingUser["_id"])
+          .where("isDeleted")
+          .equals(false)
+          .select("-__v -motDePasse -isDeleted");
 
         return res.status(200).json({ data: data, status, token: token });
       } else {
@@ -60,15 +65,22 @@ export const signupEtudiant = async (req, res) => {
   // verifying if email, username and telephone exist in Professeur collection
   const existingEmailInProfesseur = await Professeur.findOne({
     email: req.body.email,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
 
   const existingUsernameInProfesseur = await Professeur.findOne({
     username: req.body.username,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
 
   const existingTelephoneInProfesseur = await Professeur.findOne({
     telephone: req.body.telephone,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
+
   if (existingEmailInProfesseur || existingUsernameInProfesseur || existingTelephoneInProfesseur) {
     let email = "ok";
     let username = "ok";
@@ -82,18 +94,27 @@ export const signupEtudiant = async (req, res) => {
   // verifying if email, username and telephone exist in Etudiant collection
   const existingEmailInEtudiant = await Etudiant.findOne({
     email: req.body.email,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
 
   const existingUsernameInEtudiant = await Etudiant.findOne({
     username: req.body.username,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
 
   const existingTelephoneInEtudiant = await Etudiant.findOne({
     telephone: req.body.telephone,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
   const existingNumeroCarteInEtudiant = await Etudiant.findOne({
     numeroDeCarte: req.body.numeroDeCarte,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
+
   if (
     existingEmailInEtudiant ||
     existingUsernameInEtudiant ||
@@ -119,13 +140,19 @@ export const signupEtudiant = async (req, res) => {
   // verifying if email, username and telephone exist in Administration collection
   const existingEmailInAdministration = await Administration.findOne({
     email: req.body.email,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
   const existingUsernameInAdministration = await Administration.findOne({
     username: req.body.username,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
   const existingTelephoneInAdministration = await Administration.findOne({
     telephone: req.body.telephone,
-  });
+  })
+    .where("isDeleted")
+    .equals(false);
   if (
     existingEmailInAdministration ||
     existingUsernameInAdministration ||
@@ -141,13 +168,13 @@ export const signupEtudiant = async (req, res) => {
   }
   // verify if the statusid exist and creating the new user
   const existingStatusIdInStatus = await Status.findById(req.body.statusId).select("-_id -__v");
-  if (!existingStatusIdInStatus) {
+  if (!existingStatusIdInStatus || existingStatusIdInStatus?.nom != "Etudiant") {
     return res.status(406).json({ message: "Not Acceptable Status" });
   }
   if (existingStatusIdInStatus) {
     const hashedMotDePasse = await bcrypt.hash(req.body.motDePasse, 12);
     // Checking if the Admin still exist
-    const admin = await Administration.findById(req?.user?.id);
+    const admin = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
     if (!admin) {
       return res.status(401).json({ message: "Access denied" });
     }
@@ -168,19 +195,14 @@ export const signupEtudiant = async (req, res) => {
       if (result) {
         const status = existingStatusIdInStatus;
 
+        const newUser = await Etudiant.findById(result["_id"])
+          .where("isDeleted")
+          .equals(false)
+          .select("-__v -motDePasse -isDeleted");
+
         res.status(201).json({
           message: "Created",
-          data: {
-            _id: result["_id"],
-            nom: req.body.nom,
-            prenom: req.body.prenom,
-            telephone: req.body.telephone,
-            numeroDeCarte: req.body.numeroDeCarte,
-            dateDeNaissance: req.body.dateDeNaissance,
-            lieuDeNaissance: req.body.lieuDeNaissance,
-            username: req.body.username,
-            email: req.body.email,
-          },
+          data: newUser,
           status,
         });
       }

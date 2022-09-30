@@ -15,7 +15,7 @@ main .component .new-search {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   z-index: 1;
   background-color: #f7f8fa;
 }
@@ -26,7 +26,7 @@ main .component .new-search .new {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 150px;
+  width: 171px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -37,7 +37,7 @@ main .component .new-search .new {
 
 main .component .new-search .new div {
   position: relative;
-  left: 5%;
+  left: 2%;
 }
 
 main .component .new-search .new:hover {
@@ -45,10 +45,11 @@ main .component .new-search .new:hover {
 }
 
 main .component .new-search .search {
-  position: relative;
-  right: 1vw;
-  display: flex;
-  flex-direction: row;
+}
+main .component .new-search form {
+  position: fixed;
+  right: 54px;
+  top: 91px;
 }
 
 main .component .new-search .search input {
@@ -80,9 +81,9 @@ main .component .new-search .search input:focus {
 }
 
 main .component .new-search .search .search-icon {
-  position: absolute;
-  right: 23px;
-  bottom: 9px;
+  position: fixed;
+  right: 66px;
+  top: 99px;
   color: #379fda;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -167,7 +168,7 @@ main .component .content .classe span {
 
 @media only screen and (max-width: 1530px) {
   main .component .content {
-    grid-template-columns: 286px 286px 286px 286px;
+    grid-template-columns: 306px 306px 306px 306px;
   }
   main .component .content .classe {
     width: 289px;
@@ -253,12 +254,17 @@ main .component .content .classe span {
 }
 
 @media only screen and (max-width: 785px) {
+  main .component .new-search .search form {
+    top: 96px;
+    right: 20px;
+  }
   main .component .new-search .search input {
     width: 201px;
     height: 26px;
   }
   main .component .new-search .search .search-icon {
-    bottom: 5px;
+    top: 101px;
+    right: 30px;
   }
   main .component .new-search .new {
     left: 20px;
@@ -309,20 +315,6 @@ main .component .content .classe span {
 }
 
 @media only screen and (max-width: 440px) {
-  main .component .content {
-    grid-template-columns: 70vw;
-  }
-  main .component .content .classe {
-    width: 289px;
-    height: 115px;
-  }
-  main .component .content .classe div {
-    height: 34px;
-    font-size: 21px;
-  }
-}
-
-@media only screen and (max-width: 440px) {
   main .component .new-search {
     top: 56px;
     display: flex;
@@ -347,9 +339,24 @@ main .component .content .classe span {
     height: 26px;
     left: 8px;
   }
+  main .component .new-search .search form {
+    position: relative;
+    top: 0px;
+    right: unset;
+}
   main .component .new-search .search .search-icon {
-    bottom: 7px;
-    right: 3px;
+    position: absolute;
+    bottom: unset;
+    right: 13px;
+    top: 6px;
+  }
+  main .component .content .classe {
+    width: 289px;
+    height: 115px;
+  }
+  main .component .content .classe div {
+    height: 34px;
+    font-size: 21px;
   }
   main .component .content {
     grid-template-columns: none;
@@ -364,6 +371,20 @@ main .component .content .classe span {
   }
 }
 
-@media only screen and (max-width: 398px) {
-  
+@media only screen and (max-width: 320px) {
+  main .component .new-search .search form {
+    top: 19px;
+    right: unset;
+}
+  main .component .new-search .search input {
+    min-width: 213px;
+  }
+
+  main .component .new-search .search .search-icon {
+    position: relative;
+    top: unset;
+    bottom: 23px;
+    left: 184px;
+    right: unset;
+  }
 }

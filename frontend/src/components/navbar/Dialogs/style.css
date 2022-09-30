@@ -73,7 +73,7 @@
 }
 
 .logout-dialog {
-  width: 153px;
+  width: 201px;
   height: 49px;
   position: fixed;
   /* left: 0%; */
@@ -94,7 +94,10 @@
   color: #828282;
   cursor: pointer;
 }
-
+.logout-dialog:hover{
+  color: #ffffff;
+  background-color: rgb(94, 191, 240);
+}
 .logout-dialog div {
   position: relative;
   left: 8px;

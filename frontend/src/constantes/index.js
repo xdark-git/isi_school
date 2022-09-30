@@ -1,3 +1,17 @@
+export const months = [
+  "janv",
+  "févr",
+  "mars",
+  "avr",
+  "mai",
+  "juin",
+  "juill",
+  "août",
+  "sept",
+  "oct",
+  "nov",
+  "déc",
+];
 //  Reducers actions
 export const ETUDIANT = "ETUDIANT";
 export const PROFESSEUR = "PROFESSEUR";
@@ -9,6 +23,11 @@ export const GETALLCLASSES = "GET_ALL_CLASSES";
 export const DISPLAYONECLASSE = "DISPLAY_ONE_CLASS";
 export const NOCLASSEFOUND = "NO_CLASSE_FOUND";
 
+export const ERRORONCLASSECREATION = "FOUND_ERROR_ON_CREATION";
+export const CREATIONCLASSEDIALOGCLOSED = "CREATION_CLASSE_DIALOG_CLOSED";
+
+export const DISPLAYONECOURS = "DISPLAY_ONE_COURS";
+export const NOCOURSFOUND = "NO_COURS_FOUND";
 // cookies names
 export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
 export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
@@ -16,7 +35,7 @@ export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
 //cookie options
 export const USER_COOKIE_OPTION = {
   path: "/",
-  expires: new Date(Date.now() + 86400000),
+  expires: new Date(Date.now() + 2592000000),
   domaine: toString(window?.location?.origin),
   sameSite: "Strict",
 };
@@ -42,3 +61,23 @@ export const openAlertDialog = "OPEN_ALERT_DIALOG";
 export const closeAlertDialog = "CLOSE_ALERT_DIALOG";
 export const alertDialogOpened = "ALERT_DIALOG_OPENED";
 export const alertDialogClosed = "ALERT_DIALOG_CLOSED";
+
+export const openDeleteDialog = "OPEN_DELETE_DIALOG";
+export const closeDeleteDialog = "CLOSE_DELETE_DIALOG";
+export const deleteDialogOpened = "DELETE_DIALOG_OPENED";
+export const deleteDialogClosed = "DELETE_DIALOG_CLOSED";
+
+export const openListProfEtudiantDialog = "OPEN_LIST_PROF_ETUDIANT_DIALOG";
+export const closeListProfEtudiantDialog = "CLOSE_LIST_PROF_ETUDIANT_DIALOG";
+export const listProfEtudiantDialogOpened = "LIST_PROF_ETUDIANT_DIALOG_OPENED";
+export const listProfEtudiantDialogClosed = "LIST_PROF_ETUDIANT_DIALOG_CLOSED";
+
+export const openLoaderComponent = "OPEN_LOADER_COMPONENT";
+export const closeLoaderComponent = "CLOSE_LOADER_COMPENENT";
+export const loaderComponentOpened = "LOADER_COMPONENT_OPENED";
+export const loaderComponentClosed = "LOADER_COMPONENT_CLOSED";
+
+export const openListContenusDialog = "OPEN_LIST_CONSTENUS_DIALOG";
+export const closeListContenusDialog = "CLOSE_LIST_CONSTENUS_DIALOG";
+export const listContenusDialogOpened = "LIST_CONSTENUS_DIALOG_OPENED";
+export const listContenusDialogClosed = "LIST_CONSTENUS_DIALOG_CLOSED";
