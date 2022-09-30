@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import decode from "jwt-decode";
 import { closeListContenusDialog, USER_TOKEN_LOCAL_STORAGE_NAME } from "../../../../constantes";
@@ -12,14 +12,17 @@ const ListContenus = () => {
 
   const data = useSelector((state) => state?.stateListContenusDialog?.data);
   const [buttonSelectClicked, setButtonSelectClicked] = useState(false);
+  const bytesToSize = (bytes) => {
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+    if (bytes === 0) return "n/a";
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+    if (i === 0) return `${bytes} ${sizes[i]})`;
+    return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`;
+  };
 
   let listOfPiecJointe = data?.piece_jointe.map((el, index) => {
     return (
       <div key={index}>
-        {/* <div className="document-detail">
-          <span className="document-type">type: png</span>
-          <span className="document-size">taille :124mb</span>
-        </div> */}
         <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
         <div className="title-checkbox">
           <label htmlFor="#">
@@ -30,6 +33,10 @@ const ListContenus = () => {
           {buttonSelectClicked === true && (
             <input type="checkbox" name="select-piece-jointe" id="select-piece-jointe" />
           )}
+        </div>
+        <div className="file-detail">
+          <div>TYPE: {el?.mimetype}</div>
+          <div>TAILLE: {bytesToSize(el?.size)}</div>
         </div>
       </div>
     );
