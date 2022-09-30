@@ -10,20 +10,28 @@ const DisplayOneCours = () => {
   const cours = useSelector((state) => state?.cours?.data?.cours);
   const contenus = useSelector((state) => state?.cours?.data?.contenus);
   const isListContenusDialogOpened = useSelector((state) => state?.stateListContenusDialog?.status);
+  // console.log(
+  //   Date.parse("Fri Jan 02 1970 00:00:00 GMT+0000 (Coordinated Universal Time)"),
+  //   new Date(86400000)
+  // );
   let listContenus = contenus.map((el, index) => {
     const date = new Date(el?.createdAt);
-    let diff = new Date(Date.now() - date).getHours();
-    if (diff < 1) {
-      diff = -1;
+    let diff;
+    //checking if it's one day since creating(Date.parse("Fri Jan 02 1970 00:00:00 GMT+0000 (Coordinated Universal Time)"))
+    if (Date.now() - Date.parse(date) < 86400000) {
+      diff = new Date(Date.now() - Date.parse(date)).getHours();
+      if (diff < 1) {
+        diff = -1;
+      }
     }
     return (
       <li key={el?._id}>
         <span className="cours-number">{index + 1}</span>
         <span className="cours-title">{el?.titre}</span>
         <span className="cours-date">
-          {diff < 24
+          {diff && diff < 24
             ? `il y a ${diff}h`
-            : `${date.getDay()} ${months[date.getMonth()]} ${date.getFullYear()}`}
+            : `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`}
         </span>
         <span className="cours-options">
           <i className="fa-solid fa-download"></i>
@@ -36,6 +44,7 @@ const DisplayOneCours = () => {
                   titre: el?.titre,
                   description: el?.description,
                   piece_jointe: el?.piece_jointe,
+                  prof_id: cours?.prof?._id,
                 },
               })
             }
