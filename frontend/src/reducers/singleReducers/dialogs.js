@@ -27,6 +27,7 @@ import {
   listContenusDialogOpened,
   closeListContenusDialog,
   listContenusDialogClosed,
+  LOGOUT,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -71,6 +72,8 @@ export const newClassDialogReducer = (
       return (newClassDialog = {
         status: newClassDialogClosed,
       });
+    case LOGOUT:
+      return newClassDialog;
     default:
       return newClassDialog;
   }
@@ -101,6 +104,8 @@ export const deleteDialogReducer = (state = { status: deleteDialogClosed }, acti
       });
     case closeDeleteDialog:
       return (state = { status: deleteDialogClosed });
+    case LOGOUT:
+      return state;
     default:
       return state;
   }
@@ -116,12 +121,13 @@ export const listProfEtudiantReducer = (
         status: listProfEtudiantDialogOpened,
         profile: action?.profile,
       });
-
     case closeListProfEtudiantDialog:
       return (state = {
         status: listProfEtudiantDialogClosed,
         profile: action?.profile,
       });
+    case LOGOUT:
+      return state;
     default:
       return state;
   }
@@ -133,6 +139,8 @@ export const listContenusDialogReducer = (state = { status: listContenusDialogCl
       return (state = { status: listContenusDialogOpened, data: action?.data });
     case closeListContenusDialog:
       return (state = { status: listContenusDialogClosed });
+    case LOGOUT:
+      return state;
     default:
       return state;
   }
