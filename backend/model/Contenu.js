@@ -27,6 +27,9 @@ const contenuSchema = new Schema(
         mimetype: {
           type: String,
         },
+        size:{
+          type: String
+        },
         required: [true, "Au minimum, une pièce jointe est requise"],
       },
     ],
