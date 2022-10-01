@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import decode from "jwt-decode";
 import { closeListContenusDialog, USER_TOKEN_LOCAL_STORAGE_NAME } from "../../../../constantes";
