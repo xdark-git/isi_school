@@ -5,6 +5,7 @@ import Navbar from "../../navbar/Navbar";
 import NoContent from "../../NotFound/NoContent";
 import "./asset/style.css";
 import ListContenus from "./Dialogs/ListContenus";
+import NewContenuDialog from "./Dialogs/NewContenu/NewContenuDialog";
 import PlusCoursOptions from "./Dialogs/PlusCoursOptions";
 
 const DisplayOneCours = () => {
@@ -104,6 +105,7 @@ const DisplayOneCours = () => {
             </form>
           </div>
         </div>
+        <NewContenuDialog />
         <div className="content-cours">
          {list.length >=1 ? <ul>{listContenus}</ul>: <NoContent />}
         </div>
