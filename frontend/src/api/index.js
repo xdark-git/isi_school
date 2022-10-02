@@ -22,3 +22,5 @@ export const updateClasseName = (id, formData) => API.put("/classe/updatename/" 
 export const deleteOneClasse = (id) => API.delete("/classe/delete/" + id);
 
 export const getOneCours = (id) => API.get("/cours/" + id);
+export const addContenuCours = (formData) =>
+  API.post("/cours/contenus", formData, { headers: { "Content-Type": "multipart/form-data" } });
