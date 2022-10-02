@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -14,6 +14,10 @@ import {
   USER_TOKEN_LOCAL_STORAGE_NAME,
   alertDialogOpened,
   openAlertDialog,
+  ON_USERS_PAGE,
+  ON_INFORMATION_PAGE,
+  ON_PROFILE_PAGE,
+  ON_CLASSE_PAGE,
 } from "../../constantes";
 import MenuDialog from "./Dialogs/MenuDialog/MenuDialog";
 import LogoutDialog from "./Dialogs/LogoutDialog/LogoutDialog";
@@ -121,6 +125,28 @@ const Navbar = (currentPage) => {
   } else {
     pageName.current = currentPage?.path;
   }
+  const navigateOnProfilePage = useCallback(() => {
+    navigate("/profile");
+    dispatch({type: ON_PROFILE_PAGE})
+    // eslint-disable-next-line
+  }, []);
+  const navigateOnInformationPage = useCallback(() => {
+    navigate("/informations");
+    dispatch({type: ON_INFORMATION_PAGE})
+    // eslint-disable-next-line
+  }, []);
+  const navigateOnUsersPage = useCallback(() => {
+    navigate("/users");
+    dispatch({type: ON_USERS_PAGE})
+    // eslint-disable-next-line
+  }, []);
+  const navigateClassePage = useCallback(() => {
+    navigate("/classes");
+    dispatch({type: ON_CLASSE_PAGE})
+    // eslint-disable-next-line
+  }, []);
+
+  const getClasseName = useSelector((state) => state?.navigationBar);
 
   if (dimensions?.width > 785) {
     return (
@@ -147,11 +173,11 @@ const Navbar = (currentPage) => {
         <nav>
           <a href="/classes">ISI</a>
           <div className="pages">
-            <div className="profile">
+            <div className={getClasseName?.profil} onClick={navigateOnProfilePage}>
               <i className="fa-solid fa-gear fa-lg"></i>
               <div>Profil</div>
             </div>
-            <div className="classes checked">
+            <div className={getClasseName?.classe} onClick={navigateClassePage}>
               <i className="fa-solid fa-building fa-lg"></i>
               <div>classes</div>
             </div>
@@ -159,12 +185,12 @@ const Navbar = (currentPage) => {
               <i className="fa-solid fa-file-lines fa-lg"></i>
               <div>Cours</div>
             </div> */}
-            <div className="informations">
+            <div className={getClasseName?.information} onClick={navigateOnInformationPage}>
               <i className="fa-solid fa-bell fa-lg"></i>
               <div>Informations</div>
             </div>
             {user?.status === "Administrateur" && (
-              <div className="admin-users">
+              <div className={getClasseName?.users} onClick={navigateOnUsersPage}>
                 <i className="fa-solid fa-users fa-lg"></i>
                 <div>utilisateurs</div>
               </div>
