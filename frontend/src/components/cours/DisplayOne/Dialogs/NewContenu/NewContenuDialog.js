@@ -1,17 +1,57 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addContenuCoursAction } from "../../../../../actions/cours/contenuCours";
+import { CLOSE_CREATION_CONTENU_COURS_DIALOG } from "../../../../../constantes";
 import "./asset/css/style.css";
 const NewContenuDialog = (cours) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [files, setFiles] = useState([]);
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
+  const [titleError, setTitleError] = useState(null);
+  const [descriptionError, setDescriptionError] = useState(null);
+  const [filesError, setFilesError] = useState(null);
+  const listOffiles = files.map((el, index) => {
+    return (
+      <div key={index}>
+        <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
+        <span>{el?.name}</span>
+        <i
+          className="fa-solid fa-trash"
+          onClick={() => {
+            setFiles(
+              files.filter((item) => {
+                return files.indexOf(item) !== index;
+              })
+            );
+          }}
+        ></i>
+      </div>
+    );
+  });
+  const errorCatched = useSelector((state) => state?.contenuCours?.error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(files.length === 0 && title === null && description === null) return ;
+    if (
+      files.length === 0 ||
+      title === null ||
+      title.length === 0 ||
+      description === null ||
+      description.length === 0
+    ) {
+      if (files.length === 0) setFilesError("Au minimum, un fichier est requis");
+      else setFilesError(null);
+      if (title === null || title.length === 0) setTitleError("Le titre est requis");
+      else setTitleError(null);
+      if (description === null || description.length === 0)
+        setDescriptionError("La description est requise");
+      else setDescriptionError(null);
+      return;
+    }
     const formData = new FormData();
     formData.append("titre", title);
     formData.append("description", description);
@@ -19,27 +59,63 @@ const NewContenuDialog = (cours) => {
     files.forEach((file) => {
       formData.append("files", file);
     });
-    dispatch(addContenuCoursAction(formData));
+    dispatch(addContenuCoursAction(cours?.cours?._id, formData, navigate));
+    setErrorsNull();
   };
+  const setErrorsNull = () => {
+    // setFiles([]);
+    // setTitle(null);
+    // setDescription(null);
+    setTitleError(null);
+    setDescriptionError(null);
+    setFilesError(null);
+  };
+  useEffect(() => {
+    description != null
+      ? (document.getElementById("description-textcontent").textContent = description)
+      : (document.getElementById("description-textcontent").textContent = "");
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [description]);
   return (
     <div id="nouveauContenuCours" className="nouveauContenuCours">
       <div className="nouveauContenuCours-body">
         <div className="title">Nouvel élément</div>
         <form onSubmit={handleSubmit}>
-          <div className="error">This will be the error message</div>
+          {/* displaying errors */}
+          {errorCatched?.message && <div className="error">{errorCatched?.message}</div>}
+          {/* displaying errors */}
           <label htmlFor="titre-contenu">Titre</label>
-          <input name="titre" id="titre-contenu" onChange={(e) => setTitle(e.target.value)} />
-          <div className="error">This will be the error message</div>
+          {/* displaying errors */}
+          {errorCatched?.errors?.titre.length > 0 && (
+            <div className="error">{errorCatched?.errors?.titre}</div>
+          )}
+          {/* displaying errors */}
+          <div className="error">{titleError !== null && `${titleError}`}</div>
+          <input
+            name="titre"
+            id="titre-contenu"
+            value={title ? title : ""}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <label htmlFor="description-contenu">Description</label>
-          {/* <input name="description" id="description-contenu" contenteditable="true"/> */}
+          {/* displaying errors */}
+          {errorCatched?.errors?.description.length > 0 && (
+            <div className="error">{errorCatched?.errors?.description}</div>
+          )}
+          <div className="error">{descriptionError !== null && `${descriptionError}`}</div>
+          {/* displaying errors */}
           <div
+            id="description-textcontent"
             contentEditable="true"
-            onInput={(e) => setDescription(e.currentTarget.textContent)}
+            onInput={(e) => {
+              setDescription(e.currentTarget.textContent);
+            }}
           ></div>
           <div className="televerser-contenu">
-            <div className="error">This will be the error message</div>
-            {/* <div className="televerser">Téléverser un fichier</div> */}
+            {/* displaying errors */}
+            <div className="error">{filesError !== null && `${filesError}`}</div>
+            {/* displaying errors */}
             <div className="televersement-detail">
               <div className="upload-file">
                 <label htmlFor="contenu-files">
@@ -52,7 +128,8 @@ const NewContenuDialog = (cours) => {
                   className="contenu-files"
                   id="contenu-files"
                   onChange={(e) => {
-                    setFiles([...files, e.target.files[0]]);
+                    if (files.length < 4) setFiles([...files, e.target.files[0]]);
+                    if (files.length === 4) setFilesError("Vous avez atteint la limite");
                   }}
                 />
               </div>
@@ -64,17 +141,23 @@ const NewContenuDialog = (cours) => {
               </div>
             </div>
             <div className="contenu-televerses">
-              <div>
+              {/* <div>
                 <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
                 <span>example.pdf</span>
                 <i className="fa-solid fa-trash"></i>
-              </div>
+              </div> */}
+              {listOffiles}
             </div>
             <div className="nouveauContenuCours-buttons">
               <button type="submit" className="btn-ajouter">
                 Ajouter
               </button>
-              <button className="btn-annuler">Annuler</button>
+              <button
+                className="btn-annuler"
+                onClick={() => dispatch({ type: CLOSE_CREATION_CONTENU_COURS_DIALOG })}
+              >
+                Annuler
+              </button>
             </div>
           </div>
         </form>
