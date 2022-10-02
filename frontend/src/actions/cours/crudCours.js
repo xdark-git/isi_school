@@ -9,6 +9,6 @@ export const getTheCours = (id, navigate) => async (dispatch) => {
     navigate("/cours/" + data?.cours?._id);
     dispatch({ type: closeLoaderComponent });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
