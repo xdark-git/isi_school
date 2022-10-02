@@ -1,3 +1,14 @@
+// cookies names
+export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
+export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
+
+//cookie options
+export const USER_COOKIE_OPTION = {
+  path: "/",
+  expires: new Date(Date.now() + 2592000000),
+  domaine: toString(window?.location?.origin),
+  sameSite: "Strict",
+};
 export const months = [
   "janv",
   "févr",
@@ -13,6 +24,9 @@ export const months = [
   "déc",
 ];
 //  Reducers actions
+export const OPENED = "OPENED";
+export const CLOSED = "CLOSED";
+export const NO_ERROR_FOUND = "NO_ERROR_FOUND";
 export const ETUDIANT = "ETUDIANT";
 export const PROFESSEUR = "PROFESSEUR";
 export const LOGIN = "LOGIN";
@@ -23,22 +37,15 @@ export const GETALLCLASSES = "GET_ALL_CLASSES";
 export const DISPLAYONECLASSE = "DISPLAY_ONE_CLASS";
 export const NOCLASSEFOUND = "NO_CLASSE_FOUND";
 
-export const ERRORONCLASSECREATION = "FOUND_ERROR_ON_CREATION";
+export const ERRORONCLASSECREATION = "FOUND_ERROR_ON_CLASSE_CREATION";
 export const CREATIONCLASSEDIALOGCLOSED = "CREATION_CLASSE_DIALOG_CLOSED";
 
 export const DISPLAYONECOURS = "DISPLAY_ONE_COURS";
 export const NOCOURSFOUND = "NO_COURS_FOUND";
-// cookies names
-export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
-export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
 
-//cookie options
-export const USER_COOKIE_OPTION = {
-  path: "/",
-  expires: new Date(Date.now() + 2592000000),
-  domaine: toString(window?.location?.origin),
-  sameSite: "Strict",
-};
+export const OPEN_CREATION_CONTENU_COURS_DIALOG = "OPEN_CREATION_CONTENU_COURS_DIALOG";
+export const CLOSE_CREATION_CONTENU_COURS_DIALOG = "CLOSE_CREATION_CONTENU_COURS_DIALOG";
+export const FOUND_ERROR_ON_CONTENU_COURS_CREATION = "FOUND_ERROR_ON_CONTENU_COURS_CREATION";
 
 // dialogs
 
