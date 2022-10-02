@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addContenuCoursAction } from "../../../../../actions/cours/contenuCours";
 import "./asset/css/style.css";
-const NewContenuDialog = () => {
+const NewContenuDialog = (cours) => {
+  const dispatch = useDispatch();
+
+  const [files, setFiles] = useState([]);
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(files.length === 0 && title === null && description === null) return ;
+    const formData = new FormData();
+    formData.append("titre", title);
+    formData.append("description", description);
+    formData.append("cours_id", cours?.cours?._id);
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+    dispatch(addContenuCoursAction(formData));
+  };
+
   return (
     <div id="nouveauContenuCours" className="nouveauContenuCours">
       <div className="nouveauContenuCours-body">
         <div className="title">Nouvel élément</div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="error">This will be the error message</div>
           <label htmlFor="titre-contenu">Titre</label>
-          <input name="titre" id="titre-contenu" />
+          <input name="titre" id="titre-contenu" onChange={(e) => setTitle(e.target.value)} />
           <div className="error">This will be the error message</div>
           <label htmlFor="description-contenu">Description</label>
           {/* <input name="description" id="description-contenu" contenteditable="true"/> */}
           <div
             contentEditable="true"
-            onInput={(e) => console.log(e.currentTarget.textContent)}
+            onInput={(e) => setDescription(e.currentTarget.textContent)}
           ></div>
           <div className="televerser-contenu">
             <div className="error">This will be the error message</div>
@@ -25,7 +46,15 @@ const NewContenuDialog = () => {
                   Téléverser
                   <i className="fa-solid fa-circle-plus"></i>
                 </label>
-                <input type="file" name="files" className="contenu-files" id="contenu-files" />
+                <input
+                  type="file"
+                  name="files"
+                  className="contenu-files"
+                  id="contenu-files"
+                  onChange={(e) => {
+                    setFiles([...files, e.target.files[0]]);
+                  }}
+                />
               </div>
               <div className="contenu-supporte">
                 <div className="fichiers-supportes">fichiers supportés</div>
@@ -38,13 +67,14 @@ const NewContenuDialog = () => {
               <div>
                 <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
                 <span>example.pdf</span>
-                <i class="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-trash"></i>
               </div>
-              
             </div>
             <div className="nouveauContenuCours-buttons">
-                <button type="submit" className="btn-ajouter">Ajouter</button>
-                <button className="btn-annuler">Annuler</button>
+              <button type="submit" className="btn-ajouter">
+                Ajouter
+              </button>
+              <button className="btn-annuler">Annuler</button>
             </div>
           </div>
         </form>
