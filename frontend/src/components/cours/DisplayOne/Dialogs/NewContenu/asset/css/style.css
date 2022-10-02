@@ -14,7 +14,7 @@
   position: relative;
   width: 81vw;
   max-width: 600px;
-  height: 82vh;
+  height: 85vh;
   min-height: 297px;
   max-height: 715px;
   border-radius: 7px;
@@ -231,6 +231,7 @@
 }
 .nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .contenu-televerses {
   width: 555px;
+  height: 110px;
   margin: 30px 0 30px 0;
   display: grid;
   grid-template-columns: 220px 220px;
