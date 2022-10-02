@@ -17,9 +17,11 @@ import {
 } from "./singleReducers/classes";
 import { loaderReducer } from "./singleReducers/loader";
 import { getOneCoursReducers, contenuCoursCreation } from "./singleReducers/cours";
+import { navigationBar } from "./singleReducers/navigationBar";
 
 export default combineReducers({
   profile: profileSelectedReducer,
+  navigationBar,
   signin: signinUserReducer,
   stateMenuDialog: menuDialogReducer,
   stateLogoutDialog: logoutDialogReducer,

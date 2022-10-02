@@ -24,6 +24,10 @@ export const months = [
   "déc",
 ];
 //  Reducers actions
+export const ON_PROFILE_PAGE = "ON_PROFILE_PAGE";
+export const ON_CLASSE_PAGE = "ON_CLASSE_PAGE";
+export const ON_INFORMATION_PAGE = "ON_INFORMATION_PAGE";
+export const ON_USERS_PAGE = "ON_USERS_PAGE";
 export const OPENED = "OPENED";
 export const CLOSED = "CLOSED";
 export const NO_ERROR_FOUND = "NO_ERROR_FOUND";
