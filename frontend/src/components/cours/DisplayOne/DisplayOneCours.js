@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listContenusDialogOpened, months, openListContenusDialog } from "../../../constantes";
+import {
+  listContenusDialogOpened,
+  months,
+  OPENED,
+  openListContenusDialog,
+} from "../../../constantes";
 import Navbar from "../../navbar/Navbar";
 import NoContent from "../../NotFound/NoContent";
 import "./asset/style.css";
@@ -14,6 +19,7 @@ const DisplayOneCours = () => {
   const cours = useSelector((state) => state?.cours?.data?.cours);
   const contenus = useSelector((state) => state?.cours?.data?.contenus);
   const isListContenusDialogOpened = useSelector((state) => state?.stateListContenusDialog?.status);
+  const isNewContenuDialogOpened = useSelector((state) => state?.contenuCours?.status);
   const [plusDialog, setPlusDialog] = useState(false);
   let list = [];
   if (Array.isArray(contenus)) {
@@ -105,9 +111,9 @@ const DisplayOneCours = () => {
             </form>
           </div>
         </div>
-        <NewContenuDialog />
+        {isNewContenuDialogOpened === OPENED && <NewContenuDialog cours={cours} />}
         <div className="content-cours">
-         {list.length >=1 ? <ul>{listContenus}</ul>: <NoContent />}
+          {list.length >= 1 ? <ul>{listContenus}</ul> : <NoContent />}
         </div>
         {isListContenusDialogOpened === listContenusDialogOpened && <ListContenus />}
       </div>
