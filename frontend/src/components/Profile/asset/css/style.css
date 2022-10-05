@@ -1,0 +1,215 @@
+.profile-component {
+  position: fixed;
+  top: 68px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  overflow: auto;
+  overflow-x: hidden;
+  /* overflow: hidden; */
+}
+.profile-component .body {
+  width: 70vw;
+  max-width: 1200px;
+  height: 85vh;
+  max-height: 630px;
+  position: relative;
+  top: 37px;
+  left: 58px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  /* background: blue; */
+}
+.profile-component .body .profile-img {
+}
+.profile-component .body .profile-img img {
+  width: 124.27px;
+  height: 132px;
+}
+.profile-component .body .profile-img div {
+  width: 124.27px;
+  position: relative;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.profile-component .body .profile-img div input {
+  width: inherit;
+  position: relative;
+  bottom: 19px;
+  opacity: 0;
+  cursor: pointer;
+}
+.profile-component .body .profile-img div label {
+  background: rgba(0, 0, 0, 0.37);
+  width: inherit;
+  height: 21px;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+}
+.profile-component .body .profile-content {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: inherit;
+}
+.profile-component .body .profile-content .header {
+  display: flex;
+  flex-direction: row;
+}
+.profile-component .body .profile-content .header .infos {
+  display: flex;
+  flex-direction: column;
+}
+.profile-component .body .profile-content .header .infos .name {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  /* line-height: 40px; */
+  color: #000000;
+}
+.profile-component .body .profile-content .header .infos .profile {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #828282;
+}
+.profile-component .body .profile-content .header .infos .email {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* line-height: 29px; */
+  color: #379fda;
+}
+.profile-component .body .profile-content .header .modifier {
+  width: 150px;
+  height: 36px;
+  position: absolute;
+  right: 0;
+  top: 28px;
+  display: flex;
+  background: #dcdcdc;
+  border-radius: 38px;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #646464;
+}
+.profile-component .body .profile-content .nav {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  position: relative;
+  top: 53px;
+
+  display: flex;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+
+  color: #646464;
+}
+.profile-component .body .profile-content .nav span {
+  padding: 0 15px 0 15px;
+  cursor: pointer;
+}
+.profile-component .body .profile-content .nav .focused {
+  padding-bottom: 2px;
+  border-bottom: 4px solid #00a1db;
+  z-index: 1;
+}
+.profile-component .body .profile-content .nav div {
+  position: absolute;
+  top: 29px;
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+
+  border-bottom: 2px solid #cacaca;
+}
+.profile-component .body .profile-content .content {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 80%;
+  position: relative;
+  top: 54px;
+  padding: 5px 0 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 40px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.profile-component .body .profile-content .content div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 37% 100%;
+}
+.profile-component .body .profile-content .content div .title {
+  color: #000000;
+}
+.profile-component .body .profile-content .content div .data {
+  color: #379fda;
+}
+
+.profile-component .body .profile-content .user-password {
+  gap: 25px;
+}
+.profile-component .body .profile-content .user-password .password {
+  position: relative;
+  top: 25px;
+  align-items: center;
+}
+.profile-component .body .profile-content .user-password .password input {
+  width: 383px;
+  height: 32px;
+  border: unset;
+  padding: 0 15px 0 15px;
+  background: #d9d9d9;
+}
+.profile-component .body .profile-content .user-password button {
+  width: 170px;
+  height: 32px;
+  position: relative;
+  left: 63%;
+  top: 25px;
+  border: unset;
+  cursor: pointer;
+
+  background: #379fda;
+  border-radius: 5px;
+}
