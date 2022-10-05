@@ -109,7 +109,7 @@
   border-radius: 38px;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
