@@ -50,8 +50,8 @@ const Profile = () => {
               <div></div>
             </div>
             <>
-              {onDetails.status == true && <ProfileDetails />}
-              {onChangePassword.status == true && <ProfilePassword />}
+              {onDetails.status === true && <ProfileDetails />}
+              {onChangePassword.status === true && <ProfilePassword />}
             </>
           </div>
         </div>
