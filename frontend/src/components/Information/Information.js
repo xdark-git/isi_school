@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  DISPLAY_ALL_INFORMAITON_RECEIVED,
+  DISPLAY_ALL_INFORMAITON_SENT,
+  OPENED,
+} from "../../constantes";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
-import DisplayInformation from "./dialog/DisplayInformation/DisplayInformation";
-import ListInformation from "./dialog/ListInformation/ListInformation";
+import ListInformationEnvoye from "./dialog/ListInformation/ListInformationEnvoye";
+import ListInformationRecu from "./dialog/ListInformation/ListInformationRecu";
 
 const Information = () => {
+  const dispatch = useDispatch();
+  
+  const stateListInformation = useSelector((state) => state?.stateListInformation);
+
   return (
     <main>
       <Navbar />
@@ -21,19 +31,38 @@ const Information = () => {
               <span>Nouvelle information</span>
             </div>
             <div className="list-option">
-              <div className="boite-reception focused">
-                <i class="fa-solid fa-inbox"></i>
+              <div
+                className={
+                  stateListInformation?.mailbox === OPENED
+                    ? `boite-reception focused`
+                    : `boite-reception`
+                }
+                onClick={() => {
+                  dispatch({ type: DISPLAY_ALL_INFORMAITON_RECEIVED });
+                }}
+              >
+                <i className="fa-solid fa-inbox"></i>
                 <span>Boîte de reception</span>
               </div>
-              <div className="envoye">
-                <i class="fa-regular fa-paper-plane"></i>
+              <div
+                className={stateListInformation?.sent === OPENED ? `envoye focused` : `envoye`}
+                onClick={() => {
+                  dispatch({ type: DISPLAY_ALL_INFORMAITON_SENT });
+                }}
+              >
+                <i className="fa-regular fa-paper-plane"></i>
                 <span>Envoyés</span>
               </div>
             </div>
           </div>
           <div className="information-content">
-            {/* <ListInformation /> */}
-            <DisplayInformation />
+            {stateListInformation?.mailbox === OPENED && <ListInformationRecu />}
+            {stateListInformation?.sent === OPENED && <ListInformationEnvoye />}
+            {/* {displayFullInformationPage === false ? (
+              <ListInformationRecu information={information} display={display} />
+            ) : (
+              <DisplayInformation information={information} display={display} />
+            )} */}
           </div>
         </div>
       </div>
