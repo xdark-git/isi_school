@@ -1,0 +1,146 @@
+.information-component {
+  position: fixed;
+  top: 68px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  overflow-x: hidden;
+  /* background-color: red; */
+}
+.information-component .search {
+  position: fixed;
+  top: 100px;
+  left: 380px;
+}
+.information-component .search i {
+  position: absolute;
+  top: 9px;
+  cursor: pointer;
+  color: #00a1db;
+}
+.information-component .search .fa-magnifying-glass {
+  left: 12px;
+}
+.information-component .search .fa-sliders {
+  right: 12px;
+  font-family: "FontAwesome";
+}
+.information-component .search input {
+  /* position: absolute;
+  left: 28px; */
+
+  width: 435px;
+  height: 30px;
+  border: unset;
+  background: #e0e0e0;
+  border-radius: 8px;
+  padding: 0 35px 0 35px;
+
+  font-family: "Poppins";
+  font-weight: 200;
+  font-size: 13px;
+}
+.information-component .search input[type="text"]:focus {
+  outline-color: #00a1db;
+}
+.information-component .body {
+  position: relative;
+  top: 43px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.information-component .body .information-nav {
+  position: fixed;
+  top: 150px;
+  left: 138px;
+  width: 200px;
+  height: 75vh;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 12px;
+  background: #ffffff;
+}
+.information-component .body .information-nav .btn-nouvelle {
+  position: relative;
+  top: 24px;
+  width: 175px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  /* line-height: 32px; */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(0, 149, 233, 0.6);
+}
+.information-component .body .information-nav .btn-nouvelle:hover {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.information-component .body .information-nav .btn-nouvelle i {
+  font-family: "FontAwesome";
+  font-size: 14px;
+}
+.information-component .body .information-nav .list-option {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  top: 38px;
+}
+.information-component .body .information-nav .list-option div {
+  width: inherit;
+  height: 20px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  font-weight: 400;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.information-component .body .information-nav .list-option div i {
+  margin: 0 0 0 8px;
+}
+.information-component .body .information-nav .list-option div span {
+  font-family: "Poppins";
+  font-style: normal;
+
+  color: #000000;
+}
+.information-component .body .information-nav .list-option .focused {
+  background: #bdcdd7;
+}
+.information-component .body .information-content {
+  position: fixed;
+  top: 150px;
+  left: 364px;
+  margin-right: 20px;
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 75vh;
+  min-height: 320px;
+  overflow: auto;
+  overflow-x: hidden;
+  border-radius: 12px;
+  background: #ffffff;
+}
