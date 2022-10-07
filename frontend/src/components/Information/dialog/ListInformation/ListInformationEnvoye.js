@@ -37,7 +37,7 @@ const ListInformationEnvoye = (props) => {
   if (displayOne.status === true) {
     return <DisplayInformationEnvoye display={display} />;
   } else {
-    return <ul>{list}</ul>;
+    return <ul className="list-envoye-recu">{list}</ul>;
   }
 };
 

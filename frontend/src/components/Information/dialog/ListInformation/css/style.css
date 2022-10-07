@@ -1,4 +1,4 @@
-ul {
+.list-envoye-recu {
   position: relative;
   width: 100%;
   width: stretch;
@@ -20,7 +20,7 @@ ul {
   /* border-radius: 12px; */
   color: #000000;
 }
-ul li {
+.list-envoye-recu li {
   position: relative;
   height: 40px;
   display: flex;
