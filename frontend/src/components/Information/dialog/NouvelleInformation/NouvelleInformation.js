@@ -4,14 +4,24 @@ import ListClasse from "./List/ListClasse";
 
 const NouvelleInformation = () => {
   const [destinataires, setDestinataires] = useState("une classe");
+
   const getValueOfSelectedDestionataire = useCallback(() => {
-    if (document.getElementById("select-destinataires").value === "") setDestinataires(null);
-    else setDestinataires(document.getElementById("select-destinataires").value);
+    const target = document.getElementById("select-destinataires");
+
+    if (target.value === "") setDestinataires(null);
+    else setDestinataires(target.value);
+
+    if (target.value != "une classe") setClasseName(null);
+    if (target.value != "une personne") setEmail(null);
+    if (target.value != "tout le monde") setToEveryone(false);
+    else setToEveryone(true);
   }, []);
 
   const [openListClasse, setOpenListClasse] = useState(false);
   const [classeName, setClasseName] = useState(null);
   const [ClasseId, setClasseId] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [toEveryone, setToEveryone] = useState(false);
 
   /*
     this const is going to be passed as props to ListClasse component
@@ -77,6 +87,7 @@ const NouvelleInformation = () => {
                       className="fa-solid fa-chevron-down"
                       onClick={() => {
                         if (openListClasse === true) setOpenListClasse(false);
+                        else setOpenListClasse(true);
                       }}
                     ></i>
                     <div className="list-of-classe">
