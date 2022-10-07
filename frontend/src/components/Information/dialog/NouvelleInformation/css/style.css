@@ -1,0 +1,190 @@
+.nouvelleInformation {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* overflow: auto; */
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.nouvelleInformation .contenu {
+  position: absolute;
+  top: 49px;
+  width: 81vw;
+  /* max-width: 600px; */
+  height: 85vh;
+  min-height: 210px;
+  max-height: 679px;
+  /* bottom: 11vh; */
+  border-radius: 10px 10px 0px 0px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+  font-family: "Poppins";
+  font-style: normal;
+  animation-name: nouvelle-information-contenu;
+  animation-duration: 0.8s;
+}
+
+@keyframes nouvelle-information-contenu {
+  0% {
+    bottom: -150vh;
+  }
+  100% {
+    bottom: 11vh;
+  }
+}
+
+.nouvelleInformation .contenu .header {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px 0 20px;
+
+  background: #b9d5e4;
+  border-radius: 10px 10px 0px 0px;
+}
+.nouvelleInformation .contenu .header i {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+.nouvelleInformation .contenu .body {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+
+  height: 100%;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px 30px 15px 30px;
+}
+.nouvelleInformation .contenu .body .body-header {
+  position: relative;
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* background: red; */
+}
+.nouvelleInformation .contenu .body .body-header .destinataire {
+  position: relative;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nouvelleInformation .contenu .body .body-header .destinataire label {
+  position: absolute;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  /* identical to box height */
+
+  color: #747474;
+}
+.nouvelleInformation .contenu .body .body-header .destinataire select {
+  position: absolute;
+  right: 0;
+  height: 30px;
+  padding: 4px;
+  outline: unset;
+  border: unset;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+  background: #d9d9d9;
+}
+.nouvelleInformation .contenu .body .body-header .to input {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border-top: unset;
+  border-left: unset;
+  border-right: unset;
+  border-bottom: 1px solid #b3b3b3;
+  outline: none;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #747474;
+}
+.nouvelleInformation .contenu .body .body-header .to .classe {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nouvelleInformation .contenu .body .body-header .to .classe i {
+  position: absolute;
+  right: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.nouvelleInformation .contenu .body .body-header .to .classe .list-of-classe {
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  max-height: 100px;
+  overflow: auto;
+  overflow-x: hidden;
+  box-shadow: 0px 4px 7px #b3b3b3;
+  background: #d9d9d9;
+}
+.nouvelleInformation .contenu .body .body-header .to .classe .list-of-classe .listing-classe {
+  margin: 0;
+  padding: 0;
+  /* cursor: pointer; */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* line-height: 30px; */
+  background: inherit;
+}
+.nouvelleInformation .contenu .body .body-header .to .classe .list-of-classe .listing-classe li {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 4px;
+  cursor: pointer;
+
+  /* background: inherit; */
+}
+.nouvelleInformation .contenu .body .body-header .to .classe .list-of-classe .listing-classe li:hover {
+ background: #949494;
+}

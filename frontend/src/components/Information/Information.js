@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DISPLAY_ALL_INFORMAITON_RECEIVED,
@@ -9,15 +9,17 @@ import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import ListInformationEnvoye from "./dialog/ListInformation/ListInformationEnvoye";
 import ListInformationRecu from "./dialog/ListInformation/ListInformationRecu";
+import NouvelleInformation from "./dialog/NouvelleInformation/NouvelleInformation";
 
 const Information = () => {
   const dispatch = useDispatch();
-  
+
   const stateListInformation = useSelector((state) => state?.stateListInformation);
 
   return (
     <main>
       <Navbar />
+      <NouvelleInformation />
       <div className="information-component">
         <div className="search">
           <i className="fa-light fa-sliders"></i>
