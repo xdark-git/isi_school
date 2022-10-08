@@ -45,8 +45,10 @@ const NouvelleInformation = () => {
     input.click();
 
     // eslint-disable-next-line
-  }, []);
+  }, [files]);
 
+  //passing this to ListFiles as prop
+  const informationFiles = { files, setFiles };
   /*
     this const is going to be passed as props to ListClasse component
     throught it we will be able to filter the list, change display and set classeName 
@@ -148,7 +150,7 @@ const NouvelleInformation = () => {
               }}
             ></div>
             <div className="files">
-              <ListFilesSelected />
+              <ListFilesSelected informationFiles={informationFiles} />
             </div>
           </div>
         </div>
