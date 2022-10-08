@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DISPLAY_ALL_INFORMAITON_RECEIVED,
@@ -13,13 +13,16 @@ import NouvelleInformation from "./dialog/NouvelleInformation/NouvelleInformatio
 
 const Information = () => {
   const dispatch = useDispatch();
-
+  const [openNouvelleInformation, setOpenNouvelleInformation] = useState(false);
+  const stateOpenNouvelleInformation = { openNouvelleInformation, setOpenNouvelleInformation };
   const stateListInformation = useSelector((state) => state?.stateListInformation);
 
   return (
     <main>
       <Navbar />
-      <NouvelleInformation />
+      {openNouvelleInformation === true && (
+        <NouvelleInformation state={stateOpenNouvelleInformation} />
+      )}
       <div className="information-component">
         <div className="search">
           <i className="fa-light fa-sliders"></i>
@@ -28,7 +31,7 @@ const Information = () => {
         </div>
         <div className="body">
           <div className="information-nav">
-            <div className="btn-nouvelle">
+            <div className="btn-nouvelle" onClick={() => setOpenNouvelleInformation(true)}>
               <i className="fa-thin fa-pen"></i>
               <span>Nouvelle information</span>
             </div>

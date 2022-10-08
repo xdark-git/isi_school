@@ -3,7 +3,7 @@ import "./css/style.css";
 import ListClasse from "./List/ListClasse";
 import ListFilesSelected from "./List/ListFilesSelected";
 
-const NouvelleInformation = () => {
+const NouvelleInformation = (props) => {
   const [destinataires, setDestinataires] = useState("une classe");
 
   const getValueOfSelectedDestionataire = useCallback(() => {
@@ -64,7 +64,10 @@ const NouvelleInformation = () => {
       <div className="contenu">
         <div className="header">
           <div>Nouvelle information</div>
-          <i className="fa-solid fa-xmark"></i>
+          <i
+            className="fa-solid fa-xmark"
+            onClick={() => props?.state?.setOpenNouvelleInformation(false)}
+          ></i>
         </div>
         <div className="body">
           <div className="body-header">
