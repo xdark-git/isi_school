@@ -9,7 +9,7 @@ import DisplayOneClasse from "./components/DisplayOneClasse/DisplayOneClasse";
 import DisplayOneCours from "./components/cours/DisplayOne/DisplayOneCours";
 import Profile from "./components/Profile/Profile";
 import Information from "./components/Information/Information";
-import Utilisateurs from "./components/Utilisateurs/Utilisateurs";
+import Administration from "./components/Administration/Administration";
 
 const App = () => {
   const lienClasse = useSelector((state) => state?.classe?.data?.classe?._id);
@@ -30,7 +30,7 @@ const App = () => {
           )}
           <Route path="/profile" element={<Profile />} />
           <Route path="/informations" element={<Information />} />
-          <Route path="/users" element={<Utilisateurs />} />
+          <Route path="/administration" element={<Administration />} />
           {/* catch all */}
           <Route path="*" element={<Missing />} />
         </Routes>

@@ -127,22 +127,22 @@ const Navbar = (currentPage) => {
   }
   const navigateOnProfilePage = useCallback(() => {
     navigate("/profile");
-    dispatch({type: ON_PROFILE_PAGE})
+    dispatch({ type: ON_PROFILE_PAGE });
     // eslint-disable-next-line
   }, []);
   const navigateOnInformationPage = useCallback(() => {
     navigate("/informations");
-    dispatch({type: ON_INFORMATION_PAGE})
+    dispatch({ type: ON_INFORMATION_PAGE });
     // eslint-disable-next-line
   }, []);
   const navigateOnUsersPage = useCallback(() => {
-    navigate("/users");
-    dispatch({type: ON_USERS_PAGE})
+    navigate("/administration");
+    dispatch({ type: ON_USERS_PAGE });
     // eslint-disable-next-line
   }, []);
   const navigateClassePage = useCallback(() => {
     navigate("/classes");
-    dispatch({type: ON_CLASSE_PAGE})
+    dispatch({ type: ON_CLASSE_PAGE });
     // eslint-disable-next-line
   }, []);
 
@@ -192,7 +192,7 @@ const Navbar = (currentPage) => {
             {user?.status === "Administrateur" && (
               <div className={getClasseName?.users} onClick={navigateOnUsersPage}>
                 <i className="fa-solid fa-users fa-lg"></i>
-                <div>utilisateurs</div>
+                <div>Administration</div>
               </div>
             )}
           </div>
