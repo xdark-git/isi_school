@@ -5,7 +5,10 @@ const NouvelUtilisateur = () => {
   return (
     <div className="nouvelUtilisateur">
       <div className="background-shape">
-        <div className="header">Nouvelle Utilisateur</div>
+        <div className="header">
+          <div> Nouvelle Utilisateur</div>
+          <i className="fa-solid fa-xmark"></i>
+        </div>
         <div className="body">
           <div>
             <span className="span-title">
