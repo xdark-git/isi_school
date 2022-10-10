@@ -3,6 +3,7 @@ import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import Classes from "./children/Classes/Classes";
 import Utilisateurs from "./children/Utilisateurs/Utilisateurs";
+import NouvelUtilisateur from "./children/NouvelUtilisateurs/NouvelUtilisateur";
 
 const Administration = () => {
   const [children, setChildren] = useState({
@@ -12,6 +13,7 @@ const Administration = () => {
   return (
     <main>
       <Navbar />
+      <NouvelUtilisateur />
       <div className="admnistration-component">
         <div className="background-shape">
           <div className="header">
