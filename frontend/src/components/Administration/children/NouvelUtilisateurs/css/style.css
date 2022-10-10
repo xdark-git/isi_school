@@ -5,7 +5,7 @@
   height: 100vh;
   display: flex;
   /* overflow: auto; */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   align-items: center;
   justify-content: center;
   align-content: center;
@@ -13,7 +13,7 @@
 .nouvelUtilisateur .background-shape {
   position: relative;
   width: 60vw;
-  height: 85vh;
+  height: 75vh;
   min-height: 210px;
   max-height: 679px;
   padding: 10px 0 0 0;
@@ -133,7 +133,6 @@
 
 .nouvelUtilisateur .background-shape .buttons {
   position: relative;
-
   width: stretch;
   width: -moz-available;
   width: -webkit-fill-available;
@@ -142,4 +141,39 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  gap: 25px;
+  padding: 0 35px 0 0;
+}
+.nouvelUtilisateur .background-shape .buttons button {
+  position: relative;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #000000;
+}
+.nouvelUtilisateur .background-shape .buttons .btn-ajouter:hover {
+  background-color: rgba(0, 201, 50, 0.4);
+}
+.nouvelUtilisateur .background-shape .buttons .btn-annuler:hover {
+  background-color: rgba(255, 0, 0, 0.4);
 }
