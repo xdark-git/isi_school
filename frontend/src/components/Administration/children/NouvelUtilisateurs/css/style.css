@@ -16,7 +16,7 @@
   height: 75vh;
   min-height: 210px;
   max-height: 679px;
-  padding: 10px 0 0 0;
+  padding: 0 0 0 0;
   border-radius: 10px 10px 0px 0px;
   background-color: #ffffff;
   display: flex;
@@ -42,7 +42,7 @@
   width: stretch;
   width: -moz-available;
   width: -webkit-fill-available;
-  height: 30px;
+  height: 40px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -51,6 +51,12 @@
   flex-direction: row;
   align-items: center;
   padding: 0 20px 0 20px;
+  background: #b9d5e4;
+}
+.nouvelUtilisateur .background-shape .header i {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 .nouvelUtilisateur .background-shape .body {
   position: relative;
