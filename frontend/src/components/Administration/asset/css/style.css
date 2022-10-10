@@ -1,0 +1,70 @@
+main {
+  overflow: hidden;
+}
+.admnistration-component {
+  position: relative;
+  top: 68px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.admnistration-component .background-shape {
+  position: relative;
+  top: 33px;
+  left: 63px;
+  width: 90%;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 23px 0 0 0;
+  background: #ffffff;
+  border-radius: 12px;
+}
+.admnistration-component .background-shape .header {
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  position: relative;
+
+  margin: 0 15px 0 15px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #000000;
+}
+.admnistration-component .background-shape .header .utilisateurs,
+.admnistration-component .background-shape .header .classes {
+  cursor: pointer;
+  padding: 0 18px 0 18px;
+}
+.admnistration-component .background-shape .header .focused {
+  padding-bottom: 2px;
+  border-bottom: 4px solid #00a1db;
+  z-index: 1;
+}
+.admnistration-component .background-shape .header .line {
+  position: absolute;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  top: 26px;
+  border-bottom: 2px solid #cacaca;
+}
+.admnistration-component .background-shape .body {
+  /* background: red; */
+  position: relative;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+}

@@ -1,5 +1,5 @@
 div header {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   width: 100vw;
   min-width: 115px;

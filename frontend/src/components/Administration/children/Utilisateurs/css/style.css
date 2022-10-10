@@ -1,0 +1,138 @@
+.utilisateur-btn-search {
+  position: absolute;
+  top: 15px;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.utilisateur-btn-search .btn {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.utilisateur-btn-search .btn button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 25px 0 25px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  /* line-height: 32px; */
+  border: 2px solid #999999;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #efefef;
+}
+.utilisateur-btn-search .btn button:hover {
+  background: #f8f8f8;
+}
+.utilisateur-btn-search .search {
+  position: absolute;
+  right: 15px;
+}
+.utilisateur-btn-search .search i {
+  position: absolute;
+  top: 8px;
+  cursor: pointer;
+  color: #00a1db;
+}
+.utilisateur-btn-search .search .fa-magnifying-glass {
+  left: 10px;
+}
+.utilisateur-btn-search .search .fa-sliders {
+  right: 10px;
+  font-family: "FontAwesome";
+}
+.utilisateur-btn-search .search input {
+  /* position: absolute;
+    left: 28px; */
+
+  width: 235px;
+  height: 30px;
+  border: unset;
+  background: #e0e0e0;
+  border-radius: 8px;
+  padding: 0 35px 0 35px;
+
+  font-family: "Poppins";
+  font-weight: 200;
+  font-size: 13px;
+}
+.utilisateur-btn-search .search input[type="text"]:focus {
+  outline-color: #00a1db;
+}
+
+.list-utilisateur {
+  position: absolute;
+  top: 80px;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  overflow: auto;
+  overflow-x: hidden;
+  
+}
+.list-utilisateur #utilisateurs {
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins";
+  border-collapse: collapse;
+  width: 100%;
+}
+.list-utilisateur #utilisateurs th{
+position: sticky;
+top: 0;
+z-index: 1;
+background: #ffffff;
+}
+.list-utilisateur #utilisateurs td,
+.list-utilisateur #utilisateurs th {
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+}
+.list-utilisateur #utilisateurs td {
+  border: 1px solid #ddd;
+}
+.list-utilisateur #utilisateurs td:first-child {
+  border-left: unset;
+}
+.list-utilisateur #utilisateurs td:last-child {
+  border-right: unset;
+}
+/* .list-utilisateur #utilisateurs tr:first-child {
+  border-right: unset;
+  border-left: unset;
+} */
+.list-utilisateur #utilisateurs tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.list-utilisateur #utilisateurs tr:hover {
+  background-color: #ddd;
+}
+.list-utilisateur #utilisateurs th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+.list-utilisateur #utilisateurs tr td i {
+  font-family: "FontAwesome";
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  left: 4px;
+  bottom: 2px;
+  /* color: #ffffff; */
+}
