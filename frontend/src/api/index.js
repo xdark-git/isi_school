@@ -15,6 +15,8 @@ export const signEtudiant = (formData) => API.post("/user/login/etudiant", formD
 export const signProfesseur = (formData) => API.post("/user/login/professeur", formData);
 export const signAdministration = (formData) => API.post("/user/login/administration", formData);
 
+export const getAllUsers = () => API.get("/user/all");
+
 export const createNewClasse = (formData) => API.post("/classe/create", formData);
 export const getAllClasses = () => API.get("/classe");
 export const getOneClasse = (id) => API.get("/classe/" + id);
