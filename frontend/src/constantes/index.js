@@ -37,6 +37,8 @@ export const LOGIN = "LOGIN";
 export const LOGINERROR = "LOGINERROR";
 export const LOGOUT = "LOGOUT";
 
+export const GET_ALL_USERS = "GET_ALL_USERS";
+
 export const GETALLCLASSES = "GET_ALL_CLASSES";
 export const DISPLAYONECLASSE = "DISPLAY_ONE_CLASS";
 export const NOCLASSEFOUND = "NO_CLASSE_FOUND";

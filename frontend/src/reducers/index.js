@@ -19,6 +19,7 @@ import { loaderReducer } from "./singleReducers/loader";
 import { getOneCoursReducers, contenuCoursCreation } from "./singleReducers/cours";
 import { navigationBar } from "./singleReducers/navigationBar";
 import { displayInformationReducer } from "./singleReducers/information";
+import { getAllUsersReducer } from "./singleReducers/users";
 
 export default combineReducers({
   profile: profileSelectedReducer,
@@ -32,6 +33,7 @@ export default combineReducers({
   stateDeleteDialog: deleteDialogReducer,
   stateListContenusDialog: listContenusDialogReducer,
   stateListInformation: displayInformationReducer,
+  users: getAllUsersReducer,
   classes: getAllClassesReducers,
   classe: getOneClasseReducer,
   createClasse: createOneClasseReducer,
