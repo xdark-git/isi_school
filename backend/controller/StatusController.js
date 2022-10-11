@@ -7,7 +7,11 @@ import { Administration } from "../model/Administration.js";
     else 
         send the error message
  */
-export const createStatus = (req, res) => {
+export const createStatus = async (req, res) => {
+  const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    if (!user) {
+      return res.status(401).json({ message: "Accès non autorisé" });
+    }
   Status.find(
     {
       nom: req.body.nom,
