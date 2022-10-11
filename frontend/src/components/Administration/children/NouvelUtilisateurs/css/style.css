@@ -25,8 +25,8 @@
   overflow-x: hidden;
   font-family: "Poppins";
   font-style: normal;
-  animation-name: nouvelle-utilisateur-contenu;
-  animation-duration: 1s;
+  /* animation-name: nouvelle-utilisateur-contenu; */
+  animation-duration: 0.7s;
 }
 @keyframes nouvelle-utilisateur-contenu {
   0% {
