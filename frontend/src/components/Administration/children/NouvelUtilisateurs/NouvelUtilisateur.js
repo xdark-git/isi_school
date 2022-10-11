@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./css/style.css";
 
-const NouvelUtilisateur = () => {
+const NouvelUtilisateur = (props) => {
+  const closeCurrentDialog = useCallback(() => {
+    return props.state?.setStateNouvelleUtilisateur(false);
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="nouvelUtilisateur">
       <div className="background-shape">
         <div className="header">
           <div> Nouvelle Utilisateur</div>
-          <i className="fa-solid fa-xmark"></i>
+          <i className="fa-solid fa-xmark" onClick={closeCurrentDialog}></i>
         </div>
         <div className="body">
           <div>
@@ -59,7 +63,9 @@ const NouvelUtilisateur = () => {
           </div>
         </div>
         <div className="buttons">
-          <button className="btn btn-annuler">Annuler</button>
+          <button className="btn btn-annuler" onClick={closeCurrentDialog}>
+            Annuler
+          </button>
           <button className="btn btn-ajouter">Ajouter</button>
         </div>
       </div>
