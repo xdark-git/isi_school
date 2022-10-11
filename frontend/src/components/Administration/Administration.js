@@ -4,6 +4,9 @@ import "./asset/css/style.css";
 import Classes from "./children/Classes/Classes";
 import Utilisateurs from "./children/Utilisateurs/Utilisateurs";
 import NouvelUtilisateur from "./children/NouvelUtilisateurs/NouvelUtilisateur";
+import NewClassDialog from "../classes/Dialogs/NewClasse/NewClassDialog";
+import { useSelector } from "react-redux";
+import { newClassDialogOpened } from "../../constantes";
 
 const Administration = () => {
   const [children, setChildren] = useState({
@@ -15,10 +18,12 @@ const Administration = () => {
     stateNouvelUtilisateur,
     setStateNouvelleUtilisateur,
   };
+  let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
   return (
     <main>
       <Navbar />
       {stateNouvelUtilisateur === true && <NouvelUtilisateur state={nouvelleUtilisateurParams} />}
+      {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation" />}
       <div className="admnistration-component">
         <div className="background-shape">
           <div className="header">
