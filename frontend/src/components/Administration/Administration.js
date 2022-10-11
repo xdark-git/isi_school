@@ -10,10 +10,15 @@ const Administration = () => {
     Utilisateurs: true,
     Classes: false,
   });
+  const [stateNouvelUtilisateur, setStateNouvelleUtilisateur] = useState(false);
+  const nouvelleUtilisateurParams = {
+    stateNouvelUtilisateur,
+    setStateNouvelleUtilisateur,
+  };
   return (
     <main>
       <Navbar />
-      <NouvelUtilisateur />
+      {stateNouvelUtilisateur === true && <NouvelUtilisateur state={nouvelleUtilisateurParams} />}
       <div className="admnistration-component">
         <div className="background-shape">
           <div className="header">
@@ -42,7 +47,9 @@ const Administration = () => {
             <div className="line"></div>
           </div>
           <div className="body">
-            {children?.Utilisateurs === true && <Utilisateurs />}
+            {children?.Utilisateurs === true && (
+              <Utilisateurs nouvelUtilisateur={nouvelleUtilisateurParams} />
+            )}
             {children?.Classes === true && <Classes />}
           </div>
         </div>
