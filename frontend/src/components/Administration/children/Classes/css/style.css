@@ -1,0 +1,86 @@
+.classes-btn-search {
+  position: absolute;
+  top: 15px;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.classes-btn-search .btn {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.classes-btn-search .btn button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 25px 0 25px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  /* line-height: 32px; */
+  border: 2px solid #999999;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #efefef;
+}
+.classes-btn-search .btn button:hover {
+  background: #f8f8f8;
+}
+.classes-btn-search .search {
+  position: absolute;
+  right: 15px;
+}
+.classes-btn-search .search i {
+  position: absolute;
+  top: 8px;
+  cursor: pointer;
+  color: #00a1db;
+}
+.classes-btn-search .search .fa-magnifying-glass {
+  left: 10px;
+}
+.classes-btn-search .search .fa-sliders {
+  right: 10px;
+  font-family: "FontAwesome";
+}
+.classes-btn-search .search input {
+  /* position: absolute;
+      left: 28px; */
+
+  width: 235px;
+  height: 30px;
+  border: unset;
+  background: #e0e0e0;
+  border-radius: 8px;
+  padding: 0 35px 0 35px;
+
+  font-family: "Poppins";
+  font-weight: 200;
+  font-size: 13px;
+}
+.classes-btn-search .search input[type="text"]:focus {
+  outline-color: #00a1db;
+}
+.list-classes {
+  position: absolute;
+  top: 80px;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  overflow: auto;
+  overflow-x: hidden;
+}

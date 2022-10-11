@@ -10,7 +10,7 @@ const NouvelUtilisateur = (props) => {
     <div className="nouvelUtilisateur">
       <div className="background-shape">
         <div className="header">
-          <div> Nouvelle Utilisateur</div>
+          <div> Nouvel Utilisateur</div>
           <i className="fa-solid fa-xmark" onClick={closeCurrentDialog}></i>
         </div>
         <div className="body">

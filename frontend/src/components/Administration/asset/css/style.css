@@ -68,3 +68,55 @@ main {
   height: -moz-available;
   height: -webkit-fill-available;
 }
+.admnistration-component .background-shape .body table {
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins";
+  border-collapse: collapse;
+  width: 100%;
+}
+.admnistration-component .background-shape .body table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #ffffff;
+}
+.admnistration-component .background-shape .body table th,
+.admnistration-component .background-shape .body table td {
+  padding: 8px;
+}
+.admnistration-component .background-shape .body table th:first-child,
+.admnistration-component .background-shape .body table td:first-child {
+  width: 45px;
+}
+.admnistration-component .background-shape .body table td {
+  border: 1px solid #ddd;
+}
+.admnistration-component .background-shape .body table td:first-child {
+  border-left: unset;
+}
+.admnistration-component .background-shape .body table td:last-child {
+  border-right: unset;
+}
+.admnistration-component .background-shape .body table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.admnistration-component .background-shape .body table tr:hover {
+  background-color: #ddd;
+}
+.admnistration-component .background-shape .body table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+.admnistration-component .background-shape .body table tr td input {
+  cursor: pointer;
+}
+.admnistration-component .background-shape .body table tr td i {
+  font-family: "FontAwesome";
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  left: 4px;
+  bottom: 2px;
+  /* color: #ffffff; */
+}

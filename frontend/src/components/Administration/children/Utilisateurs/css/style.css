@@ -125,6 +125,9 @@
   padding-bottom: 12px;
   text-align: left;
 }
+.list-utilisateur #utilisateurs tr td input {
+  cursor: pointer;
+}
 .list-utilisateur #utilisateurs tr td i {
   font-family: "FontAwesome";
   font-size: 13px;
