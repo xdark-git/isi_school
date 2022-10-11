@@ -10,6 +10,7 @@ const Classes = () => {
       <div className="classes-btn-search">
         <div className="btn">
           <button onClick={() => dispatch({ type: openNewClassDialog })}>Créer une classe</button>
+          <button>Ajouter Etudiant/Prof</button>
           <button>Créer un cours</button>
           <button>Supprimer</button>
         </div>
