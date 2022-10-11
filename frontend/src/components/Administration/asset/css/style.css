@@ -68,6 +68,24 @@ main {
   height: -moz-available;
   height: -webkit-fill-available;
 }
+.admnistration-component .background-shape .body #loader {
+  position: absolute;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admnistration-component .background-shape .body #loader .loader {
+  border: 16px solid #ececec;
+  border-radius: 50%;
+  border-top: 16px solid #379fda;
+}
 .admnistration-component .background-shape .body table {
   font-family: Arial, Helvetica, sans-serif;
   font-family: "Poppins";
