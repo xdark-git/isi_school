@@ -188,3 +188,35 @@ export const signupAdministration = async (req, res) => {
     }
   }
 };
+
+export const getAllUsers = async (req, res) => {
+  try {
+    //checking if the user still exist and is Admin
+    const user = await Administration.findById(req?.user?.id).where("isDeleted").equals(false);
+    if (!user) {
+      return res.status(401).json({ message: "Accès non autorisé" });
+    }
+
+    const listAdministrateur = await Administration.find({})
+      .where({ isDeleted: false })
+      .select("-__v -motDePasse -isDeleted");
+
+    const listProfesseur = await Professeur.find({})
+      .where({ isDeleted: false })
+      .select("-__v -motDePasse -isDeleted");
+
+    const listEtudiant = await Etudiant.find({})
+      .where({ isDeleted: false })
+      .select("-__v -motDePasse -isDeleted");
+    const users = [...listAdministrateur, ...listProfesseur, ...listEtudiant];
+    const status = await Status.find({}).select("-__v ");
+
+    return res.status(200).json({
+      users,
+      status,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Un problème est survenu" });
+  }
+};

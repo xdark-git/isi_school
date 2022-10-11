@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getAllUsers,
   signinAdministration,
   signupAdministration,
 } from "../controller/AdministationController.js";
@@ -18,5 +19,6 @@ router.post("/login/professeur", signinProfesseur);
 router.post("/add/etudiant", auth, signupEtudiant);
 router.post("/login/etudiant", signinEtudiant);
 
+router.get("/all", auth, getAllUsers)
 router.get("/img/:imageName", getUserProfile);
 export default router;
