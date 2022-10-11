@@ -1,7 +1,21 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
+import { useSelector } from "react-redux";
 import "./css/style.css";
 
 const NouvelUtilisateur = (props) => {
+  const status = useSelector((state) => state?.users?.data?.status);
+
+  const statusSelectOption = useRef();
+  if (status) {
+    statusSelectOption.current = status.map((el, index) => {
+      return (
+        <option key={index} value={el?._id}>
+          {el?.nom}
+        </option>
+      );
+    });
+  }
+
   const closeCurrentDialog = useCallback(() => {
     return props.state?.setStateNouvelleUtilisateur(false);
     // eslint-disable-next-line
@@ -19,9 +33,7 @@ const NouvelUtilisateur = (props) => {
               <label htmlFor="part1">Titre</label>
               <select id="title">
                 <option>Sélectionner</option>
-                <option value="Administrateur">Administrateur</option>
-                <option value="Professeur">Professeur</option>
-                <option value="Etudiant">Etudiant</option>
+                {statusSelectOption.current}
               </select>
             </span>
           </div>
