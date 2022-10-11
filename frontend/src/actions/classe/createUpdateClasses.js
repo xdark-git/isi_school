@@ -10,6 +10,7 @@ import { getOne } from "./getClasses";
 
 export const createClasse = (formData, navigate) => async (dispatch) => {
   try {
+    // eslint-disable-next-line
     const classe = await api.createNewClasse(formData);
     dispatch({ type: openAlertDialog, message: "Cours créé" });
     dispatch({ type: closeLoaderComponent });
