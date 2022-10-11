@@ -27,8 +27,8 @@
 
   font-family: "Poppins";
   font-style: normal;
-  animation-name: nouvelle-classe-contenu;
-  animation-duration: 0.8s;
+  /* animation-name: nouvelle-classe-contenu;
+  animation-duration: 0.8s; */
 }
 @keyframes nouvelle-classe-contenu {
   0% {
