@@ -1,12 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { openNewClassDialog } from "../../../../constantes";
 import "./css/style.css";
 
 const Classes = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="classes-btn-search">
         <div className="btn">
-          <button>Créer une classe</button>
+          <button onClick={() => dispatch({ type: openNewClassDialog })}>Créer une classe</button>
           <button>Créer un cours</button>
           <button>Supprimer</button>
         </div>
