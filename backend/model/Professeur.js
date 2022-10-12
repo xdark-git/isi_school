@@ -29,7 +29,7 @@ const professeurSchema = new Schema(
     },
     specialite: {
       type: [String],
-      required: true,
+      // required: true,
     },
     dateDeNaissance: {
       type: Date,
@@ -47,7 +47,7 @@ const professeurSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     motDePasse: {
       type: String,
