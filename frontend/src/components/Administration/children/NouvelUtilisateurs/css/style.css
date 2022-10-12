@@ -87,8 +87,7 @@
   display: flex;
   flex-direction: column;
 }
-.nouvelUtilisateur .background-shape .body div .span-title,
-.nouvelUtilisateur .background-shape .body div .span-email {
+.nouvelUtilisateur .background-shape .body div .span-title {
   width: stretch;
   width: -moz-available;
   width: -webkit-fill-available;
@@ -129,13 +128,14 @@
   border-radius: 4px;
   /* outline: unset; */
 }
-.nouvelUtilisateur .background-shape .body div span #email {
+/* .nouvelUtilisateur .background-shape .body div span #email {
   width: inherit;
-}
+} */
 
 .nouvelUtilisateur .background-shape .body div .span-nom,
 .nouvelUtilisateur .background-shape .body div .span-lieuDeNaissance,
-.nouvelUtilisateur .background-shape .body div .span-username {
+.nouvelUtilisateur .background-shape .body div .span-username,
+.nouvelUtilisateur .background-shape .body div .span-email {
   position: absolute;
   right: 0;
 }
