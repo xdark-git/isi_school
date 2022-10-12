@@ -1,3 +1,6 @@
+.error {
+  color: #ff0000;
+}
 .nouvelUtilisateur {
   position: fixed;
   z-index: 100;
@@ -13,9 +16,9 @@
 .nouvelUtilisateur .background-shape {
   position: relative;
   width: 60vw;
-  height: 75vh;
+  /* height: 76vh; */
   min-height: 210px;
-  max-height: 679px;
+  /* max-height: 679px; */
   padding: 0 0 0 0;
   border-radius: 10px 10px 0px 0px;
   background-color: #ffffff;
@@ -148,6 +151,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 25px;
+  margin: 35px 0 0 0 ;
   padding: 0 35px 0 0;
 }
 .nouvelUtilisateur .background-shape .buttons button {
