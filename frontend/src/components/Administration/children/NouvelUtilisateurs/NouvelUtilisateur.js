@@ -31,6 +31,7 @@ const NouvelUtilisateur = (props) => {
           <div>
             <span className="span-title">
               <label htmlFor="part1">Titre</label>
+              <div className="error">This will be replace by the error catched</div>
               <select id="title">
                 <option>Sélectionner</option>
                 {statusSelectOption.current}
@@ -40,36 +41,43 @@ const NouvelUtilisateur = (props) => {
           <div>
             <span className="span-prenom">
               <label htmlFor="prenom">Prénom</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="prenom" type="input" />
             </span>
             <span className="span-nom">
               <label htmlFor="nom">Nom</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="nom" type="input" />
             </span>
           </div>
           <div>
             <span className="span-dateDeNaissance">
               <label htmlFor="dateDeNaissance">Date de Naissance</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="dateDeNaissance" type="date" />
             </span>
             <span className="span-lieuDeNaissance">
               <label htmlFor="lieuDeNaissance">Lieu de Naissance</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="lieuDeNaissance" type="text" />
             </span>
           </div>
           <div>
             <span className="span-identifiant">
               <label htmlFor="identifiant">Identifiant</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="identifiant" type="text" />
             </span>
             <span className="span-username">
               <label htmlFor="username">Username</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="username" type="text" />
             </span>
           </div>
           <div>
             <span className="span-email">
               <label htmlFor="email">Email</label>
+              <div className="error">This will be replace by the error catched</div>
               <input id="email" type="email" />
             </span>
           </div>
