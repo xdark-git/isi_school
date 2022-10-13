@@ -5,7 +5,6 @@ import { Cours } from "../model/Cours.js";
 import fs from "fs";
 import "dotenv/config";
 import { fileFilterContenusCours } from "../functions/multer/fileFilter/fileFilterContenusCours.js";
-import { error } from "console";
 import { Contenu } from "../model/Contenu.js";
 import { handleContenuError } from "../functions/handleErrors/handleContenuErro.js";
 
@@ -44,7 +43,6 @@ export const createNewCoursContenu = async (req, res) => {
     }
 
     try {
-     
       let piece_jointe = [];
       req?.files.forEach((el) =>
         piece_jointe.push({

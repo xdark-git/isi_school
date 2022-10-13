@@ -16,10 +16,14 @@ import {
   createOneClasseReducer,
 } from "./singleReducers/classes";
 import { loaderReducer } from "./singleReducers/loader";
-import { getOneCoursReducers } from "./singleReducers/cours";
+import { getOneCoursReducers, contenuCoursCreation } from "./singleReducers/cours";
+import { navigationBar } from "./singleReducers/navigationBar";
+import { displayInformationReducer } from "./singleReducers/information";
+import { getAllUsersReducer } from "./singleReducers/users";
 
 export default combineReducers({
   profile: profileSelectedReducer,
+  navigationBar,
   signin: signinUserReducer,
   stateMenuDialog: menuDialogReducer,
   stateLogoutDialog: logoutDialogReducer,
@@ -28,9 +32,12 @@ export default combineReducers({
   stateProfEtudiantDialog: listProfEtudiantReducer,
   stateDeleteDialog: deleteDialogReducer,
   stateListContenusDialog: listContenusDialogReducer,
+  stateListInformation: displayInformationReducer,
+  users: getAllUsersReducer,
   classes: getAllClassesReducers,
   classe: getOneClasseReducer,
   createClasse: createOneClasseReducer,
   cours: getOneCoursReducers,
+  contenuCours: contenuCoursCreation,
   isLoading: loaderReducer,
 });

@@ -44,8 +44,6 @@ main .component .new-search .new:hover {
   transform: scale(1.1);
 }
 
-main .component .new-search .search {
-}
 main .component .new-search form {
   position: fixed;
   right: 54px;
@@ -343,7 +341,7 @@ main .component .content .classe span {
     position: relative;
     top: 0px;
     right: unset;
-}
+  }
   main .component .new-search .search .search-icon {
     position: absolute;
     bottom: unset;
@@ -375,7 +373,7 @@ main .component .content .classe span {
   main .component .new-search .search form {
     top: 19px;
     right: unset;
-}
+  }
   main .component .new-search .search input {
     min-width: 213px;
   }

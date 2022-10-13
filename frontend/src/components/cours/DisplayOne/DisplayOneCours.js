@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listContenusDialogOpened, months, openListContenusDialog } from "../../../constantes";
+import {
+  listContenusDialogOpened,
+  months,
+  OPENED,
+  openListContenusDialog,
+} from "../../../constantes";
 import Navbar from "../../navbar/Navbar";
+import NoContent from "../../NotFound/NoContent";
 import "./asset/style.css";
 import ListContenus from "./Dialogs/ListContenus";
+import NewContenuDialog from "./Dialogs/NewContenu/NewContenuDialog";
+import PlusCoursOptions from "./Dialogs/PlusCoursOptions";
 
 const DisplayOneCours = () => {
   const dispatch = useDispatch();
+
   const cours = useSelector((state) => state?.cours?.data?.cours);
   const contenus = useSelector((state) => state?.cours?.data?.contenus);
   const isListContenusDialogOpened = useSelector((state) => state?.stateListContenusDialog?.status);
-  // console.log(
-  //   Date.parse("Fri Jan 02 1970 00:00:00 GMT+0000 (Coordinated Universal Time)"),
-  //   new Date(86400000)
-  // );
-  let listContenus = contenus.map((el, index) => {
+  const isNewContenuDialogOpened = useSelector((state) => state?.contenuCours?.status);
+  const [plusDialog, setPlusDialog] = useState(false);
+  let list = [];
+  if (Array.isArray(contenus)) {
+    list = [...contenus];
+  }
+  let listContenus = list.map((el, index) => {
     const date = new Date(el?.createdAt);
     let diff;
     //checking if it's one day since creating(Date.parse("Fri Jan 02 1970 00:00:00 GMT+0000 (Coordinated Universal Time)"))
@@ -24,8 +35,22 @@ const DisplayOneCours = () => {
         diff = -1;
       }
     }
+
     return (
-      <li key={el?._id}>
+      <li
+        key={el?._id}
+        onClick={() =>
+          dispatch({
+            type: openListContenusDialog,
+            data: {
+              titre: el?.titre,
+              description: el?.description,
+              piece_jointe: el?.piece_jointe,
+              prof_id: cours?.prof?._id,
+            },
+          })
+        }
+      >
         <span className="cours-number">{index + 1}</span>
         <span className="cours-title">{el?.titre}</span>
         <span className="cours-date">
@@ -60,10 +85,18 @@ const DisplayOneCours = () => {
       <div className="component">
         <div className="display-search">
           <div className="display">
-            <div id="plus" className="more">
+            <div
+              id="plus"
+              className="more"
+              onClick={() => {
+                if (plusDialog === false) setPlusDialog(true);
+                if (plusDialog === true) setPlusDialog(false);
+              }}
+            >
               <i className="fa-solid fa-ellipsis-vertical fa-lg"></i>
               <span>Plus</span>
             </div>
+            {plusDialog === true && <PlusCoursOptions />}
           </div>
           <div className="search">
             <form>
@@ -78,8 +111,9 @@ const DisplayOneCours = () => {
             </form>
           </div>
         </div>
+        {isNewContenuDialogOpened === OPENED && <NewContenuDialog cours={cours} />}
         <div className="content-cours">
-          <ul>{listContenus}</ul>
+          {list.length >= 1 ? <ul>{listContenus}</ul> : <NoContent />}
         </div>
         {isListContenusDialogOpened === listContenusDialogOpened && <ListContenus />}
       </div>

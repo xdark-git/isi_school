@@ -1,3 +1,14 @@
+// cookies names
+export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
+export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
+
+//cookie options
+export const USER_COOKIE_OPTION = {
+  path: "/",
+  expires: new Date(Date.now() + 2592000000),
+  domaine: toString(window?.location?.origin),
+  sameSite: "Strict",
+};
 export const months = [
   "janv",
   "févr",
@@ -13,32 +24,34 @@ export const months = [
   "déc",
 ];
 //  Reducers actions
+export const ON_PROFILE_PAGE = "ON_PROFILE_PAGE";
+export const ON_CLASSE_PAGE = "ON_CLASSE_PAGE";
+export const ON_INFORMATION_PAGE = "ON_INFORMATION_PAGE";
+export const ON_USERS_PAGE = "ON_USERS_PAGE";
+export const OPENED = "OPENED";
+export const CLOSED = "CLOSED";
+export const NO_ERROR_FOUND = "NO_ERROR_FOUND";
 export const ETUDIANT = "ETUDIANT";
 export const PROFESSEUR = "PROFESSEUR";
 export const LOGIN = "LOGIN";
 export const LOGINERROR = "LOGINERROR";
 export const LOGOUT = "LOGOUT";
 
+export const GET_ALL_USERS = "GET_ALL_USERS";
+
 export const GETALLCLASSES = "GET_ALL_CLASSES";
 export const DISPLAYONECLASSE = "DISPLAY_ONE_CLASS";
 export const NOCLASSEFOUND = "NO_CLASSE_FOUND";
 
-export const ERRORONCLASSECREATION = "FOUND_ERROR_ON_CREATION";
+export const ERRORONCLASSECREATION = "FOUND_ERROR_ON_CLASSE_CREATION";
 export const CREATIONCLASSEDIALOGCLOSED = "CREATION_CLASSE_DIALOG_CLOSED";
 
 export const DISPLAYONECOURS = "DISPLAY_ONE_COURS";
 export const NOCOURSFOUND = "NO_COURS_FOUND";
-// cookies names
-export const USER_DATA_COOKIE_NAME = "dfhgoanvsm1233jdhfHD";
-export const USER_TOKEN_LOCAL_STORAGE_NAME = "qlkdjfaolsfnjl13234j";
 
-//cookie options
-export const USER_COOKIE_OPTION = {
-  path: "/",
-  expires: new Date(Date.now() + 2592000000),
-  domaine: toString(window?.location?.origin),
-  sameSite: "Strict",
-};
+export const OPEN_CREATION_CONTENU_COURS_DIALOG = "OPEN_CREATION_CONTENU_COURS_DIALOG";
+export const CLOSE_CREATION_CONTENU_COURS_DIALOG = "CLOSE_CREATION_CONTENU_COURS_DIALOG";
+export const FOUND_ERROR_ON_CONTENU_COURS_CREATION = "FOUND_ERROR_ON_CONTENU_COURS_CREATION";
 
 // dialogs
 
@@ -81,3 +94,13 @@ export const openListContenusDialog = "OPEN_LIST_CONSTENUS_DIALOG";
 export const closeListContenusDialog = "CLOSE_LIST_CONSTENUS_DIALOG";
 export const listContenusDialogOpened = "LIST_CONSTENUS_DIALOG_OPENED";
 export const listContenusDialogClosed = "LIST_CONSTENUS_DIALOG_CLOSED";
+
+export const GET_ALL_INFORMATION_RECEIVED = "GET_ALL_INFORMATION_RECEIVED";
+export const GET_ALL_INFORMATION_SENT = "GET_ALL_INFORMATION_SENT";
+export const GET_ONE_INFORMATION_RECEIVED = "GET_ONE_INFORMATION_RECEIVED";
+export const GET_ONE_INFORMATION_SENT = "GET_ONE_INFORMATION_SENT";
+
+export const DISPLAY_ALL_INFORMAITON_RECEIVED = "DISPLAY_ALL_INFORMAITON_RECEIVED";
+export const DISPLAY_ONE_INFORMAITON_RECEIVED = "DISPLAY_ONE_INFORMAITON_RECEIVED";
+export const DISPLAY_ALL_INFORMAITON_SENT = "DISPLAY_ALL_INFORMAITON_SENT";
+export const DISPLAY_ONE_INFORMAITON_SENT = "DISPLAY_ONE_INFORMAITON_SENT";

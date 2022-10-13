@@ -7,11 +7,11 @@ const professeurSchema = new Schema(
   {
     nom: {
       type: String,
-      required: true,
+      required: [true, "Le nom est requis"],
     },
     prenom: {
       type: String,
-      required: true,
+      required: [true, "Le prenom est requis"],
     },
     photoDeProfil: {
       type: String,
@@ -19,35 +19,35 @@ const professeurSchema = new Schema(
     },
     telephone: {
       type: String,
-      required: true,
+      required: [true, "Le téléphone est requis"],
       // unique: true,
     },
     identifiantProf: {
       type: String,
-      required: true,
+      required: [true, "L'Identifiant est requis"],
       // unique: true,
     },
     specialite: {
       type: [String],
-      required: true,
+      // required: true,
     },
     dateDeNaissance: {
       type: Date,
-      required: true,
+      required: [true, "La date de naissaince est requise"],
     },
     lieuDeNaissance: {
       type: String,
-      required: true,
+      required: [true, "Le lieu de naissaince est requis"],
     },
     username: {
       type: String,
-      required: true,
+      required: [true, "Le username est requis"],
       // unique: true,
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: [true, "L'email est requis"],
+      // unique: true,
     },
     motDePasse: {
       type: String,

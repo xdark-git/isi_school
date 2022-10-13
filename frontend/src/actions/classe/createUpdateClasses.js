@@ -10,9 +10,12 @@ import { getOne } from "./getClasses";
 
 export const createClasse = (formData, navigate) => async (dispatch) => {
   try {
+    // eslint-disable-next-line
     const classe = await api.createNewClasse(formData);
-    dispatch({ type: closeNewClassDialog });
-    dispatch(getOne(classe?.data?._id, navigate));
+    dispatch({ type: openAlertDialog, message: "Cours créé" });
+    dispatch({ type: closeLoaderComponent });
+    // dispatch({ type: closeNewClassDialog });
+    // dispatch(getOne(classe?.data?._id, navigate));
   } catch (error) {
     dispatch({ type: closeLoaderComponent });
     if (error.response.status === 409 || error.response.status === 400)
@@ -29,7 +32,7 @@ export const updateName = (id, formData, navigate) => async (dispatch) => {
     dispatch({ type: closeNewClassDialog });
     dispatch({ type: openAlertDialog, message: classe?.data?.message });
   } catch (error) {
-    dispatch({ type: closeLoaderComponent })
+    dispatch({ type: closeLoaderComponent });
     if (error.response.status === 409 || error.response.status === 400)
       dispatch({ type: ERRORONCLASSECREATION, errors: error?.response?.data });
     if (error?.response?.status === 500)

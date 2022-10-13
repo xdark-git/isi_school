@@ -1,0 +1,346 @@
+.nouveauContenuCours {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* overflow: auto; */
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.nouveauContenuCours .nouveauContenuCours-body {
+  position: relative;
+  width: 81vw;
+  max-width: 600px;
+  height: 85vh;
+  min-height: 297px;
+  max-height: 715px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+
+  font-family: "Poppins";
+  font-style: normal;
+  animation-name: nouveauContenuCours-body;
+  animation-duration: 0.7s;
+}
+@keyframes nouveauContenuCours-body {
+  0% {
+    bottom: -150vh;
+  }
+  100% {
+    bottom: 11vh;
+  }
+}
+.nouveauContenuCours .nouveauContenuCours-body .title {
+  position: relative;
+  top: 7px;
+  left: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  color: #1d1d1d;
+}
+.nouveauContenuCours .nouveauContenuCours-body form {
+  position: relative;
+  top: 19px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .error {
+  margin-top: 7px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form label {
+  font-size: 18px;
+  margin-top: 3px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form #titre-contenu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 7px;
+  padding: 0px 35px 0px 18px;
+  gap: 194px;
+  width: 500px;
+  height: 33px;
+  font-weight: 200;
+  font-size: 15px;
+  color: #828282;
+  background: #f7f8fa;
+  /* border: 3px solid #2d9cdb; */
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  transition: all 0.08s ease-out;
+}
+.nouveauContenuCours .nouveauContenuCours-body form #titre-contenu:focus {
+  outline: none !important;
+  border: 1px solid #379fda;
+  box-shadow: 0 0 10px #719ece;
+}
+.nouveauContenuCours .nouveauContenuCours-body form #description-contenu {
+  height: 60px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form [contenteditable="true"] {
+  height: 60px;
+  background: #ffffff;
+  background-color: #f7f8fa;
+  color: #828282;
+  -moz-box-sizing: border-box;
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  max-height: 70px;
+  max-width: 555px;
+  word-wrap: break-word;
+  margin-top: 7px;
+  padding: 5px 35px 0px 18px;
+  min-height: 33px;
+  overflow: auto;
+  position: relative;
+  width: 555px;
+  vertical-align: top;
+  box-sizing: border-box;
+  transition: all 0.08s ease-out;
+
+  font-weight: 200;
+  font-size: 15px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form [contenteditable="true"]:focus {
+  outline: none !important;
+  border: 1px solid #379fda;
+  box-shadow: 0 0 10px #719ece;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu {
+  width: 555px;
+  position: relative;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 200;
+  font-size: 15px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .televerser {
+  position: relative;
+  right: 62px;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .error {
+  color: red;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .televersement-detail {
+  background-color: #f7f8fa;
+  width: 306px;
+  height: 123px;
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .upload-file {
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .upload-file
+  input {
+  /* position: absolute; */
+  width: 168px;
+  height: 38px;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  /* background: #2d9cdb; */
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .upload-file
+  label {
+  position: absolute;
+  width: 168px;
+  height: 38px;
+  background: #2d9cdb;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #f2f2f2;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .contenu-supporte {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7px;
+  width: 168px;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .contenu-supporte
+  .fichiers-supportes {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .televersement-detail
+  .contenu-supporte
+  .type-fichier-supporte {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+
+  color: #848484;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .contenu-televerses {
+  width: 555px;
+  height: 110px;
+  margin: 30px 0 30px 0;
+  display: grid;
+  grid-template-columns: 220px 220px;
+  grid-row-gap: 11px;
+  justify-content: center;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .contenu-televerses div {
+  width: 208px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f7f6f6;
+  border-radius: 6px;
+}
+
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .contenu-televerses
+  div
+  img {
+  width: 33.09px;
+  height: 42px;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .contenu-televerses
+  div
+  span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  /* identical to box height */
+
+  color: #848484;
+}
+.nouveauContenuCours .nouveauContenuCours-body form .televerser-contenu .contenu-televerses div i {
+  color: #2d9cdb;
+  font-size: 16px;
+  position: relative;
+  left: 57px;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .nouveauContenuCours-buttons {
+  position: relative;
+  left: 197px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .nouveauContenuCours-buttons
+  button {
+  position: relative;
+  top: 24px;
+  margin-right: 47px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
+  color: #000000;
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .nouveauContenuCours-buttons
+  .btn-ajouter:hover {
+  background-color: rgba(0, 201, 50, 0.4);
+}
+.nouveauContenuCours
+  .nouveauContenuCours-body
+  form
+  .televerser-contenu
+  .nouveauContenuCours-buttons
+  .btn-annuler:hover {
+    background-color: rgba(255, 0, 0, 0.4);
+}

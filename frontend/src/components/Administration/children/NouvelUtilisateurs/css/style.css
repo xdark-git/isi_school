@@ -1,0 +1,189 @@
+.error {
+  color: #ff0000;
+}
+.nouvelUtilisateur {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* overflow: auto; */
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.nouvelUtilisateur .background-shape {
+  position: relative;
+  width: 60vw;
+  /* height: 76vh; */
+  min-height: 210px;
+  /* max-height: 679px; */
+  padding: 0 0 0 0;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+  font-family: "Poppins";
+  font-style: normal;
+  /* animation-name: nouvelle-utilisateur-contenu; */
+  animation-duration: 0.7s;
+}
+@keyframes nouvelle-utilisateur-contenu {
+  0% {
+    bottom: -250vh;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+.nouvelUtilisateur .background-shape .header {
+  position: relative;
+  /* top: 10px; */
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  background: #b9d5e4;
+}
+.nouvelUtilisateur .background-shape .header i {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+.nouvelUtilisateur .background-shape .body {
+  position: relative;
+  /* top: 10px; */
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px 35px 0 35px;
+}
+.nouvelUtilisateur .background-shape .body div {
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.nouvelUtilisateur .background-shape .body div span {
+  display: flex;
+  flex-direction: column;
+}
+.nouvelUtilisateur .background-shape .body div .span-title {
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+}
+.nouvelUtilisateur .background-shape .body div span label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* identical to box height */
+
+  color: #848484;
+}
+.nouvelUtilisateur .background-shape .body div span input {
+  height: 30px;
+  width: 350px;
+  padding: 0px 5px 0px 12px;
+  font-size: 15px;
+  color: #828282;
+  background: #f7f8fa;
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  transition: all 0.08s ease-out;
+}
+
+.nouvelUtilisateur .background-shape .body div .span-title select {
+  width: inherit;
+  height: 30px;
+  padding: 0px 35px 0px 18px;
+  font-size: 15px;
+  color: #828282;
+  background: #f7f8fa;
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  /* outline: unset; */
+}
+/* .nouvelUtilisateur .background-shape .body div span #email {
+  width: inherit;
+} */
+
+.nouvelUtilisateur .background-shape .body div .span-nom,
+.nouvelUtilisateur .background-shape .body div .span-lieuDeNaissance,
+.nouvelUtilisateur .background-shape .body div .span-username,
+.nouvelUtilisateur .background-shape .body div .span-email {
+  position: absolute;
+  right: 0;
+}
+
+.nouvelUtilisateur .background-shape .buttons {
+  position: relative;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+  margin: 35px 0 0 0;
+  padding: 0 35px 0 0;
+}
+.nouvelUtilisateur .background-shape .buttons button {
+  position: relative;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #000000;
+}
+.nouvelUtilisateur .background-shape .buttons .btn-ajouter:hover {
+  background-color: rgba(0, 201, 50, 0.4);
+}
+.nouvelUtilisateur .background-shape .buttons .btn-annuler:hover {
+  background-color: rgba(255, 0, 0, 0.4);
+}

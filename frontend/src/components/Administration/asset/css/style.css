@@ -1,0 +1,140 @@
+main {
+  overflow: hidden;
+}
+.admnistration-component {
+  position: relative;
+  top: 68px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.admnistration-component .background-shape {
+  position: relative;
+  top: 33px;
+  left: 63px;
+  width: 90%;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 23px 0 0 0;
+  background: #ffffff;
+  border-radius: 12px;
+}
+.admnistration-component .background-shape .header {
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  position: relative;
+
+  margin: 0 15px 0 15px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #000000;
+}
+.admnistration-component .background-shape .header .utilisateurs,
+.admnistration-component .background-shape .header .classes {
+  cursor: pointer;
+  padding: 0 18px 0 18px;
+}
+.admnistration-component .background-shape .header .focused {
+  padding-bottom: 2px;
+  border-bottom: 4px solid #00a1db;
+  z-index: 1;
+}
+.admnistration-component .background-shape .header .line {
+  position: absolute;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  top: 26px;
+  border-bottom: 2px solid #cacaca;
+}
+.admnistration-component .background-shape .body {
+  /* background: red; */
+  position: relative;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+}
+.admnistration-component .background-shape .body #loader {
+  position: absolute;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admnistration-component .background-shape .body #loader .loader {
+  border: 16px solid #ececec;
+  border-radius: 50%;
+  border-top: 16px solid #379fda;
+}
+.admnistration-component .background-shape .body table {
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins";
+  border-collapse: collapse;
+  width: 100%;
+}
+.admnistration-component .background-shape .body table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #ffffff;
+}
+.admnistration-component .background-shape .body table th,
+.admnistration-component .background-shape .body table td {
+  padding: 8px;
+}
+.admnistration-component .background-shape .body table th:first-child,
+.admnistration-component .background-shape .body table td:first-child {
+  width: 45px;
+}
+.admnistration-component .background-shape .body table td {
+  border: 1px solid #ddd;
+}
+.admnistration-component .background-shape .body table td:first-child {
+  border-left: unset;
+}
+.admnistration-component .background-shape .body table td:last-child {
+  border-right: unset;
+}
+.admnistration-component .background-shape .body table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.admnistration-component .background-shape .body table tr:hover {
+  background-color: #ddd;
+}
+.admnistration-component .background-shape .body table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+.admnistration-component .background-shape .body table tr td input {
+  cursor: pointer;
+}
+.admnistration-component .background-shape .body table tr td i {
+  font-family: "FontAwesome";
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  left: 4px;
+  bottom: 2px;
+  /* color: #ffffff; */
+}

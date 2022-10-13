@@ -1,0 +1,126 @@
+.display-information {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Poppins";
+  font-style: normal;
+}
+.display-information .retour {
+  position: relative;
+  left: 18px;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  font-size: 16px;
+  color: #858484;
+  cursor: pointer;
+}
+.display-information .retour span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  /* color: #000000; */
+}
+.display-information .objet {
+  position: relative;
+  top: 30px;
+  left: 85px;
+  font-size: 22px;
+}
+.display-information .contenu {
+  width: 90%;
+  height: 80%;
+  position: relative;
+  top: 60px;
+  left: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  /* background-color: aqua; */
+}
+.display-information .contenu img {
+  width: 50.17px;
+  height: 53px;
+  top: 13px;
+  margin: 0 5px 0 0;
+  border-radius: 50%;
+}
+
+.display-information .contenu .information-header .name {
+  margin: 0 15px 0 0;
+  font-weight: 500;
+  font-size: 26px;
+
+  color: #000000;
+}
+.display-information .contenu .information-header .email {
+  font-size: 20px;
+  font-weight: 300;
+
+  color: #868686;
+}
+.display-information .contenu .information-header .to {
+  position: relative;
+  top: 4px;
+  font-weight: 300;
+  font-size: 20px;
+  /* line-height: 38px; */
+
+  color: #868686;
+}
+.display-information .contenu .information-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 88%;
+  height: inherit;
+  position: absolute;
+  top: 76px;
+  left: 72px;
+}
+.display-information .contenu .information-body .text {
+  /* min-height: 45px; */
+  max-height: 60%;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #000000;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.display-information .contenu .information-body .border {
+  width: 100%;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+
+  border-bottom: 1px solid #b7b7b7;
+}
+.display-information .contenu .information-body .files {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 25% 26% 26% 22%;
+  grid-row-gap: 10px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.display-information .contenu .information-body .files div {
+  width: 208px;
+  height: 48px;
+  display: grid;
+  grid-template-columns: 51px 125px 21px;
+  align-items: center;
+  /* gap: 5px; */
+  background: #f7f6f6;
+  border-radius: 6px;
+}

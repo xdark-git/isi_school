@@ -15,6 +15,12 @@ export const signEtudiant = (formData) => API.post("/user/login/etudiant", formD
 export const signProfesseur = (formData) => API.post("/user/login/professeur", formData);
 export const signAdministration = (formData) => API.post("/user/login/administration", formData);
 
+export const signUpEtudiant = (formData) => API.post("/user/add/etudiant", formData);
+export const signUpProfesseur = (formData) => API.post("/user/add/professeur", formData);
+export const signUpAdministrateur = (formData) => API.post("/user/add/administration", formData);
+
+export const getAllUsers = () => API.get("/user/all");
+
 export const createNewClasse = (formData) => API.post("/classe/create", formData);
 export const getAllClasses = () => API.get("/classe");
 export const getOneClasse = (id) => API.get("/classe/" + id);
@@ -22,3 +28,5 @@ export const updateClasseName = (id, formData) => API.put("/classe/updatename/" 
 export const deleteOneClasse = (id) => API.delete("/classe/delete/" + id);
 
 export const getOneCours = (id) => API.get("/cours/" + id);
+export const addContenuCours = (formData) =>
+  API.post("/cours/contenus", formData, { headers: { "Content-Type": "multipart/form-data" } });
