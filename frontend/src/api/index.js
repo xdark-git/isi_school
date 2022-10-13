@@ -15,6 +15,10 @@ export const signEtudiant = (formData) => API.post("/user/login/etudiant", formD
 export const signProfesseur = (formData) => API.post("/user/login/professeur", formData);
 export const signAdministration = (formData) => API.post("/user/login/administration", formData);
 
+export const signUpEtudiant = (formData) => API.post("/user/add/etudiant", formData);
+export const signUpProfesseur = (formData) => API.post("/user/add/professeur", formData);
+export const signUpAdministrateur = (formData) => API.post("/user/add/administration", formData);
+
 export const getAllUsers = () => API.get("/user/all");
 
 export const createNewClasse = (formData) => API.post("/classe/create", formData);
