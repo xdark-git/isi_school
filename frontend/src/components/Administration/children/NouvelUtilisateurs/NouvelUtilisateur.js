@@ -1,8 +1,17 @@
 import React, { useCallback, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signUpAdministrateurAction,
+  signUpEtudiantAction,
+  signUpProfesseurAction,
+} from "../../../../actions/users/crudUsers";
+import { loaderComponentOpened, openLoaderComponent } from "../../../../constantes";
+import Loading from "../../../Loading/Loading";
 import "./css/style.css";
 
 const NouvelUtilisateur = (props) => {
+  const dispatch = useDispatch();
+
   const closeCurrentDialog = useCallback(() => {
     return props.state?.setStateNouvelleUtilisateur(false);
     // eslint-disable-next-line
@@ -114,126 +123,197 @@ const NouvelUtilisateur = (props) => {
       handleError();
       return;
     }
+    if (titre === "62e2c0fb2089ec9ba376356c") {
+      const formData = {
+        nom,
+        prenom,
+        telephone,
+        numeroDeCarte: identifiant,
+        dateDeNaissance,
+        lieuDeNaissance,
+        username,
+        email,
+        motDePasse: "Passer",
+        statusId: titre,
+      };
 
-    
+      dispatch(signUpEtudiantAction(formData));
+      dispatch({ type: openLoaderComponent });
+      return;
+    }
+    if (titre === "62e2c0e62089ec9ba3763566") {
+      const formData = {
+        nom,
+        prenom,
+        telephone,
+        identifiantProf: identifiant,
+        dateDeNaissance,
+        lieuDeNaissance,
+        username,
+        email,
+        motDePasse: "Passer",
+        statusId: titre,
+      };
+
+      dispatch(signUpProfesseurAction(formData));
+      dispatch({ type: openLoaderComponent });
+      return;
+    }
+    if (titre === "62e2c0f22089ec9ba3763569") {
+      const formData = {
+        nom,
+        prenom,
+        telephone,
+        // identifiantProf: identifiant,
+        dateDeNaissance,
+        lieuDeNaissance,
+        username,
+        email,
+        motDePasse: "Passer",
+        statusId: titre,
+      };
+
+      dispatch(signUpAdministrateurAction(formData));
+      dispatch({ type: openLoaderComponent });
+      return;
+    }
   };
+
+  const isLoading = useSelector((state) => state?.isLoading?.loader);
+
   return (
     <div className="nouvelUtilisateur">
-      <div className="background-shape">
-        <div className="header">
-          <div> Nouvel Utilisateur</div>
-          <i className="fa-solid fa-xmark" onClick={closeCurrentDialog}></i>
+      {isLoading === loaderComponentOpened ? (
+        <Loading />
+      ) : (
+        <div className="background-shape">
+          <div className="header">
+            <div>Nouvel Utilisateur</div>
+            <i className="fa-solid fa-xmark" onClick={closeCurrentDialog}></i>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="body">
+              {/* <div className="error">This will be replace by the error catched</div> */}
+              <div>
+                <span className="span-title">
+                  <label htmlFor="part1">Titre*</label>
+                  {titreError && <div className="error">{titreError}</div>}
+                  <select
+                    id="title"
+                    onChange={(e) => {
+                      setTitre(e.target.value);
+                      if (e.target.value === "62e2c0f22089ec9ba3763569") {
+                        setIdentifiant("N/A");
+                        document.getElementById("identifiant").disabled = true;
+                      } else {
+                        if (identifiant === "N/A") setIdentifiant(null);
+                        document.getElementById("identifiant").disabled = false;
+                      }
+                    }}
+                  >
+                    <option>Sélectionner</option>
+                    {statusSelectOption.current}
+                  </select>
+                </span>
+              </div>
+              <div>
+                <span className="span-prenom">
+                  <label htmlFor="prenom">Prénom*</label>
+                  {prenomError && <div className="error">{prenomError}</div>}
+                  <input
+                    id="prenom"
+                    type="input"
+                    value={prenom != null ? prenom : ""}
+                    onChange={(e) => setPrenom(e.target.value)}
+                  />
+                </span>
+                <span className="span-nom">
+                  <label htmlFor="nom">Nom*</label>
+                  {nomError && <div className="error">{nomError}</div>}
+                  <input
+                    id="nom"
+                    type="text"
+                    value={nom != null ? nom : ""}
+                    onChange={(e) => setNom(e.target.value)}
+                  />
+                </span>
+              </div>
+              <div>
+                <span className="span-dateDeNaissance">
+                  <label htmlFor="dateDeNaissance">Date de Naissance*</label>
+                  {dateDeNaissanceError && <div className="error">{dateDeNaissanceError}</div>}
+                  <input
+                    id="dateDeNaissance"
+                    type="date"
+                    value={dateDeNaissance != null ? dateDeNaissance : ""}
+                    onChange={(e) => setDateDeNaissance(e.target.value)}
+                  />
+                </span>
+                <span className="span-lieuDeNaissance">
+                  <label htmlFor="lieuDeNaissance">Lieu de Naissance*</label>
+                  {lieuDeNaissanceError && <div className="error">{lieuDeNaissanceError}</div>}
+                  <input
+                    id="lieuDeNaissance"
+                    type="text"
+                    value={lieuDeNaissance != null ? lieuDeNaissance : ""}
+                    onChange={(e) => setLieuDeNaissance(e.target.value)}
+                  />
+                </span>
+              </div>
+              <div>
+                <span className="span-identifiant">
+                  <label htmlFor="identifiant">Identifiant*</label>
+                  {identifiantError && <div className="error">{identifiantError}</div>}
+                  <input
+                    id="identifiant"
+                    type="text"
+                    value={identifiant != null ? identifiant : ""}
+                    onChange={(e) => setIdentifiant(e.target.value)}
+                  />
+                </span>
+                <span className="span-username">
+                  <label htmlFor="username">Username*</label>
+                  {usernameError && <div className="error">{usernameError}</div>}
+                  <input
+                    id="username"
+                    type="text"
+                    value={username != null ? username : ""}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </span>
+              </div>
+              <div>
+                <span className="span-telephone">
+                  <label htmlFor="telephone">Téléphone*</label>
+                  {telephoneError && <div className="error">{telephoneError}</div>}
+                  <input
+                    id="telephone"
+                    type="text"
+                    value={telephone != null ? telephone : ""}
+                    onChange={(e) => setTelephone(e.target.value)}
+                  />
+                </span>
+                <span className="span-email">
+                  <label htmlFor="email">Email*</label>
+                  {emailError && <div className="error">{emailError}</div>}
+                  <input
+                    id="email"
+                    type="email"
+                    value={email != null ? email : ""}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </span>
+              </div>
+            </div>
+            <div className="buttons">
+              <button className="btn btn-annuler" onClick={closeCurrentDialog}>
+                Annuler
+              </button>
+              <button className="btn btn-ajouter">Ajouter</button>
+            </div>
+          </form>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="body">
-            {/* <div className="error">This will be replace by the error catched</div> */}
-            <div>
-              <span className="span-title">
-                <label htmlFor="part1">Titre*</label>
-                {titreError && <div className="error">{titreError}</div>}
-                <select id="title" onChange={(e) => setTitre(e.target.value)}>
-                  <option>Sélectionner</option>
-                  {statusSelectOption.current}
-                </select>
-              </span>
-            </div>
-            <div>
-              <span className="span-prenom">
-                <label htmlFor="prenom">Prénom*</label>
-                {prenomError && <div className="error">{prenomError}</div>}
-                <input
-                  id="prenom"
-                  type="input"
-                  value={prenom != null ? prenom : ""}
-                  onChange={(e) => setPrenom(e.target.value)}
-                />
-              </span>
-              <span className="span-nom">
-                <label htmlFor="nom">Nom*</label>
-                {nomError && <div className="error">{nomError}</div>}
-                <input
-                  id="nom"
-                  type="input"
-                  value={nom != null ? nom : ""}
-                  onChange={(e) => setNom(e.target.value)}
-                />
-              </span>
-            </div>
-            <div>
-              <span className="span-dateDeNaissance">
-                <label htmlFor="dateDeNaissance">Date de Naissance*</label>
-                {dateDeNaissanceError && <div className="error">{dateDeNaissanceError}</div>}
-                <input
-                  id="dateDeNaissance"
-                  type="date"
-                  value={dateDeNaissance != null ? dateDeNaissance : ""}
-                  onChange={(e) => setDateDeNaissance(e.target.value)}
-                />
-              </span>
-              <span className="span-lieuDeNaissance">
-                <label htmlFor="lieuDeNaissance">Lieu de Naissance*</label>
-                {lieuDeNaissanceError && <div className="error">{lieuDeNaissanceError}</div>}
-                <input
-                  id="lieuDeNaissance"
-                  type="text"
-                  value={lieuDeNaissance != null ? lieuDeNaissance : ""}
-                  onChange={(e) => setLieuDeNaissance(e.target.value)}
-                />
-              </span>
-            </div>
-            <div>
-              <span className="span-identifiant">
-                <label htmlFor="identifiant">Identifiant*</label>
-                {identifiantError && <div className="error">{identifiantError}</div>}
-                <input
-                  id="identifiant"
-                  type="text"
-                  value={identifiant != null ? identifiant : ""}
-                  onChange={(e) => setIdentifiant(e.target.value)}
-                />
-              </span>
-              <span className="span-username">
-                <label htmlFor="username">Username*</label>
-                {usernameError && <div className="error">{usernameError}</div>}
-                <input
-                  id="username"
-                  type="text"
-                  value={username != null ? username : ""}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </span>
-            </div>
-            <div>
-              <span className="span-telephone">
-                <label htmlFor="telephone">Téléphone*</label>
-                {telephoneError && <div className="error">{telephoneError}</div>}
-                <input
-                  id="telephone"
-                  type="text"
-                  value={telephone != null ? telephone : ""}
-                  onChange={(e) => setTelephone(e.target.value)}
-                />
-              </span>
-              <span className="span-email">
-                <label htmlFor="email">Email*</label>
-                {emailError && <div className="error">{emailError}</div>}
-                <input
-                  id="email"
-                  type="email"
-                  value={email != null ? email : ""}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </span>
-            </div>
-          </div>
-          <div className="buttons">
-            <button className="btn btn-annuler" onClick={closeCurrentDialog}>
-              Annuler
-            </button>
-            <button className="btn btn-ajouter">Ajouter</button>
-          </div>
-        </form>
-      </div>
+      )}
     </div>
   );
 };
