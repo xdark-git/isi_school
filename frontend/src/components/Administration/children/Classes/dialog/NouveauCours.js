@@ -12,7 +12,7 @@ const NouveauCours = () => {
         <div className="title">Nouveau Cours</div>
         <div className="body">
           <div className="owner">
-            <label htmlFor="username-prof">Nom d'utilisateurs du professeur</label>
+            <label htmlFor="username-prof">Username du professeur</label>
             <input id="username-prof" nom="professeur" type="text" />
           </div>
           <div className="classe">
