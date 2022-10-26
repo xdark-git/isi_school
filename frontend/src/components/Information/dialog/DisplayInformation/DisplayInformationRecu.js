@@ -2,7 +2,7 @@ import React from "react";
 import "./css/style.css";
 
 const DisplayInformationRecu = (props) => {
-  console.log(props?.display?.displayOne);
+  // console.log(props?.display?.displayOne);
   return (
     <div className="display-information">
       <div
@@ -14,13 +14,13 @@ const DisplayInformationRecu = (props) => {
         <i className="fa-solid fa-arrow-left fa-lg"></i>
         <span>Retour</span>
       </div>
-      <div className="objet">Lorem Ipsum is not simply random text</div>
+      <div className="objet">{props?.display?.displayOne?.data?.description}</div>
       <div className="contenu">
         <img src={process.env.PUBLIC_URL + "/img/user/default.jpg"} alt="" />
         <div className="information-header">
-          <span className="name">{`Papa Ahmadou Fall`}</span>
-          <span className="email">{`<pahmadou@gmail.com>`}</span>
-          <div className="to">A {`konteyemouhamadou@gmail.com`}</div>
+          <span className="name">{`${props?.display?.displayOne?.data?.prenom} ${props?.display?.displayOne?.data?.nom}`}</span>
+          <span className="email">{`${props?.display?.displayOne?.data?.email}`}</span>
+          <div className="to">A {`antalo@gmail.com`}</div>
         </div>
         <div className="information-body">
           <div className="text">
@@ -41,7 +41,11 @@ const DisplayInformationRecu = (props) => {
           <div className="files">
             <div>
               <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
-              <span>exemple.pdf</span>
+              <span>rapport1.pdf</span>
+              <i className="fa-solid fa-download"></i>
+            </div> <div>
+              <img src={process.env.PUBLIC_URL + "/img/pdf.png"} alt="" />
+              <span>rapport2.pdf</span>
               <i className="fa-solid fa-download"></i>
             </div>
           </div>
