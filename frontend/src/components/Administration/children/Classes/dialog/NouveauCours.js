@@ -1,7 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { CLOSE_NOUVEAU_COURS_DIALOG } from "../../../../../constantes";
 import "../css/nouveau-cours.css";
 
 const NouveauCours = () => {
+  const dispatch = useDispatch();
+
   return (
     <div id="nouveau-cours" className="nouveau-cours">
       <div className="nouveau-cours-contenu">
@@ -22,7 +26,12 @@ const NouveauCours = () => {
           </div>
         </div>
         <div className="buttons">
-          <button className="annuler">Annuler</button>
+          <button
+            className="annuler"
+            onClick={() => dispatch({ type: CLOSE_NOUVEAU_COURS_DIALOG })}
+          >
+            Annuler
+          </button>
           <button className="ajouter">Ajouter</button>
         </div>
       </div>

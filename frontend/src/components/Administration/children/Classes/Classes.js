@@ -5,6 +5,7 @@ import {
   loaderComponentOpened,
   openLoaderComponent,
   openNewClassDialog,
+  OPEN_NOUVEAU_COURS_DIALOG,
 } from "../../../../constantes";
 import Loading from "../../../Loading/Loading";
 import "./css/style.css";
@@ -41,7 +42,9 @@ const Classes = () => {
         <div className="btn">
           <button onClick={() => dispatch({ type: openNewClassDialog })}>Créer une classe</button>
           <button>Ajouter Etudiant/Prof</button>
-          <button>Créer un cours</button>
+          <button onClick={() => dispatch({ type: OPEN_NOUVEAU_COURS_DIALOG })}>
+            Créer un cours
+          </button>
           <button>Supprimer</button>
         </div>
         <div className="search">
