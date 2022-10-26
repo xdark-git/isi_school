@@ -63,10 +63,9 @@
   left: 20px;
 }
 
-.nouvelle-classe .nouvelle-classe-contenu form .error{
-color: red;
-margin-bottom: 5px;
-
+.nouvelle-classe .nouvelle-classe-contenu form .error {
+  color: red;
+  margin-bottom: 5px;
 }
 .nouvelle-classe .nouvelle-classe-contenu form input {
   display: flex;
