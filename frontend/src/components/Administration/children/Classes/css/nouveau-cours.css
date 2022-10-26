@@ -1,0 +1,154 @@
+.nouveau-cours {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* overflow: auto; */
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.nouveau-cours .nouveau-cours-contenu {
+  position: relative;
+  width: 81vw;
+  max-width: 770px;
+  height: 27vh;
+  min-height: 370px;
+  /* max-height: 197px; */
+  bottom: 8vh;
+  border-radius: 7px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+
+  font-family: "Poppins";
+  font-style: normal;
+}
+.nouveau-cours .nouveau-cours-contenu .title {
+  position: relative;
+  top: 7px;
+  left: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  color: #1d1d1d;
+}
+.nouveau-cours .nouveau-cours-contenu .body {
+  position: relative;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: stretch;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px 35px 0 35px;
+}
+.nouveau-cours .nouveau-cours-contenu .body div {
+  position: relative;
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.nouveau-cours .nouveau-cours-contenu .body div label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* identical to box height */
+
+  color: #848484;
+}
+.nouveau-cours .nouveau-cours-contenu .body div input {
+  width: stretch;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  height: 30px;
+
+  padding: 0px 5px 0px 12px;
+  font-size: 15px;
+  color: #828282;
+  background: #f7f8fa;
+  border: 2px solid #2d9cdb;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  transition: all 0.08s ease-out;
+}
+.nouveau-cours .nouveau-cours-contenu .body div input:focus {
+  outline: none !important;
+  border: 1px solid #379fda;
+  box-shadow: 0 0 10px #719ece;
+}
+.nouveau-cours .nouveau-cours-contenu .body div i {
+  position: absolute;
+  right: 13px;
+  top: 45px;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.nouveau-cours .nouveau-cours-contenu .buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 0 0 5px 0;
+  right: 30px;
+  bottom: 0;
+}
+
+.nouveau-cours .nouveau-cours-contenu .buttons button {
+  position: relative;
+  /* top: 24px; */
+  margin-right: 47px;
+
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 0.875rem; */
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
+  color: #000000;
+}
+.nouveau-cours .nouveau-cours-contenu .buttons .ajouter:hover {
+  background-color: rgba(0, 201, 50, 0.4);
+}
+.nouveau-cours .nouveau-cours-contenu .buttons .annuler:hover {
+  background-color: rgba(0, 17, 255, 0.4);
+}
