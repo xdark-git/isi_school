@@ -7,6 +7,7 @@ import {
   logoutDialogReducer,
   menuDialogReducer,
   newClassDialogReducer,
+  nouveauCoursDialogReducer,
 } from "./singleReducers/dialogs";
 
 import { profileSelectedReducer, signinUserReducer } from "./singleReducers/login";
@@ -32,6 +33,7 @@ export default combineReducers({
   stateProfEtudiantDialog: listProfEtudiantReducer,
   stateDeleteDialog: deleteDialogReducer,
   stateListContenusDialog: listContenusDialogReducer,
+  stateNouveauCoursDialog: nouveauCoursDialogReducer,
   stateListInformation: displayInformationReducer,
   users: getAllUsersReducer,
   classes: getAllClassesReducers,

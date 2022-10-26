@@ -28,6 +28,10 @@ import {
   closeListContenusDialog,
   listContenusDialogClosed,
   LOGOUT,
+  OPEN_NOUVEAU_COURS_DIALOG,
+  OPENED,
+  CLOSED,
+  CLOSE_NOUVEAU_COURS_DIALOG,
 } from "../../constantes";
 export const menuDialogReducer = (menuDialog = { status: menuDialogClosed }, action) => {
   switch (action.type) {
@@ -141,6 +145,19 @@ export const listContenusDialogReducer = (state = { status: listContenusDialogCl
       return (state = { status: listContenusDialogClosed });
     case LOGOUT:
       return state;
+    default:
+      return state;
+  }
+};
+
+export const nouveauCoursDialogReducer = (state = { status: CLOSED }, action) => {
+  switch (action.type) {
+    case OPEN_NOUVEAU_COURS_DIALOG:
+      return (state = { status: OPENED });
+    case CLOSE_NOUVEAU_COURS_DIALOG:
+      return (state = { status: CLOSED });
+    case LOGOUT:
+      return (state = { status: CLOSED });
     default:
       return state;
   }
