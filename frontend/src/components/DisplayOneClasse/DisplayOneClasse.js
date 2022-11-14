@@ -40,7 +40,9 @@ const DisplayOneClasse = () => {
           <img src={`http://localhost:5000/api/user/img/${el?.prof?.photoDeprofil}`} alt="" />
           <div className="cours-owner-name">{`Mr/Mme ${el?.prof?.nom}`}</div>
         </div>
-        <div className="cours-name">{`${el?.titre}`}</div>
+        <div className="cours-name">
+          {el?.titre.length <= 25 ? `${el?.titre}` : `${el?.titre.substring(0, 25)}...`}
+        </div>
       </div>
     ));
   }

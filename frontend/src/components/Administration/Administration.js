@@ -6,7 +6,8 @@ import Utilisateurs from "./children/Utilisateurs/Utilisateurs";
 import NouvelUtilisateur from "./children/NouvelUtilisateurs/NouvelUtilisateur";
 import NewClassDialog from "../classes/Dialogs/NewClasse/NewClassDialog";
 import { useSelector } from "react-redux";
-import { newClassDialogOpened } from "../../constantes";
+import { newClassDialogOpened, OPENED } from "../../constantes";
+import NouveauCours from "./children/Classes/dialog/NouveauCours";
 
 const Administration = () => {
   const [children, setChildren] = useState({
@@ -19,11 +20,14 @@ const Administration = () => {
     setStateNouvelleUtilisateur,
   };
   let isNewClassDialogOpen = useSelector((state) => state?.stateNewClassDialog?.status);
+  const isNouveauCoursDialogOpen = useSelector((state) => state?.stateNouveauCoursDialog?.status);
+  
   return (
     <main>
       <Navbar />
       {stateNouvelUtilisateur === true && <NouvelUtilisateur state={nouvelleUtilisateurParams} />}
       {isNewClassDialogOpen === newClassDialogOpened && <NewClassDialog objectif="Creation" />}
+      {isNouveauCoursDialogOpen === OPENED && <NouveauCours />}
       <div className="admnistration-component">
         <div className="background-shape">
           <div className="header">

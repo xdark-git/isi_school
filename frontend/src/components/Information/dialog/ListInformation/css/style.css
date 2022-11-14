@@ -22,6 +22,7 @@
 }
 .list-envoye-recu li {
   position: relative;
+
   height: 40px;
   display: flex;
   align-items: center;
@@ -30,6 +31,9 @@
   background: #ffffff;
   /* border-top: 1px solid rgba(0, 0, 0, 0.19); */
   border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+}
+.list-envoye-recu li .user {
+  width: 200px;
 }
 /* ul .first-li {
   border-radius: 0px 12px 0px 0px;

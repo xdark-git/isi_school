@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import Cookies from "universal-cookie";
+import { USER_DATA_COOKIE_NAME } from "../../constantes";
 import Navbar from "../navbar/Navbar";
 import "./asset/css/style.css";
 import ProfileDetails from "./dialog/ProfileDetails";
 import ProfilePassword from "./dialog/ProfilePassword";
 
 const Profile = () => {
+  const cookies = new Cookies();
+  const user = cookies.get(USER_DATA_COOKIE_NAME);
+
   const [onDetails, setOnDetails] = useState({ className: "focused", status: true });
   const [onChangePassword, setOnChangePassword] = useState({ className: "", status: false });
   return (
@@ -22,11 +27,11 @@ const Profile = () => {
           <div className="profile-content">
             <div className="header">
               <div className="infos">
-                <div className="name">Papa Ahmadou</div>
-                <div className="profile">Etudiant</div>
-                <div className="email">pahmadou@gmail.com</div>
+                <div className="name">{`${user?.prenom}`}</div>
+                <div className="profile">{`${user?.status}`}</div>
+                <div className="email">{`${user?.email}`}</div>
               </div>
-              <div className="modifier">Modifier Profile</div>
+              {/* <div className="modifier">Modifier Profile</div> */}
             </div>
             <div className="nav">
               <span
@@ -50,7 +55,7 @@ const Profile = () => {
               <div></div>
             </div>
             <>
-              {onDetails.status === true && <ProfileDetails />}
+              {onDetails.status === true && <ProfileDetails user={user} />}
               {onChangePassword.status === true && <ProfilePassword />}
             </>
           </div>
